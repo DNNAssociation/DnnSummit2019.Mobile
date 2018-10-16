@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:DnnSummit.Views"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            Title="Dnn Summit 2019"
+            x:Class="DnnSummit.Views.DnnSummitTabbedPage">
+    <TabbedPage.Children>
+        <local:MainPage />
+        <local:MainPage />
+    </TabbedPage.Children>
+</TabbedPage>

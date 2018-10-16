@@ -4,6 +4,7 @@ namespace DnnSummit.ViewModels
 {
     public class MainViewModel : BindableBase
     {
-        public string Title => "Welcome to DNN Summit 2019!";
+        public string Message => "Welcome to DNN Summit 2019!";
+        public string Title => "Main";
     }
 }

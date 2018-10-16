@@ -13,6 +13,8 @@ namespace DnnSummit
 {
     public partial class App : PrismApplication
     {
+        public const string EntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
         }
@@ -22,7 +24,7 @@ namespace DnnSummit
         {
             InitializeComponent();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
-            await NavigationService.NavigateAsync(Constants.Navigation.MainPage);
+            await NavigationService.NavigateAsync(EntryPoint);
         }
 
 
@@ -34,6 +36,8 @@ namespace DnnSummit
 
         private void RegisterNavigation(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<DnnSummitNavigationPage>(Constants.Navigation.NavigationPage);
+            containerRegistry.RegisterForNavigation<DnnSummitTabbedPage>(Constants.Navigation.TabbedPage);
             containerRegistry.RegisterForNavigation<MainPage>(Constants.Navigation.MainPage);
         }
 

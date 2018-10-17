@@ -7,6 +7,10 @@
             Title="Dnn Summit 2019"
             BarBackgroundColor="{StaticResource Orange}"
             x:Class="DnnSummit.Views.DnnSummitTabbedPage">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Info"
+                     Command="{Binding Info}"/>
+    </TabbedPage.ToolbarItems>
     <TabbedPage.Children>
         <local:MainPage />
         <local:MainPage />

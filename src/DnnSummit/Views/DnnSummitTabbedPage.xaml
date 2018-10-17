@@ -5,6 +5,7 @@
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
             prism:ViewModelLocator.AutowireViewModel="True"
             Title="Dnn Summit 2019"
+            BarBackgroundColor="{StaticResource Orange}"
             x:Class="DnnSummit.Views.DnnSummitTabbedPage">
     <TabbedPage.Children>
         <local:MainPage />

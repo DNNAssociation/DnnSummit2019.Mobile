@@ -4,6 +4,8 @@
                         xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
                         x:Class="DnnSummit.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Color x:Key="Orange">#ea7e3b</Color>
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

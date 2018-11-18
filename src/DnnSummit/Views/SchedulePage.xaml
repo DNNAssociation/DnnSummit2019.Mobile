@@ -6,10 +6,34 @@
              Title="{Binding Title}"
              x:Class="DnnSummit.Views.SchedulePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to the schedule page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView ItemsSource="{Binding Days}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  SeparatorColor="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame BackgroundColor="{StaticResource DarkBlue}"
+                                    Margin="25, 10"
+                                    Padding="10, 20">
+                                <StackLayout Orientation="Vertical"
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="CenterAndExpand">
+                                    <Label Text="{Binding Title}"
+                                            TextColor="{StaticResource Orange}"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center" />
+                                    <Label Text="{Binding Description}"
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

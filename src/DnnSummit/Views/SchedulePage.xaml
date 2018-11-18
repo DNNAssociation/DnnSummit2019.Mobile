@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
              x:Class="DnnSummit.Views.SchedulePage">
@@ -38,6 +39,12 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Days}"
-                  ItemTemplate="{StaticResource DayTemplate}" />
+                  ItemTemplate="{StaticResource DayTemplate}">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped"
+                                          Command="{Binding DaySelected}"
+                                          EventArgsParameterPath="Item" />
+            </ListView.Behaviors>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

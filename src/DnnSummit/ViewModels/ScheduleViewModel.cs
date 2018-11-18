@@ -1,6 +1,8 @@
 ﻿using DnnSummit.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace DnnSummit.ViewModels
 {
@@ -8,9 +10,11 @@ namespace DnnSummit.ViewModels
     {
         public string Title => "Scedule";
         public ObservableCollection<Event> Days { get; set; }
+        public ICommand DaySelected { get; }
 
         public ScheduleViewModel()
         {
+            DaySelected = new DelegateCommand<Event>(OnDaySelected);
             Days = new ObservableCollection<Event>(new[]
             {
                 new Event
@@ -29,6 +33,10 @@ namespace DnnSummit.ViewModels
                     Description = "DNN on the slopes"
                 }
             });
+        }
+
+        private void OnDaySelected(Event day)
+        {
         }
     }
 }

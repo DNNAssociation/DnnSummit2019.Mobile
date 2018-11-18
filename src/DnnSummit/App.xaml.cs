@@ -45,9 +45,7 @@ namespace DnnSummit
         {
         }
 
-        // REVIEW - Will: Please review this block of code and if you have issues with it we can discuss.
-        //                This was added to simplify the convention between Page/ViewModel.
-        //              
+        // Page/ViewModel Wireup Logic
         //                Page - FooPage
         //                ViewModel - FooViewModel
         private Type FindViewModel(Type viewType)

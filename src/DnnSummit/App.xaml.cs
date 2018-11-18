@@ -38,7 +38,6 @@ namespace DnnSummit
         {
             containerRegistry.RegisterForNavigation<DnnSummitNavigationPage>(Constants.Navigation.NavigationPage);
             containerRegistry.RegisterForNavigation<DnnSummitTabbedPage>(Constants.Navigation.TabbedPage);
-            containerRegistry.RegisterForNavigation<MainPage>(Constants.Navigation.MainPage);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)

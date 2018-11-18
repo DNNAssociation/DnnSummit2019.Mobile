@@ -1,16 +1,16 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Services;
+using Prism.Navigation;
 using System.Windows.Input;
 
 namespace DnnSummit.ViewModels
 {
     public class DnnSummitTabbedViewModel : BindableBase
     {
-        protected IPageDialogService PageDialogService { get; }
-        public DnnSummitTabbedViewModel(IPageDialogService pageDialogService)
+        protected INavigationService NavigationService { get; }
+        public DnnSummitTabbedViewModel(INavigationService navigationService)
         {
-            PageDialogService = pageDialogService;
+            NavigationService = navigationService;
 
             Info = new DelegateCommand(OnInfo);
         }
@@ -20,7 +20,7 @@ namespace DnnSummit.ViewModels
 
         private async void OnInfo()
         {
-            await PageDialogService.DisplayAlertAsync("Not Implemented", "This feature is not implemented yet", "OK");
+            await NavigationService.NavigateAsync(Constants.Navigation.LocationPage);
         }
     }
 }

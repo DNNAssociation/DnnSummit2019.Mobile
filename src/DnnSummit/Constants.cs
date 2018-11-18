@@ -6,6 +6,7 @@
         {
             public const string NavigationPage = "NavigationPage";
             public const string TabbedPage = "TabbedPage";
+            public const string LocationPage = "LocationPage";
         }
     }
 }

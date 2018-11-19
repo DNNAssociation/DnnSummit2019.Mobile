@@ -26,7 +26,7 @@
                                             TextColor="{StaticResource Orange}"
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Center" />
-                                <Label Text="{Binding Description}"
+                                <Label Text="{Binding Notes}"
                                             TextColor="White"
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Center" />
@@ -39,7 +39,8 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Days}"
-                  ItemTemplate="{StaticResource DayTemplate}">
+                  ItemTemplate="{StaticResource DayTemplate}"
+                  ItemTapped="ListView_ItemTapped">
             <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemTapped"
                                           Command="{Binding DaySelected}"

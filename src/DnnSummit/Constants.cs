@@ -7,6 +7,7 @@
             public const string NavigationPage = "NavigationPage";
             public const string TabbedPage = "TabbedPage";
             public const string LocationPage = "LocationPage";
+            public const string ScheduleDetailsPage = "ScheduleDetailsPage";
         }
     }
 }

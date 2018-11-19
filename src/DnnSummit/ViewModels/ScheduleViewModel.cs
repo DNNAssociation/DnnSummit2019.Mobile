@@ -45,11 +45,14 @@ namespace DnnSummit.ViewModels
 
         private async void OnDaySelected(Event day)
         {
-            var navigationParameters = new NavigationParameters()
+            if (day != null)
             {
-                { nameof(Event), day }
-            };
-            await NavigationService.NavigateAsync(Constants.Navigation.ScheduleDetailsPage, navigationParameters);
+                var navigationParameters = new NavigationParameters()
+                {
+                    { nameof(Event), day }
+                };
+                await NavigationService.NavigateAsync(Constants.Navigation.ScheduleDetailsPage, navigationParameters);
+            }
         }
     }
 }

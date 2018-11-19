@@ -40,6 +40,7 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<DnnSummitTabbedPage>(Constants.Navigation.TabbedPage);
             containerRegistry.RegisterForNavigation<LocationPage>(Constants.Navigation.LocationPage);
             containerRegistry.RegisterForNavigation<ScheduleDetailsPage>(Constants.Navigation.ScheduleDetailsPage);
+            containerRegistry.RegisterForNavigation<SessionDetailsPage>(Constants.Navigation.SessionDetailsPage);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)

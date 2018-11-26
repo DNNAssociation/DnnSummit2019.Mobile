@@ -2,7 +2,6 @@
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -13,12 +12,27 @@ namespace DnnSummit.ViewModels
         protected INavigationService NavigationService { get; }
         public string Title => "Sessions";
         public ObservableCollection<Session> Sessions { get; set; }
+        
         public ICommand SessionSelected { get; }
+        public ICommand SwapState { get; }
+
+        private bool _isViewingFavoriteSessions;
+        public bool IsViewingFavoriteSessions
+        {
+            get { return _isViewingFavoriteSessions; }
+            set
+            {
+                SetProperty(ref _isViewingFavoriteSessions, value);
+                RaisePropertyChanged(nameof(IsViewingFavoriteSessions));
+            }
+        }
 
         public SessionsViewModel(INavigationService navigationService)
         {
+            IsViewingFavoriteSessions = false;
             NavigationService = navigationService;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
+            SwapState = new DelegateCommand(OnSwapState);
             Sessions = new ObservableCollection<Session>(new[]
             {
                 new Session
@@ -83,6 +97,11 @@ namespace DnnSummit.ViewModels
                 };
                 await NavigationService.NavigateAsync(Constants.Navigation.SessionDetailsPage, navigationParameter);
             }
+        }
+
+        private void OnSwapState()
+        {
+            IsViewingFavoriteSessions = !IsViewingFavoriteSessions;
         }
     }
 }

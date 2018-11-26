@@ -63,7 +63,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <ListView ItemsSource="{Binding Sessions}"
+            <ListView x:Name="SessionListView" 
+                      ItemsSource="{Binding Sessions}"
                       ItemTemplate="{StaticResource SessionTeamplate}"
                       SeparatorColor="Transparent"
                       SeparatorVisibility="None"
@@ -96,6 +97,37 @@
                         TextColor="White"
                         Text="Day 2" />
                 </StackLayout>
+            </Frame>
+            <Frame Margin="0, 0, 10, 10"
+                   VerticalOptions="End"
+                   HorizontalOptions="End"
+                   HeightRequest="50"
+                   WidthRequest="50"
+                   CornerRadius="50"
+                   BorderColor="Transparent"                   
+                   BackgroundColor="{StaticResource Orange}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SwapState}" />
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center">
+                    <Label Text="Favs"
+                           TextColor="White"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           IsEnabled="{Binding IsViewingFavoriteSessions, Converter={StaticResource NotTrueConverter}}"
+                           IsVisible="{Binding IsViewingFavoriteSessions, Converter={StaticResource NotTrueConverter}}"/>
+                    <Label Text="All"
+                           TextColor="White"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsEnabled="{Binding IsViewingFavoriteSessions}"
+                           IsVisible="{Binding IsViewingFavoriteSessions}" />
+                </StackLayout>                
             </Frame>
         </Grid>
     </ContentPage.Content>

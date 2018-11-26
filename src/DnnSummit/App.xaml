@@ -12,6 +12,7 @@
             <Color x:Key="AvatarBorder">#000</Color>
 
             <converters:SessionTrackToColorConverter x:Key="SessionTrackToColorConverter" />
+            <converters:NotTrueConverter x:Key="NotTrueConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

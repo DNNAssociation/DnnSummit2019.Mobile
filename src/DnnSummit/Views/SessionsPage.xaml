@@ -14,7 +14,7 @@
                         <StackLayout Orientation="Horizontal"
                                      HorizontalOptions="FillAndExpand">
                             <BoxView WidthRequest="20"
-                                     BackgroundColor="Purple" />
+                                     BackgroundColor="{Binding Track, Converter={StaticResource SessionTrackToColorConverter}}" />
                             <StackLayout Orientation="Vertical"
                                          HorizontalOptions="FillAndExpand"
                                          Spacing="0">

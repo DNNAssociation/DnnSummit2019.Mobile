@@ -2,6 +2,7 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+                        xmlns:converters="clr-namespace:DnnSummit.Converters"
                         x:Class="DnnSummit.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +10,8 @@
             <Color x:Key="DarkBlue">#1e345d</Color>
             <Color x:Key="ListDivider">#c3c3c3</Color>
             <Color x:Key="AvatarBorder">#000</Color>
+
+            <converters:SessionTrackToColorConverter x:Key="SessionTrackToColorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

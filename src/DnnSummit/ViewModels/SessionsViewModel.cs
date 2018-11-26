@@ -26,7 +26,7 @@ namespace DnnSummit.ViewModels
                     Title = "Session Name 1",
                     Room = "Erie",
                     Description = "Description",
-                    Track = SessionTrack.Development
+                    Track = SessionTrack.Design
                 },
                 new Session
                 {
@@ -40,7 +40,7 @@ namespace DnnSummit.ViewModels
                     Title = "Session Name 2",
                     Room = "Ontario",
                     Description = "Description",
-                    Track = SessionTrack.Development
+                    Track = SessionTrack.Marketing
                 },
                 new Session
                 {
@@ -54,14 +54,14 @@ namespace DnnSummit.ViewModels
                     Title = "Session Name 4",
                     Room = "Superior",
                     Description = "Description",
-                    Track = SessionTrack.Development
+                    Track = SessionTrack.Design
                 },
                 new Session
                 {
                     Title = "Session Name 6",
                     Room = "Erie",
                     Description = "Description",
-                    Track = SessionTrack.Development
+                    Track = SessionTrack.Marketing
                 },
                 new Session
                 {

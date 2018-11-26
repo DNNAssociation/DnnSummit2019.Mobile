@@ -7,6 +7,8 @@
         <ResourceDictionary>
             <Color x:Key="Orange">#ea7e3b</Color>
             <Color x:Key="DarkBlue">#1e345d</Color>
+            <Color x:Key="ListDivider">#c3c3c3</Color>
+            <Color x:Key="AvatarBorder">#000</Color>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

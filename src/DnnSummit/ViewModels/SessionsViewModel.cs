@@ -23,43 +23,50 @@ namespace DnnSummit.ViewModels
             {
                 new Session
                 {
-                    Title = "Session Name",
+                    Title = "Session Name 1",
+                    Room = "Erie",
                     Description = "Description",
                     Track = SessionTrack.Development
                 },
                 new Session
                 {
-                    Title = "Session Name",
+                    Title = "Session Name 3",
+                    Room = "Michigan",
                     Description = "Description",
                     Track = SessionTrack.Development
                 },
                 new Session
                 {
-                    Title = "Session Name",
+                    Title = "Session Name 2",
+                    Room = "Ontario",
                     Description = "Description",
                     Track = SessionTrack.Development
                 },
                 new Session
                 {
-                    Title = "Session Name",
+                    Title = "Session Name 5",
+                    Room = "Erie",
                     Description = "Description",
                     Track = SessionTrack.Development
                 },
                 new Session
                 {
-                    Title = "Session Name",
+                    Title = "Session Name 4",
+                    Room = "Superior",
                     Description = "Description",
                     Track = SessionTrack.Development
                 },
                 new Session
                 {
-                    Title = "Session Name",
+                    Title = "Session Name 6",
+                    Room = "Erie",
                     Description = "Description",
                     Track = SessionTrack.Development
                 },
                 new Session
                 {
-                    Title = "Session Name",
+                    Title = "Session Name 7",
+                    Room = "Ontario",
                     Description = "Description",
                     Track = SessionTrack.Development
                 }

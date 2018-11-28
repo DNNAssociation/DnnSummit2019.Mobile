@@ -150,9 +150,7 @@ namespace DnnSummit.ViewModels
 
         private void OnToggleAsFavorite(Session session)
         {
-            // TODO - we need to update this to properly persit
             session.IsFavorite = !session.IsFavorite;
-            RaisePropertyChanged(nameof(Sessions));
         }
 
         private async void OnSessionSelected(Session session)

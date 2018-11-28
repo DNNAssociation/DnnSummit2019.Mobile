@@ -1,12 +1,73 @@
-﻿namespace DnnSummit.Models
+﻿using Prism.Mvvm;
+
+namespace DnnSummit.Models
 {
-    public class Session
+    public class Session : BindableBase
     {
-        public string Title { get; set; }
-        public string Room { get; set; }
-        public string Description { get; set; }
-        public SessionTrack Track { get; set; }
-        public Speaker Speaker { get; set; }
-        public bool IsFavorite { get; set; }
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                SetProperty(ref _title, value);
+                RaisePropertyChanged(nameof(Title));
+            }
+        }
+
+        private string _room;
+        public string Room
+        {
+            get { return _room; }
+            set
+            {
+                SetProperty(ref _room, value);
+                RaisePropertyChanged(nameof(Room));
+            }
+        }
+
+        private string _description;
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                SetProperty(ref _description, value);
+                RaisePropertyChanged(nameof(Description));
+            }
+        }
+
+        private SessionTrack _track;
+        public SessionTrack Track
+        {
+            get { return _track; }
+            set
+            {
+                SetProperty(ref _track, value);
+                RaisePropertyChanged(nameof(Track));
+            }
+        }
+
+        private Speaker _speaker;
+        public Speaker Speaker
+        {
+            get { return _speaker; }
+            set
+            {
+                SetProperty(ref _speaker, value);
+                RaisePropertyChanged(nameof(Speaker));
+            }
+        }
+
+        private bool _isFavorite;
+        public bool IsFavorite
+        {
+            get { return _isFavorite; }
+            set
+            {
+                SetProperty(ref _isFavorite, value);
+                RaisePropertyChanged(nameof(IsFavorite));
+            }
+        }
     }
 }

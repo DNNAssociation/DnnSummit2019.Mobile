@@ -7,5 +7,6 @@
         public string Description { get; set; }
         public SessionTrack Track { get; set; }
         public Speaker Speaker { get; set; }
+        public bool IsFavorite { get; set; }
     }
 }

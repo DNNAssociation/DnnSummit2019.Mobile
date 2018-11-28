@@ -43,7 +43,8 @@ namespace DnnSummit.ViewModels
                         Title = "Session Name 1",
                         Room = "Erie",
                         Description = "Description",
-                        Track = SessionTrack.Design
+                        Track = SessionTrack.Design,
+                        IsFavorite = true,
                     },
                     new Session
                     {
@@ -71,7 +72,8 @@ namespace DnnSummit.ViewModels
                         Title = "Session Name 4",
                         Room = "Superior",
                         Description = "Description",
-                        Track = SessionTrack.Design
+                        Track = SessionTrack.Design,
+                        IsFavorite = true
                     },
                     new Session
                     {

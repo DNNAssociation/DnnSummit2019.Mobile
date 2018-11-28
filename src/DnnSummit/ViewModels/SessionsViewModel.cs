@@ -2,6 +2,7 @@
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -15,6 +16,7 @@ namespace DnnSummit.ViewModels
         
         public ICommand SessionSelected { get; }
         public ICommand SwapState { get; }
+        public ICommand ToggleAsFavorite { get; }
 
         private bool _isViewingFavoriteSessions;
         public bool IsViewingFavoriteSessions
@@ -33,6 +35,7 @@ namespace DnnSummit.ViewModels
             NavigationService = navigationService;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
             SwapState = new DelegateCommand(OnSwapState);
+            ToggleAsFavorite = new DelegateCommand<Session>(OnToggleAsFavorite);
 
             Sessions = new ObservableCollection<SessionList>(new[]
             {
@@ -143,6 +146,13 @@ namespace DnnSummit.ViewModels
                     }
                 }
             });
+        }
+
+        private void OnToggleAsFavorite(Session session)
+        {
+            // TODO - we need to update this to properly persit
+            session.IsFavorite = !session.IsFavorite;
+            RaisePropertyChanged(nameof(Sessions));
         }
 
         private async void OnSessionSelected(Session session)

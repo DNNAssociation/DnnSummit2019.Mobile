@@ -5,6 +5,7 @@
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
+             x:Name="SessionPage"
              x:Class="DnnSummit.Views.SessionsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -56,6 +57,10 @@
                                         <StackLayout Margin="0,0,25,0"
                                                      HorizontalOptions="End"
                                                      VerticalOptions="Center">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.ToggleAsFavorite, Source={x:Reference SessionPage}}"
+                                                                      CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
                                             <Image IsEnabled="{Binding IsFavorite}"
                                                    IsVisible="{Binding IsFavorite}"
                                                    Source="heart_empty" />

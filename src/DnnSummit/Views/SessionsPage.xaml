@@ -56,6 +56,38 @@
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
+            <DataTemplate x:Key="GroupHeaderTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="0"
+                                     Margin="0, 15, 0, 0">
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="End"
+                                         Margin="5, 0">
+                                <StackLayout.Resources>
+                                    <ResourceDictionary>
+                                        <Style TargetType="Label">
+                                            <Setter Property="FontSize" Value="20" />
+                                            <Setter Property="FontAttributes" Value="Bold" />
+                                            <Setter Property="TextColor" Value="Black" />
+                                            <Setter Property="VerticalOptions" Value="End" />
+                                            <Setter Property="VerticalTextAlignment" Value="End" />
+                                        </Style>
+                                    </ResourceDictionary>
+                                </StackLayout.Resources>
+                                <Label Text="{Binding Heading}"
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding SubHeading}"
+                                       HorizontalOptions="End"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="3"
+                                     HorizontalOptions="Fill"
+                                     Color="Black" />
+                        </StackLayout>                        
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -66,6 +98,8 @@
             <ListView x:Name="SessionListView" 
                       ItemsSource="{Binding Sessions}"
                       ItemTemplate="{StaticResource SessionTeamplate}"
+                      GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+                      IsGroupingEnabled="True"
                       SeparatorColor="Transparent"
                       SeparatorVisibility="None"
                       HasUnevenRows="True"

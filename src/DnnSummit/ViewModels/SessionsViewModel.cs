@@ -1,4 +1,5 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
+using DnnSummit.Extensions;
 using DnnSummit.Models;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -95,7 +96,7 @@ namespace DnnSummit.ViewModels
                             Title = x.Title,
                             Description = x.Description,
                             Room = x.Room,
-                            Track = SessionTrack.Development, //x.Category,
+                            Track = x.Category.ToSessionTrack(),
                             Speaker = new Speaker
                             {
                                 Name = x.Speaker.Name,

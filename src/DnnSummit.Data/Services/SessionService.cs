@@ -38,7 +38,7 @@ namespace DnnSummit.Data.Services
                     Description = "Developing a DNN Modules in MVC shouldn't be difficult, with the right tools and right understanding of the APIs you will be able to make compelling modules that can plug and play in any DNN Website. \r\nThere has been a lot of change in DNN in the past year and with that change there has been more power added to DNN MVC Modules. You can now write a DNN MVC Module that looks and feels very similar to an ASP.NET MVC website. Attendees will get a basic overview of how to build a DNN MVC application,how to handle routing between the different pages and how this scales to larger applications.",
                     Day = "Day 1",
                     TimeSlot = "Session 2",
-                    Category = "Development",
+                    Category = "Marketing",
                     Level = "Beginner",
                     Room = "Erie",
                     Speaker = new Speaker
@@ -56,7 +56,7 @@ namespace DnnSummit.Data.Services
                     Description = "Developing a DNN Modules in MVC shouldn't be difficult, with the right tools and right understanding of the APIs you will be able to make compelling modules that can plug and play in any DNN Website. \r\nThere has been a lot of change in DNN in the past year and with that change there has been more power added to DNN MVC Modules. You can now write a DNN MVC Module that looks and feels very similar to an ASP.NET MVC website. Attendees will get a basic overview of how to build a DNN MVC application,how to handle routing between the different pages and how this scales to larger applications.",
                     Day = "Day 1",
                     TimeSlot = "Session 1",
-                    Category = "Development",
+                    Category = "Security",
                     Level = "Beginner",
                     Room = "Erie",
                     Speaker = new Speaker
@@ -74,7 +74,7 @@ namespace DnnSummit.Data.Services
                     Description = "Developing a DNN Modules in MVC shouldn't be difficult, with the right tools and right understanding of the APIs you will be able to make compelling modules that can plug and play in any DNN Website. \r\nThere has been a lot of change in DNN in the past year and with that change there has been more power added to DNN MVC Modules. You can now write a DNN MVC Module that looks and feels very similar to an ASP.NET MVC website. Attendees will get a basic overview of how to build a DNN MVC application,how to handle routing between the different pages and how this scales to larger applications.",
                     Day = "Day 1",
                     TimeSlot = "Session 1",
-                    Category = "Development",
+                    Category = "UX Dev",
                     Level = "Beginner",
                     Room = "Erie",
                     Speaker = new Speaker
@@ -92,7 +92,7 @@ namespace DnnSummit.Data.Services
                     Description = "Developing a DNN Modules in MVC shouldn't be difficult, with the right tools and right understanding of the APIs you will be able to make compelling modules that can plug and play in any DNN Website. \r\nThere has been a lot of change in DNN in the past year and with that change there has been more power added to DNN MVC Modules. You can now write a DNN MVC Module that looks and feels very similar to an ASP.NET MVC website. Attendees will get a basic overview of how to build a DNN MVC application,how to handle routing between the different pages and how this scales to larger applications.",
                     Day = "Day 1",
                     TimeSlot = "Session 2",
-                    Category = "Development",
+                    Category = "DNN",
                     Level = "Beginner",
                     Room = "Erie",
                     Speaker = new Speaker

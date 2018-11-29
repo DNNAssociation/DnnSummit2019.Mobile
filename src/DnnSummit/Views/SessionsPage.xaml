@@ -26,8 +26,15 @@
                                            BorderColor="{StaticResource AvatarBorder}"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Center"
-                                           WidthRequest="30"
-                                           HeightRequest="30"></Frame>
+                                           WidthRequest="60"
+                                           HeightRequest="60"
+                                           Padding="0">
+                                        <Image Margin="0"
+                                               Aspect="AspectFill"
+                                               HeightRequest="65"
+                                               WidthRequest="65"
+                                               Source="{Binding Speaker.HeadshotImage}" />
+                                    </Frame>
                                     <StackLayout Orientation="Horizontal"
                                                  VerticalOptions="FillAndExpand"
                                                  HorizontalOptions="FillAndExpand"

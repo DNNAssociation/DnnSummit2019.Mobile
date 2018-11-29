@@ -74,7 +74,7 @@
                                             <BoxView IsEnabled="{Binding IsFavorite, Converter={StaticResource NotTrueConverter}}"
                                                      IsVisible="{Binding IsFavorite, Converter={StaticResource NotTrueConverter}}"
                                                      HeightRequest="60"
-                                                     WidthRequest="60"
+                                                     WidthRequest="40"
                                                      BackgroundColor="Transparent" />
                                         </StackLayout>
                                     </StackLayout>                                    

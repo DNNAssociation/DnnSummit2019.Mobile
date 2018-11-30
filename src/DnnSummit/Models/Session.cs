@@ -26,6 +26,28 @@ namespace DnnSummit.Models
             }
         }
 
+        private string _timeSlot;
+        public string TimeSlot
+        {
+            get { return _timeSlot; }
+            set
+            {
+                SetProperty(ref _timeSlot, value);
+                RaisePropertyChanged(nameof(TimeSlot));
+            }
+        }
+
+        private string _timeSlotName;
+        public string TimeSlotName
+        {
+            get { return _timeSlotName; }
+            set
+            {
+                SetProperty(ref _timeSlotName, value);
+                RaisePropertyChanged(nameof(TimeSlotName));
+            }
+        }
+
         private string _description;
         public string Description
         {

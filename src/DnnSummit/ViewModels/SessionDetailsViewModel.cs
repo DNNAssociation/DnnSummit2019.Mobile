@@ -108,8 +108,8 @@ namespace DnnSummit.ViewModels
                     Image = session.Speaker.HeadshotImage;
                     Room = session.Room;
                     FullName = session.Speaker.Name;
-                    Session = "Session 1";
-                    TimeSlot = "9:10-10:10";
+                    Session = session.TimeSlotName;
+                    TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;
 
                     isSuccessful = true;

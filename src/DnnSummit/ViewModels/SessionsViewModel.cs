@@ -89,7 +89,7 @@ namespace DnnSummit.ViewModels
             var rawSessions = await SessionService.Get();
             var data = rawSessions
                 .Where(x => x.Day == "Day 1")
-                .GroupBy(x => x.TimeSlot, (key, group) => 
+                .GroupBy(x => x.TimeSlotName, (key, group) => 
                     new SessionList(key, "9:10 - 10:10", 
                         group.Select(x => new Session
                         {
@@ -97,6 +97,8 @@ namespace DnnSummit.ViewModels
                             Description = x.Description,
                             Room = x.Room,
                             Track = x.Category.ToSessionTrack(),
+                            TimeSlotName = x.TimeSlotName,
+                            TimeSlot = x.TimeSlot,
                             Speaker = new Speaker
                             {
                                 Name = x.Speaker.Name,

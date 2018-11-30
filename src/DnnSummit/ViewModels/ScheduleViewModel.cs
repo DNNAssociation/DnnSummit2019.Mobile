@@ -12,7 +12,7 @@ namespace DnnSummit.ViewModels
         protected INavigationService NavigationService { get; }
         public string Title => "Schedule";
         public ObservableCollection<Event> Days { get; set; }
-        public ICommand DaySelected { get; }
+        public ICommand DaySelected { get; }        
 
         public ScheduleViewModel(INavigationService navigationService)
         {
@@ -25,18 +25,21 @@ namespace DnnSummit.ViewModels
                 new Event
                 {
                     Title = "Day 1",
+                    Avatar = ScheduleType.Intro,
                     Notes = "Training & Business Round Table",
                     Description = "Training & Business Round Table"
                 },
                 new Event
                 {
                     Title = "Day 2-3",
+                    Avatar = ScheduleType.Conference,
                     Notes = "Conference & After Party",
                     Description = "Conference & After Party"
                 },
                 new Event
                 {
                     Title = "Day 4-5",
+                    Avatar = ScheduleType.Slopes,
                     Notes = "DNN on the slopes",
                     Description = "DNN on the slopes"
                 }

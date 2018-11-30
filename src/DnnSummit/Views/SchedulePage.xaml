@@ -27,6 +27,8 @@
                                             TextColor="{StaticResource Orange}"
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Center" />
+                                <Image Source="{Binding Avatar, Converter={StaticResource ScheduleTypeToImageConverter}}" 
+                                       HeightRequest="70" />
                                 <Label Text="{Binding Notes}"
                                             TextColor="White"
                                             VerticalTextAlignment="Center"

@@ -94,7 +94,7 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        public void OnNavigatingTo(NavigationParameters parameters)
+        public void OnNavigatingTo(INavigationParameters parameters)
         {
             var isSuccessful = false;
 

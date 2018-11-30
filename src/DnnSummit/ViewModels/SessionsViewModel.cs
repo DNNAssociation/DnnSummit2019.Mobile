@@ -226,7 +226,7 @@ namespace DnnSummit.ViewModels
             //});
         }
 
-        public async void OnNavigatingTo(NavigationParameters parameters)
+        public async void OnNavigatingTo(INavigationParameters parameters)
         {
             IsBusy = true;
             await LoadSessions();

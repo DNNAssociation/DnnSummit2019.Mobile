@@ -28,7 +28,7 @@ namespace DnnSummit.ViewModels
             }
         }
         
-        public void OnNavigatingTo(NavigationParameters parameters)
+        public void OnNavigatingTo(INavigationParameters parameters)
         {
             bool isSuccessful = false;
             if (parameters.ContainsKey(nameof(Event)))

@@ -8,7 +8,7 @@
             BarBackgroundColor="{StaticResource Orange}"
             x:Class="DnnSummit.Views.DnnSummitTabbedPage">
     <TabbedPage.ToolbarItems>
-        <ToolbarItem Text="Location"
+        <ToolbarItem Icon="location"
                      Command="{Binding Info}"/>
     </TabbedPage.ToolbarItems>
     <TabbedPage.Children>

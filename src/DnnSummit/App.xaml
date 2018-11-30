@@ -11,6 +11,7 @@
             <Color x:Key="ListDivider">#c3c3c3</Color>
             <Color x:Key="AvatarBorder">#000</Color>
 
+            <converters:SessionTrackToStringConverter x:Key="SessionTrackToStringConverter" />
             <converters:SessionTrackToColorConverter x:Key="SessionTrackToColorConverter" />
             <converters:NotTrueConverter x:Key="NotTrueConverter" />
         </ResourceDictionary>

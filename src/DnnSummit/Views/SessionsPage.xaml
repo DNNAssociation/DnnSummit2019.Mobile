@@ -5,6 +5,7 @@
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
+             Icon="sessions"
              x:Name="SessionPage"
              x:Class="DnnSummit.Views.SessionsPage">
     <ContentPage.Resources>

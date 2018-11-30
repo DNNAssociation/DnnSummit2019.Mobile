@@ -10,7 +10,7 @@ namespace DnnSummit.ViewModels
     public class ScheduleViewModel : BindableBase
     {
         protected INavigationService NavigationService { get; }
-        public string Title => "Scedule";
+        public string Title => "Schedule";
         public ObservableCollection<Event> Days { get; set; }
         public ICommand DaySelected { get; }
 

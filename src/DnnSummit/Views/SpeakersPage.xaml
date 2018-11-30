@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
+             Icon="profile"
              x:Class="DnnSummit.Views.SpeakersPage">
     <ContentPage.Content>
         <StackLayout>

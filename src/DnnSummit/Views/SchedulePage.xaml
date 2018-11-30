@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
+             Icon="event"
              Title="{Binding Title}"
              x:Class="DnnSummit.Views.SchedulePage">
     <ContentPage.Resources>

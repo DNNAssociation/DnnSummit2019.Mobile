@@ -27,6 +27,28 @@ namespace DnnSummit.ViewModels
                 RaisePropertyChanged(nameof(Description));
             }
         }
+
+        private string _heading;
+        public string Heading
+        {
+            get { return _heading; }
+            set
+            {
+                SetProperty(ref _heading, value);
+                RaisePropertyChanged(nameof(Heading));
+            }
+        }
+
+        private string _subHeading;
+        public string SubHeading
+        {
+            get { return _subHeading; }
+            set
+            {
+                SetProperty(ref _subHeading, value);
+                RaisePropertyChanged(nameof(SubHeading));
+            }
+        }
         
         public void OnNavigatingTo(INavigationParameters parameters)
         {
@@ -38,6 +60,8 @@ namespace DnnSummit.ViewModels
                 {
                     Title = details.Title;
                     Description = details.Description;
+                    Heading = "BASE CAMP";
+                    SubHeading = "Ipsum lorem";
 
                     isSuccessful = true;
                 }

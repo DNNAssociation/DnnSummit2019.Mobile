@@ -5,11 +5,32 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
              x:Class="DnnSummit.Views.ScheduleDetailsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ContentTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding="20, 10">
+                            <Label Text="{Binding Title}"
+                                   TextColor="{StaticResource DarkBlue}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding Heading}"
+                                   FontSize="14"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding Description}" />
+                        </StackLayout>                        
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="0">
-            <Grid>
+            <Grid HorizontalOptions="FillAndExpand">
                 <Image Source="https://www.dnnsummit.org/Portals/0/Images/Summit2017/schedule-base-camp-photo.jpg"
                        VerticalOptions="Start"
+                       Aspect="AspectFill"
                        HorizontalOptions="FillAndExpand" />
                 <StackLayout Orientation="Vertical"
                              Spacing="0"
@@ -28,6 +49,12 @@
                            HorizontalTextAlignment="Center" />
                 </StackLayout>
             </Grid>
+            <ListView ItemsSource="{Binding ContentSections}"
+                      ItemTemplate="{StaticResource ContentTemplate}"
+                      SeparatorColor="Transparent"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      ItemTapped="ListView_ItemTapped" />    
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

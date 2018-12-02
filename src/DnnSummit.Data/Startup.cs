@@ -9,6 +9,7 @@ namespace DnnSummit.Data
         public static void RegisterDependencies(IContainerRegistry container)
         {
             container.Register<ISessionService, SessionService>();
+            container.Register<IScheduleService, ScheduleService>();
         }
     }
 }

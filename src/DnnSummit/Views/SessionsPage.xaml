@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="{Binding Title}"
+             Icon="sessions"
+             x:Name="SessionPage"
+             x:Class="DnnSummit.Views.SessionsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SessionTeamplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand">
+                            <BoxView WidthRequest="20"
+                                     BackgroundColor="{Binding Track, Converter={StaticResource SessionTrackToColorConverter}}" />
+                            <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand"
+                                         Spacing="0">
+                                <StackLayout Margin="0, 10" 
+                                             Orientation="Horizontal"
+                                             HorizontalOptions="FillAndExpand">
+                                    <Frame CornerRadius="50"
+                                           BorderColor="{StaticResource AvatarBorder}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"
+                                           WidthRequest="60"
+                                           HeightRequest="60"
+                                           Padding="0">
+                                        <Image Margin="0"
+                                               Aspect="AspectFill"
+                                               HeightRequest="65"
+                                               WidthRequest="65"
+                                               Source="{Binding Speaker.HeadshotImage}" />
+                                    </Frame>
+                                    <StackLayout Orientation="Horizontal"
+                                                 VerticalOptions="FillAndExpand"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 Spacing="0">
+                                        <StackLayout Orientation="Vertical"
+                                                     VerticalOptions="FillAndExpand"
+                                                     HorizontalOptions="StartAndExpand"
+                                                     Margin="15, 0, 0, 0">
+                                            <Label Text="{Binding Title}" 
+                                                   FontAttributes="Bold"
+                                                   FontSize="16"
+                                                   TextColor="Black"
+                                                   VerticalOptions="StartAndExpand" />
+                                            <StackLayout Orientation="Horizontal"
+                                                         Spacing="0"
+                                                         VerticalOptions="End">
+                                                <Label Text="Room:"
+                                                       FontAttributes="Bold"
+                                                       FontSize="16"
+                                                       TextColor="Black" />
+                                                <Label Text="{Binding Room}"
+                                                       FontSize="16"
+                                                       TextColor="Black"
+                                                       Margin="10, 0, 0, 0"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout Margin="0,0,25,0"
+                                                     HorizontalOptions="End"
+                                                     VerticalOptions="Center">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.ToggleAsFavorite, Source={x:Reference SessionPage}}"
+                                                                      CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image IsEnabled="{Binding IsFavorite}"
+                                                   IsVisible="{Binding IsFavorite}"
+                                                   Source="heart_empty" />
+                                            <BoxView IsEnabled="{Binding IsFavorite, Converter={StaticResource NotTrueConverter}}"
+                                                     IsVisible="{Binding IsFavorite, Converter={StaticResource NotTrueConverter}}"
+                                                     HeightRequest="60"
+                                                     WidthRequest="40"
+                                                     BackgroundColor="Transparent" />
+                                        </StackLayout>
+                                    </StackLayout>                                    
+                                </StackLayout>
+                                <BoxView HeightRequest="1"
+                                         Color="{StaticResource ListDivider}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="GroupHeaderTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="0"
+                                     Margin="0, 15, 0, 0">
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="End"
+                                         Margin="5, 0">
+                                <StackLayout.Resources>
+                                    <ResourceDictionary>
+                                        <Style TargetType="Label">
+                                            <Setter Property="FontSize" Value="20" />
+                                            <Setter Property="FontAttributes" Value="Bold" />
+                                            <Setter Property="TextColor" Value="Black" />
+                                            <Setter Property="VerticalOptions" Value="End" />
+                                            <Setter Property="VerticalTextAlignment" Value="End" />
+                                        </Style>
+                                    </ResourceDictionary>
+                                </StackLayout.Resources>
+                                <Label Text="{Binding Heading}"
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding SubHeading}"
+                                       HorizontalOptions="End"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="3"
+                                     HorizontalOptions="Fill"
+                                     Color="Black" />
+                        </StackLayout>                        
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ListView x:Name="SessionListView" 
+                      ItemsSource="{Binding Sessions}"
+                      ItemTemplate="{StaticResource SessionTeamplate}"
+                      GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+                      IsGroupingEnabled="True"
+                      SeparatorColor="Transparent"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      Grid.Row="0"     
+                      ItemTapped="ListView_ItemTapped">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped"
+                                              Command="{Binding SessionSelected}"
+                                              EventArgsParameterPath="Item" />
+                </ListView.Behaviors>
+            </ListView>
+            <Frame HeightRequest="60"
+                   VerticalOptions="StartAndExpand"
+                   BackgroundColor="{StaticResource Orange}"
+                   Margin="100, -10, 100, 0"
+                   Padding="0"
+                   CornerRadius="10">
+                <StackLayout Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand">
+                    <Button BackgroundColor="Red"
+                        TextColor="White"
+                        Text="Day 1"
+                        Command="{Binding DaySelected}"
+                        CommandParameter="1"/>
+                    <Button BackgroundColor="Transparent"
+                        Command="{Binding DaySelected}"
+                        CommandParameter="2"
+                        TextColor="White"
+                        Text="Day 2" />
+                </StackLayout>
+            </Frame>
+            <Frame Margin="0, 0, 10, 10"
+                   VerticalOptions="End"
+                   HorizontalOptions="End"
+                   HeightRequest="50"
+                   WidthRequest="50"
+                   CornerRadius="50"
+                   BorderColor="Transparent"                   
+                   BackgroundColor="{StaticResource Orange}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SwapState}" />
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center">
+                    <Label Text="Favs"
+                           TextColor="White"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           IsEnabled="{Binding IsViewingFavoriteSessions, Converter={StaticResource NotTrueConverter}}"
+                           IsVisible="{Binding IsViewingFavoriteSessions, Converter={StaticResource NotTrueConverter}}"/>
+                    <Label Text="All"
+                           TextColor="White"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsEnabled="{Binding IsViewingFavoriteSessions}"
+                           IsVisible="{Binding IsViewingFavoriteSessions}" />
+                </StackLayout>                
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

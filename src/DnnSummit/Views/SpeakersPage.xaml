@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:DnnSummit.Controls"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="{Binding Title}"
+             Icon="profile"
+             x:Name="Root"
+             x:Class="DnnSummit.Views.SpeakersPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SpeakerTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Grid Padding="0, 40, 0, 0">
+                            <Frame OutlineColor="{StaticResource SpeakerGreen}"
+                                   Margin="20"
+                                   VerticalOptions="Start">
+                                <StackLayout Padding="0, 50, 0, -20"
+                                             Spacing="10"
+                                             VerticalOptions="Start">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="20"
+                                           HorizontalTextAlignment="Center"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding Bio}"
+                                           VerticalOptions="StartAndExpand" 
+                                           HorizontalOptions="CenterAndExpand" />
+                                    <c:SessionList ItemsSource="{Binding Sessions}"
+                                                   Command="{Binding BindingContext.SessionSelected, Source={x:Reference Root}}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame Margin="0, -30, 0, 0"
+                                   Padding="5"
+                                   BorderColor="{StaticResource SpeakerGreen}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="StartAndExpand"
+                                   BackgroundColor="White"
+                                   CornerRadius="100"                           
+                                   WidthRequest="100"
+                                   HeightRequest="100">
+                                <Frame HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       BorderColor="{StaticResource SpeakerGreen}"
+                                       Padding="0"
+                                       CornerRadius="100">
+                                    <Image Source="{Binding HeadshotImage}"
+                                           Aspect="AspectFill"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="FillAndExpand"
+                                           WidthRequest="100"
+                                           HeightRequest="100"/>
+                                </Frame>
+                            </Frame>
+                        </Grid>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Speakers}"
+                  ItemTemplate="{StaticResource SpeakerTemplate}"
+                  ItemTapped="ListView_ItemTapped"
+                  HasUnevenRows="True"
+                  SeparatorColor="Transparent"
+                  SeparatorVisibility="None" />
+    </ContentPage.Content>
+</ContentPage>

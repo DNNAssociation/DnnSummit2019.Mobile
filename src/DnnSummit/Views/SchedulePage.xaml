@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Icon="event"
+             Title="{Binding Title}"
+             x:Class="DnnSummit.Views.SchedulePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ListView">
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="SeparatorColor" Value="Transparent" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+            </Style>
+            <DataTemplate x:Key="DayTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Frame BackgroundColor="{StaticResource DarkBlue}"
+                                    Margin="25, 10"
+                                    Padding="10, 20">
+                            <StackLayout Orientation="Vertical"
+                                                VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="CenterAndExpand">
+                                <Label Text="{Binding Title}"
+                                            TextColor="{StaticResource Orange}"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center" />
+                                <Image Source="{Binding Avatar, Converter={StaticResource ScheduleTypeToImageConverter}}" 
+                                       HeightRequest="70" />
+                                <Label Text="{Binding Notes}"
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Days}"
+                  ItemTemplate="{StaticResource DayTemplate}"
+                  ItemTapped="ListView_ItemTapped">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped"
+                                          Command="{Binding DaySelected}"
+                                          EventArgsParameterPath="Item" />
+            </ListView.Behaviors>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

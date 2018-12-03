@@ -7,7 +7,7 @@ namespace DnnSummit.Data.Services
 {
     internal class SessionService : ISessionService
     {
-        public async Task<IEnumerable<Session>> Get()
+        public async Task<IEnumerable<Session>> GetAsync()
         {
             // TODO - Update this to query the DNN API from the DNN Summit Website
             await Task.Delay(1);

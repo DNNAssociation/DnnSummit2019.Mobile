@@ -6,6 +6,6 @@ namespace DnnSummit.Data.Services.Interfaces
 {
     public interface ISessionService
     {
-        Task<IEnumerable<Session>> Get();
+        Task<IEnumerable<Session>> GetAsync();
     }
 }

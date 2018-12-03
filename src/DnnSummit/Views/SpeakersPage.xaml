@@ -14,7 +14,7 @@
                 <ViewCell>
                     <ViewCell.View>
                         <Grid Padding="0, 40, 0, 0">
-                            <Frame OutlineColor="{StaticResource SpeakerGreen}"
+                            <Frame OutlineColor="{StaticResource BorderGreen}"
                                    Margin="20"
                                    VerticalOptions="Start">
                                 <StackLayout Padding="0, 50, 0, -20"
@@ -33,7 +33,7 @@
                             </Frame>
                             <Frame Margin="0, -30, 0, 0"
                                    Padding="5"
-                                   BorderColor="{StaticResource SpeakerGreen}"
+                                   BorderColor="{StaticResource BorderGreen}"
                                    HorizontalOptions="Center"
                                    VerticalOptions="StartAndExpand"
                                    BackgroundColor="White"
@@ -42,7 +42,7 @@
                                    HeightRequest="100">
                                 <Frame HorizontalOptions="Center"
                                        VerticalOptions="Center"
-                                       BorderColor="{StaticResource SpeakerGreen}"
+                                       BorderColor="{StaticResource BorderGreen}"
                                        Padding="0"
                                        CornerRadius="100">
                                     <Image Source="{Binding HeadshotImage}"

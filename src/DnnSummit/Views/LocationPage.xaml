@@ -6,10 +6,36 @@
              Title="{Binding Title}"
              x:Class="DnnSummit.Views.LocationPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to the location page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Spacing="0">
+            <Grid HorizontalOptions="FillAndExpand">
+                <Image Source="https://www.dnnsummit.org/Portals/0/Images/Summit2017/banner-denver.jpg"
+                       VerticalOptions="Start"
+                       Aspect="AspectFill"
+                       HorizontalOptions="FillAndExpand" />
+                <StackLayout Orientation="Vertical"
+                             Spacing="0"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+                    <Label Text="DENVER, CO"
+                           TextColor="White"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center" />
+                </StackLayout>
+            </Grid>
+            <Label Text="Embassy Suites"
+                   Margin="10"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Start"/>
+            <Frame Margin="10"
+                   BorderColor="{StaticResource BorderGreen}">
+                <Label Text="DNN Summit will be held at Embassy Suites and Convention Center February 19–21, 2019. Embassy Suites is in the heart of downtown Denver, just steps away from restaurants, shopping malls, nightlife &amp; more."
+                       FontSize="18"
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand" />    
+            </Frame>            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

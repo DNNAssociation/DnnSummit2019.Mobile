@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:DnnSummit.Controls"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
@@ -15,8 +16,8 @@
                             <Frame OutlineColor="{StaticResource SpeakerGreen}"
                                    Margin="20"
                                    VerticalOptions="Start">
-                                <StackLayout Padding="0, 50, 0, 0"
-                                             Spacing="5"
+                                <StackLayout Padding="0, 50, 0, -20"
+                                             Spacing="10"
                                              VerticalOptions="Start">
                                     <Label Text="{Binding Name}"
                                            FontSize="20"
@@ -25,6 +26,7 @@
                                     <Label Text="{Binding Bio}"
                                            VerticalOptions="StartAndExpand" 
                                            HorizontalOptions="CenterAndExpand" />
+                                    <c:SessionList ItemsSource="{Binding Sessions}" />
                                 </StackLayout>
                             </Frame>
                             <Frame Margin="0, -30, 0, 0"

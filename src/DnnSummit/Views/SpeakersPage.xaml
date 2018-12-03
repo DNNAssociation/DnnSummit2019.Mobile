@@ -6,43 +6,61 @@
              Title="{Binding Title}"
              Icon="profile"
              x:Class="DnnSummit.Views.SpeakersPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SpeakerTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Grid Padding="0, 40, 0, 0">
+                            <Frame OutlineColor="{StaticResource SpeakerGreen}"
+                                   Margin="20"
+                                   VerticalOptions="Start">
+                                <StackLayout Padding="0, 50, 0, 0"
+                                             Spacing="5"
+                                             VerticalOptions="Start">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="20"
+                                           HorizontalTextAlignment="Center"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding Bio}"
+                                           VerticalOptions="StartAndExpand" 
+                                           HorizontalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame Margin="0, -30, 0, 0"
+                                   Padding="5"
+                                   BorderColor="{StaticResource SpeakerGreen}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="StartAndExpand"
+                                   BackgroundColor="White"
+                                   CornerRadius="100"                           
+                                   WidthRequest="100"
+                                   HeightRequest="100">
+                                <Frame HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       BorderColor="{StaticResource SpeakerGreen}"
+                                       Padding="0"
+                                       CornerRadius="100">
+                                    <Image Source="{Binding HeadshotImage}"
+                                           Aspect="AspectFill"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="FillAndExpand"
+                                           WidthRequest="100"
+                                           HeightRequest="100"/>
+                                </Frame>
+                            </Frame>
+                        </Grid>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid Padding="0, 40, 0, 0">
-            <Frame OutlineColor="Red"
-                   Margin="20">
-                <StackLayout Padding="0, 50, 0, 0"
-                             Spacing="5">
-                    <Label Text="Andrew Hoefling"
-                           FontSize="20"
-                           HorizontalTextAlignment="Center"
-                           FontAttributes="Bold" />
-                    <Label Text="Andrew Hoefling is the Owner and Architect of Hoefling Software, LLC providing software consulting services for Web, Cloud, Desktop and Mobile development. He is experienced in enterprise software using C# and .NET which makes using DNN an easy choice for CMS projects. Andrew has been using DNN since the beginning of 2017 and as a new member to the community he has left an impact with several Pull Requests for the MVC platform. He received his bachelors from Rochester Institute of Technology and he was featured in the December 2017 DNN Digest."
-                           VerticalOptions="StartAndExpand" 
-                           HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
-            </Frame>
-            <Frame Margin="0, -30, 0, 0"
-                   Padding="5"
-                   BorderColor="Red"
-                   HorizontalOptions="Center"
-                   VerticalOptions="StartAndExpand"
-                   BackgroundColor="White"
-                   CornerRadius="100"                           
-                   WidthRequest="100"
-                   HeightRequest="100">
-                <Frame HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       BorderColor="Blue"
-                       Padding="0"
-                       CornerRadius="100">
-                    <Image Source="http://dnnsummit.org/Portals/0/Images/Summit2018/Speaker-Pics/Andrew-Hoefling.jpg"
-                           Aspect="AspectFill"
-                           VerticalOptions="FillAndExpand"
-                           HorizontalOptions="FillAndExpand"
-                           WidthRequest="100"
-                           HeightRequest="100"/>    
-                </Frame>               
-            </Frame>
-        </Grid>
+        <ListView ItemsSource="{Binding Speakers}"
+                  ItemTemplate="{StaticResource SpeakerTemplate}"
+                  ItemTapped="ListView_ItemTapped"
+                  HasUnevenRows="True"
+                  SeparatorColor="Transparent"
+                  SeparatorVisibility="None" />
     </ContentPage.Content>
 </ContentPage>

@@ -6,6 +6,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
              Icon="profile"
+             x:Name="Root"
              x:Class="DnnSummit.Views.SpeakersPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -26,7 +27,8 @@
                                     <Label Text="{Binding Bio}"
                                            VerticalOptions="StartAndExpand" 
                                            HorizontalOptions="CenterAndExpand" />
-                                    <c:SessionList ItemsSource="{Binding Sessions}" />
+                                    <c:SessionList ItemsSource="{Binding Sessions}"
+                                                   Command="{Binding BindingContext.SessionSelected, Source={x:Reference Root}}" />
                                 </StackLayout>
                             </Frame>
                             <Frame Margin="0, -30, 0, 0"

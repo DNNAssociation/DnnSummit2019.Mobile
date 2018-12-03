@@ -1,7 +1,8 @@
-﻿
-using DnnSummit.Models;
+﻿using DnnSummit.Models;
+using Prism.Commands;
 using System;
 using System.Collections;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace DnnSummit.Controls
@@ -20,6 +21,32 @@ namespace DnnSummit.Controls
 
             Content = StackLayout;
 		}
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create(
+            nameof(Command),
+            typeof(ICommand),
+            typeof(SessionList),
+            null,
+            propertyChanged: OnCommandPropertyChanged);
+
+        private static void OnCommandPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var context = (SessionList)bindable;
+            if (context != null)
+            {
+                context.Command = (ICommand)newValue;
+                if (context.ItemsSource != null)
+                {
+                    OnItemsSourceProperty(bindable, null, context.ItemsSource);
+                }
+            }
+        }
 
         public IEnumerable ItemsSource
         {
@@ -47,7 +74,7 @@ namespace DnnSummit.Controls
                     var session = (Session)item;
                     if (session != null)
                     {
-                        context.StackLayout.Children.Add(new Label
+                        var label = new Label
                         {
                             Text = session.Title,
                             FontSize = 18,
@@ -55,7 +82,15 @@ namespace DnnSummit.Controls
                             HorizontalTextAlignment = TextAlignment.Center,
                             TextColor = Color.White,
                             Margin = new Thickness(0, 15)
+                        };
+
+                        label.GestureRecognizers.Add(new TapGestureRecognizer
+                        {
+                            Command = context.Command,
+                            CommandParameter = session
                         });
+
+                        context.StackLayout.Children.Add(label);
                     }
                 }
             }

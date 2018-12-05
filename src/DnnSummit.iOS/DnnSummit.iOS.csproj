@@ -205,7 +205,6 @@
     <ImageAsset Include="Assets.xcassets\sessions.imageset\sessions@3.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\logo_40.png" />
@@ -221,7 +220,29 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\logo_152.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\logo_167.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\logo_1024.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1242x2688.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_828x1792.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_2688x1242.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1792x828.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1125x2436.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_2436x1125.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1242x2208.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_750x1334.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_2208x1242.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_2048x2732.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_640x960.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_640x1136.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_768x1024.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1536x2048.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1024x768.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_2048x1536.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_320x480.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_750x1004.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1536x2008.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1024x748.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_2048x1496.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_1920x1080.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash_3840x2160.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -244,5 +265,8 @@
       <Project>{CDE4CCF1-A81F-4D6C-A10F-04E1D0AA106F}</Project>
       <Name>DnnSummit</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

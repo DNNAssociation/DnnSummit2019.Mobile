@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace DnnSummit.Data.TwoSexyContent
 {
@@ -7,5 +8,14 @@ namespace DnnSummit.Data.TwoSexyContent
     {
         [JsonProperty("Photo")]
         public string Photo { get; set; }
+        
+        [JsonProperty("Twitter")]
+        public string Twitter { get; set; }
+
+        [JsonProperty("Bio")]
+        public string Bio { get; set; }
+
+        [JsonProperty("Sessions")]
+        public IEnumerable<Session> Sessions { get; set; }
     }
 }

@@ -88,7 +88,7 @@ namespace DnnSummit.ViewModels
         {
             var rawSessions = await SessionService.GetAsync();
             var data = rawSessions
-                .Where(x => x.Day == "Day 1")
+                //.Where(x => x.Day == "Day 1")
                 .GroupBy(x => x.TimeSlotName, (key, group) => 
                     new SessionList(key, "9:10 - 10:10", 
                         group.Select(x => new Session

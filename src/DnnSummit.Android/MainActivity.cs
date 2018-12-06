@@ -1,7 +1,7 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using RealSimpleCircle.Android;
 
 namespace DnnSummit.Droid
 {
@@ -14,7 +14,11 @@ namespace DnnSummit.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            CircleRenderer.Init();
+
             LoadApplication(new App());
         }
     }

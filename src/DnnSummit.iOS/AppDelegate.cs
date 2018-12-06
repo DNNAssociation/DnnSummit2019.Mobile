@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using CarouselView.FormsPlugin.iOS;
 using Foundation;
+using RealSimpleCircle.iOS;
 using UIKit;
 
 namespace DnnSummit.iOS
@@ -24,6 +22,7 @@ namespace DnnSummit.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            CircleRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

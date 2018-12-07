@@ -1,4 +1,5 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
+using DnnSummit.Extensions;
 using DnnSummit.Models;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -35,7 +36,7 @@ namespace DnnSummit.ViewModels
             {
                 var navigationParameter = new NavigationParameters()
                 {
-                    { nameof(Session), session }
+                    { nameof(Session), session },
                 };
                 await NavigationService.NavigateAsync(Constants.Navigation.SessionDetailsPage, navigationParameter);
             }
@@ -55,12 +56,17 @@ namespace DnnSummit.ViewModels
                     Sessions = item.Sessions.Select(x => new Session
                     {
                         Title = x.Title,
-                        //Description = x.Description,
-                        //IsFavorite = false,
-                        //Room = x.Room,
-                        //TimeSlot = x.TimeSlot,
-                        //TimeSlotName = x.TimeSlotName,
-                        //Track = x.Category
+                        Description = x.Description,
+                        IsFavorite = false,
+                        Room = x.Room,
+                        TimeSlot = x.TimeSlot,
+                        TimeSlotName = x.TimeSlotName,
+                        Track = x.Category.ToSessionTrack(),
+                        Speaker = new Speaker
+                        {
+                            Name = item.Name,
+                            HeadshotImage = item.PhotoLink
+                        }
                     })
                 });
             }

@@ -19,8 +19,8 @@ namespace DnnSummit.ViewModels
             {
                 ImageSource = "https://www.dnnsummit.org/Portals/0/Images/Summit2017/embassy-suites.jpg",
                 ImageTitle = "HOTEL & CONFERENCE",
-                Title = "Ipsum Lorem",
-                Description = "DNN Summit will be held at The Embassy Suites by Hilton Denver Downtown Convention Center and Hotel. A block of rooms has been reserved for February 17, 2019 - February 24, 2019.The special room rate will be available until January 18th or until the group block is sold -out, whichever comes first.Click Here to Book."
+                Title = "",
+                Description = "DNN Summit will be held at The Embassy Suites by Hilton Denver Downtown Convention Center and Hotel.\r\n\r\nA block of rooms has been reserved for February 17, 2019 - February 24, 2019. The special room rate will be available until January 18th or until the group block is sold-out, whichever comes first. Click Here to Book."
             },
             new LocationInfoViewModel
             {

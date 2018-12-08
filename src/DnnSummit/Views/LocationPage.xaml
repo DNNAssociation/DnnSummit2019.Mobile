@@ -1,16 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:local="clr-namespace:DnnSummit.Views"
               xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
               prism:ViewModelLocator.AutowireViewModel="True"
               Title="Location"
               x:Class="DnnSummit.Views.LocationPage">
-    <CarouselPage.Children>
-        <local:LocationInfoPage BindingContext="{Binding General}" />
-        <local:LocationInfoPage BindingContext="{Binding Hotel}"/>
-        <local:LocationInfoPage BindingContext="{Binding GettingThere}" />
-        <local:LocationInfoPage BindingContext="{Binding WhatToDo}" />
-    </CarouselPage.Children>
-    
-</CarouselPage>
+    <ContentPage.Content>
+        <StackLayout>
+            <CarouselView ItemsSource="{Binding Pages}" 
+                          HorizontalOptions="Center"
+                          VerticalOptions="FillAndExpand">
+                <CarouselView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                                     SnapPointsAlignment="Center"
+                                     SnapPointsType="Mandatory" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="0">
+                            <Grid HorizontalOptions="FillAndExpand">
+                                <Image Source="{Binding ImageSource}"
+                                       VerticalOptions="Start"
+                                       Aspect="AspectFill"
+                                       HorizontalOptions="FillAndExpand" />
+                                <StackLayout Orientation="Vertical"
+                                             Spacing="0"
+                                             VerticalOptions="CenterAndExpand"
+                                             HorizontalOptions="CenterAndExpand">
+                                    <Label Text="{Binding ImageTitle}"
+                                           TextColor="White"
+                                           FontSize="30"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center" />
+                                </StackLayout>
+                            </Grid>
+                            <Label Text="{Binding Title}"
+                                   Margin="10"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start"/>
+                            <Frame Margin="10"
+                                   BorderColor="{StaticResource BorderGreen}">
+                                <Label Text="{Binding Description}"
+                                       FontSize="18"
+                                       VerticalOptions="CenterAndExpand" 
+                                       HorizontalOptions="CenterAndExpand" />
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

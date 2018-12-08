@@ -1,7 +1,7 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace DnnSummit.Droid
 {
@@ -15,6 +15,9 @@ namespace DnnSummit.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            ImageCircleRenderer.Init();
+
             LoadApplication(new App());
         }
     }

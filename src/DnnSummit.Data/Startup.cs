@@ -10,6 +10,7 @@ namespace DnnSummit.Data
         {
             container.Register<ISessionService, SessionService>();
             container.Register<IScheduleService, ScheduleService>();
+            container.Register<ISpeakerService, SpeakerService>();
         }
     }
 }

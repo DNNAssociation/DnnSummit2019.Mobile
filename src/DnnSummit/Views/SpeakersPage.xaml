@@ -39,7 +39,7 @@
                                    VerticalOptions="StartAndExpand"
                                    WidthRequest="100"
                                    HeightRequest="100">
-                                <ic:CircleImage BorderColor="{StaticResource SpeakerGreen}"
+                                <ic:CircleImage BorderColor="{StaticResource AvatarBorder}"
                                                 BorderThickness="2"
                                                 Source="{Binding HeadshotImage}"
                                                 Aspect="AspectFill"

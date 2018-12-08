@@ -1,6 +1,5 @@
-﻿using CarouselView.FormsPlugin.iOS;
-using Foundation;
-using RealSimpleCircle.iOS;
+﻿using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
 
 namespace DnnSummit.iOS
@@ -20,9 +19,12 @@ namespace DnnSummit.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
+
+            ImageCircleRenderer.Init();
+
             LoadApplication(new App());
-            CircleRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

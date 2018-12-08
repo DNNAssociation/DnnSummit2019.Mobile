@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:DnnSummit.Controls"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
@@ -31,27 +32,21 @@
                                                    Command="{Binding BindingContext.SessionSelected, Source={x:Reference Root}}" />
                                 </StackLayout>
                             </Frame>
-                            <Frame Margin="0, -30, 0, 0"
+                            <Frame Margin="0, -25, 0, 0"
                                    Padding="5"
-                                   BorderColor="{StaticResource BorderGreen}"
+                                   BackgroundColor="Transparent"
                                    HorizontalOptions="Center"
                                    VerticalOptions="StartAndExpand"
-                                   BackgroundColor="White"
-                                   CornerRadius="100"                           
                                    WidthRequest="100"
                                    HeightRequest="100">
-                                <Frame HorizontalOptions="Center"
-                                       VerticalOptions="Center"
-                                       BorderColor="{StaticResource BorderGreen}"
-                                       Padding="0"
-                                       CornerRadius="100">
-                                    <Image Source="{Binding HeadshotImage}"
-                                           Aspect="AspectFill"
-                                           VerticalOptions="FillAndExpand"
-                                           HorizontalOptions="FillAndExpand"
-                                           WidthRequest="100"
-                                           HeightRequest="100"/>
-                                </Frame>
+                                <ic:CircleImage BorderColor="{StaticResource SpeakerGreen}"
+                                                BorderThickness="2"
+                                                Source="{Binding HeadshotImage}"
+                                                Aspect="AspectFill"
+                                                VerticalOptions="FillAndExpand"
+                                                HorizontalOptions="FillAndExpand"
+                                                WidthRequest="100"
+                                                HeightRequest="100" />
                             </Frame>
                         </Grid>
                     </ViewCell.View>

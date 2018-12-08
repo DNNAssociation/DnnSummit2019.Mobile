@@ -7,10 +7,31 @@
              Icon="info"
              x:Class="DnnSummit.Views.InfoPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to the info page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <CarouselView ItemsSource="{Binding Pages}"
+                      HorizontalOptions="Center"
+                      VerticalOptions="FillAndExpand"
+                      Margin="10">
+            <CarouselView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 SnapPointsAlignment="Center"
+                                 SnapPointsType="Mandatory"/>
+            </CarouselView.ItemsLayout>
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray"
+                           CornerRadius="3"
+                           HasShadow="False">
+                        <StackLayout Grid.Column="1"
+                                        Grid.Row="1"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                            <Label Text="Andrew" />
+                            <Label Text="Description" />
+                            <Label Text="Slider" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
     </ContentPage.Content>
 </ContentPage>

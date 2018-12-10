@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using CarouselView.FormsPlugin.Android;
 using ImageCircle.Forms.Plugin.Droid;
 
 namespace DnnSummit.Droid
@@ -15,10 +16,10 @@ namespace DnnSummit.Droid
 
             base.OnCreate(savedInstanceState);
 
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             ImageCircleRenderer.Init();
+            CarouselViewRenderer.Init();
 
             LoadApplication(new App());
         }

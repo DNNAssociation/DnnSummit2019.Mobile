@@ -3690,6 +3690,9 @@ namespace DnnSummit.Droid
 			// aapt resource value: 0x7f0d001e
 			public const int highlighted_text_material_light = 2131558430;
 			
+			// aapt resource value: 0x7f0d0070
+			public const int icon_tab = 2131558512;
+			
 			// aapt resource value: 0x7f0d0056
 			public const int launcher_background = 2131558486;
 			
@@ -3786,11 +3789,11 @@ namespace DnnSummit.Droid
 			// aapt resource value: 0x7f0d003a
 			public const int switch_thumb_disabled_material_light = 2131558458;
 			
-			// aapt resource value: 0x7f0d0070
-			public const int switch_thumb_material_dark = 2131558512;
-			
 			// aapt resource value: 0x7f0d0071
-			public const int switch_thumb_material_light = 2131558513;
+			public const int switch_thumb_material_dark = 2131558513;
+			
+			// aapt resource value: 0x7f0d0072
+			public const int switch_thumb_material_light = 2131558514;
 			
 			// aapt resource value: 0x7f0d003b
 			public const int switch_thumb_normal_material_dark = 2131558459;

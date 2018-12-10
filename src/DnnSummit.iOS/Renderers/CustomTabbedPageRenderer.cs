@@ -1,6 +1,4 @@
-﻿using System;
-using CoreImage;
-using DnnSummit.Controls;
+﻿using DnnSummit.Controls;
 using DnnSummit.iOS.Renderers;
 using UIKit;
 using Xamarin.Forms;

@@ -89,12 +89,9 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
-    <AndroidResource Include="Resources\color\icon_tab.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\mipmap-anydpi-v26\" />
-    <Folder Include="Renderers\" />
-    <Folder Include="Resources\color\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DnnSummit\DnnSummit.csproj">

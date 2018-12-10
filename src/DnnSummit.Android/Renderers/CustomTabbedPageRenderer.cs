@@ -1,60 +1,46 @@
-﻿using System.ComponentModel;
-using Android.Content;
-using Android.Content.Res;
-using Android.OS;
+﻿using Android.Content;
 using Android.Support.Design.Widget;
-using Android.Support.V4.Graphics.Drawable;
 using Android.Support.V4.View;
 using DnnSummit.Controls;
 using DnnSummit.Droid.Renderers;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android.AppCompat;
 
 [assembly: ExportRenderer(typeof(CustomTabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace DnnSummit.Droid.Renderers
 {
+    // BUG: SetTint is not working on first load
     public class CustomTabbedPageRenderer : TabbedPageRenderer
     {
-        private bool _isConfigured = false;
         private ViewPager _pager;
         private TabLayout _layout;
-
 
         public CustomTabbedPageRenderer(Context context) : base(context)
         {
         }
-
+        
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (_isConfigured) return;
+            _pager = (ViewPager)ViewGroup.GetChildAt(0);
+            _layout = (TabLayout)ViewGroup.GetChildAt(1);
 
-            if (e.PropertyName == "Renderer")
+            for (int i = 0; i < _layout.TabCount; i++)
             {
-                _pager = (ViewPager)ViewGroup.GetChildAt(0);
-                _layout = (TabLayout)ViewGroup.GetChildAt(1);
-                _isConfigured = true;
+                var tab = _layout.GetTabAt(i);
+                var icon = tab.Icon;
 
-                ColorStateList colors = null;
-                if ((int)Build.VERSION.SdkInt >= 23)
+                if (icon != null)
                 {
-                    colors = Resources.GetColorStateList(Resource.Color.icon_tab, Context.Theme);
-                }
-                else
-                {
-                    colors = Resources.GetColorStateList(Resource.Color.icon_tab);
-                }
-
-                for (int i = 0; i < _layout.TabCount; i++)
-                {
-                    var tab = _layout.GetTabAt(i);
-                    var icon = tab.Icon;
-
-                    if (icon != null)
+                    if (tab.IsSelected)
                     {
-                        icon = DrawableCompat.Wrap(icon);
-                        DrawableCompat.SetTintList(icon, colors);
+                        icon.SetTint(Resource.Color.tabBarSelected);
+                    }
+                    else
+                    {
+                        icon.SetTint(Resource.Color.tabBarUnselected);
                     }
                 }
             }

@@ -1,37 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:DnnSummit.Controls"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
              Icon="info"
              x:Class="DnnSummit.Views.InfoPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="CarouselTemplate">
+                <Frame BorderColor="LightGray"
+                       CornerRadius="3"
+                       HasShadow="False">
+                    <StackLayout Grid.Column="1"
+                                 Grid.Row="1"
+                                 HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand">
+                        <Label Text="Andrew" />
+                        <Label Text="Description" />
+                        <Label Text="Slider" />
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <CarouselView ItemsSource="{Binding Pages}"
-                      HorizontalOptions="Center"
-                      VerticalOptions="FillAndExpand"
-                      Margin="10">
-            <CarouselView.ItemsLayout>
-                <GridItemsLayout Orientation="Horizontal"
-                                 SnapPointsAlignment="Center"
-                                 SnapPointsType="Mandatory"/>
-            </CarouselView.ItemsLayout>
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BorderColor="LightGray"
-                           CornerRadius="3"
-                           HasShadow="False">
-                        <StackLayout Grid.Column="1"
-                                        Grid.Row="1"
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand">
-                            <Label Text="Andrew" />
-                            <Label Text="Description" />
-                            <Label Text="Slider" />
-                        </StackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+        <cv:CarouselViewControl ItemsSource="{Binding Pages}"
+                                ItemTemplate="{StaticResource CarouselTemplate}" />
     </ContentPage.Content>
 </ContentPage>

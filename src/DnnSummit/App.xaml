@@ -19,7 +19,6 @@
             <Style TargetType="cv:CarouselViewControl">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
-                <Setter Property="Margin" Value="10" />
                 <Setter Property="IndicatorsShape" Value="Circle" />
                 <Setter Property="IndicatorsTintColor" Value="{StaticResource DarkBlue}" />
                 <Setter Property="ShowIndicators" Value="true" />

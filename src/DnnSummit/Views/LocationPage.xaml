@@ -1,57 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:local="clr-namespace:DnnSummit.Views"
-              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-              prism:ViewModelLocator.AutowireViewModel="True"
-              Title="Location"
-              x:Class="DnnSummit.Views.LocationPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="Location"
+             x:Class="DnnSummit.Views.LocationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="PageTemplate">
+                <StackLayout Spacing="0">
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Image Source="{Binding ImageSource}"
+                               VerticalOptions="Start"
+                               Aspect="AspectFill"
+                               HorizontalOptions="FillAndExpand" />
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="0"
+                                     VerticalOptions="CenterAndExpand"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding ImageTitle}"
+                                   TextColor="White"
+                                   FontSize="30"
+                                   FontAttributes="Bold"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </Grid>
+                    <Label Text="{Binding Title}"
+                           Margin="10"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Start"/>
+                    <Frame Margin="10"
+                           BorderColor="{StaticResource BorderGreen}">
+                        <Label Text="{Binding Description}"
+                               FontSize="18"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="CenterAndExpand" />
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <CarouselView ItemsSource="{Binding Pages}" 
-                          HorizontalOptions="Center"
-                          VerticalOptions="FillAndExpand">
-                <CarouselView.ItemsLayout>
-                    <GridItemsLayout Orientation="Horizontal"
-                                     SnapPointsAlignment="Center"
-                                     SnapPointsType="Mandatory" />
-                </CarouselView.ItemsLayout>
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Spacing="0">
-                            <Grid HorizontalOptions="FillAndExpand">
-                                <Image Source="{Binding ImageSource}"
-                                       VerticalOptions="Start"
-                                       Aspect="AspectFill"
-                                       HorizontalOptions="FillAndExpand" />
-                                <StackLayout Orientation="Vertical"
-                                             Spacing="0"
-                                             VerticalOptions="CenterAndExpand"
-                                             HorizontalOptions="CenterAndExpand">
-                                    <Label Text="{Binding ImageTitle}"
-                                           TextColor="White"
-                                           FontSize="30"
-                                           FontAttributes="Bold"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center" />
-                                </StackLayout>
-                            </Grid>
-                            <Label Text="{Binding Title}"
-                                   Margin="10"
-                                   FontSize="22"
-                                   FontAttributes="Bold"
-                                   HorizontalTextAlignment="Start"/>
-                            <Frame Margin="10"
-                                   BorderColor="{StaticResource BorderGreen}">
-                                <Label Text="{Binding Description}"
-                                       FontSize="18"
-                                       VerticalOptions="CenterAndExpand" 
-                                       HorizontalOptions="CenterAndExpand" />
-                            </Frame>
-                        </StackLayout>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
+            <cv:CarouselViewControl ItemsSource="{Binding Pages}" 
+                                    ItemTemplate="{StaticResource PageTemplate}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

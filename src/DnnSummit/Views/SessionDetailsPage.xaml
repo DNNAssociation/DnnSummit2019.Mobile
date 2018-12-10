@@ -118,9 +118,14 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding VideoIntro}" />
                 </Frame.GestureRecognizers>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Session Video Intro"
-                           TextColor="White"/>
+                <StackLayout Orientation="Horizontal"
+                             Spacing="5"
+                             HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                    <Image Source="play" />
+                    <Label Text="Video Intro"
+                           TextColor="White"
+                           VerticalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
         </Grid>

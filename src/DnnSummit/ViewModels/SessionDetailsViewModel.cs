@@ -1,6 +1,10 @@
 ﻿using DnnSummit.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -94,6 +98,38 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private string _videoIntroLink;
+        public string VideoIntroLink
+        {
+            get { return _videoIntroLink; }
+            set
+            {
+                SetProperty(ref _videoIntroLink, value);
+                RaisePropertyChanged(nameof(VideoIntroLink));
+                RaisePropertyChanged(nameof(HasVideoIntro));
+            }
+        }
+
+        public bool HasVideoIntro
+        {
+            get { return !string.IsNullOrWhiteSpace(VideoIntroLink); }
+        }
+
+        public ICommand VideoIntro { get; }
+
+        public SessionDetailsViewModel()
+        {
+            VideoIntro = new DelegateCommand(OnVideoIntro);
+        }
+
+        private void OnVideoIntro()
+        {
+            if (HasVideoIntro)
+            {
+                Device.OpenUri(new Uri(VideoIntroLink));
+            }
+        }
+
         public void OnNavigatingTo(INavigationParameters parameters)
         {
             var isSuccessful = false;
@@ -111,6 +147,7 @@ namespace DnnSummit.ViewModels
                     Session = session.TimeSlotName;
                     TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;
+                    VideoIntroLink = "https://www.youtube.com/embed/V7WasFBN100?rel=0&autoplay=1";
 
                     isSuccessful = true;
                 }

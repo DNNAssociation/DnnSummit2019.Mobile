@@ -1,8 +1,11 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace DnnSummit.ViewModels
 {

@@ -28,6 +28,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <cv:CarouselViewControl ItemsSource="{Binding Pages}"
-                                ItemTemplate="{StaticResource CarouselTemplate}" />
+                                ItemTemplate="{StaticResource CarouselTemplate}"
+                                Margin="10"/>
     </ContentPage.Content>
 </ContentPage>

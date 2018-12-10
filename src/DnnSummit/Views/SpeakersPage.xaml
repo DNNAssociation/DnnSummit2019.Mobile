@@ -15,7 +15,7 @@
                 <ViewCell>
                     <ViewCell.View>
                         <Grid Padding="0, 40, 0, 0">
-                            <Frame OutlineColor="{StaticResource SpeakerGreen}"
+                            <Frame OutlineColor="{StaticResource BorderGreen}"
                                    Margin="20"
                                    VerticalOptions="Start">
                                 <StackLayout Padding="0, 50, 0, -20"
@@ -39,7 +39,7 @@
                                    VerticalOptions="StartAndExpand"
                                    WidthRequest="100"
                                    HeightRequest="100">
-                                <ic:CircleImage BorderColor="{StaticResource SpeakerGreen}"
+                                <ic:CircleImage BorderColor="{StaticResource AvatarBorder}"
                                                 BorderThickness="2"
                                                 Source="{Binding HeadshotImage}"
                                                 Aspect="AspectFill"

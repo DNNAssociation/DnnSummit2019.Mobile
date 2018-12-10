@@ -13,20 +13,20 @@
             <Color x:Key="ListDivider">#c3c3c3</Color>
             <Color x:Key="AvatarBorder">#000</Color>
             <Color x:Key="White">#FFF</Color>
-            <Color x:Key="SpeakerGreen">#727126</Color>
-            
-            <!-- Carousel -->
+            <Color x:Key="BorderGreen">#727126</Color>
+            <Color x:Key="SelectedTab">#FFF</Color>
+            <Color x:Key="UnselectedTab">#80FFFFFF</Color>
+
+                <!-- Carousel -->
             <Style TargetType="cv:CarouselViewControl">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
-                <Setter Property="Margin" Value="10" />
                 <Setter Property="IndicatorsShape" Value="Circle" />
                 <Setter Property="IndicatorsTintColor" Value="{StaticResource DarkBlue}" />
                 <Setter Property="ShowIndicators" Value="true" />
                 <Setter Property="ShowArrows" Value="true" />
                 <Setter Property="ArrowsBackgroundColor" Value="{StaticResource Orange}" />
                 <Setter Property="ArrowsTintColor" Value="{StaticResource White}" />
-                <Setter Property="ArrowsTransparency" Value="1" />
                 <Setter Property="CurrentPageIndicatorTintColor" Value="{StaticResource Orange}" />
                 <Setter Property="Orientation" Value="Horizontal" />
             </Style>

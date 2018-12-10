@@ -1,0 +1,29 @@
+Speakers
+-------
+Carbon copy of sessions
+-List
+-- Photo
+-- Name
+-- Compy
+
+Speaker Details
+-List of sessions
+-- tap of session brings user to session details
+-speaker bio
+
+
+News
+------
+follow same format as session/speaker list
+embed it in a webview
+
+Info -> sponsors
+-----
+
+Map
+----
+
+
+Schedule
+---------
+Leave it as blocks

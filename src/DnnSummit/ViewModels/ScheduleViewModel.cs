@@ -1,49 +1,31 @@
-﻿using DnnSummit.Models;
+﻿using DnnSummit.Data.Services.Interfaces;
+using DnnSummit.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using DnnSummit.Extensions;
 
 namespace DnnSummit.ViewModels
 {
-    public class ScheduleViewModel : BindableBase
+    public class ScheduleViewModel : BindableBase, INavigatingAware
     {
         protected INavigationService NavigationService { get; }
+        protected IScheduleService ScheduleService { get; }
         public string Title => "Schedule";
         public ObservableCollection<Event> Days { get; set; }
         public ICommand DaySelected { get; }        
 
-        public ScheduleViewModel(INavigationService navigationService)
+        public ScheduleViewModel(
+            INavigationService navigationService,
+            IScheduleService scheduleService)
         {
             NavigationService = navigationService;
-            DaySelected = new DelegateCommand<Event>(OnDaySelected);
+            ScheduleService = scheduleService;
 
-            // TODO - populate this from a service or REST call
-            Days = new ObservableCollection<Event>(new[]
-            {
-                new Event
-                {
-                    Title = "Day 1",
-                    Avatar = ScheduleType.Intro,
-                    Notes = "Training & Business Round Table",
-                    Description = "Training & Business Round Table"
-                },
-                new Event
-                {
-                    Title = "Day 2-3",
-                    Avatar = ScheduleType.Conference,
-                    Notes = "Conference & After Party",
-                    Description = "Conference & After Party"
-                },
-                new Event
-                {
-                    Title = "Day 4-5",
-                    Avatar = ScheduleType.Slopes,
-                    Notes = "DNN on the slopes",
-                    Description = "DNN on the slopes"
-                }
-            });
+            DaySelected = new DelegateCommand<Event>(OnDaySelected);
+            Days = new ObservableCollection<Event>();
         }
 
         private async void OnDaySelected(Event day)
@@ -55,6 +37,23 @@ namespace DnnSummit.ViewModels
                     { nameof(Event), day }
                 };
                 await NavigationService.NavigateAsync(Constants.Navigation.ScheduleDetailsPage, navigationParameters);
+            }
+        }
+
+        public async void OnNavigatingTo(INavigationParameters parameters)
+        {
+            var days = await ScheduleService.GetAsync();
+
+            Days.Clear();
+            foreach (var item in days)
+            {
+                Days.Add(new Event
+                {
+                    Title = item.Title,
+                    Notes = item.CardDescription,
+                    Description = item.CardDescription,
+                    Avatar = item.Title.ToScheduleType()
+                });
             }
         }
     }

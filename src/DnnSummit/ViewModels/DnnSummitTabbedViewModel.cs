@@ -12,13 +12,13 @@ namespace DnnSummit.ViewModels
         {
             NavigationService = navigationService;
 
-            Info = new DelegateCommand(OnInfo);
+            Location = new DelegateCommand(OnLocation);
         }
 
         
-        public ICommand Info { get; }
+        public ICommand Location { get; }
 
-        private async void OnInfo()
+        private async void OnLocation()
         {
             await NavigationService.NavigateAsync(Constants.Navigation.LocationPage);
         }

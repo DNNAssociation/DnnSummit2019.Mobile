@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <c:CustomTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:local="clr-namespace:DnnSummit.Views"
-            xmlns:c="clr-namespace:DnnSummit.Controls"
-            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-            prism:ViewModelLocator.AutowireViewModel="True"
-            Title="Dnn Summit 2019"
-            BarBackgroundColor="{StaticResource Orange}"
-            BarTextColor="{StaticResource White}"
-            x:Class="DnnSummit.Views.DnnSummitTabbedPage">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:local="clr-namespace:DnnSummit.Views"
+                    xmlns:c="clr-namespace:DnnSummit.Controls"
+                    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                    prism:ViewModelLocator.AutowireViewModel="True"
+                    Title="Dnn Summit 2019"
+                    BarBackgroundColor="{StaticResource Orange}"
+                    BarTextColor="{StaticResource White}"
+                    UnselectedIconColor="{StaticResource UnselectedTab}"
+                    SelectedIconColor="{StaticResource SelectedTab}"
+                    x:Class="DnnSummit.Views.DnnSummitTabbedPage">
     <c:CustomTabbedPage.ToolbarItems>
         <ToolbarItem Icon="location"
-                     Command="{Binding Info}"/>
+                     Command="{Binding Location}"/>
     </c:CustomTabbedPage.ToolbarItems>
     <c:CustomTabbedPage.Children>
         <local:SchedulePage />

@@ -74,8 +74,8 @@ namespace DnnSummit.ViewModels
                     Description = details.Description;
 
                     var data = await ScheduleService.GetAsync("day 1");
-                    Heading = data.Title;
-                    SubHeading = data.Heading;
+                    Heading = data.BannerTitle;
+                    SubHeading = data.BannerHeading;
 
                     ContentSections.Clear();
                     foreach (var item in data.Sections)

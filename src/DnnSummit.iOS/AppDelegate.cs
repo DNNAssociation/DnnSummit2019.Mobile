@@ -22,6 +22,14 @@ namespace DnnSummit.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            //UITabBar.Appearance.SelectedImageTintColor = UIColor.White;
+            //UITabBar.Appearance.TintColor = UIColor.Red;
+
+            //UITabBarItem.Appearance.SetTitleTextAttributes(new UITextAttributes
+            //{
+            //    TextColor = UIColor.Green
+            //}, UIControlState.Normal);
+
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
 

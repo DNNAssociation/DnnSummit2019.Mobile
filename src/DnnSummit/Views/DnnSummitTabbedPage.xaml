@@ -9,7 +9,7 @@
                     BarBackgroundColor="{StaticResource Orange}"
                     BarTextColor="{StaticResource White}"
                     UnselectedIconColor="{StaticResource UnselectedTab}"
-                    SelectedIconColor="{StaticResource SelectedTab }"
+                    SelectedIconColor="{StaticResource SelectedTab}"
                     x:Class="DnnSummit.Views.DnnSummitTabbedPage">
     <c:CustomTabbedPage.ToolbarItems>
         <ToolbarItem Icon="location"

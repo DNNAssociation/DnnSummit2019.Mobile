@@ -27,5 +27,31 @@ namespace DnnSummit.Controls
             typeof(Color),
             typeof(CustomTabbedPage),
             Color.White);
+
+        public Color SelectedTextColor
+        {
+            get { return (Color)GetValue(SelectedTextColorProperty); }
+            set { SetValue(SelectedTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty SelectedTextColorProperty = BindableProperty.Create(
+            nameof(SelectedTextColor),
+            typeof(Color),
+            typeof(CustomTabbedPage),
+            Color.White);
+
+        public Color UnselectedTextColor
+        {
+            get { return (Color)GetValue(UnselectedTextColorProperty); }
+            set { SetValue(UnselectedTextColorProperty, value); }
+        }
+
+        public static readonly BindableProperty UnselectedTextColorProperty = BindableProperty.Create(
+            nameof(UnselectedTextColor),
+            typeof(Color),
+            typeof(CustomTabbedPage),
+            Color.White);
+
+
     }
 }

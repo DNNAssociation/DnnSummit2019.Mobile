@@ -7,6 +7,7 @@ namespace DnnSummit.Views
         public DnnSummitNavigationPage()
         {
             BarBackgroundColor = (Color)Application.Current.Resources["DarkBlue"];
+            BarTextColor = (Color)Application.Current.Resources["White"];
         }
     }
 }

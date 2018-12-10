@@ -1,6 +1,9 @@
-﻿using Foundation;
+﻿using System.Diagnostics;
+using CarouselView.FormsPlugin.iOS;
+using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+using Xamarin.Forms.Internals;
 
 namespace DnnSummit.iOS
 {
@@ -19,12 +22,17 @@ namespace DnnSummit.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
 
             ImageCircleRenderer.Init();
+            CarouselViewRenderer.Init();
 
+#if DEBUG
+            Log.Listeners.Add(new DelegateLogListener((c, e) => Debug.WriteLine(e)));
+#endif
             LoadApplication(new App());
+
+
 
             return base.FinishedLaunching(app, options);
         }

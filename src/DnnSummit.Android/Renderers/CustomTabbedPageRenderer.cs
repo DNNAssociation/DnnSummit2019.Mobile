@@ -15,8 +15,9 @@ namespace DnnSummit.Droid.Renderers
 {
     public class CustomTabbedPageRenderer : TabbedPageRenderer
     {
-        private ViewPager pager;
-        private TabLayout layout;
+        private bool _isConfigured = false;
+        private ViewPager _pager;
+        private TabLayout _layout;
 
         public CustomTabbedPageRenderer(Context context) : base(context) { }
 
@@ -24,8 +25,8 @@ namespace DnnSummit.Droid.Renderers
         {
             base.OnElementPropertyChanged(sender, e);
 
-            pager = (ViewPager)ViewGroup.GetChildAt(0);
-            layout = (TabLayout)ViewGroup.GetChildAt(1);
+            _pager = (ViewPager)ViewGroup.GetChildAt(0);
+            _layout = (TabLayout)ViewGroup.GetChildAt(1);
 
             var control = (CustomTabbedPage)sender;
             Android.Graphics.Color selectedColor;
@@ -40,10 +41,10 @@ namespace DnnSummit.Droid.Renderers
                 selectedColor = new Android.Graphics.Color(ContextCompat.GetColor(Context, Resource.Color.tabBarSelected));
                 unselectedColor = new Android.Graphics.Color(ContextCompat.GetColor(Context, Resource.Color.tabBarUnselected));
             }
-
-            for (int i = 0; i < layout.TabCount; i++)
+            
+            for (int i = 0; i < _layout.TabCount; i++)
             {
-                var tab = layout.GetTabAt(i);
+                var tab = _layout.GetTabAt(i);
                 var icon = tab.Icon;
                 if (icon != null)
                 {

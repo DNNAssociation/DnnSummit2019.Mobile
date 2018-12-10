@@ -28,6 +28,7 @@ namespace DnnSummit.Controls
             typeof(CustomTabbedPage),
             Color.White);
 
+        // not implemented on android
         public Color SelectedTextColor
         {
             get { return (Color)GetValue(SelectedTextColorProperty); }
@@ -40,6 +41,7 @@ namespace DnnSummit.Controls
             typeof(CustomTabbedPage),
             Color.White);
 
+        // not implemented on android
         public Color UnselectedTextColor
         {
             get { return (Color)GetValue(UnselectedTextColorProperty); }

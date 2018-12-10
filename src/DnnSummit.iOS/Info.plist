@@ -31,7 +31,7 @@
 	<key>CFBundleName</key>
 	<string>Dnn Summit</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>Assets.xcassets/AppIcons.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>

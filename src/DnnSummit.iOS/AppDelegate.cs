@@ -24,6 +24,8 @@ namespace DnnSummit.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
+            UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
+
             ImageCircleRenderer.Init();
             CarouselViewRenderer.Init();
 

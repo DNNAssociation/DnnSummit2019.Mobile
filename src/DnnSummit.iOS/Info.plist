@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>DnnSummit</string>
+	<string>Dnn Summit</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.dnnassociation.dnnsummit2019</string>
 	<key>CFBundleVersion</key>

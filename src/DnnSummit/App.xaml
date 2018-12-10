@@ -27,7 +27,6 @@
                 <Setter Property="ShowArrows" Value="true" />
                 <Setter Property="ArrowsBackgroundColor" Value="{StaticResource Orange}" />
                 <Setter Property="ArrowsTintColor" Value="{StaticResource White}" />
-                <Setter Property="ArrowsTransparency" Value="1" />
                 <Setter Property="CurrentPageIndicatorTintColor" Value="{StaticResource Orange}" />
                 <Setter Property="Orientation" Value="Horizontal" />
             </Style>

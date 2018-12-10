@@ -91,5 +91,16 @@ namespace DnnSummit.Models
                 RaisePropertyChanged(nameof(IsFavorite));
             }
         }
+
+        private string _videoLink;
+        public string VideoLink
+        {
+            get { return _videoLink; }
+            set
+            {
+                SetProperty(ref _videoLink, value);
+                RaisePropertyChanged(nameof(VideoLink));
+            }
+        }
     }
 }

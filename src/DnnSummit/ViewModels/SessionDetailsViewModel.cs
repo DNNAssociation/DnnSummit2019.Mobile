@@ -147,7 +147,7 @@ namespace DnnSummit.ViewModels
                     Session = session.TimeSlotName;
                     TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;
-                    VideoIntroLink = "https://www.youtube.com/embed/V7WasFBN100?rel=0&autoplay=1";
+                    VideoIntroLink = session.VideoLink;
 
                     isSuccessful = true;
                 }

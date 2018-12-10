@@ -99,6 +99,7 @@ namespace DnnSummit.ViewModels
                             Track = x.Category.ToSessionTrack(),
                             TimeSlotName = x.TimeSlotName,
                             TimeSlot = x.TimeSlot,
+                            VideoLink = x.VideoLink,
                             Speaker = new Speaker
                             {
                                 Name = x.Speaker.Name,

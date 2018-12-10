@@ -151,6 +151,9 @@
     <ImageAsset Include="Assets.xcassets\group.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\play.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\info.imageset\info@1.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -179,6 +182,15 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\mountain.imageset\mountain@3.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\play.imageset\round_play_arrow_white_18pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\play.imageset\round_play_arrow_white_18pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\play.imageset\round_play_arrow_white_18pt_3x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\profile.imageset\profile@1.png">

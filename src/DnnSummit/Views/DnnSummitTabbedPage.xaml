@@ -13,7 +13,7 @@
                     x:Class="DnnSummit.Views.DnnSummitTabbedPage">
     <c:CustomTabbedPage.ToolbarItems>
         <ToolbarItem Icon="location"
-                     Command="{Binding Info}"/>
+                     Command="{Binding Location}"/>
     </c:CustomTabbedPage.ToolbarItems>
     <c:CustomTabbedPage.Children>
         <local:SchedulePage />

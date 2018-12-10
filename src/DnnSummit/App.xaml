@@ -14,8 +14,10 @@
             <Color x:Key="AvatarBorder">#000</Color>
             <Color x:Key="White">#FFF</Color>
             <Color x:Key="BorderGreen">#727126</Color>
-            
-            <!-- Carousel -->
+            <Color x:Key="SelectedTab">#FFF</Color>
+            <Color x:Key="UnselectedTab">#80FFFFFF</Color>
+
+                <!-- Carousel -->
             <Style TargetType="cv:CarouselViewControl">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />

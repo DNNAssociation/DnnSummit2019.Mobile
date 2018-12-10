@@ -10,6 +10,7 @@ namespace DnnSummit.iOS.Renderers
     public class CustomTabbedPageRenderer : TabbedRenderer
     {
         private UIColor _unselectedColor = UIColor.FromRGB(114, 113, 38);
+        
 
         public override void ViewWillAppear(bool animated)
         {

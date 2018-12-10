@@ -1,47 +1,55 @@
 ﻿using Android.Content;
+using Android.Graphics;
 using Android.Support.Design.Widget;
+using Android.Support.V4.Content;
 using Android.Support.V4.View;
 using DnnSummit.Controls;
 using DnnSummit.Droid.Renderers;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android.AppCompat;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(CustomTabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace DnnSummit.Droid.Renderers
 {
-    // BUG: SetTint is not working on first load
     public class CustomTabbedPageRenderer : TabbedPageRenderer
     {
-        private ViewPager _pager;
-        private TabLayout _layout;
+        private ViewPager pager;
+        private TabLayout layout;
 
-        public CustomTabbedPageRenderer(Context context) : base(context)
-        {
-        }
-        
+        public CustomTabbedPageRenderer(Context context) : base(context) { }
+
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
 
-            _pager = (ViewPager)ViewGroup.GetChildAt(0);
-            _layout = (TabLayout)ViewGroup.GetChildAt(1);
+            pager = (ViewPager)ViewGroup.GetChildAt(0);
+            layout = (TabLayout)ViewGroup.GetChildAt(1);
 
-            for (int i = 0; i < _layout.TabCount; i++)
+            var control = (CustomTabbedPage)sender;
+            Android.Graphics.Color selectedColor;
+            Android.Graphics.Color unselectedColor;
+            if (control != null)
             {
-                var tab = _layout.GetTabAt(i);
-                var icon = tab.Icon;
+                selectedColor = control.SelectedIconColor.ToAndroid();
+                unselectedColor = control.UnselectedIconColor.ToAndroid();
+            }
+            else
+            {
+                selectedColor = new Android.Graphics.Color(ContextCompat.GetColor(Context, Resource.Color.tabBarSelected));
+                unselectedColor = new Android.Graphics.Color(ContextCompat.GetColor(Context, Resource.Color.tabBarUnselected));
+            }
 
+            for (int i = 0; i < layout.TabCount; i++)
+            {
+                var tab = layout.GetTabAt(i);
+                var icon = tab.Icon;
                 if (icon != null)
                 {
-                    if (tab.IsSelected)
-                    {
-                        icon.SetTint(Resource.Color.tabBarSelected);
-                    }
-                    else
-                    {
-                        icon.SetTint(Resource.Color.tabBarUnselected);
-                    }
+                    var color = tab.IsSelected ? selectedColor : unselectedColor;
+                    icon = Android.Support.V4.Graphics.Drawable.DrawableCompat.Wrap(icon);
+                    icon.SetColorFilter(color, PorterDuff.Mode.SrcIn);
                 }
             }
         }

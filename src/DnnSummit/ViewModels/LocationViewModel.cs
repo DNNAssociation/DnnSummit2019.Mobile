@@ -27,6 +27,7 @@ namespace DnnSummit.ViewModels
 
         public void OnNavigatingTo(INavigationParameters parameters)
         {
+            // TODO - pull this from the dnn summit website
             Pages = new[]
             {
                 new LocationInfoViewModel

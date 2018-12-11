@@ -13,18 +13,19 @@
                     x:Class="DnnSummit.Views.DnnSummitTabbedPage">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal"
-                     HorizontalOptions="FillAndExpand">
-            <Image Source="heart_empty"
+                     HorizontalOptions="FillAndExpand"
+                     Margin="0, 0, 10, 0">
+            <Image Source="navbar_icon"
                    HorizontalOptions="Start"/>
-            <Label Text="DNN Summit 2019"
-                   HorizontalOptions="StartAndExpand"
-                   HorizontalTextAlignment="Start"
+            <Label Text="DNN Summit"
+                   HorizontalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
                    VerticalOptions="CenterAndExpand"
+                   FontSize="22"
                    TextColor="White"/>
             <Image Source="location"
-                   HorizontalOptions="EndAndExpand"
-                   Margin="0,0,10,0">
+                   HorizontalOptions="EndAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Location}" />
                 </Image.GestureRecognizers>

@@ -17,7 +17,18 @@
             <Color x:Key="SelectedTab">#FFF</Color>
             <Color x:Key="UnselectedTab">#80FFFFFF</Color>
 
-                <!-- Carousel -->
+            <!-- Nav - TitleView -->
+            <Style TargetType="Label" x:Key="NavTitle">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="MaxLines" Value="1" />
+            </Style>
+            
+            <!-- Carousel -->
             <Style TargetType="cv:CarouselViewControl">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />

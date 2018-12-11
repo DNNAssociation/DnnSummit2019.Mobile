@@ -18,12 +18,7 @@
             <Image Source="navbar_icon"
                    HorizontalOptions="Start"/>
             <Label Text="DNN Summit"
-                   HorizontalOptions="CenterAndExpand"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   VerticalOptions="CenterAndExpand"
-                   FontSize="22"
-                   TextColor="White"/>
+                   Style="{StaticResource NavTitle}" />
             <Image Source="location"
                    HorizontalOptions="EndAndExpand">
                 <Image.GestureRecognizers>

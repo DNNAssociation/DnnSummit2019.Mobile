@@ -6,6 +6,16 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="Location"
              x:Class="DnnSummit.Views.LocationPage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand"
+                     Margin="0, 0, 10, 0">
+            <Label Text="Location" 
+                   Style="{StaticResource NavTitle}" />
+            <Image Source="navbar_icon"
+                   HorizontalOptions="EndAndExpand" />
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="PageTemplate">

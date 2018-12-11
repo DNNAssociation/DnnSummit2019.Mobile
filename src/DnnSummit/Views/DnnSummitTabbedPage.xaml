@@ -11,10 +11,26 @@
                     UnselectedIconColor="{StaticResource UnselectedTab}"
                     SelectedIconColor="{StaticResource SelectedTab}"
                     x:Class="DnnSummit.Views.DnnSummitTabbedPage">
-    <c:CustomTabbedPage.ToolbarItems>
-        <ToolbarItem Icon="location"
-                     Command="{Binding Location}"/>
-    </c:CustomTabbedPage.ToolbarItems>
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+            <Image Source="heart_empty"
+                   HorizontalOptions="Start"/>
+            <Label Text="DNN Summit 2019"
+                   HorizontalOptions="StartAndExpand"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="White"/>
+            <Image Source="location"
+                   HorizontalOptions="EndAndExpand"
+                   Margin="0,0,10,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Location}" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <c:CustomTabbedPage.Children>
         <local:SchedulePage />
         <local:SessionsPage />

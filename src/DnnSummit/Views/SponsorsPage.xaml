@@ -10,12 +10,6 @@
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <s:SponsorDataTemplateSelector x:Key="SponsorTemplate" 
-                                           TitleTemplate="{StaticResource TitlePlatinumTemplate}"
-                                           PlatinumTemplate="{StaticResource TitlePlatinumTemplate}"
-                                           GoldTemplate="{StaticResource GoldTemplate}"
-                                           SilverTemplate="{StaticResource SilverTemplate}"
-                                           BronzeTemplate="{StaticResource BronzeTemplate}" />
             <Style TargetType="ListView">
                 <Setter Property="HasUnevenRows" Value="True" />
                 <Setter Property="SeparatorColor" Value="Transparent" />
@@ -36,68 +30,46 @@
             <DataTemplate x:Key="GoldTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <StackLayout>
-                            <Image Source="{Binding ImageLink}" />
-                        </StackLayout>
+                        <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                          SponsorsPerRow="2"
+                                          RowHeight="175"/>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="SilverTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="{Binding Name}" />
+                        <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                          SponsorsPerRow="3"
+                                          RowHeight="150"/>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="BronzeTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="{Binding Name}" />
+                        <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                          SponsorsPerRow="4"
+                                          RowHeight="125"/>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
-            
+            <s:SponsorDataTemplateSelector x:Key="SponsorTemplate" 
+                                           TitleTemplate="{StaticResource TitlePlatinumTemplate}"
+                                           PlatinumTemplate="{StaticResource TitlePlatinumTemplate}"
+                                           GoldTemplate="{StaticResource GoldTemplate}"
+                                           SilverTemplate="{StaticResource SilverTemplate}"
+                                           BronzeTemplate="{StaticResource BronzeTemplate}" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand">
             <ListView ItemsSource="{Binding Sponsors}"
                   ItemTemplate="{StaticResource SponsorTemplate}"
                   ItemTapped="ListView_ItemTapped"
                   HasUnevenRows="True"
                   RowHeight="200" />
         </StackLayout>
-        <!--<ListView ItemsSource="{Binding Sponsors}"
-                  
-        <StackLayout Orientation="Vertical"
-                     Spacing="10">
-            <ListView ItemsSource="{Binding Titles}"
-                      ItemTemplate="{StaticResource TitlePlatinumTemplate}"
-                      IsVisible="{Binding HasTitles}"
-                      IsEnabled="{Binding HasTitles}"
-                      ItemTapped="ListView_ItemTapped"
-                      RowHeight="200" />
-            <ListView ItemsSource="{Binding Platinums}"
-                      ItemTemplate="{StaticResource TitlePlatinumTemplate}"
-                      IsVisible="{Binding HasPlaltinums}"
-                      IsEnabled="{Binding HasPlaltinums}"
-                      ItemTapped="ListView_ItemTapped"
-                      RowHeight="200" />
-            <ListView ItemsSource="{Binding Golds}"
-                      ItemTemplate="{StaticResource GoldTemplate}"
-                      IsVisible="{Binding HasGolds}"
-                      ItemTapped="ListView_ItemTapped"
-                      IsEnabled="{Binding HasGolds}" />
-            <ListView ItemsSource="{Binding Silvers}"
-                      ItemTemplate="{StaticResource SilverTemplate}"
-                      IsVisible="{Binding HasSilvers}"
-                      ItemTapped="ListView_ItemTapped"
-                      IsEnabled="{Binding HasSilvers}" />
-            <ListView ItemsSource="{Binding Bronzes}"
-                      ItemTemplate="{StaticResource BronzeTemplate}"
-                      IsVisible="{Binding HasBronzes}"
-                      ItemTapped="ListView_ItemTapped"
-                      IsEnabled="{Binding HasBronzes}" />
-        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>

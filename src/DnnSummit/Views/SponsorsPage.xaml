@@ -13,18 +13,25 @@
                 <Setter Property="HasUnevenRows" Value="True" />
                 <Setter Property="SeparatorColor" Value="Transparent" />
                 <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="Margin" Value="0" />
             </Style>
             <DataTemplate x:Key="TitlePlatinumTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="{Binding Name}" />
+                        <StackLayout>
+                            <Image Source="{Binding ImageLink}"
+                                   Aspect="AspectFit"
+                                   HeightRequest="200"/>
+                        </StackLayout>                        
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="GoldTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="{Binding Name}" />
+                        <StackLayout>
+                            <Image Source="{Binding ImageLink}" />
+                        </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
@@ -45,27 +52,35 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Vertical"
+                     Spacing="10">
             <ListView ItemsSource="{Binding Titles}"
                       ItemTemplate="{StaticResource TitlePlatinumTemplate}"
                       IsVisible="{Binding HasTitles}"
-                      IsEnabled="{Binding HasTitles}" />
+                      IsEnabled="{Binding HasTitles}"
+                      ItemTapped="ListView_ItemTapped"
+                      RowHeight="200" />
             <ListView ItemsSource="{Binding Platinums}"
                       ItemTemplate="{StaticResource TitlePlatinumTemplate}"
-                      IsVisible="{Binding HasTitles}"
-                      IsEnabled="{Binding HasTitles}" />
+                      IsVisible="{Binding HasPlaltinums}"
+                      IsEnabled="{Binding HasPlaltinums}"
+                      ItemTapped="ListView_ItemTapped"
+                      RowHeight="200" />
             <ListView ItemsSource="{Binding Golds}"
                       ItemTemplate="{StaticResource GoldTemplate}"
-                      IsVisible="{Binding HasTitles}"
-                      IsEnabled="{Binding HasTitles}" />
+                      IsVisible="{Binding HasGolds}"
+                      ItemTapped="ListView_ItemTapped"
+                      IsEnabled="{Binding HasGolds}" />
             <ListView ItemsSource="{Binding Silvers}"
                       ItemTemplate="{StaticResource SilverTemplate}"
-                      IsVisible="{Binding HasTitles}"
-                      IsEnabled="{Binding HasTitles}" />
+                      IsVisible="{Binding HasSilvers}"
+                      ItemTapped="ListView_ItemTapped"
+                      IsEnabled="{Binding HasSilvers}" />
             <ListView ItemsSource="{Binding Bronzes}"
                       ItemTemplate="{StaticResource BronzeTemplate}"
-                      IsVisible="{Binding HasTitles}"
-                      IsEnabled="{Binding HasTitles}" />
+                      IsVisible="{Binding HasBronzes}"
+                      ItemTapped="ListView_ItemTapped"
+                      IsEnabled="{Binding HasBronzes}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

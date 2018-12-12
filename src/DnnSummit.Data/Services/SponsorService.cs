@@ -21,7 +21,7 @@ namespace DnnSummit.Data.Services
             {
                 Name = x.Title,
                 Homepage = x.Homepage,
-                ImageLink = x.Image,
+                ImageLink = $"https://www.dnnsummit.org{x.Image}",
                 Level = x.Level.ToSponsorLevel()
             });
         }

@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using DnnSummit.Models;
+using Prism.Mvvm;
 using System.Collections.Generic;
 
 namespace DnnSummit.ViewModels
@@ -6,11 +7,18 @@ namespace DnnSummit.ViewModels
     public class InfoViewModel : BindableBase
     {
         public string Title => "Info";
-        public IEnumerable<string> Pages => new[]
+        public IEnumerable<Tile> Pages => new[]
         {
-            "Page 1",
-            "Page 2",
-            "Page 3"
+            new Tile
+            {
+                Title = "Sponsors",
+                InfoType = InfoType.Sponsors
+            },
+            new Tile
+            {
+                Title = "About",
+                InfoType = InfoType.About
+            }
         };
     }
 }

@@ -43,6 +43,7 @@
             </Style>
             
             <!-- Converters -->
+            <converters:InfoTypeToImageConverter x:Key="InfoTypeToImageConverter" />
             <converters:ScheduleTypeToImageConverter x:Key="ScheduleTypeToImageConverter" />
             <converters:SessionTrackToStringConverter x:Key="SessionTrackToStringConverter" />
             <converters:SessionTrackToColorConverter x:Key="SessionTrackToColorConverter" />

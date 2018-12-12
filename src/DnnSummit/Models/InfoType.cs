@@ -8,6 +8,12 @@ namespace DnnSummit.Models
         Sponsors,
 
         [ImageResource(Name = "wrench")]
-        About
+        Credits,
+
+        [ImageResource(Name = "wrench")]
+        Feedback,
+
+        [ImageResource(Name = "wrench")]
+        Notifications
     }
 }

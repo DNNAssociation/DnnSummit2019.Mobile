@@ -11,13 +11,23 @@ namespace DnnSummit.ViewModels
         {
             new Tile
             {
+                Title = "Notifications",
+                InfoType = InfoType.Notifications
+            },
+            new Tile
+            {
                 Title = "Sponsors",
                 InfoType = InfoType.Sponsors
             },
             new Tile
             {
-                Title = "About",
-                InfoType = InfoType.About
+                Title = "Feedback",
+                InfoType = InfoType.Feedback
+            },
+            new Tile
+            {
+                Title = "Credits",
+                InfoType = InfoType.Credits
             }
         };
     }

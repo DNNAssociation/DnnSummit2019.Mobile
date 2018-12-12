@@ -9,7 +9,7 @@
              x:Class="DnnSummit.Views.LocationPage">
     <NavigationPage.TitleView>
         <c:LogoTitleView Title="Location"
-                         Source="navbar_icon" />
+                         Icon="navbar_icon" />
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>

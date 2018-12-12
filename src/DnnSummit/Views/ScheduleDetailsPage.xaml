@@ -8,7 +8,7 @@
              x:Class="DnnSummit.Views.ScheduleDetailsPage">
     <NavigationPage.TitleView>
         <c:LogoTitleView Title="{Binding Title}"
-                         Source="navbar_icon" />
+                         Icon="navbar_icon" />
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>

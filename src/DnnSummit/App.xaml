@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:c="clr-namespace:DnnSummit.Controls"
                         xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
                         xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
                         xmlns:converters="clr-namespace:DnnSummit.Converters"
@@ -17,7 +18,7 @@
             <Color x:Key="SelectedTab">#FFF</Color>
             <Color x:Key="UnselectedTab">#80FFFFFF</Color>
 
-            <!-- Nav - TitleView -->
+            <!-- Nav - TitleView -->            
             <Style TargetType="Label" x:Key="NavTitle">
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />

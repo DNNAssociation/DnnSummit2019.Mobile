@@ -5,7 +5,7 @@
              x:Class="DnnSummit.Views.SponsorsPage">
     <NavigationPage.TitleView>
         <c:LogoTitleView Title="Sponsors"
-                         Source="navbar_icon" />
+                         Icon="navbar_icon" />
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>

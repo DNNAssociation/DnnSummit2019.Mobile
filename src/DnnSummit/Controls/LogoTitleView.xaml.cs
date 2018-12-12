@@ -33,20 +33,20 @@ namespace DnnSummit.Controls
             }
         }
 
-        public ImageSource Source
+        public ImageSource Icon
         {
-            get { return (ImageSource)GetValue(SourceProperty); }
-            set { SetValue(SourceProperty, value); }
+            get { return (ImageSource)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
         }
 
-        public static readonly BindableProperty SourceProperty = BindableProperty.Create(
-            nameof(Source),
+        public static readonly BindableProperty IconProperty = BindableProperty.Create(
+            nameof(Icon),
             typeof(ImageSource),
             typeof(LogoTitleView),
             null,
-            propertyChanged: OnSourcePropertyChanged);
+            propertyChanged: OnIconPropertyChanged);
 
-        private static void OnSourcePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void OnIconPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var context = (LogoTitleView)bindable;
             if (context != null)

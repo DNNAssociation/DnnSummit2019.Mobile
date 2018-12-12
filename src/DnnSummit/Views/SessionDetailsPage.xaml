@@ -9,7 +9,7 @@
              x:Class="DnnSummit.Views.SessionDetailsPage">
     <NavigationPage.TitleView>
         <c:LogoTitleView Title="{Binding Title}"
-                         Source="navbar_icon" />
+                         Icon="navbar_icon" />
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>

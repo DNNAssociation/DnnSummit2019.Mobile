@@ -17,28 +17,28 @@
             <DataTemplate x:Key="TitlePlatinumTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="" />
+                        <Label Text="{Binding Name}" />
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="GoldTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="" />
+                        <Label Text="{Binding Name}" />
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="SilverTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="" />
+                        <Label Text="{Binding Name}" />
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="BronzeTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="" />
+                        <Label Text="{Binding Name}" />
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>

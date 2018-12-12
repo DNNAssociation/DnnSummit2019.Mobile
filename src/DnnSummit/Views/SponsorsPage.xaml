@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:s="clr-namespace:DnnSummit.Selectors"
              xmlns:c="clr-namespace:DnnSummit.Controls"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DnnSummit.Views.SponsorsPage">
@@ -9,6 +10,12 @@
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>
+            <s:SponsorDataTemplateSelector x:Key="SponsorTemplate" 
+                                           TitleTemplate="{StaticResource TitlePlatinumTemplate}"
+                                           PlatinumTemplate="{StaticResource TitlePlatinumTemplate}"
+                                           GoldTemplate="{StaticResource GoldTemplate}"
+                                           SilverTemplate="{StaticResource SilverTemplate}"
+                                           BronzeTemplate="{StaticResource BronzeTemplate}" />
             <Style TargetType="ListView">
                 <Setter Property="HasUnevenRows" Value="True" />
                 <Setter Property="SeparatorColor" Value="Transparent" />
@@ -19,7 +26,7 @@
                 <ViewCell>
                     <ViewCell.View>
                         <StackLayout>
-                            <Image Source="{Binding ImageLink}"
+                            <Image Source="{Binding DataContext.ImageLink}"
                                    Aspect="AspectFit"
                                    HeightRequest="200"/>
                         </StackLayout>                        
@@ -49,9 +56,19 @@
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Sponsors}"
+                  ItemTemplate="{StaticResource SponsorTemplate}"
+                  ItemTapped="ListView_ItemTapped"
+                  HasUnevenRows="True"
+                  RowHeight="200" />
+        </StackLayout>
+        <!--<ListView ItemsSource="{Binding Sponsors}"
+                  
         <StackLayout Orientation="Vertical"
                      Spacing="10">
             <ListView ItemsSource="{Binding Titles}"
@@ -81,6 +98,6 @@
                       IsVisible="{Binding HasBronzes}"
                       ItemTapped="ListView_ItemTapped"
                       IsEnabled="{Binding HasBronzes}" />
-        </StackLayout>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>

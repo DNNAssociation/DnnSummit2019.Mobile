@@ -12,29 +12,44 @@ namespace DnnSummit.Controls
         public StackLayout Control { get; set; }
         public SponsorControl()
         {
-            Control = new StackLayout();
+            Control = new StackLayout
+            {
+                Spacing = 0,
+                Margin = 0
+            };
             Content = Control;
         }
 
-        public StackLayout CreateRow(params Sponsor[] sponsors)
+        public StackLayout CreateRow(Sponsor[] sponsors, bool isLastRow = false)
         {
             var row = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, true),
+                HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true),
                 Spacing = 20,
-                Margin = 0,
-                HeightRequest = RowHeight
+                Margin = new Thickness(10, 0, 10, 0),
+                HeightRequest = 200,
             };
 
             foreach (var item in sponsors)
             {
-                row.Children.Add(new Image
+                var image = new Image
                 {
                     Source = item.ImageLink,
                     Aspect = Aspect.AspectFit,
-                    HeightRequest = RowHeight
-                });
+                    HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true),
+                    Margin = 0,
+                    //HeightRequest = RowHeight
+                };
+
+                if (isLastRow)
+                {
+                    //var first = (StackLayout)Control.Children.First();
+                    image.WidthRequest = 100; // todo - get width of each image from the first row
+                    HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false);
+                }
+
+                row.Children.Add(image);
             }
 
             return row;
@@ -51,6 +66,8 @@ namespace DnnSummit.Controls
             typeof(double),
             typeof(SponsorControl),
             (double)100);
+
+
 
         public int SponsorsPerRow
         {
@@ -96,7 +113,13 @@ namespace DnnSummit.Controls
 
                         if ((index > 0 && index % (context.SponsorsPerRow - 1) == 0) || index == sponsors.Length - 1)
                         {
-                            var row = context.CreateRow(current.ToArray());
+                            bool isLast = false;
+                            if (index == sponsors.Length - 1 && context.Control.Children.Count() > 1)
+                            {
+                                isLast = true;
+                            }
+
+                            var row = context.CreateRow(current.ToArray(), isLast);
                             current.Clear();
 
                             context.Control.Children.Add(row);

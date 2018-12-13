@@ -40,7 +40,7 @@
                 <ViewCell>
                     <ViewCell.View>
                         <c:SponsorControl ItemsSource="{Binding DataContext}"
-                                          SponsorsPerRow="3"
+                                          SponsorsPerRow="2"
                                           RowHeight="150"/>
                     </ViewCell.View>
                 </ViewCell>

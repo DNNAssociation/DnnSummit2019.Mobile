@@ -94,9 +94,14 @@ namespace DnnSummit.ViewModels
                 Level = SponsorType.Bronze
             };
 
-            Sponsors.Add(goldGroup);
-            Sponsors.Add(silverGroup);
-            Sponsors.Add(bronzeGroup);
+            if(goldGroup.DataContext.Any())
+                Sponsors.Add(goldGroup);
+
+            if (silverGroup.DataContext.Any())
+                Sponsors.Add(silverGroup);
+
+            if (bronzeGroup.DataContext.Any())
+                Sponsors.Add(bronzeGroup);
         }
     }
 }

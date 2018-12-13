@@ -1,21 +1,48 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
     public class SponsorsViewModel : BindableBase, INavigatingAware
     {
         protected ISponsorService SponsorService { get; }
+        protected IPageDialogService PageDialogService { get; }
         public ObservableCollection<object> Sponsors { get; }
+        public ICommand ItemSelected { get; }
 
-        public SponsorsViewModel(ISponsorService sponsorService)
+        public SponsorsViewModel(
+            ISponsorService sponsorService,
+            IPageDialogService pageDialogService)
         {
             SponsorService = sponsorService;
+            PageDialogService = pageDialogService;
             Sponsors = new ObservableCollection<object>();
+            ItemSelected = new DelegateCommand<object>(OnItemSelected);
+        }
+
+        private async void OnItemSelected(object item)
+        {
+            var sponsor = (Sponsor)item;
+            if (sponsor != null && !string.IsNullOrWhiteSpace(sponsor.Homepage))
+            {
+                try
+                {
+                    Device.OpenUri(new Uri(sponsor.Homepage));
+                }
+                catch (Exception)
+                {
+                    await PageDialogService.DisplayAlertAsync("Something went wrong", "Unable to navigate to sponsor homepage", "OK");
+                }
+            }
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

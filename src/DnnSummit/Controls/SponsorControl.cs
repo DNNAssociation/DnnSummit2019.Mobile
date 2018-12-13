@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace DnnSummit.Controls
@@ -53,7 +54,18 @@ namespace DnnSummit.Controls
                     Margin = 0
                 };
 
+                if (SponsorTapped != null)
+                {
+                    var tapGesture = new TapGestureRecognizer
+                    {
+                        Command = SponsorTapped,
+                        CommandParameter = item
+                    };
+                    image.GestureRecognizers.Add(tapGesture);
+                }
+
                 row.Children.Add(image);
+
             }
 
             if (isLastRow)
@@ -68,6 +80,29 @@ namespace DnnSummit.Controls
             }
 
             return row;
+        }
+
+        public ICommand SponsorTapped
+        {
+            get { return (ICommand)GetValue(SponsorTappedProperty); }
+            set { SetValue(SponsorTappedProperty, value); }
+        }
+
+        public static readonly BindableProperty SponsorTappedProperty = BindableProperty.Create(
+            nameof(SponsorTapped),
+            typeof(ICommand),
+            typeof(SponsorControl),
+            null,
+            propertyChanged: OnSponsorTappedPropertyChanged);
+
+        private static void OnSponsorTappedPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var context = (SponsorControl)bindable;
+            if (context != null)
+            {
+                context.SponsorTapped = (ICommand)newValue;
+                OnItemsSourcePropertyChanged(context, null, context.ItemsSource);
+            }
         }
 
         public double RowHeight
@@ -144,7 +179,7 @@ namespace DnnSummit.Controls
 
                     for (int index = 0; index < sponsors.Length; index++)
                     {
-                        current.Add(sponsors[index]);
+                        current.Add(sponsors[index]);                        
 
                         if ((index > 0 && (index + 1) % context.SponsorsPerRow == 0) || index == sponsors.Length - 1)
                         {

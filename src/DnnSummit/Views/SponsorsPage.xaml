@@ -67,7 +67,8 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
-                     HorizontalOptions="CenterAndExpand">
+                     HorizontalOptions="CenterAndExpand"
+                     Margin="10, 0">
             <ListView ItemsSource="{Binding Sponsors}"
                   ItemTemplate="{StaticResource SponsorTemplate}"
                   ItemTapped="ListView_ItemTapped"

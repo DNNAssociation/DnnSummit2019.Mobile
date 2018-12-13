@@ -32,7 +32,8 @@
                     <ViewCell.View>
                         <c:SponsorControl ItemsSource="{Binding DataContext}"
                                           SponsorsPerRow="2"
-                                          RowHeight="175"/>
+                                          RowHeight="100"
+                                          Margin="0,0,0,5"/>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
@@ -41,7 +42,8 @@
                     <ViewCell.View>
                         <c:SponsorControl ItemsSource="{Binding DataContext}"
                                           SponsorsPerRow="2"
-                                          RowHeight="150"/>
+                                          RowHeight="75"
+                                          Margin="0,0,0,5"/>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
@@ -49,8 +51,9 @@
                 <ViewCell>
                     <ViewCell.View>
                         <c:SponsorControl ItemsSource="{Binding DataContext}"
-                                          SponsorsPerRow="4"
-                                          RowHeight="125"/>
+                                          SponsorsPerRow="3"
+                                          RowHeight="50"
+                                          Margin="0,0,0,5"/>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>

@@ -1,5 +1,4 @@
 ﻿using DnnSummit.Models;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,7 @@ namespace DnnSummit.Controls
             Control = new StackLayout
             {
                 Spacing = 0,
+                Padding = new Thickness(0, 10),
                 Margin = 0
             };
             Content = Control;
@@ -28,8 +28,19 @@ namespace DnnSummit.Controls
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true),
                 Spacing = 20,
                 Margin = new Thickness(10, 0, 10, 0),
-                HeightRequest = 200,
+                HeightRequest = RowHeight
             };
+
+            if (isLastRow)
+            {
+                var box = new BoxView
+                {
+                    BackgroundColor = Color.Transparent,
+                    HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true)
+                };
+
+                row.Children.Add(box);
+            }
 
             foreach (var item in sponsors)
             {
@@ -38,18 +49,22 @@ namespace DnnSummit.Controls
                     Source = item.ImageLink,
                     Aspect = Aspect.AspectFit,
                     HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true),
-                    Margin = 0,
-                    //HeightRequest = RowHeight
+                    VerticalOptions = new LayoutOptions(LayoutAlignment.Fill, false),
+                    Margin = 0
                 };
 
-                if (isLastRow)
-                {
-                    //var first = (StackLayout)Control.Children.First();
-                    image.WidthRequest = 100; // todo - get width of each image from the first row
-                    HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false);
-                }
-
                 row.Children.Add(image);
+            }
+
+            if (isLastRow)
+            {
+                var box = new BoxView
+                {
+                    BackgroundColor = Color.Transparent,
+                    HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true)
+                };
+
+                row.Children.Add(box);
             }
 
             return row;
@@ -65,9 +80,18 @@ namespace DnnSummit.Controls
             nameof(RowHeight),
             typeof(double),
             typeof(SponsorControl),
-            (double)100);
+            (double)100,
+            propertyChanged: OnRowHeightPropertyChanged);
 
-
+        private static void OnRowHeightPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var context = (SponsorControl)bindable;
+            if (context != null)
+            {
+                context.RowHeight = (double)newValue;
+                OnItemsSourcePropertyChanged(context, null, context.ItemsSource);
+            }
+        }
 
         public int SponsorsPerRow
         {
@@ -79,7 +103,18 @@ namespace DnnSummit.Controls
             nameof(SponsorsPerRow),
             typeof(int),
             typeof(SponsorControl),
-            2);
+            3,
+            propertyChanged: OnSponsorsPerRowPropertyChanged);
+
+        private static void OnSponsorsPerRowPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var context = (SponsorControl)bindable;
+            if (context != null)
+            {
+                context.SponsorsPerRow = (int)newValue;
+                OnItemsSourcePropertyChanged(context, null, context.ItemsSource);
+            }
+        }
 
         public IEnumerable ItemsSource
         {
@@ -111,10 +146,10 @@ namespace DnnSummit.Controls
                     {
                         current.Add(sponsors[index]);
 
-                        if ((index > 0 && index % (context.SponsorsPerRow - 1) == 0) || index == sponsors.Length - 1)
+                        if ((index > 0 && (index + 1) % context.SponsorsPerRow == 0) || index == sponsors.Length - 1)
                         {
                             bool isLast = false;
-                            if (index == sponsors.Length - 1 && context.Control.Children.Count() > 1)
+                            if (index == sponsors.Length - 1 && context.Control.Children.Count() > 0 && (index +1) % context.SponsorsPerRow != 0)
                             {
                                 isLast = true;
                             }

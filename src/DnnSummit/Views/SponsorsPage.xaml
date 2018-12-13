@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:s="clr-namespace:DnnSummit.Selectors"
              xmlns:c="clr-namespace:DnnSummit.Controls"
@@ -52,7 +52,7 @@
                     <ViewCell.View>
                         <c:SponsorControl ItemsSource="{Binding DataContext}"
                                           SponsorsPerRow="3"
-                                          RowHeight="50"
+                                          RowHeight="40"
                                           Margin="0,0,0,5"/>
                     </ViewCell.View>
                 </ViewCell>
@@ -68,7 +68,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
                      HorizontalOptions="CenterAndExpand"
-                     Margin="10, 0">
+                     Padding="15, 0">
             <ListView ItemsSource="{Binding Sponsors}"
                   ItemTemplate="{StaticResource SponsorTemplate}"
                   ItemTapped="ListView_ItemTapped"

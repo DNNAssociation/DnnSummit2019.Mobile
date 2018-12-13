@@ -40,6 +40,8 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Animation.design_bottom_sheet_slide_out = global::DnnSummit.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::CarouselView.FormsPlugin.Android.Resource.Animation.design_snackbar_in = global::DnnSummit.Droid.Resource.Animation.design_snackbar_in;
 			global::CarouselView.FormsPlugin.Android.Resource.Animation.design_snackbar_out = global::DnnSummit.Droid.Resource.Animation.design_snackbar_out;
+			global::CarouselView.FormsPlugin.Android.Resource.Animation.tooltip_enter = global::DnnSummit.Droid.Resource.Animation.tooltip_enter;
+			global::CarouselView.FormsPlugin.Android.Resource.Animation.tooltip_exit = global::DnnSummit.Droid.Resource.Animation.tooltip_exit;
 			global::CarouselView.FormsPlugin.Android.Resource.Animator.design_appbar_state_list_animator = global::DnnSummit.Droid.Resource.Animator.design_appbar_state_list_animator;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarDivider = global::DnnSummit.Droid.Resource.Attribute.actionBarDivider;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.actionBarItemBackground = global::DnnSummit.Droid.Resource.Attribute.actionBarItemBackground;
@@ -81,9 +83,15 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.alertDialogTheme = global::DnnSummit.Droid.Resource.Attribute.alertDialogTheme;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.allowStacking = global::DnnSummit.Droid.Resource.Attribute.allowStacking;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.alpha = global::DnnSummit.Droid.Resource.Attribute.alpha;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.alphabeticModifiers = global::DnnSummit.Droid.Resource.Attribute.alphabeticModifiers;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.arrowHeadLength = global::DnnSummit.Droid.Resource.Attribute.arrowHeadLength;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.arrowShaftLength = global::DnnSummit.Droid.Resource.Attribute.arrowShaftLength;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.autoCompleteTextViewStyle = global::DnnSummit.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.autoSizeMaxTextSize = global::DnnSummit.Droid.Resource.Attribute.autoSizeMaxTextSize;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.autoSizeMinTextSize = global::DnnSummit.Droid.Resource.Attribute.autoSizeMinTextSize;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.autoSizePresetSizes = global::DnnSummit.Droid.Resource.Attribute.autoSizePresetSizes;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.autoSizeStepGranularity = global::DnnSummit.Droid.Resource.Attribute.autoSizeStepGranularity;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.autoSizeTextType = global::DnnSummit.Droid.Resource.Attribute.autoSizeTextType;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.background = global::DnnSummit.Droid.Resource.Attribute.background;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.backgroundSplit = global::DnnSummit.Droid.Resource.Attribute.backgroundSplit;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.backgroundStacked = global::DnnSummit.Droid.Resource.Attribute.backgroundStacked;
@@ -131,10 +139,12 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorControlActivated = global::DnnSummit.Droid.Resource.Attribute.colorControlActivated;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorControlHighlight = global::DnnSummit.Droid.Resource.Attribute.colorControlHighlight;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorControlNormal = global::DnnSummit.Droid.Resource.Attribute.colorControlNormal;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorError = global::DnnSummit.Droid.Resource.Attribute.colorError;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorPrimary = global::DnnSummit.Droid.Resource.Attribute.colorPrimary;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorPrimaryDark = global::DnnSummit.Droid.Resource.Attribute.colorPrimaryDark;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.colorSwitchThumbNormal = global::DnnSummit.Droid.Resource.Attribute.colorSwitchThumbNormal;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.commitIcon = global::DnnSummit.Droid.Resource.Attribute.commitIcon;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentDescription = global::DnnSummit.Droid.Resource.Attribute.contentDescription;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetEnd = global::DnnSummit.Droid.Resource.Attribute.contentInsetEnd;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetEndWithActions = global::DnnSummit.Droid.Resource.Attribute.contentInsetEndWithActions;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.contentInsetLeft = global::DnnSummit.Droid.Resource.Attribute.contentInsetLeft;
@@ -182,6 +192,21 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.expandedTitleTextAppearance = global::DnnSummit.Droid.Resource.Attribute.expandedTitleTextAppearance;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.externalRouteEnabledDrawable = global::DnnSummit.Droid.Resource.Attribute.externalRouteEnabledDrawable;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fabSize = global::DnnSummit.Droid.Resource.Attribute.fabSize;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fastScrollEnabled = global::DnnSummit.Droid.Resource.Attribute.fastScrollEnabled;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::DnnSummit.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::DnnSummit.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fastScrollVerticalThumbDrawable = global::DnnSummit.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fastScrollVerticalTrackDrawable = global::DnnSummit.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.font = global::DnnSummit.Droid.Resource.Attribute.font;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontFamily = global::DnnSummit.Droid.Resource.Attribute.fontFamily;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontProviderAuthority = global::DnnSummit.Droid.Resource.Attribute.fontProviderAuthority;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontProviderCerts = global::DnnSummit.Droid.Resource.Attribute.fontProviderCerts;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontProviderFetchStrategy = global::DnnSummit.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontProviderFetchTimeout = global::DnnSummit.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontProviderPackage = global::DnnSummit.Droid.Resource.Attribute.fontProviderPackage;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontProviderQuery = global::DnnSummit.Droid.Resource.Attribute.fontProviderQuery;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontStyle = global::DnnSummit.Droid.Resource.Attribute.fontStyle;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.fontWeight = global::DnnSummit.Droid.Resource.Attribute.fontWeight;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.foregroundInsidePadding = global::DnnSummit.Droid.Resource.Attribute.foregroundInsidePadding;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.gapBetweenBars = global::DnnSummit.Droid.Resource.Attribute.gapBetweenBars;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.goIcon = global::DnnSummit.Droid.Resource.Attribute.goIcon;
@@ -194,6 +219,8 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.homeAsUpIndicator = global::DnnSummit.Droid.Resource.Attribute.homeAsUpIndicator;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.homeLayout = global::DnnSummit.Droid.Resource.Attribute.homeLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.icon = global::DnnSummit.Droid.Resource.Attribute.icon;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.iconTint = global::DnnSummit.Droid.Resource.Attribute.iconTint;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.iconTintMode = global::DnnSummit.Droid.Resource.Attribute.iconTintMode;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.iconifiedByDefault = global::DnnSummit.Droid.Resource.Attribute.iconifiedByDefault;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.imageButtonStyle = global::DnnSummit.Droid.Resource.Attribute.imageButtonStyle;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.indeterminateProgressStyle = global::DnnSummit.Droid.Resource.Attribute.indeterminateProgressStyle;
@@ -236,6 +263,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.measureWithLargestChild = global::DnnSummit.Droid.Resource.Attribute.measureWithLargestChild;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteAudioTrackDrawable = global::DnnSummit.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteButtonStyle = global::DnnSummit.Droid.Resource.Attribute.mediaRouteButtonStyle;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteButtonTint = global::DnnSummit.Droid.Resource.Attribute.mediaRouteButtonTint;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteCloseDrawable = global::DnnSummit.Droid.Resource.Attribute.mediaRouteCloseDrawable;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteControlPanelThemeOverlay = global::DnnSummit.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.mediaRouteDefaultIconDrawable = global::DnnSummit.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
@@ -251,6 +279,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.navigationContentDescription = global::DnnSummit.Droid.Resource.Attribute.navigationContentDescription;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.navigationIcon = global::DnnSummit.Droid.Resource.Attribute.navigationIcon;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.navigationMode = global::DnnSummit.Droid.Resource.Attribute.navigationMode;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.numericModifiers = global::DnnSummit.Droid.Resource.Attribute.numericModifiers;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.overlapAnchor = global::DnnSummit.Droid.Resource.Attribute.overlapAnchor;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.paddingBottomNoButtons = global::DnnSummit.Droid.Resource.Attribute.paddingBottomNoButtons;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.paddingEnd = global::DnnSummit.Droid.Resource.Attribute.paddingEnd;
@@ -367,6 +396,9 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.toolbarId = global::DnnSummit.Droid.Resource.Attribute.toolbarId;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.toolbarNavigationButtonStyle = global::DnnSummit.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.toolbarStyle = global::DnnSummit.Droid.Resource.Attribute.toolbarStyle;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tooltipForegroundColor = global::DnnSummit.Droid.Resource.Attribute.tooltipForegroundColor;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tooltipFrameBackground = global::DnnSummit.Droid.Resource.Attribute.tooltipFrameBackground;
+			global::CarouselView.FormsPlugin.Android.Resource.Attribute.tooltipText = global::DnnSummit.Droid.Resource.Attribute.tooltipText;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.track = global::DnnSummit.Droid.Resource.Attribute.track;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.trackTint = global::DnnSummit.Droid.Resource.Attribute.trackTint;
 			global::CarouselView.FormsPlugin.Android.Resource.Attribute.trackTintMode = global::DnnSummit.Droid.Resource.Attribute.trackTintMode;
@@ -458,6 +490,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Color.dim_foreground_disabled_material_light = global::DnnSummit.Droid.Resource.Color.dim_foreground_disabled_material_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.dim_foreground_material_dark = global::DnnSummit.Droid.Resource.Color.dim_foreground_material_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.dim_foreground_material_light = global::DnnSummit.Droid.Resource.Color.dim_foreground_material_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Color.error_color_material = global::DnnSummit.Droid.Resource.Color.error_color_material;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.foreground_material_dark = global::DnnSummit.Droid.Resource.Color.foreground_material_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.foreground_material_light = global::DnnSummit.Droid.Resource.Color.foreground_material_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.highlighted_text_material_dark = global::DnnSummit.Droid.Resource.Color.highlighted_text_material_dark;
@@ -497,6 +530,8 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_material_light = global::DnnSummit.Droid.Resource.Color.switch_thumb_material_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_normal_material_dark = global::DnnSummit.Droid.Resource.Color.switch_thumb_normal_material_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.switch_thumb_normal_material_light = global::DnnSummit.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Color.tooltip_background_dark = global::DnnSummit.Droid.Resource.Color.tooltip_background_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Color.tooltip_background_light = global::DnnSummit.Droid.Resource.Color.tooltip_background_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__background_holo_dark = global::DnnSummit.Droid.Resource.Color.vpi__background_holo_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__background_holo_light = global::DnnSummit.Droid.Resource.Color.vpi__background_holo_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Color.vpi__bright_foreground_disabled_holo_dark = global::DnnSummit.Droid.Resource.Color.vpi__bright_foreground_disabled_holo_dark;
@@ -582,6 +617,11 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.cardview_compat_inset_shadow = global::DnnSummit.Droid.Resource.Dimension.cardview_compat_inset_shadow;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.cardview_default_elevation = global::DnnSummit.Droid.Resource.Dimension.cardview_default_elevation;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.cardview_default_radius = global::DnnSummit.Droid.Resource.Dimension.cardview_default_radius;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.compat_button_inset_horizontal_material = global::DnnSummit.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.compat_button_inset_vertical_material = global::DnnSummit.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.compat_button_padding_horizontal_material = global::DnnSummit.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.compat_button_padding_vertical_material = global::DnnSummit.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.compat_control_corner_material = global::DnnSummit.Droid.Resource.Dimension.compat_control_corner_material;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.default_circle_indicator_radius = global::DnnSummit.Droid.Resource.Dimension.default_circle_indicator_radius;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.default_circle_indicator_stroke_width = global::DnnSummit.Droid.Resource.Dimension.default_circle_indicator_stroke_width;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_appbar_elevation = global::DnnSummit.Droid.Resource.Dimension.design_appbar_elevation;
@@ -624,6 +664,9 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.design_tab_text_size_2line = global::DnnSummit.Droid.Resource.Dimension.design_tab_text_size_2line;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.disabled_alpha_material_dark = global::DnnSummit.Droid.Resource.Dimension.disabled_alpha_material_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.disabled_alpha_material_light = global::DnnSummit.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.fastscroll_default_thickness = global::DnnSummit.Droid.Resource.Dimension.fastscroll_default_thickness;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.fastscroll_margin = global::DnnSummit.Droid.Resource.Dimension.fastscroll_margin;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.fastscroll_minimum_range = global::DnnSummit.Droid.Resource.Dimension.fastscroll_minimum_range;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.highlight_alpha_material_colored = global::DnnSummit.Droid.Resource.Dimension.highlight_alpha_material_colored;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.highlight_alpha_material_dark = global::DnnSummit.Droid.Resource.Dimension.highlight_alpha_material_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.highlight_alpha_material_light = global::DnnSummit.Droid.Resource.Dimension.highlight_alpha_material_light;
@@ -655,6 +698,14 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_subtext_size = global::DnnSummit.Droid.Resource.Dimension.notification_subtext_size;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_top_pad = global::DnnSummit.Droid.Resource.Dimension.notification_top_pad;
 			global::CarouselView.FormsPlugin.Android.Resource.Dimension.notification_top_pad_large_text = global::DnnSummit.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.tooltip_corner_radius = global::DnnSummit.Droid.Resource.Dimension.tooltip_corner_radius;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.tooltip_horizontal_padding = global::DnnSummit.Droid.Resource.Dimension.tooltip_horizontal_padding;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.tooltip_margin = global::DnnSummit.Droid.Resource.Dimension.tooltip_margin;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::DnnSummit.Droid.Resource.Dimension.tooltip_precise_anchor_extra_offset;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.tooltip_precise_anchor_threshold = global::DnnSummit.Droid.Resource.Dimension.tooltip_precise_anchor_threshold;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.tooltip_vertical_padding = global::DnnSummit.Droid.Resource.Dimension.tooltip_vertical_padding;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.tooltip_y_offset_non_touch = global::DnnSummit.Droid.Resource.Dimension.tooltip_y_offset_non_touch;
+			global::CarouselView.FormsPlugin.Android.Resource.Dimension.tooltip_y_offset_touch = global::DnnSummit.Droid.Resource.Dimension.tooltip_y_offset_touch;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::DnnSummit.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_action_bar_item_background_material = global::DnnSummit.Droid.Resource.Drawable.abc_action_bar_item_background_material;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.abc_btn_borderless_material = global::DnnSummit.Droid.Resource.Drawable.abc_btn_borderless_material;
@@ -841,6 +892,22 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_21_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_21_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_22_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_22_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_22_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_22_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_23_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_23_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_23_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_23_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_24_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_24_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_24_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_24_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_25_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_25_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_25_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_25_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_26_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_26_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_26_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_26_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_27_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_27_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_27_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_27_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_28_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_28_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_28_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_28_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_29_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_29_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_29_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_29_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_30_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_30_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connected_30_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connected_30_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_00_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_00_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_00_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_01_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark;
@@ -887,6 +954,22 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_21_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_21_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_22_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_22_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_22_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_23_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_23_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_23_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_23_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_24_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_24_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_24_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_24_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_25_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_25_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_25_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_25_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_26_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_26_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_26_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_26_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_27_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_27_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_27_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_27_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_28_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_28_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_28_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_28_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_29_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_29_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_29_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_29_light;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_30_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_30_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_connecting_30_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_connecting_30_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_disabled_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_disabled_dark;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_disabled_light = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_disabled_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.ic_mr_button_disconnected_dark = global::DnnSummit.Droid.Resource.Drawable.ic_mr_button_disconnected_dark;
@@ -933,7 +1016,15 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notification_tile_bg = global::DnnSummit.Droid.Resource.Drawable.notification_tile_bg;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.notify_panel_notification_icon_bg = global::DnnSummit.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.Prev = global::DnnSummit.Droid.Resource.Drawable.Prev;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.tooltip_frame_dark = global::DnnSummit.Droid.Resource.Drawable.tooltip_frame_dark;
+			global::CarouselView.FormsPlugin.Android.Resource.Drawable.tooltip_frame_light = global::DnnSummit.Droid.Resource.Drawable.tooltip_frame_light;
 			global::CarouselView.FormsPlugin.Android.Resource.Drawable.Up = global::DnnSummit.Droid.Resource.Drawable.Up;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.ALT = global::DnnSummit.Droid.Resource.Id.ALT;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.CTRL = global::DnnSummit.Droid.Resource.Id.CTRL;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.FUNCTION = global::DnnSummit.Droid.Resource.Id.FUNCTION;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.META = global::DnnSummit.Droid.Resource.Id.META;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.SHIFT = global::DnnSummit.Droid.Resource.Id.SHIFT;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.SYM = global::DnnSummit.Droid.Resource.Id.SYM;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.action0 = global::DnnSummit.Droid.Resource.Id.action0;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar = global::DnnSummit.Droid.Resource.Id.action_bar;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.action_bar_activity_content = global::DnnSummit.Droid.Resource.Id.action_bar_activity_content;
@@ -958,8 +1049,10 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Id.alertTitle = global::DnnSummit.Droid.Resource.Id.alertTitle;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.all = global::DnnSummit.Droid.Resource.Id.all;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.always = global::DnnSummit.Droid.Resource.Id.always;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.async = global::DnnSummit.Droid.Resource.Id.async;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.auto = global::DnnSummit.Droid.Resource.Id.auto;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.beginning = global::DnnSummit.Droid.Resource.Id.beginning;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.blocking = global::DnnSummit.Droid.Resource.Id.blocking;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.bottom = global::DnnSummit.Droid.Resource.Id.bottom;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.buttonPanel = global::DnnSummit.Droid.Resource.Id.buttonPanel;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.cancel_action = global::DnnSummit.Droid.Resource.Id.cancel_action;
@@ -996,6 +1089,8 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Id.fill_horizontal = global::DnnSummit.Droid.Resource.Id.fill_horizontal;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.fill_vertical = global::DnnSummit.Droid.Resource.Id.fill_vertical;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.@fixed = global::DnnSummit.Droid.Resource.Id.@fixed;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.forever = global::DnnSummit.Droid.Resource.Id.forever;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.ghost_view = global::DnnSummit.Droid.Resource.Id.ghost_view;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.home = global::DnnSummit.Droid.Resource.Id.home;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.homeAsUp = global::DnnSummit.Droid.Resource.Id.homeAsUp;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.horizontal = global::DnnSummit.Droid.Resource.Id.horizontal;
@@ -1005,6 +1100,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Id.image = global::DnnSummit.Droid.Resource.Id.image;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.indicator = global::DnnSummit.Droid.Resource.Id.indicator;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.info = global::DnnSummit.Droid.Resource.Id.info;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.italic = global::DnnSummit.Droid.Resource.Id.italic;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.item_touch_helper_previous_elevation = global::DnnSummit.Droid.Resource.Id.item_touch_helper_previous_elevation;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.largeLabel = global::DnnSummit.Droid.Resource.Id.largeLabel;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.left = global::DnnSummit.Droid.Resource.Id.left;
@@ -1014,6 +1110,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Id.list_item = global::DnnSummit.Droid.Resource.Id.list_item;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.masked = global::DnnSummit.Droid.Resource.Id.masked;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.media_actions = global::DnnSummit.Droid.Resource.Id.media_actions;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.message = global::DnnSummit.Droid.Resource.Id.message;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.middle = global::DnnSummit.Droid.Resource.Id.middle;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.mini = global::DnnSummit.Droid.Resource.Id.mini;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.mr_art = global::DnnSummit.Droid.Resource.Id.mr_art;
@@ -1054,6 +1151,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Id.pager = global::DnnSummit.Droid.Resource.Id.pager;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.parallax = global::DnnSummit.Droid.Resource.Id.parallax;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.parentPanel = global::DnnSummit.Droid.Resource.Id.parentPanel;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.parent_matrix = global::DnnSummit.Droid.Resource.Id.parent_matrix;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.pin = global::DnnSummit.Droid.Resource.Id.pin;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.prev = global::DnnSummit.Droid.Resource.Id.prev;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.prevArrow = global::DnnSummit.Droid.Resource.Id.prevArrow;
@@ -1063,6 +1161,9 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Id.right = global::DnnSummit.Droid.Resource.Id.right;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.right_icon = global::DnnSummit.Droid.Resource.Id.right_icon;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.right_side = global::DnnSummit.Droid.Resource.Id.right_side;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.save_image_matrix = global::DnnSummit.Droid.Resource.Id.save_image_matrix;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.save_non_transition_alpha = global::DnnSummit.Droid.Resource.Id.save_non_transition_alpha;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.save_scale_type = global::DnnSummit.Droid.Resource.Id.save_scale_type;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.screen = global::DnnSummit.Droid.Resource.Id.screen;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.scroll = global::DnnSummit.Droid.Resource.Id.scroll;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.scrollIndicatorDown = global::DnnSummit.Droid.Resource.Id.scrollIndicatorDown;
@@ -1113,7 +1214,11 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Id.topPanel = global::DnnSummit.Droid.Resource.Id.topPanel;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.touch_outside = global::DnnSummit.Droid.Resource.Id.touch_outside;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.transition_current_scene = global::DnnSummit.Droid.Resource.Id.transition_current_scene;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.transition_layout_save = global::DnnSummit.Droid.Resource.Id.transition_layout_save;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.transition_position = global::DnnSummit.Droid.Resource.Id.transition_position;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.transition_scene_layoutid_cache = global::DnnSummit.Droid.Resource.Id.transition_scene_layoutid_cache;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.transition_transform = global::DnnSummit.Droid.Resource.Id.transition_transform;
+			global::CarouselView.FormsPlugin.Android.Resource.Id.uniform = global::DnnSummit.Droid.Resource.Id.uniform;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.up = global::DnnSummit.Droid.Resource.Id.up;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.useLogo = global::DnnSummit.Droid.Resource.Id.useLogo;
 			global::CarouselView.FormsPlugin.Android.Resource.Id.vertical = global::DnnSummit.Droid.Resource.Id.vertical;
@@ -1127,6 +1232,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Integer.app_bar_elevation_anim_duration = global::DnnSummit.Droid.Resource.Integer.app_bar_elevation_anim_duration;
 			global::CarouselView.FormsPlugin.Android.Resource.Integer.bottom_sheet_slide_duration = global::DnnSummit.Droid.Resource.Integer.bottom_sheet_slide_duration;
 			global::CarouselView.FormsPlugin.Android.Resource.Integer.cancel_button_image_alpha = global::DnnSummit.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::CarouselView.FormsPlugin.Android.Resource.Integer.config_tooltipAnimTime = global::DnnSummit.Droid.Resource.Integer.config_tooltipAnimTime;
 			global::CarouselView.FormsPlugin.Android.Resource.Integer.default_circle_indicator_orientation = global::DnnSummit.Droid.Resource.Integer.default_circle_indicator_orientation;
 			global::CarouselView.FormsPlugin.Android.Resource.Integer.design_snackbar_text_max_lines = global::DnnSummit.Droid.Resource.Integer.design_snackbar_text_max_lines;
 			global::CarouselView.FormsPlugin.Android.Resource.Integer.hide_password_duration = global::DnnSummit.Droid.Resource.Integer.hide_password_duration;
@@ -1203,6 +1309,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Layout.select_dialog_multichoice_material = global::DnnSummit.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::CarouselView.FormsPlugin.Android.Resource.Layout.select_dialog_singlechoice_material = global::DnnSummit.Droid.Resource.Layout.select_dialog_singlechoice_material;
 			global::CarouselView.FormsPlugin.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::DnnSummit.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::CarouselView.FormsPlugin.Android.Resource.Layout.tooltip = global::DnnSummit.Droid.Resource.Layout.tooltip;
 			global::CarouselView.FormsPlugin.Android.Resource.Layout.vertical_viewpager = global::DnnSummit.Droid.Resource.Layout.vertical_viewpager;
 			global::CarouselView.FormsPlugin.Android.Resource.String.abc_action_bar_home_description = global::DnnSummit.Droid.Resource.String.abc_action_bar_home_description;
 			global::CarouselView.FormsPlugin.Android.Resource.String.abc_action_bar_up_description = global::DnnSummit.Droid.Resource.String.abc_action_bar_up_description;
@@ -1236,7 +1343,6 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.String.appbar_scrolling_view_behavior = global::DnnSummit.Droid.Resource.String.appbar_scrolling_view_behavior;
 			global::CarouselView.FormsPlugin.Android.Resource.String.bottom_sheet_behavior = global::DnnSummit.Droid.Resource.String.bottom_sheet_behavior;
 			global::CarouselView.FormsPlugin.Android.Resource.String.character_counter_pattern = global::DnnSummit.Droid.Resource.String.character_counter_pattern;
-			global::CarouselView.FormsPlugin.Android.Resource.String.library_name = global::DnnSummit.Droid.Resource.String.library_name;
 			global::CarouselView.FormsPlugin.Android.Resource.String.mr_button_content_description = global::DnnSummit.Droid.Resource.String.mr_button_content_description;
 			global::CarouselView.FormsPlugin.Android.Resource.String.mr_cast_button_connected = global::DnnSummit.Droid.Resource.String.mr_cast_button_connected;
 			global::CarouselView.FormsPlugin.Android.Resource.String.mr_cast_button_connecting = global::DnnSummit.Droid.Resource.String.mr_cast_button_connecting;
@@ -1269,11 +1375,13 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Style.AlertDialog_AppCompat_Light = global::DnnSummit.Droid.Resource.Style.AlertDialog_AppCompat_Light;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Animation_AppCompat_Dialog = global::DnnSummit.Droid.Resource.Style.Animation_AppCompat_Dialog;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::DnnSummit.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Animation_AppCompat_Tooltip = global::DnnSummit.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::DnnSummit.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_AlertDialog_AppCompat = global::DnnSummit.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::DnnSummit.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::DnnSummit.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::DnnSummit.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Animation_AppCompat_Tooltip = global::DnnSummit.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_CardView = global::DnnSummit.Droid.Resource.Style.Base_CardView;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_DialogWindowTitle_AppCompat = global::DnnSummit.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::DnnSummit.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
@@ -1304,6 +1412,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::DnnSummit.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Title = global::DnnSummit.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::DnnSummit.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::DnnSummit.Droid.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::DnnSummit.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::DnnSummit.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::DnnSummit.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
@@ -1350,15 +1459,21 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog = global::DnnSummit.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::DnnSummit.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::DnnSummit.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V14_Widget_Design_AppBarLayout = global::DnnSummit.Droid.Resource.Style.Base_V14_Widget_Design_AppBarLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Theme_AppCompat = global::DnnSummit.Droid.Resource.Style.Base_V21_Theme_AppCompat;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::DnnSummit.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::DnnSummit.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::DnnSummit.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::DnnSummit.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V21_Widget_Design_AppBarLayout = global::DnnSummit.Droid.Resource.Style.Base_V21_Widget_Design_AppBarLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V22_Theme_AppCompat = global::DnnSummit.Droid.Resource.Style.Base_V22_Theme_AppCompat;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::DnnSummit.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V23_Theme_AppCompat = global::DnnSummit.Droid.Resource.Style.Base_V23_Theme_AppCompat;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V23_Theme_AppCompat_Light = global::DnnSummit.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V26_Theme_AppCompat = global::DnnSummit.Droid.Resource.Style.Base_V26_Theme_AppCompat;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V26_Theme_AppCompat_Light = global::DnnSummit.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::DnnSummit.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V26_Widget_Design_AppBarLayout = global::DnnSummit.Droid.Resource.Style.Base_V26_Widget_Design_AppBarLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Theme_AppCompat = global::DnnSummit.Droid.Resource.Style.Base_V7_Theme_AppCompat;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::DnnSummit.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Theme_AppCompat_Light = global::DnnSummit.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
@@ -1366,6 +1481,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::DnnSummit.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::DnnSummit.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::DnnSummit.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::DnnSummit.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionBar = global::DnnSummit.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::DnnSummit.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::DnnSummit.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
@@ -1484,6 +1600,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Title = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Title;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Tooltip = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Tooltip;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
@@ -1503,6 +1620,16 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::DnnSummit.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Info = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Info_Media = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Line2_Media = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Media = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Media;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Time = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Time_Media = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Title = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Compat_Notification_Title_Media = global::DnnSummit.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::DnnSummit.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_Counter = global::DnnSummit.Droid.Resource.Style.TextAppearance_Design_Counter;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.TextAppearance_Design_Counter_Overflow = global::DnnSummit.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
@@ -1631,6 +1758,8 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Toolbar = global::DnnSummit.Droid.Resource.Style.Widget_AppCompat_Toolbar;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::DnnSummit.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_CirclePageIndicator = global::DnnSummit.Droid.Resource.Style.Widget_CirclePageIndicator;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Compat_NotificationActionContainer = global::DnnSummit.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Compat_NotificationActionText = global::DnnSummit.Droid.Resource.Style.Widget_Compat_NotificationActionText;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_AppBarLayout = global::DnnSummit.Droid.Resource.Style.Widget_Design_AppBarLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_BottomNavigationView = global::DnnSummit.Droid.Resource.Style.Widget_Design_BottomNavigationView;
 			global::CarouselView.FormsPlugin.Android.Resource.Style.Widget_Design_BottomSheet_Modal = global::DnnSummit.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
@@ -1699,6 +1828,8 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::DnnSummit.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout = global::DnnSummit.Droid.Resource.Styleable.AppBarLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_android_background = global::DnnSummit.Droid.Resource.Styleable.AppBarLayout_android_background;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::DnnSummit.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::DnnSummit.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_elevation = global::DnnSummit.Droid.Resource.Styleable.AppBarLayout_elevation;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayout_expanded = global::DnnSummit.Droid.Resource.Styleable.AppBarLayout_expanded;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppBarLayoutStates = global::DnnSummit.Droid.Resource.Styleable.AppBarLayoutStates;
@@ -1727,6 +1858,12 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_android_textAppearance = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_fontFamily = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTextView_textAllCaps = global::DnnSummit.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_actionBarDivider = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
@@ -1783,6 +1920,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorControlActivated = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorControlNormal = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorError = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_colorError;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorPrimary = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
@@ -1835,6 +1973,8 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_toolbarStyle = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowActionBar = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::DnnSummit.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
@@ -1943,6 +2083,17 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_useCompatPadding = global::DnnSummit.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::DnnSummit.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::DnnSummit.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamily = global::DnnSummit.Droid.Resource.Styleable.FontFamily;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamily_fontProviderAuthority = global::DnnSummit.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamily_fontProviderCerts = global::DnnSummit.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::DnnSummit.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::DnnSummit.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamily_fontProviderPackage = global::DnnSummit.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamily_fontProviderQuery = global::DnnSummit.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamilyFont = global::DnnSummit.Droid.Resource.Styleable.FontFamilyFont;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamilyFont_font = global::DnnSummit.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamilyFont_fontStyle = global::DnnSummit.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.FontFamilyFont_fontWeight = global::DnnSummit.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ForegroundLinearLayout = global::DnnSummit.Droid.Resource.Styleable.ForegroundLinearLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::DnnSummit.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::DnnSummit.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
@@ -1969,6 +2120,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MediaRouteButton_android_minHeight = global::DnnSummit.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MediaRouteButton_android_minWidth = global::DnnSummit.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::DnnSummit.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MediaRouteButton_mediaRouteButtonTint = global::DnnSummit.Droid.Resource.Styleable.MediaRouteButton_mediaRouteButtonTint;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup = global::DnnSummit.Droid.Resource.Styleable.MenuGroup;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup_android_checkableBehavior = global::DnnSummit.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuGroup_android_enabled = global::DnnSummit.Droid.Resource.Styleable.MenuGroup_android_enabled;
@@ -1980,6 +2132,7 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_actionLayout = global::DnnSummit.Droid.Resource.Styleable.MenuItem_actionLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_actionProviderClass = global::DnnSummit.Droid.Resource.Styleable.MenuItem_actionProviderClass;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_actionViewClass = global::DnnSummit.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_alphabeticModifiers = global::DnnSummit.Droid.Resource.Styleable.MenuItem_alphabeticModifiers;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::DnnSummit.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_checkable = global::DnnSummit.Droid.Resource.Styleable.MenuItem_android_checkable;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_checked = global::DnnSummit.Droid.Resource.Styleable.MenuItem_android_checked;
@@ -1993,7 +2146,12 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_title = global::DnnSummit.Droid.Resource.Styleable.MenuItem_android_title;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_titleCondensed = global::DnnSummit.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_android_visible = global::DnnSummit.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_contentDescription = global::DnnSummit.Droid.Resource.Styleable.MenuItem_contentDescription;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_iconTint = global::DnnSummit.Droid.Resource.Styleable.MenuItem_iconTint;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_iconTintMode = global::DnnSummit.Droid.Resource.Styleable.MenuItem_iconTintMode;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_numericModifiers = global::DnnSummit.Droid.Resource.Styleable.MenuItem_numericModifiers;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_showAsAction = global::DnnSummit.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuItem_tooltipText = global::DnnSummit.Droid.Resource.Styleable.MenuItem_tooltipText;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView = global::DnnSummit.Droid.Resource.Styleable.MenuView;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_headerBackground = global::DnnSummit.Droid.Resource.Styleable.MenuView_android_headerBackground;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.MenuView_android_horizontalDivider = global::DnnSummit.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
@@ -2027,6 +2185,11 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView = global::DnnSummit.Droid.Resource.Styleable.RecyclerView;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_android_descendantFocusability = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_android_orientation = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_fastScrollEnabled = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_layoutManager = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_layoutManager;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_reverseLayout = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_reverseLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.RecyclerView_spanCount = global::DnnSummit.Droid.Resource.Styleable.RecyclerView_spanCount;
@@ -2100,15 +2263,18 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabTextAppearance = global::DnnSummit.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TabLayout_tabTextColor = global::DnnSummit.Droid.Resource.Styleable.TabLayout_tabTextColor;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance = global::DnnSummit.Droid.Resource.Styleable.TextAppearance;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_fontFamily = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_fontFamily;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_shadowColor = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_shadowDx = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_shadowDy = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_shadowRadius = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textColor = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_textColor;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textColorHint = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textColorLink = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_textColorLink;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textSize = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_textSize;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_textStyle = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_textStyle;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_android_typeface = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_fontFamily = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_fontFamily;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextAppearance_textAllCaps = global::DnnSummit.Droid.Resource.Styleable.TextAppearance_textAllCaps;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout = global::DnnSummit.Droid.Resource.Styleable.TextInputLayout;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.TextInputLayout_android_hint = global::DnnSummit.Droid.Resource.Styleable.TextInputLayout_android_hint;
@@ -2173,49 +2339,6 @@ namespace DnnSummit.Droid
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewStubCompat_android_id = global::DnnSummit.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::DnnSummit.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::CarouselView.FormsPlugin.Android.Resource.Styleable.ViewStubCompat_android_layout = global::DnnSummit.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::Com.Android.DeskClock.Resource.String.library_name = global::DnnSummit.Droid.Resource.String.library_name;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiCentered = global::DnnSummit.Droid.Resource.Attribute.vpiCentered;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiCirclePageIndicatorStyle = global::DnnSummit.Droid.Resource.Attribute.vpiCirclePageIndicatorStyle;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiFillColor = global::DnnSummit.Droid.Resource.Attribute.vpiFillColor;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiOrientation = global::DnnSummit.Droid.Resource.Attribute.vpiOrientation;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiPageColor = global::DnnSummit.Droid.Resource.Attribute.vpiPageColor;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiRadius = global::DnnSummit.Droid.Resource.Attribute.vpiRadius;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiSnap = global::DnnSummit.Droid.Resource.Attribute.vpiSnap;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiStrokeColor = global::DnnSummit.Droid.Resource.Attribute.vpiStrokeColor;
-			global::Com.ViewPagerIndicator.Resource.Attribute.vpiStrokeWidth = global::DnnSummit.Droid.Resource.Attribute.vpiStrokeWidth;
-			global::Com.ViewPagerIndicator.Resource.Boolean.default_circle_indicator_centered = global::DnnSummit.Droid.Resource.Boolean.default_circle_indicator_centered;
-			global::Com.ViewPagerIndicator.Resource.Boolean.default_circle_indicator_snap = global::DnnSummit.Droid.Resource.Boolean.default_circle_indicator_snap;
-			global::Com.ViewPagerIndicator.Resource.Color.default_circle_indicator_fill_color = global::DnnSummit.Droid.Resource.Color.default_circle_indicator_fill_color;
-			global::Com.ViewPagerIndicator.Resource.Color.default_circle_indicator_page_color = global::DnnSummit.Droid.Resource.Color.default_circle_indicator_page_color;
-			global::Com.ViewPagerIndicator.Resource.Color.default_circle_indicator_stroke_color = global::DnnSummit.Droid.Resource.Color.default_circle_indicator_stroke_color;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__background_holo_dark = global::DnnSummit.Droid.Resource.Color.vpi__background_holo_dark;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__background_holo_light = global::DnnSummit.Droid.Resource.Color.vpi__background_holo_light;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_disabled_holo_dark = global::DnnSummit.Droid.Resource.Color.vpi__bright_foreground_disabled_holo_dark;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_disabled_holo_light = global::DnnSummit.Droid.Resource.Color.vpi__bright_foreground_disabled_holo_light;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_holo_dark = global::DnnSummit.Droid.Resource.Color.vpi__bright_foreground_holo_dark;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_holo_light = global::DnnSummit.Droid.Resource.Color.vpi__bright_foreground_holo_light;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_inverse_holo_dark = global::DnnSummit.Droid.Resource.Color.vpi__bright_foreground_inverse_holo_dark;
-			global::Com.ViewPagerIndicator.Resource.Color.vpi__bright_foreground_inverse_holo_light = global::DnnSummit.Droid.Resource.Color.vpi__bright_foreground_inverse_holo_light;
-			global::Com.ViewPagerIndicator.Resource.Dimension.default_circle_indicator_radius = global::DnnSummit.Droid.Resource.Dimension.default_circle_indicator_radius;
-			global::Com.ViewPagerIndicator.Resource.Dimension.default_circle_indicator_stroke_width = global::DnnSummit.Droid.Resource.Dimension.default_circle_indicator_stroke_width;
-			global::Com.ViewPagerIndicator.Resource.Id.horizontal = global::DnnSummit.Droid.Resource.Id.horizontal;
-			global::Com.ViewPagerIndicator.Resource.Id.vertical = global::DnnSummit.Droid.Resource.Id.vertical;
-			global::Com.ViewPagerIndicator.Resource.Integer.default_circle_indicator_orientation = global::DnnSummit.Droid.Resource.Integer.default_circle_indicator_orientation;
-			global::Com.ViewPagerIndicator.Resource.String.library_name = global::DnnSummit.Droid.Resource.String.library_name;
-			global::Com.ViewPagerIndicator.Resource.Style.Theme_PageIndicatorDefaults = global::DnnSummit.Droid.Resource.Style.Theme_PageIndicatorDefaults;
-			global::Com.ViewPagerIndicator.Resource.Style.Widget = global::DnnSummit.Droid.Resource.Style.Widget;
-			global::Com.ViewPagerIndicator.Resource.Style.Widget_CirclePageIndicator = global::DnnSummit.Droid.Resource.Style.Widget_CirclePageIndicator;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiCentered = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator_vpiCentered;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiFillColor = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator_vpiFillColor;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiOrientation = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator_vpiOrientation;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiPageColor = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator_vpiPageColor;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiRadius = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator_vpiRadius;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiSnap = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator_vpiSnap;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiStrokeColor = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator_vpiStrokeColor;
-			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiStrokeWidth = global::DnnSummit.Droid.Resource.Styleable.CirclePageIndicator_vpiStrokeWidth;
-			global::Com.ViewPagerIndicator.Resource.Styleable.ViewPagerIndicator = global::DnnSummit.Droid.Resource.Styleable.ViewPagerIndicator;
-			global::Com.ViewPagerIndicator.Resource.Styleable.ViewPagerIndicator_vpiCirclePageIndicatorStyle = global::DnnSummit.Droid.Resource.Styleable.ViewPagerIndicator_vpiCirclePageIndicatorStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::DnnSummit.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -4608,733 +4731,742 @@ namespace DnnSummit.Droid
 			public const int abc_vector_test = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int avd_hide_password = 2130837587;
-			
-			// aapt resource value: 0x7f020140
-			public const int avd_hide_password_1 = 2130837824;
-			
-			// aapt resource value: 0x7f020141
-			public const int avd_hide_password_2 = 2130837825;
-			
-			// aapt resource value: 0x7f020142
-			public const int avd_hide_password_3 = 2130837826;
+			public const int arrow_right = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int avd_show_password = 2130837588;
+			public const int avd_hide_password = 2130837588;
 			
 			// aapt resource value: 0x7f020143
-			public const int avd_show_password_1 = 2130837827;
+			public const int avd_hide_password_1 = 2130837827;
 			
 			// aapt resource value: 0x7f020144
-			public const int avd_show_password_2 = 2130837828;
+			public const int avd_hide_password_2 = 2130837828;
 			
 			// aapt resource value: 0x7f020145
-			public const int avd_show_password_3 = 2130837829;
+			public const int avd_hide_password_3 = 2130837829;
 			
 			// aapt resource value: 0x7f020055
-			public const int computer = 2130837589;
+			public const int avd_show_password = 2130837589;
+			
+			// aapt resource value: 0x7f020146
+			public const int avd_show_password_1 = 2130837830;
+			
+			// aapt resource value: 0x7f020147
+			public const int avd_show_password_2 = 2130837831;
+			
+			// aapt resource value: 0x7f020148
+			public const int avd_show_password_3 = 2130837832;
 			
 			// aapt resource value: 0x7f020056
-			public const int design_bottom_navigation_item_background = 2130837590;
+			public const int business = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int design_fab_background = 2130837591;
+			public const int computer = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int design_ic_visibility = 2130837592;
+			public const int design_bottom_navigation_item_background = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int design_ic_visibility_off = 2130837593;
+			public const int design_fab_background = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int design_password_eye = 2130837594;
+			public const int design_ic_visibility = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int design_snackbar_background = 2130837595;
+			public const int design_ic_visibility_off = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int Down = 2130837596;
+			public const int design_password_eye = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int @event = 2130837597;
+			public const int design_snackbar_background = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int group = 2130837598;
+			public const int Down = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int heart_empty = 2130837599;
+			public const int @event = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int ic_audiotrack_dark = 2130837600;
+			public const int group = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int ic_audiotrack_light = 2130837601;
+			public const int heart_empty = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int ic_dialog_close_dark = 2130837602;
+			public const int ic_audiotrack_dark = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int ic_dialog_close_light = 2130837603;
+			public const int ic_audiotrack_light = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int ic_group_collapse_00 = 2130837604;
+			public const int ic_dialog_close_dark = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_group_collapse_01 = 2130837605;
+			public const int ic_dialog_close_light = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_group_collapse_02 = 2130837606;
+			public const int ic_group_collapse_00 = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int ic_group_collapse_03 = 2130837607;
+			public const int ic_group_collapse_01 = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_group_collapse_04 = 2130837608;
+			public const int ic_group_collapse_02 = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int ic_group_collapse_05 = 2130837609;
+			public const int ic_group_collapse_03 = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int ic_group_collapse_06 = 2130837610;
+			public const int ic_group_collapse_04 = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int ic_group_collapse_07 = 2130837611;
+			public const int ic_group_collapse_05 = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int ic_group_collapse_08 = 2130837612;
+			public const int ic_group_collapse_06 = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int ic_group_collapse_09 = 2130837613;
+			public const int ic_group_collapse_07 = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int ic_group_collapse_10 = 2130837614;
+			public const int ic_group_collapse_08 = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int ic_group_collapse_11 = 2130837615;
+			public const int ic_group_collapse_09 = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int ic_group_collapse_12 = 2130837616;
+			public const int ic_group_collapse_10 = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int ic_group_collapse_13 = 2130837617;
+			public const int ic_group_collapse_11 = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int ic_group_collapse_14 = 2130837618;
+			public const int ic_group_collapse_12 = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int ic_group_collapse_15 = 2130837619;
+			public const int ic_group_collapse_13 = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_group_expand_00 = 2130837620;
+			public const int ic_group_collapse_14 = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_group_expand_01 = 2130837621;
+			public const int ic_group_collapse_15 = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_group_expand_02 = 2130837622;
+			public const int ic_group_expand_00 = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_group_expand_03 = 2130837623;
+			public const int ic_group_expand_01 = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int ic_group_expand_04 = 2130837624;
+			public const int ic_group_expand_02 = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int ic_group_expand_05 = 2130837625;
+			public const int ic_group_expand_03 = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int ic_group_expand_06 = 2130837626;
+			public const int ic_group_expand_04 = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int ic_group_expand_07 = 2130837627;
+			public const int ic_group_expand_05 = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_group_expand_08 = 2130837628;
+			public const int ic_group_expand_06 = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ic_group_expand_09 = 2130837629;
+			public const int ic_group_expand_07 = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int ic_group_expand_10 = 2130837630;
+			public const int ic_group_expand_08 = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int ic_group_expand_11 = 2130837631;
+			public const int ic_group_expand_09 = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int ic_group_expand_12 = 2130837632;
+			public const int ic_group_expand_10 = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int ic_group_expand_13 = 2130837633;
+			public const int ic_group_expand_11 = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int ic_group_expand_14 = 2130837634;
+			public const int ic_group_expand_12 = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int ic_group_expand_15 = 2130837635;
+			public const int ic_group_expand_13 = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int ic_media_pause_dark = 2130837636;
+			public const int ic_group_expand_14 = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int ic_media_pause_light = 2130837637;
+			public const int ic_group_expand_15 = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int ic_media_play_dark = 2130837638;
+			public const int ic_media_pause_dark = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int ic_media_play_light = 2130837639;
+			public const int ic_media_pause_light = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int ic_media_stop_dark = 2130837640;
+			public const int ic_media_play_dark = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int ic_media_stop_light = 2130837641;
+			public const int ic_media_play_light = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int ic_mr_button_connected_00_dark = 2130837642;
+			public const int ic_media_stop_dark = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int ic_mr_button_connected_00_light = 2130837643;
+			public const int ic_media_stop_light = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int ic_mr_button_connected_01_dark = 2130837644;
+			public const int ic_mr_button_connected_00_dark = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int ic_mr_button_connected_01_light = 2130837645;
+			public const int ic_mr_button_connected_00_light = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int ic_mr_button_connected_02_dark = 2130837646;
+			public const int ic_mr_button_connected_01_dark = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int ic_mr_button_connected_02_light = 2130837647;
+			public const int ic_mr_button_connected_01_light = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int ic_mr_button_connected_03_dark = 2130837648;
+			public const int ic_mr_button_connected_02_dark = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int ic_mr_button_connected_03_light = 2130837649;
+			public const int ic_mr_button_connected_02_light = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int ic_mr_button_connected_04_dark = 2130837650;
+			public const int ic_mr_button_connected_03_dark = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int ic_mr_button_connected_04_light = 2130837651;
+			public const int ic_mr_button_connected_03_light = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int ic_mr_button_connected_05_dark = 2130837652;
+			public const int ic_mr_button_connected_04_dark = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int ic_mr_button_connected_05_light = 2130837653;
+			public const int ic_mr_button_connected_04_light = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int ic_mr_button_connected_06_dark = 2130837654;
+			public const int ic_mr_button_connected_05_dark = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int ic_mr_button_connected_06_light = 2130837655;
+			public const int ic_mr_button_connected_05_light = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int ic_mr_button_connected_07_dark = 2130837656;
+			public const int ic_mr_button_connected_06_dark = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int ic_mr_button_connected_07_light = 2130837657;
+			public const int ic_mr_button_connected_06_light = 2130837657;
 			
 			// aapt resource value: 0x7f02009a
-			public const int ic_mr_button_connected_08_dark = 2130837658;
+			public const int ic_mr_button_connected_07_dark = 2130837658;
 			
 			// aapt resource value: 0x7f02009b
-			public const int ic_mr_button_connected_08_light = 2130837659;
+			public const int ic_mr_button_connected_07_light = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int ic_mr_button_connected_09_dark = 2130837660;
+			public const int ic_mr_button_connected_08_dark = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int ic_mr_button_connected_09_light = 2130837661;
+			public const int ic_mr_button_connected_08_light = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int ic_mr_button_connected_10_dark = 2130837662;
+			public const int ic_mr_button_connected_09_dark = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int ic_mr_button_connected_10_light = 2130837663;
+			public const int ic_mr_button_connected_09_light = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int ic_mr_button_connected_11_dark = 2130837664;
+			public const int ic_mr_button_connected_10_dark = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int ic_mr_button_connected_11_light = 2130837665;
+			public const int ic_mr_button_connected_10_light = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int ic_mr_button_connected_12_dark = 2130837666;
+			public const int ic_mr_button_connected_11_dark = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int ic_mr_button_connected_12_light = 2130837667;
+			public const int ic_mr_button_connected_11_light = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int ic_mr_button_connected_13_dark = 2130837668;
+			public const int ic_mr_button_connected_12_dark = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int ic_mr_button_connected_13_light = 2130837669;
+			public const int ic_mr_button_connected_12_light = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int ic_mr_button_connected_14_dark = 2130837670;
+			public const int ic_mr_button_connected_13_dark = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int ic_mr_button_connected_14_light = 2130837671;
+			public const int ic_mr_button_connected_13_light = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int ic_mr_button_connected_15_dark = 2130837672;
+			public const int ic_mr_button_connected_14_dark = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int ic_mr_button_connected_15_light = 2130837673;
+			public const int ic_mr_button_connected_14_light = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int ic_mr_button_connected_16_dark = 2130837674;
+			public const int ic_mr_button_connected_15_dark = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int ic_mr_button_connected_16_light = 2130837675;
+			public const int ic_mr_button_connected_15_light = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int ic_mr_button_connected_17_dark = 2130837676;
+			public const int ic_mr_button_connected_16_dark = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int ic_mr_button_connected_17_light = 2130837677;
+			public const int ic_mr_button_connected_16_light = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int ic_mr_button_connected_18_dark = 2130837678;
+			public const int ic_mr_button_connected_17_dark = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int ic_mr_button_connected_18_light = 2130837679;
+			public const int ic_mr_button_connected_17_light = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int ic_mr_button_connected_19_dark = 2130837680;
+			public const int ic_mr_button_connected_18_dark = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int ic_mr_button_connected_19_light = 2130837681;
+			public const int ic_mr_button_connected_18_light = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int ic_mr_button_connected_20_dark = 2130837682;
+			public const int ic_mr_button_connected_19_dark = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int ic_mr_button_connected_20_light = 2130837683;
+			public const int ic_mr_button_connected_19_light = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int ic_mr_button_connected_21_dark = 2130837684;
+			public const int ic_mr_button_connected_20_dark = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int ic_mr_button_connected_21_light = 2130837685;
+			public const int ic_mr_button_connected_20_light = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int ic_mr_button_connected_22_dark = 2130837686;
+			public const int ic_mr_button_connected_21_dark = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int ic_mr_button_connected_22_light = 2130837687;
+			public const int ic_mr_button_connected_21_light = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int ic_mr_button_connected_23_dark = 2130837688;
+			public const int ic_mr_button_connected_22_dark = 2130837688;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int ic_mr_button_connected_23_light = 2130837689;
+			public const int ic_mr_button_connected_22_light = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int ic_mr_button_connected_24_dark = 2130837690;
+			public const int ic_mr_button_connected_23_dark = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int ic_mr_button_connected_24_light = 2130837691;
+			public const int ic_mr_button_connected_23_light = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int ic_mr_button_connected_25_dark = 2130837692;
+			public const int ic_mr_button_connected_24_dark = 2130837692;
 			
 			// aapt resource value: 0x7f0200bd
-			public const int ic_mr_button_connected_25_light = 2130837693;
+			public const int ic_mr_button_connected_24_light = 2130837693;
 			
 			// aapt resource value: 0x7f0200be
-			public const int ic_mr_button_connected_26_dark = 2130837694;
+			public const int ic_mr_button_connected_25_dark = 2130837694;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int ic_mr_button_connected_26_light = 2130837695;
+			public const int ic_mr_button_connected_25_light = 2130837695;
 			
 			// aapt resource value: 0x7f0200c0
-			public const int ic_mr_button_connected_27_dark = 2130837696;
+			public const int ic_mr_button_connected_26_dark = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int ic_mr_button_connected_27_light = 2130837697;
+			public const int ic_mr_button_connected_26_light = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int ic_mr_button_connected_28_dark = 2130837698;
+			public const int ic_mr_button_connected_27_dark = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int ic_mr_button_connected_28_light = 2130837699;
+			public const int ic_mr_button_connected_27_light = 2130837699;
 			
 			// aapt resource value: 0x7f0200c4
-			public const int ic_mr_button_connected_29_dark = 2130837700;
+			public const int ic_mr_button_connected_28_dark = 2130837700;
 			
 			// aapt resource value: 0x7f0200c5
-			public const int ic_mr_button_connected_29_light = 2130837701;
+			public const int ic_mr_button_connected_28_light = 2130837701;
 			
 			// aapt resource value: 0x7f0200c6
-			public const int ic_mr_button_connected_30_dark = 2130837702;
+			public const int ic_mr_button_connected_29_dark = 2130837702;
 			
 			// aapt resource value: 0x7f0200c7
-			public const int ic_mr_button_connected_30_light = 2130837703;
+			public const int ic_mr_button_connected_29_light = 2130837703;
 			
 			// aapt resource value: 0x7f0200c8
-			public const int ic_mr_button_connecting_00_dark = 2130837704;
+			public const int ic_mr_button_connected_30_dark = 2130837704;
 			
 			// aapt resource value: 0x7f0200c9
-			public const int ic_mr_button_connecting_00_light = 2130837705;
+			public const int ic_mr_button_connected_30_light = 2130837705;
 			
 			// aapt resource value: 0x7f0200ca
-			public const int ic_mr_button_connecting_01_dark = 2130837706;
+			public const int ic_mr_button_connecting_00_dark = 2130837706;
 			
 			// aapt resource value: 0x7f0200cb
-			public const int ic_mr_button_connecting_01_light = 2130837707;
+			public const int ic_mr_button_connecting_00_light = 2130837707;
 			
 			// aapt resource value: 0x7f0200cc
-			public const int ic_mr_button_connecting_02_dark = 2130837708;
+			public const int ic_mr_button_connecting_01_dark = 2130837708;
 			
 			// aapt resource value: 0x7f0200cd
-			public const int ic_mr_button_connecting_02_light = 2130837709;
+			public const int ic_mr_button_connecting_01_light = 2130837709;
 			
 			// aapt resource value: 0x7f0200ce
-			public const int ic_mr_button_connecting_03_dark = 2130837710;
+			public const int ic_mr_button_connecting_02_dark = 2130837710;
 			
 			// aapt resource value: 0x7f0200cf
-			public const int ic_mr_button_connecting_03_light = 2130837711;
+			public const int ic_mr_button_connecting_02_light = 2130837711;
 			
 			// aapt resource value: 0x7f0200d0
-			public const int ic_mr_button_connecting_04_dark = 2130837712;
+			public const int ic_mr_button_connecting_03_dark = 2130837712;
 			
 			// aapt resource value: 0x7f0200d1
-			public const int ic_mr_button_connecting_04_light = 2130837713;
+			public const int ic_mr_button_connecting_03_light = 2130837713;
 			
 			// aapt resource value: 0x7f0200d2
-			public const int ic_mr_button_connecting_05_dark = 2130837714;
+			public const int ic_mr_button_connecting_04_dark = 2130837714;
 			
 			// aapt resource value: 0x7f0200d3
-			public const int ic_mr_button_connecting_05_light = 2130837715;
+			public const int ic_mr_button_connecting_04_light = 2130837715;
 			
 			// aapt resource value: 0x7f0200d4
-			public const int ic_mr_button_connecting_06_dark = 2130837716;
+			public const int ic_mr_button_connecting_05_dark = 2130837716;
 			
 			// aapt resource value: 0x7f0200d5
-			public const int ic_mr_button_connecting_06_light = 2130837717;
+			public const int ic_mr_button_connecting_05_light = 2130837717;
 			
 			// aapt resource value: 0x7f0200d6
-			public const int ic_mr_button_connecting_07_dark = 2130837718;
+			public const int ic_mr_button_connecting_06_dark = 2130837718;
 			
 			// aapt resource value: 0x7f0200d7
-			public const int ic_mr_button_connecting_07_light = 2130837719;
+			public const int ic_mr_button_connecting_06_light = 2130837719;
 			
 			// aapt resource value: 0x7f0200d8
-			public const int ic_mr_button_connecting_08_dark = 2130837720;
+			public const int ic_mr_button_connecting_07_dark = 2130837720;
 			
 			// aapt resource value: 0x7f0200d9
-			public const int ic_mr_button_connecting_08_light = 2130837721;
+			public const int ic_mr_button_connecting_07_light = 2130837721;
 			
 			// aapt resource value: 0x7f0200da
-			public const int ic_mr_button_connecting_09_dark = 2130837722;
+			public const int ic_mr_button_connecting_08_dark = 2130837722;
 			
 			// aapt resource value: 0x7f0200db
-			public const int ic_mr_button_connecting_09_light = 2130837723;
+			public const int ic_mr_button_connecting_08_light = 2130837723;
 			
 			// aapt resource value: 0x7f0200dc
-			public const int ic_mr_button_connecting_10_dark = 2130837724;
+			public const int ic_mr_button_connecting_09_dark = 2130837724;
 			
 			// aapt resource value: 0x7f0200dd
-			public const int ic_mr_button_connecting_10_light = 2130837725;
+			public const int ic_mr_button_connecting_09_light = 2130837725;
 			
 			// aapt resource value: 0x7f0200de
-			public const int ic_mr_button_connecting_11_dark = 2130837726;
+			public const int ic_mr_button_connecting_10_dark = 2130837726;
 			
 			// aapt resource value: 0x7f0200df
-			public const int ic_mr_button_connecting_11_light = 2130837727;
+			public const int ic_mr_button_connecting_10_light = 2130837727;
 			
 			// aapt resource value: 0x7f0200e0
-			public const int ic_mr_button_connecting_12_dark = 2130837728;
+			public const int ic_mr_button_connecting_11_dark = 2130837728;
 			
 			// aapt resource value: 0x7f0200e1
-			public const int ic_mr_button_connecting_12_light = 2130837729;
+			public const int ic_mr_button_connecting_11_light = 2130837729;
 			
 			// aapt resource value: 0x7f0200e2
-			public const int ic_mr_button_connecting_13_dark = 2130837730;
+			public const int ic_mr_button_connecting_12_dark = 2130837730;
 			
 			// aapt resource value: 0x7f0200e3
-			public const int ic_mr_button_connecting_13_light = 2130837731;
+			public const int ic_mr_button_connecting_12_light = 2130837731;
 			
 			// aapt resource value: 0x7f0200e4
-			public const int ic_mr_button_connecting_14_dark = 2130837732;
+			public const int ic_mr_button_connecting_13_dark = 2130837732;
 			
 			// aapt resource value: 0x7f0200e5
-			public const int ic_mr_button_connecting_14_light = 2130837733;
+			public const int ic_mr_button_connecting_13_light = 2130837733;
 			
 			// aapt resource value: 0x7f0200e6
-			public const int ic_mr_button_connecting_15_dark = 2130837734;
+			public const int ic_mr_button_connecting_14_dark = 2130837734;
 			
 			// aapt resource value: 0x7f0200e7
-			public const int ic_mr_button_connecting_15_light = 2130837735;
+			public const int ic_mr_button_connecting_14_light = 2130837735;
 			
 			// aapt resource value: 0x7f0200e8
-			public const int ic_mr_button_connecting_16_dark = 2130837736;
+			public const int ic_mr_button_connecting_15_dark = 2130837736;
 			
 			// aapt resource value: 0x7f0200e9
-			public const int ic_mr_button_connecting_16_light = 2130837737;
+			public const int ic_mr_button_connecting_15_light = 2130837737;
 			
 			// aapt resource value: 0x7f0200ea
-			public const int ic_mr_button_connecting_17_dark = 2130837738;
+			public const int ic_mr_button_connecting_16_dark = 2130837738;
 			
 			// aapt resource value: 0x7f0200eb
-			public const int ic_mr_button_connecting_17_light = 2130837739;
+			public const int ic_mr_button_connecting_16_light = 2130837739;
 			
 			// aapt resource value: 0x7f0200ec
-			public const int ic_mr_button_connecting_18_dark = 2130837740;
+			public const int ic_mr_button_connecting_17_dark = 2130837740;
 			
 			// aapt resource value: 0x7f0200ed
-			public const int ic_mr_button_connecting_18_light = 2130837741;
+			public const int ic_mr_button_connecting_17_light = 2130837741;
 			
 			// aapt resource value: 0x7f0200ee
-			public const int ic_mr_button_connecting_19_dark = 2130837742;
+			public const int ic_mr_button_connecting_18_dark = 2130837742;
 			
 			// aapt resource value: 0x7f0200ef
-			public const int ic_mr_button_connecting_19_light = 2130837743;
+			public const int ic_mr_button_connecting_18_light = 2130837743;
 			
 			// aapt resource value: 0x7f0200f0
-			public const int ic_mr_button_connecting_20_dark = 2130837744;
+			public const int ic_mr_button_connecting_19_dark = 2130837744;
 			
 			// aapt resource value: 0x7f0200f1
-			public const int ic_mr_button_connecting_20_light = 2130837745;
+			public const int ic_mr_button_connecting_19_light = 2130837745;
 			
 			// aapt resource value: 0x7f0200f2
-			public const int ic_mr_button_connecting_21_dark = 2130837746;
+			public const int ic_mr_button_connecting_20_dark = 2130837746;
 			
 			// aapt resource value: 0x7f0200f3
-			public const int ic_mr_button_connecting_21_light = 2130837747;
+			public const int ic_mr_button_connecting_20_light = 2130837747;
 			
 			// aapt resource value: 0x7f0200f4
-			public const int ic_mr_button_connecting_22_dark = 2130837748;
+			public const int ic_mr_button_connecting_21_dark = 2130837748;
 			
 			// aapt resource value: 0x7f0200f5
-			public const int ic_mr_button_connecting_22_light = 2130837749;
+			public const int ic_mr_button_connecting_21_light = 2130837749;
 			
 			// aapt resource value: 0x7f0200f6
-			public const int ic_mr_button_connecting_23_dark = 2130837750;
+			public const int ic_mr_button_connecting_22_dark = 2130837750;
 			
 			// aapt resource value: 0x7f0200f7
-			public const int ic_mr_button_connecting_23_light = 2130837751;
+			public const int ic_mr_button_connecting_22_light = 2130837751;
 			
 			// aapt resource value: 0x7f0200f8
-			public const int ic_mr_button_connecting_24_dark = 2130837752;
+			public const int ic_mr_button_connecting_23_dark = 2130837752;
 			
 			// aapt resource value: 0x7f0200f9
-			public const int ic_mr_button_connecting_24_light = 2130837753;
+			public const int ic_mr_button_connecting_23_light = 2130837753;
 			
 			// aapt resource value: 0x7f0200fa
-			public const int ic_mr_button_connecting_25_dark = 2130837754;
+			public const int ic_mr_button_connecting_24_dark = 2130837754;
 			
 			// aapt resource value: 0x7f0200fb
-			public const int ic_mr_button_connecting_25_light = 2130837755;
+			public const int ic_mr_button_connecting_24_light = 2130837755;
 			
 			// aapt resource value: 0x7f0200fc
-			public const int ic_mr_button_connecting_26_dark = 2130837756;
+			public const int ic_mr_button_connecting_25_dark = 2130837756;
 			
 			// aapt resource value: 0x7f0200fd
-			public const int ic_mr_button_connecting_26_light = 2130837757;
+			public const int ic_mr_button_connecting_25_light = 2130837757;
 			
 			// aapt resource value: 0x7f0200fe
-			public const int ic_mr_button_connecting_27_dark = 2130837758;
+			public const int ic_mr_button_connecting_26_dark = 2130837758;
 			
 			// aapt resource value: 0x7f0200ff
-			public const int ic_mr_button_connecting_27_light = 2130837759;
+			public const int ic_mr_button_connecting_26_light = 2130837759;
 			
 			// aapt resource value: 0x7f020100
-			public const int ic_mr_button_connecting_28_dark = 2130837760;
+			public const int ic_mr_button_connecting_27_dark = 2130837760;
 			
 			// aapt resource value: 0x7f020101
-			public const int ic_mr_button_connecting_28_light = 2130837761;
+			public const int ic_mr_button_connecting_27_light = 2130837761;
 			
 			// aapt resource value: 0x7f020102
-			public const int ic_mr_button_connecting_29_dark = 2130837762;
+			public const int ic_mr_button_connecting_28_dark = 2130837762;
 			
 			// aapt resource value: 0x7f020103
-			public const int ic_mr_button_connecting_29_light = 2130837763;
+			public const int ic_mr_button_connecting_28_light = 2130837763;
 			
 			// aapt resource value: 0x7f020104
-			public const int ic_mr_button_connecting_30_dark = 2130837764;
+			public const int ic_mr_button_connecting_29_dark = 2130837764;
 			
 			// aapt resource value: 0x7f020105
-			public const int ic_mr_button_connecting_30_light = 2130837765;
+			public const int ic_mr_button_connecting_29_light = 2130837765;
 			
 			// aapt resource value: 0x7f020106
-			public const int ic_mr_button_disabled_dark = 2130837766;
+			public const int ic_mr_button_connecting_30_dark = 2130837766;
 			
 			// aapt resource value: 0x7f020107
-			public const int ic_mr_button_disabled_light = 2130837767;
+			public const int ic_mr_button_connecting_30_light = 2130837767;
 			
 			// aapt resource value: 0x7f020108
-			public const int ic_mr_button_disconnected_dark = 2130837768;
+			public const int ic_mr_button_disabled_dark = 2130837768;
 			
 			// aapt resource value: 0x7f020109
-			public const int ic_mr_button_disconnected_light = 2130837769;
+			public const int ic_mr_button_disabled_light = 2130837769;
 			
 			// aapt resource value: 0x7f02010a
-			public const int ic_mr_button_grey = 2130837770;
+			public const int ic_mr_button_disconnected_dark = 2130837770;
 			
 			// aapt resource value: 0x7f02010b
-			public const int ic_vol_type_speaker_dark = 2130837771;
+			public const int ic_mr_button_disconnected_light = 2130837771;
 			
 			// aapt resource value: 0x7f02010c
-			public const int ic_vol_type_speaker_group_dark = 2130837772;
+			public const int ic_mr_button_grey = 2130837772;
 			
 			// aapt resource value: 0x7f02010d
-			public const int ic_vol_type_speaker_group_light = 2130837773;
+			public const int ic_vol_type_speaker_dark = 2130837773;
 			
 			// aapt resource value: 0x7f02010e
-			public const int ic_vol_type_speaker_light = 2130837774;
+			public const int ic_vol_type_speaker_group_dark = 2130837774;
 			
 			// aapt resource value: 0x7f02010f
-			public const int ic_vol_type_tv_dark = 2130837775;
+			public const int ic_vol_type_speaker_group_light = 2130837775;
 			
 			// aapt resource value: 0x7f020110
-			public const int ic_vol_type_tv_light = 2130837776;
+			public const int ic_vol_type_speaker_light = 2130837776;
 			
 			// aapt resource value: 0x7f020111
-			public const int info = 2130837777;
+			public const int ic_vol_type_tv_dark = 2130837777;
 			
 			// aapt resource value: 0x7f020112
-			public const int location = 2130837778;
+			public const int ic_vol_type_tv_light = 2130837778;
 			
 			// aapt resource value: 0x7f020113
-			public const int mountain = 2130837779;
+			public const int info = 2130837779;
 			
 			// aapt resource value: 0x7f020114
-			public const int mr_button_connected_dark = 2130837780;
+			public const int location = 2130837780;
 			
 			// aapt resource value: 0x7f020115
-			public const int mr_button_connected_light = 2130837781;
+			public const int mountain = 2130837781;
 			
 			// aapt resource value: 0x7f020116
-			public const int mr_button_connecting_dark = 2130837782;
+			public const int mr_button_connected_dark = 2130837782;
 			
 			// aapt resource value: 0x7f020117
-			public const int mr_button_connecting_light = 2130837783;
+			public const int mr_button_connected_light = 2130837783;
 			
 			// aapt resource value: 0x7f020118
-			public const int mr_button_dark = 2130837784;
+			public const int mr_button_connecting_dark = 2130837784;
 			
 			// aapt resource value: 0x7f020119
-			public const int mr_button_light = 2130837785;
+			public const int mr_button_connecting_light = 2130837785;
 			
 			// aapt resource value: 0x7f02011a
-			public const int mr_dialog_close_dark = 2130837786;
+			public const int mr_button_dark = 2130837786;
 			
 			// aapt resource value: 0x7f02011b
-			public const int mr_dialog_close_light = 2130837787;
+			public const int mr_button_light = 2130837787;
 			
 			// aapt resource value: 0x7f02011c
-			public const int mr_dialog_material_background_dark = 2130837788;
+			public const int mr_dialog_close_dark = 2130837788;
 			
 			// aapt resource value: 0x7f02011d
-			public const int mr_dialog_material_background_light = 2130837789;
+			public const int mr_dialog_close_light = 2130837789;
 			
 			// aapt resource value: 0x7f02011e
-			public const int mr_group_collapse = 2130837790;
+			public const int mr_dialog_material_background_dark = 2130837790;
 			
 			// aapt resource value: 0x7f02011f
-			public const int mr_group_expand = 2130837791;
+			public const int mr_dialog_material_background_light = 2130837791;
 			
 			// aapt resource value: 0x7f020120
-			public const int mr_media_pause_dark = 2130837792;
+			public const int mr_group_collapse = 2130837792;
 			
 			// aapt resource value: 0x7f020121
-			public const int mr_media_pause_light = 2130837793;
+			public const int mr_group_expand = 2130837793;
 			
 			// aapt resource value: 0x7f020122
-			public const int mr_media_play_dark = 2130837794;
+			public const int mr_media_pause_dark = 2130837794;
 			
 			// aapt resource value: 0x7f020123
-			public const int mr_media_play_light = 2130837795;
+			public const int mr_media_pause_light = 2130837795;
 			
 			// aapt resource value: 0x7f020124
-			public const int mr_media_stop_dark = 2130837796;
+			public const int mr_media_play_dark = 2130837796;
 			
 			// aapt resource value: 0x7f020125
-			public const int mr_media_stop_light = 2130837797;
+			public const int mr_media_play_light = 2130837797;
 			
 			// aapt resource value: 0x7f020126
-			public const int mr_vol_type_audiotrack_dark = 2130837798;
+			public const int mr_media_stop_dark = 2130837798;
 			
 			// aapt resource value: 0x7f020127
-			public const int mr_vol_type_audiotrack_light = 2130837799;
+			public const int mr_media_stop_light = 2130837799;
 			
 			// aapt resource value: 0x7f020128
-			public const int navbar_icon = 2130837800;
+			public const int mr_vol_type_audiotrack_dark = 2130837800;
 			
 			// aapt resource value: 0x7f020129
-			public const int navigation_empty_icon = 2130837801;
+			public const int mr_vol_type_audiotrack_light = 2130837801;
 			
 			// aapt resource value: 0x7f02012a
-			public const int Next = 2130837802;
+			public const int navbar_icon = 2130837802;
 			
 			// aapt resource value: 0x7f02012b
-			public const int notification_action_background = 2130837803;
+			public const int navigation_empty_icon = 2130837803;
 			
 			// aapt resource value: 0x7f02012c
-			public const int notification_bg = 2130837804;
+			public const int Next = 2130837804;
 			
 			// aapt resource value: 0x7f02012d
-			public const int notification_bg_low = 2130837805;
+			public const int notification_action_background = 2130837805;
 			
 			// aapt resource value: 0x7f02012e
-			public const int notification_bg_low_normal = 2130837806;
+			public const int notification_bg = 2130837806;
 			
 			// aapt resource value: 0x7f02012f
-			public const int notification_bg_low_pressed = 2130837807;
+			public const int notification_bg_low = 2130837807;
 			
 			// aapt resource value: 0x7f020130
-			public const int notification_bg_normal = 2130837808;
+			public const int notification_bg_low_normal = 2130837808;
 			
 			// aapt resource value: 0x7f020131
-			public const int notification_bg_normal_pressed = 2130837809;
+			public const int notification_bg_low_pressed = 2130837809;
 			
 			// aapt resource value: 0x7f020132
-			public const int notification_icon_background = 2130837810;
-			
-			// aapt resource value: 0x7f02013e
-			public const int notification_template_icon_bg = 2130837822;
-			
-			// aapt resource value: 0x7f02013f
-			public const int notification_template_icon_low_bg = 2130837823;
+			public const int notification_bg_normal = 2130837810;
 			
 			// aapt resource value: 0x7f020133
-			public const int notification_tile_bg = 2130837811;
+			public const int notification_bg_normal_pressed = 2130837811;
 			
 			// aapt resource value: 0x7f020134
-			public const int notify_panel_notification_icon_bg = 2130837812;
+			public const int notification_icon_background = 2130837812;
+			
+			// aapt resource value: 0x7f020141
+			public const int notification_template_icon_bg = 2130837825;
+			
+			// aapt resource value: 0x7f020142
+			public const int notification_template_icon_low_bg = 2130837826;
 			
 			// aapt resource value: 0x7f020135
-			public const int play = 2130837813;
+			public const int notification_tile_bg = 2130837813;
 			
 			// aapt resource value: 0x7f020136
-			public const int Prev = 2130837814;
+			public const int notify_panel_notification_icon_bg = 2130837814;
 			
 			// aapt resource value: 0x7f020137
-			public const int profile = 2130837815;
+			public const int play = 2130837815;
 			
 			// aapt resource value: 0x7f020138
-			public const int sessions = 2130837816;
+			public const int Prev = 2130837816;
 			
 			// aapt resource value: 0x7f020139
-			public const int splash_icon = 2130837817;
+			public const int profile = 2130837817;
 			
 			// aapt resource value: 0x7f02013a
-			public const int splash_screen = 2130837818;
+			public const int sessions = 2130837818;
 			
 			// aapt resource value: 0x7f02013b
-			public const int tooltip_frame_dark = 2130837819;
+			public const int splash_icon = 2130837819;
 			
 			// aapt resource value: 0x7f02013c
-			public const int tooltip_frame_light = 2130837820;
+			public const int splash_screen = 2130837820;
 			
 			// aapt resource value: 0x7f02013d
-			public const int Up = 2130837821;
+			public const int tooltip_frame_dark = 2130837821;
+			
+			// aapt resource value: 0x7f02013e
+			public const int tooltip_frame_light = 2130837822;
+			
+			// aapt resource value: 0x7f02013f
+			public const int Up = 2130837823;
+			
+			// aapt resource value: 0x7f020140
+			public const int wrench = 2130837824;
 			
 			static Drawable()
 			{
@@ -6403,9 +6535,6 @@ namespace DnnSummit.Droid
 			
 			// aapt resource value: 0x7f0a0035
 			public const int character_counter_pattern = 2131361845;
-			
-			// aapt resource value: 0x7f0a003c
-			public const int library_name = 2131361852;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;

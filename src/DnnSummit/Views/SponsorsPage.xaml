@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:s="clr-namespace:DnnSummit.Selectors"
+             xmlns:c="clr-namespace:DnnSummit.Controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="Root"
+             x:Class="DnnSummit.Views.SponsorsPage">
+    <NavigationPage.TitleView>
+        <c:LogoTitleView Title="Sponsors"
+                         Icon="navbar_icon" />
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ListView">
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="SeparatorColor" Value="Transparent" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            <DataTemplate x:Key="TitlePlatinumTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout>
+                            <Image Source="{Binding DataContext.ImageLink}"
+                                   Aspect="AspectFit"
+                                   HeightRequest="200">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
+                                                          CommandParameter="{Binding DataContext}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>                        
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="GoldTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                          SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
+                                          SponsorsPerRow="2"
+                                          RowHeight="100"
+                                          Margin="0,0,0,5"/>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="SilverTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                          SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
+                                          SponsorsPerRow="2"
+                                          RowHeight="75"
+                                          Margin="0,0,0,5"/>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="BronzeTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                          SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
+                                          SponsorsPerRow="3"
+                                          RowHeight="40"
+                                          Margin="0,0,0,5"/>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <s:SponsorDataTemplateSelector x:Key="SponsorTemplate" 
+                                           TitleTemplate="{StaticResource TitlePlatinumTemplate}"
+                                           PlatinumTemplate="{StaticResource TitlePlatinumTemplate}"
+                                           GoldTemplate="{StaticResource GoldTemplate}"
+                                           SilverTemplate="{StaticResource SilverTemplate}"
+                                           BronzeTemplate="{StaticResource BronzeTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     Padding="15, 0">
+            <ListView ItemsSource="{Binding Sponsors}"
+                      ItemTemplate="{StaticResource SponsorTemplate}"
+                      ItemTapped="ListView_ItemTapped"
+                      HasUnevenRows="True"
+                      RowHeight="200" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

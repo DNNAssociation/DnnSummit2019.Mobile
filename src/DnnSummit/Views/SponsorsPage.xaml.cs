@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace DnnSummit.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class InfoPage : ContentPage
+	public partial class SponsorsPage : ContentPage
 	{
-		public InfoPage ()
+		public SponsorsPage ()
 		{
 			InitializeComponent ();
 		}

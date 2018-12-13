@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:c="clr-namespace:DnnSummit.Controls"
-             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
@@ -10,25 +9,48 @@
              x:Class="DnnSummit.Views.InfoPage">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="CarouselTemplate">
-                <Frame BorderColor="LightGray"
-                       CornerRadius="3"
-                       HasShadow="False">
-                    <StackLayout Grid.Column="1"
-                                 Grid.Row="1"
-                                 HorizontalOptions="CenterAndExpand"
-                                 VerticalOptions="CenterAndExpand">
-                        <Label Text="Andrew" />
-                        <Label Text="Description" />
-                        <Label Text="Slider" />
-                    </StackLayout>
-                </Frame>
+            <Style TargetType="ListView">
+                <Setter Property="HasUnevenRows" Value="True" />
+                <Setter Property="SeparatorColor" Value="Transparent" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+            </Style>
+            <DataTemplate x:Key="InfoTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Frame BackgroundColor="{StaticResource DarkBlue}"
+                               Margin="25, 10"
+                               Padding="10, 20">
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="CenterAndExpand"
+                                         HorizontalOptions="FillAndExpand"
+                                         Spacing="20">
+                                <Image Source="{Binding InfoType, Converter={StaticResource InfoTypeToImageConverter}}"  />
+                                <Label Text="{Binding Title}"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource Orange}"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start" />
+                                <Image Source="arrow_right"
+                                       VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="EndAndExpand"
+                                       Margin="0, 0, 10, 0"/>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell.View>
+                </ViewCell>
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <cv:CarouselViewControl ItemsSource="{Binding Pages}"
-                                ItemTemplate="{StaticResource CarouselTemplate}"
-                                Margin="10"/>
+        <ListView ItemsSource="{Binding Pages}"
+                  ItemTemplate="{StaticResource InfoTemplate}"
+                  ItemTapped="ListView_ItemTapped">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped"
+                                          Command="{Binding InfoSelected}"
+                                          EventArgsParameterPath="Item"/>
+            </ListView.Behaviors>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

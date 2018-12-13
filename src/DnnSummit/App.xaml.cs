@@ -41,6 +41,7 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<LocationPage>(Constants.Navigation.LocationPage);
             containerRegistry.RegisterForNavigation<ScheduleDetailsPage>(Constants.Navigation.ScheduleDetailsPage);
             containerRegistry.RegisterForNavigation<SessionDetailsPage>(Constants.Navigation.SessionDetailsPage);
+            containerRegistry.RegisterForNavigation<SponsorsPage>(Constants.Navigation.SponsorsPage);
             Data.Startup.RegisterDependencies(containerRegistry);
         }
 

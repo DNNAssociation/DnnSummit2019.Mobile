@@ -75,20 +75,13 @@ namespace DnnSummit.ViewModels
                 {
                     Title = details.Title;
                     Description = details.Description;
-
-                    var data = await ScheduleService.GetAsync("day 1");
-                    Heading = data.BannerTitle;
-                    SubHeading = data.BannerHeading;
+                    Heading = details.Banner.Heading;
+                    SubHeading = details.Banner.SubHeading;
 
                     ContentSections.Clear();
-                    foreach (var item in data.Sections)
+                    foreach (var item in details.ContentSections)
                     {
-                        ContentSections.Add(new ScheduleContent
-                        {
-                            Title = item.Title,
-                            Heading = item.Heading,
-                            Description = item.Description
-                        });
+                        ContentSections.Add(item);
                     }
 
                     isSuccessful = true;

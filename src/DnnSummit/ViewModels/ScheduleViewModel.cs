@@ -6,6 +6,7 @@ using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using DnnSummit.Extensions;
+using System.Linq;
 
 namespace DnnSummit.ViewModels
 {
@@ -52,7 +53,14 @@ namespace DnnSummit.ViewModels
                     Title = item.Title,
                     Notes = item.CardDescription,
                     Description = item.CardDescription,
-                    Avatar = item.Title.ToScheduleType()
+                    Avatar = item.Title.ToScheduleType(),
+                    Banner = (item.BannerTitle, item.BannerHeading),
+                    ContentSections = item.Sections.Select(x => new ScheduleContent
+                    {
+                        Title = x.Title,
+                        Heading = x.Heading,
+                        Description = x.Description
+                    })
                 });
             }
         }

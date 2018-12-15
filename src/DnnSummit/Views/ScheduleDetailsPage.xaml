@@ -64,7 +64,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <Grid HorizontalOptions="FillAndExpand">
-                <Image Source="https://www.dnnsummit.org/Portals/0/Images/Summit2017/schedule-base-camp-photo.jpg"
+                <Image Source="{Binding Image}"
                        VerticalOptions="Start"
                        Aspect="AspectFill"
                        HorizontalOptions="FillAndExpand" />

@@ -8,7 +8,7 @@ namespace DnnSummit.Models
         public string Notes { get; set; }
         public string Description { get; set; }
         public ScheduleType Avatar { get; set; }
-        public (string Heading, string SubHeading) Banner { get; set; }
+        public (string Heading, string SubHeading, string Image) Banner { get; set; }
         public IEnumerable<ScheduleContent> ContentSections { get; set; }
     }
 }

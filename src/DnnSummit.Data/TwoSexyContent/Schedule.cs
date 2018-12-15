@@ -12,6 +12,9 @@ namespace DnnSummit.Data.TwoSexyContent
         [JsonProperty("BannerHeading")]
         public string BannerHeading { get; set; }
 
+        [JsonProperty("BannerImage")]
+        public string BannerImage { get; set; }
+
         [JsonProperty("MobileAppTitle")]
         public string MobileAppTitle { get; set; }
 

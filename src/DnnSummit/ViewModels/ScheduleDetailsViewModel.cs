@@ -60,6 +60,18 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private string _image;
+        public string Image
+        {
+            get { return _image; }
+            set
+            {
+                SetProperty(ref _image, value);
+                RaisePropertyChanged(nameof(Image));
+            }
+        }
+
+
         public ICommand VideoSelected { get; }
 
         public ObservableCollection<ScheduleContent> ContentSections { get; set; }
@@ -100,6 +112,7 @@ namespace DnnSummit.ViewModels
                     Description = details.Description;
                     Heading = details.Banner.Heading;
                     SubHeading = details.Banner.SubHeading;
+                    Image = details.Banner.Image;
 
                     ContentSections.Clear();
                     foreach (var item in details.ContentSections)

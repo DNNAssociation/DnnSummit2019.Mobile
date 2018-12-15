@@ -8,6 +8,7 @@ namespace DnnSummit.Data.Models
         public string CardDescription { get; set; }
         public string BannerTitle { get; set; }
         public string BannerHeading { get; set; }
+        public string BannerImage { get; set; }
         public IEnumerable<Content> Sections { get; set; }
     }
 }

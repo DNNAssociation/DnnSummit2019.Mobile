@@ -44,6 +44,7 @@ namespace DnnSummit.Data.Services
                     CardDescription = day.MobileAppTitle,
                     BannerTitle = day.BannerTitle,
                     BannerHeading = day.BannerHeading,
+                    BannerImage = $"https://www.dnnsummit.org{day.BannerImage}",
                     Sections = publishedSections
                 });
             }

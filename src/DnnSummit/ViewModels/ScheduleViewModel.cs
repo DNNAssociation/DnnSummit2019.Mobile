@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using DnnSummit.Extensions;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -59,7 +60,9 @@ namespace DnnSummit.ViewModels
                     {
                         Title = x.Title,
                         Heading = x.Heading,
-                        Description = x.Description
+                        Description = x.Description,
+                        VideoLink = x.VideoLink,
+                        VideoButtonTitle = x.VideoButtonTitle
                     })
                 });
             }

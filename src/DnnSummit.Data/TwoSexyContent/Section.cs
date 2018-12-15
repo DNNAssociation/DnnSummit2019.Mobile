@@ -25,5 +25,8 @@ namespace DnnSummit.Data.TwoSexyContent
 
         [JsonProperty("YouTubeLink")]
         public string YouTubeLink { get; set; }
+
+        [JsonProperty("YouTubeButtonTitle")]
+        public string YouTubeButtonTitle { get; set; }
     }
 }

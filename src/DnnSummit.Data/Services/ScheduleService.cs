@@ -29,7 +29,9 @@ namespace DnnSummit.Data.Services
                         {
                             Title = current.Title,
                             Heading = current.SubTitle,
-                            Description = current.Content
+                            Description = current.Content,
+                            VideoLink = current.YouTubeLink,
+                            VideoButtonTitle = current.YouTubeButtonTitle
                         });
                     }
                 }

@@ -20,6 +20,7 @@ namespace DnnSummit.Data.Services
 
         protected Task<IEnumerable<TEntity>> QueryAsync()
         {
+            // this pulls back only published data
             return QueryAsync<TEntity>(Method);
         }
 

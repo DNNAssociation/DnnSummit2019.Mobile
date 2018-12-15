@@ -49,6 +49,7 @@
             <converters:SessionTrackToStringConverter x:Key="SessionTrackToStringConverter" />
             <converters:SessionTrackToColorConverter x:Key="SessionTrackToColorConverter" />
             <converters:NotTrueConverter x:Key="NotTrueConverter" />
+            <converters:IsNotStringNullOrEmptyConverter x:Key="IsNotStringNullOrEmptyConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

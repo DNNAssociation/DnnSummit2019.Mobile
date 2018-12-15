@@ -6,6 +6,8 @@ using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using DnnSummit.Extensions;
+using System.Linq;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -52,7 +54,18 @@ namespace DnnSummit.ViewModels
                     Title = item.Title,
                     Notes = item.CardDescription,
                     Description = item.CardDescription,
-                    Avatar = item.Title.ToScheduleType()
+                    Avatar = item.Title.ToScheduleType(),
+                    Banner = (item.BannerTitle, item.BannerHeading, item.BannerImage),
+                    ContentSections = item.Sections.Select(x => new ScheduleContent
+                    {
+                        Title = x.Title,
+                        SubTitle = x.SubTitle,
+                        SubTitleNormal = x.SubTitleNormal,
+                        Heading = x.Heading,
+                        Description = x.Description,
+                        VideoLink = x.VideoLink,
+                        VideoButtonTitle = x.VideoButtonTitle
+                    })
                 });
             }
         }

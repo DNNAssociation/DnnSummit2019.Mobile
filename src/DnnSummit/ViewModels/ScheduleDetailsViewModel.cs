@@ -3,15 +3,18 @@ using DnnSummit.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
     public class ScheduleDetailsViewModel : BindableBase, INavigatingAware
     {
         protected IScheduleService ScheduleService { get; }
+        protected IPageDialogService PageDialogService { get; }
 
         private string _title;
         public string Title
@@ -57,12 +60,44 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private string _image;
+        public string Image
+        {
+            get { return _image; }
+            set
+            {
+                SetProperty(ref _image, value);
+                RaisePropertyChanged(nameof(Image));
+            }
+        }
+
+
+        public ICommand VideoSelected { get; }
+
         public ObservableCollection<ScheduleContent> ContentSections { get; set; }
 
-        public ScheduleDetailsViewModel(IScheduleService scheduleService)
+        public ScheduleDetailsViewModel(
+            IPageDialogService pageDialogService,
+            IScheduleService scheduleService)
         {
+            PageDialogService = pageDialogService;
             ScheduleService = scheduleService;
             ContentSections = new ObservableCollection<ScheduleContent>();
+            VideoSelected = new DelegateCommand<string>(OnVideoSelected);
+        }
+
+        private async void OnVideoSelected(string link)
+        {
+            if (string.IsNullOrEmpty(link)) return;
+
+            try
+            {
+                Device.OpenUri(new Uri(link));
+            }
+            catch (Exception)
+            {
+                await PageDialogService.DisplayAlertAsync("Something went wrong", "Unable to open video", "OK");
+            }
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)
@@ -75,20 +110,14 @@ namespace DnnSummit.ViewModels
                 {
                     Title = details.Title;
                     Description = details.Description;
-
-                    var data = await ScheduleService.GetAsync("day 1");
-                    Heading = data.BannerTitle;
-                    SubHeading = data.BannerHeading;
+                    Heading = details.Banner.Heading;
+                    SubHeading = details.Banner.SubHeading;
+                    Image = details.Banner.Image;
 
                     ContentSections.Clear();
-                    foreach (var item in data.Sections)
+                    foreach (var item in details.ContentSections)
                     {
-                        ContentSections.Add(new ScheduleContent
-                        {
-                            Title = item.Title,
-                            Heading = item.Heading,
-                            Description = item.Description
-                        });
+                        ContentSections.Add(item);
                     }
 
                     isSuccessful = true;

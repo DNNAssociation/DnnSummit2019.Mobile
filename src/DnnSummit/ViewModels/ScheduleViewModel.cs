@@ -59,6 +59,8 @@ namespace DnnSummit.ViewModels
                     ContentSections = item.Sections.Select(x => new ScheduleContent
                     {
                         Title = x.Title,
+                        SubTitle = x.SubTitle,
+                        SubTitleNormal = x.SubTitleNormal,
                         Heading = x.Heading,
                         Description = x.Description,
                         VideoLink = x.VideoLink,

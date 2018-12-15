@@ -28,7 +28,9 @@ namespace DnnSummit.Data.Services
                         publishedSections.Add(new Content
                         {
                             Title = current.Title,
-                            Heading = current.SubTitle,
+                            SubTitle = current.SubTitle,
+                            SubTitleNormal = current.SubTitleNormal,
+                            Heading = current.Heading,
                             Description = current.Content,
                             VideoLink = current.YouTubeLink,
                             VideoButtonTitle = current.YouTubeButtonTitle

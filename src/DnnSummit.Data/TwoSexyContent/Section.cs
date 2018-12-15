@@ -14,6 +14,9 @@ namespace DnnSummit.Data.TwoSexyContent
         [JsonProperty("IsBigTitle")]
         public bool IsBigTitle { get; set; }
 
+        [JsonProperty("Heading")]
+        public string Heading { get; set; }
+
         [JsonProperty("Content")]
         public string Content { get; set; }
 

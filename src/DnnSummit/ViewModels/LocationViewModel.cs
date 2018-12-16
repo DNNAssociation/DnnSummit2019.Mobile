@@ -1,4 +1,5 @@
-﻿using DnnSummit.Models;
+﻿using DnnSummit.Data.Services.Interfaces;
+using DnnSummit.Models;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.Generic;
@@ -8,7 +9,11 @@ namespace DnnSummit.ViewModels
 {
     public class LocationViewModel : BindableBase, INavigatingAware
     {
+        protected ILocationService LocationService { get; }
+
         public string Title => "Location";
+
+        public ObservableCollection<Location> Locations { get; }
 
         private IEnumerable<Location> _pages;
         public IEnumerable<Location> Pages
@@ -21,15 +26,45 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        public LocationViewModel()
+        public LocationViewModel(ILocationService locationService)
         {
+            LocationService = locationService;
+            Locations = new ObservableCollection<Location>();
             Pages = new ObservableCollection<Location>();
         }
 
-        public void OnNavigatingTo(INavigationParameters parameters)
+        public async void OnNavigatingTo(INavigationParameters parameters)
         {
+            var data = await LocationService.GetAsync();
+            Locations.Clear();
+            foreach (var item in data)
+            {
+                Locations.Add(new Location
+                {
+                    Title = item.Title,
+                    Description = item.Description,
+                    HotelName = item.HotelName,
+                    HotelStandardsTitle = item.HotelStandardsTitle,
+                    HotelStandards = item.HotelStandards,
+                    Address = item.Address,
+                    PhoneNumber = item.PhoneNumber,
+                    DirectionsFromAirport = item.DirectionsFromAirport,
+                    ParkingInformation = item.ParkingInformation,
+                    LocalAttractionsTitle = item.LocalAttractionsTitle,
+                    LocalAttractions = item.LocalAttractions,
+                    Image = item.Image,
+                    LearnMoreUrl = item.LearnMoreUrl,
+                    BookNowUrl = item.BookNowUrl,
+                    PhoneNumberUrl = item.PhoneNumberUrl,
+                    WebsiteUrl = item.WebsiteUrl,
+                    MapUrl = item.MapUrl,
+                    WebsiteName = item.WebsiteName
+                });
+            }
+            Pages = Locations;
+
             // TODO - pull this from the dnn summit website
-            Pages = new[]
+            /*Pages = new[]
             {
                 new Location
                 {
@@ -59,7 +94,7 @@ namespace DnnSummit.ViewModels
                     Title = "Things to do",
                     Description = "DNN Summit will be held at Embassy Suites and Convention Center February 19–21, 2019. Embassy Suites is in the heart of downtown Denver, just steps away from restaurants, shopping malls, nightlife &amp; more."
                 }
-            };
+            };*/
         }
     }
 }

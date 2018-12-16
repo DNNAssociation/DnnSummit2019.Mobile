@@ -16,7 +16,7 @@
             <DataTemplate x:Key="PageTemplate">
                 <StackLayout Spacing="0">
                     <Grid HorizontalOptions="FillAndExpand">
-                        <Image Source="{Binding ImageSource}"
+                        <Image Source="{Binding Image}"
                                VerticalOptions="Start"
                                Aspect="AspectFill"
                                HorizontalOptions="FillAndExpand" />
@@ -24,7 +24,7 @@
                                      Spacing="0"
                                      VerticalOptions="CenterAndExpand"
                                      HorizontalOptions="CenterAndExpand">
-                            <Label Text="{Binding ImageTitle}"
+                            <Label Text="{Binding Title}"
                                    TextColor="White"
                                    FontSize="30"
                                    FontAttributes="Bold"

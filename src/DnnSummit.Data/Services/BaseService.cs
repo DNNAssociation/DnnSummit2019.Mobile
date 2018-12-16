@@ -17,7 +17,7 @@ namespace DnnSummit.Data.Services
             Client.BaseAddress = new Uri(endpoint);
             Method = method;
         }
-
+        
         protected Task<IEnumerable<TEntity>> QueryAsync()
         {
             // this pulls back only published data

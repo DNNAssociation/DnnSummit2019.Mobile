@@ -5,7 +5,8 @@ using Prism.Ioc;
 namespace DnnSummit.Data
 {
     public static class Startup
-    {
+    {   
+        public const string BarrelName = "DnnSummit2019";
         public static void RegisterDependencies(IContainerRegistry container)
         {
             container.Register<ISessionService, SessionService>();

@@ -1,11 +1,8 @@
 ﻿using DnnSummit.Data.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DnnSummit.Data.Services.Interfaces
 {
-    public interface ISpeakerService
+    public interface ISpeakerService : IService<Speaker>
     {
-        Task<IEnumerable<Speaker>> GetAsync();
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Prism.Mvvm;
 
-namespace DnnSummit.ViewModels
+namespace DnnSummit.Models
 {
-    public class LocationInfoViewModel : BindableBase
+    public class Location : BindableBase
     {
         private string _title;
         public string Title

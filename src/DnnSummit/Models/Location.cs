@@ -1,51 +1,26 @@
-﻿using Prism.Mvvm;
+﻿using System.Collections.Generic;
 
 namespace DnnSummit.Models
 {
-    public class Location : BindableBase
+    public class Location
     {
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set
-            {
-                SetProperty(ref _title, value);
-                RaisePropertyChanged(nameof(Title));
-            }
-        }
-
-        private string _imageSource;
-        public string ImageSource
-        {
-            get { return _imageSource; }
-            set
-            {
-                SetProperty(ref _imageSource, value);
-                RaisePropertyChanged(nameof(ImageSource));
-            }
-        }
-
-        private string _imageTitle;
-        public string ImageTitle
-        {
-            get { return _imageTitle; }
-            set
-            {
-                SetProperty(ref _imageTitle, value);
-                RaisePropertyChanged(nameof(ImageTitle));
-            }
-        }
-
-        private string _description;
-        public string Description
-        {
-            get { return _description; }
-            set
-            {
-                SetProperty(ref _description, value);
-                RaisePropertyChanged(nameof(Description));
-            }
-        }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string HotelName { get; set; }
+        public string HotelStandardsTitle { get; set; }
+        public IEnumerable<string> HotelStandards { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+        public string DirectionsFromAirport { get; set; }
+        public string ParkingInformation { get; set; }
+        public string LocalAttractionsTitle { get; set; }
+        public IEnumerable<string> LocalAttractions { get; set; }
+        public string Image { get; set; }
+        public string LearnMoreUrl { get; set; }
+        public string BookNowUrl { get; set; }
+        public string PhoneNumberUrl { get; set; }
+        public string WebsiteUrl { get; set; }
+        public string MapUrl { get; set; }
+        public string WebsiteName { get; set; }
     }
 }

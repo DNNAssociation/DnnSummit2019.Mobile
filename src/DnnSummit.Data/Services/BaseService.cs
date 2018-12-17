@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace DnnSummit.Data.Services
 {
@@ -19,18 +20,34 @@ namespace DnnSummit.Data.Services
             Method = method;
         }
 
-        public virtual async Task<IEnumerable<TModel>> GetAsync()
+        public virtual async Task<IEnumerable<TModel>> GetAsync(bool forceRefresh = false)
         {
-            if (!Barrel.Current.IsExpired(Method))
+            try
             {
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet ||
+                    (!forceRefresh && !Barrel.Current.IsExpired(Method)))
+                {
+                    var cachedJson = Barrel.Current.Get<string>(Method);
+                    return JsonConvert.DeserializeObject<IEnumerable<TModel>>(cachedJson);
+                }
+
+                var data = await QueryAndMapAsync();
+                Barrel.Current.Add(Method, JsonConvert.SerializeObject(data), TimeSpan.FromDays(5));
+
+                return data;
+            }
+            catch (Exception)
+            {
+                // something went wrong we should pull from local database if possible
                 var cachedJson = Barrel.Current.Get<string>(Method);
-                return JsonConvert.DeserializeObject<IEnumerable<TModel>>(cachedJson);
+                if (!string.IsNullOrEmpty(cachedJson))
+                {
+                    var cached = JsonConvert.DeserializeObject<IEnumerable<TModel>>(cachedJson);
+                    return cached;
+                }
             }
 
-            var data = await QueryAndMapAsync();
-            Barrel.Current.Add(Method, JsonConvert.SerializeObject(data), TimeSpan.FromDays(5));
-
-            return data;
+            return default(IEnumerable<TModel>);
         }
 
         protected abstract Task<IEnumerable<TModel>> QueryAndMapAsync();

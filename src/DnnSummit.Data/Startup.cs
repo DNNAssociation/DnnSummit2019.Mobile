@@ -10,6 +10,7 @@ namespace DnnSummit.Data
         public const string BarrelName = "DnnSummit2019";
         public static void RegisterDependencies(IContainerRegistry container)
         {
+            container.Register<ILocationService, LocationService>();
             container.Register<ISessionService, SessionService>();
             container.Register<IScheduleService, ScheduleService>();
             container.Register<ISpeakerService, SpeakerService>();

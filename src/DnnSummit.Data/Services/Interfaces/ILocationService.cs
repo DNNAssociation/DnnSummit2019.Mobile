@@ -1,11 +1,8 @@
 ﻿using DnnSummit.Data.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DnnSummit.Data.Services.Interfaces
 {
-    public interface ILocationService
+    public interface ILocationService : IService<Location>
     {
-        Task<IEnumerable<Location>> GetAsync();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DnnSummit.Data.Services;
 using DnnSummit.Data.Services.Interfaces;
+using MonkeyCache.SQLite;
 using Prism.Ioc;
 
 namespace DnnSummit.Data
@@ -13,6 +14,7 @@ namespace DnnSummit.Data
             container.Register<IScheduleService, ScheduleService>();
             container.Register<ISpeakerService, SpeakerService>();
             container.Register<ISponsorService, SponsorService>();
+            Barrel.ApplicationId = Startup.BarrelName;
         }
     }
 }

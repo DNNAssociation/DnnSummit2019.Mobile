@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DnnSummit.Data.Services
 {
-    internal class ScheduleService : BaseService<TwoSexyContent.Schedule>, IScheduleService
+    internal class ScheduleService : BaseService<TwoSexyContent.Schedule, ScheduleDetails>, IScheduleService
     {
         public ScheduleService()
             : base("https://www.dnnsummit.org/desktopmodules/2sxc/api/app/DnnSummit2019/Query/", "GetSchedules") { }
 
-        public async Task<IEnumerable<ScheduleDetails>> GetAsync()
+        protected override async Task<IEnumerable<ScheduleDetails>> QueryAndMapAsync()
         {
             var days = await QueryAsync();
             var sections = await QueryAsync<TwoSexyContent.Section>("GetContentSections");

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DnnSummit.Data.Services
 {
-    internal class SpeakerService : BaseService<TwoSexyContent.Speaker>, ISpeakerService
+    internal class SpeakerService : BaseService<TwoSexyContent.Speaker, Speaker>, ISpeakerService
     {
         public SpeakerService()
             : base("https://www.dnnsummit.org/desktopmodules/2sxc/api/app/DnnSummit2019/Query/", "GetSpeakers") { }
-        public async Task<IEnumerable<Speaker>> GetAsync()
+        protected override async Task<IEnumerable<Speaker>> QueryAndMapAsync()
         {
             var speakers = await QueryAsync();
             var sessions = (await QueryAsync<TwoSexyContent.Session>("GetSessions"))

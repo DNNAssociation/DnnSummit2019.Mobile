@@ -23,6 +23,7 @@ namespace DnnSummit
         protected async override void OnInitialized()
         {
             InitializeComponent();
+            Data.Startup.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
             await NavigationService.NavigateAsync(EntryPoint);
         }

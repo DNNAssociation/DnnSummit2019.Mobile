@@ -7,7 +7,7 @@ namespace DnnSummit.Data
 {
     public static class Startup
     {   
-        public const string BarrelName = "DnnSummit2019";
+        internal const string BarrelName = "DnnSummit2019";
         public static void RegisterDependencies(IContainerRegistry container)
         {
             container.Register<ILocationService, LocationService>();
@@ -15,6 +15,10 @@ namespace DnnSummit.Data
             container.Register<IScheduleService, ScheduleService>();
             container.Register<ISpeakerService, SpeakerService>();
             container.Register<ISponsorService, SponsorService>();
+        }
+
+        public static void Initialize()
+        {
             Barrel.ApplicationId = Startup.BarrelName;
         }
     }

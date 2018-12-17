@@ -20,6 +20,11 @@ namespace DnnSummit.Data.Services
             Method = method;
         }
 
+        public virtual async Task SyncAsync()
+        {
+            await GetAsync(true);
+        }
+
         public virtual async Task<IEnumerable<TModel>> GetAsync(bool forceRefresh = false)
         {
             try

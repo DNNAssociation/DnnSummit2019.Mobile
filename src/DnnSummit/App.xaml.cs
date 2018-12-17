@@ -6,6 +6,7 @@ using Prism.Unity;
 using System;
 using System.Globalization;
 using System.Reflection;
+using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,13 +20,19 @@ namespace DnnSummit
         {
         }
 
-
-        protected async override void OnInitialized()
+        protected override void OnInitialized()
         {
             InitializeComponent();
             Data.Startup.Initialize();
+
+            // TODO - determine most effecient way to do data pull
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                Data.Startup.SyndDataAsync(Container);
+            }
+
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
-            await NavigationService.NavigateAsync(EntryPoint);
+            NavigationService.NavigateAsync(EntryPoint);
         }
 
 

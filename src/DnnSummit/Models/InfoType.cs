@@ -16,7 +16,7 @@ namespace DnnSummit.Models
         [ImageResource(Name = "wrench")]
         Notifications,
 
-        [ImageResource(Name = "wrench")]
+        [ImageResource(Name = "download")]
         Update
     }
 }

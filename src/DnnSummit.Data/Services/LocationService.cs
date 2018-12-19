@@ -1,5 +1,4 @@
-﻿using DnnSummit.Data.Extensions;
-using DnnSummit.Data.Models;
+﻿using DnnSummit.Data.Models;
 using DnnSummit.Data.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DnnSummit.Data.Services
 {
-    internal class LocationService : BaseService<TwoSexyContent.Location>, ILocationService
+    internal class LocationService : BaseService<TwoSexyContent.Location, Location>, ILocationService
     {
         public LocationService()
             : base("https://www.dnnsummit.org/desktopmodules/2sxc/api/app/DnnSummit2019/Query/", "GetLocations")
         {
         }
 
-        public async Task<IEnumerable<Location>> GetAsync()
+        protected override async Task<IEnumerable<Location>> QueryAndMapAsync()
         {
             var locations = await QueryAsync();
             return locations.Select(x => new Location

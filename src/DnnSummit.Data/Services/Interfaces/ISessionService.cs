@@ -1,11 +1,8 @@
 ﻿using DnnSummit.Data.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DnnSummit.Data.Services.Interfaces
 {
-    public interface ISessionService
+    public interface ISessionService : IService<Session>
     {
-        Task<IEnumerable<Session>> GetAsync();
     }
 }

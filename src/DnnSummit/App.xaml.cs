@@ -6,6 +6,7 @@ using Prism.Unity;
 using System;
 using System.Globalization;
 using System.Reflection;
+using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -13,18 +14,27 @@ namespace DnnSummit
 {
     public partial class App : PrismApplication
     {
-        public const string EntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+        public const string Dashboard = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+        public const string EntryPoint = "/" + Constants.Navigation.LoadingPage;
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
         }
 
-
-        protected async override void OnInitialized()
+        protected override void OnInitialized()
         {
             InitializeComponent();
+            Data.Startup.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
-            await NavigationService.NavigateAsync(EntryPoint);
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                NavigationService.NavigateAsync(EntryPoint);
+            }
+            else
+            {
+                NavigationService.NavigateAsync(Dashboard);
+            }
         }
 
 
@@ -36,6 +46,7 @@ namespace DnnSummit
 
         private void RegisterNavigation(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<LoadingPage>(Constants.Navigation.LoadingPage);
             containerRegistry.RegisterForNavigation<DnnSummitNavigationPage>(Constants.Navigation.NavigationPage);
             containerRegistry.RegisterForNavigation<DnnSummitTabbedPage>(Constants.Navigation.TabbedPage);
             containerRegistry.RegisterForNavigation<LocationPage>(Constants.Navigation.LocationPage);

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DnnSummit"
+             BackgroundColor="{StaticResource SplashBackground}"
+             x:Class="DnnSummit.Views.LoadingPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="splash_icon"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="Downloading Content . . ." />
+            <ProgressBar local:AttachedProperties.AnimatedProgress="{Binding PercentCompleted}"
+                         ProgressColor="{StaticResource DarkBlue}" />
+            <Label Text="{Binding PercentCompleted, Converter={StaticResource PercentToStringConverter}}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

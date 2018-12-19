@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace DnnSummit.Data.Services
 {
-    internal class SponsorService : BaseService<TwoSexyContent.Sponsor>, ISponsorService
+    internal class SponsorService : BaseService<TwoSexyContent.Sponsor, Sponsor>, ISponsorService
     {
         public SponsorService() 
             : base("https://www.dnnsummit.org/desktopmodules/2sxc/api/app/DnnSummit2019/Query/", "GetSponsors")
         {
         }
 
-        public async Task<IEnumerable<Sponsor>> GetAsync()
+        protected override async Task<IEnumerable<Sponsor>> QueryAndMapAsync()
         {
             var sponsors = await QueryAsync();
             return sponsors.Select(x => new Sponsor

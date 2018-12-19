@@ -1,15 +1,14 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Essentials;
 
 namespace DnnSummit.ViewModels
 {
     public class LoadingViewModel : BindableBase, INavigatingAware
     {
+        protected INavigationService NavigationService { get; }
+
         private double _percentCompleted;
         public double PercentCompleted
         {
@@ -21,8 +20,9 @@ namespace DnnSummit.ViewModels
             }
         }
         
-        public LoadingViewModel()
+        public LoadingViewModel(INavigationService navigationService)
         {
+            NavigationService = navigationService;
         }
 
         private async Task DownloadAsync()
@@ -30,6 +30,9 @@ namespace DnnSummit.ViewModels
             Data.Startup.ProgressUpdated += OnProgressUpdated;
             await Data.Startup.SyndDataAsync(App.Current.Container);
             Data.Startup.ProgressUpdated -= OnProgressUpdated;
+
+            await Task.Delay(1000); // makes sure the animation completes before navigating to the dashboard
+            await NavigationService.NavigateAsync(App.Dashboard);
         }
 
         private void OnProgressUpdated(object sender, EventArgs e)

@@ -9,6 +9,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <!-- Colors -->
+            <Color x:Key="SplashBackground">#ff4b1f</Color>
             <Color x:Key="Orange">#ea7e3b</Color>
             <Color x:Key="DarkBlue">#1e345d</Color>
             <Color x:Key="ListDivider">#c3c3c3</Color>
@@ -42,6 +43,7 @@
                 <Setter Property="CurrentPageIndicatorTintColor" Value="{StaticResource Orange}" />
                 <Setter Property="Orientation" Value="Horizontal" />
             </Style>
+            
             
             <!-- Converters -->
             <converters:InfoTypeToImageConverter x:Key="InfoTypeToImageConverter" />

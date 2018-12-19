@@ -14,7 +14,8 @@ namespace DnnSummit
 {
     public partial class App : PrismApplication
     {
-        public const string EntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+        public const string Dashboard = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+        public const string EntryPoint = "/" + Constants.Navigation.LoadingPage;
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
@@ -26,6 +27,9 @@ namespace DnnSummit
             Data.Startup.Initialize();
 
             // TODO - determine most effecient way to do data pull
+            // new plan 1. Create a loading page this could be a re-used splash
+            //          2. Using INavigatingAware load everything
+            //          3. Once done loading we navigate to the main page
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 Data.Startup.SyndDataAsync(Container);
@@ -44,6 +48,7 @@ namespace DnnSummit
 
         private void RegisterNavigation(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<LoadingPage>(Constants.Navigation.LoadingPage);
             containerRegistry.RegisterForNavigation<DnnSummitNavigationPage>(Constants.Navigation.NavigationPage);
             containerRegistry.RegisterForNavigation<DnnSummitTabbedPage>(Constants.Navigation.TabbedPage);
             containerRegistry.RegisterForNavigation<LocationPage>(Constants.Navigation.LocationPage);

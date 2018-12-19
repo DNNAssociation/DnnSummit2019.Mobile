@@ -3,6 +3,7 @@ using MonkeyCache.SQLite;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -33,7 +34,9 @@ namespace DnnSummit.Data.Services
                     (!forceRefresh && !Barrel.Current.IsExpired(Method)))
                 {
                     var cachedJson = Barrel.Current.Get<string>(Method);
-                    return JsonConvert.DeserializeObject<IEnumerable<TModel>>(cachedJson);
+                    var result = JsonConvert.DeserializeObject<IEnumerable<TModel>>(cachedJson);
+                    if (result != null || result.Any())
+                        return result;
                 }
 
                 var data = await QueryAndMapAsync();

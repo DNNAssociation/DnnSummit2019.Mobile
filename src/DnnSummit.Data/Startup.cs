@@ -26,6 +26,8 @@ namespace DnnSummit.Data
             Barrel.ApplicationId = Startup.BarrelName;
         }
 
+        public static event EventHandler ProgressUpdated;
+
         public static async Task SyndDataAsync(IContainerProvider container)
         {
             Barrel.Current.EmptyAll();
@@ -41,8 +43,14 @@ namespace DnnSummit.Data
                 {
                     var service = (ISyncService)container.Resolve(interfaces[index]);
                     if (service == null) continue;
-
+                    
                     await service.SyncAsync();
+
+                    if (ProgressUpdated != null)
+                    {
+                        double progress = (index + 1) / (double)interfaces.Length;
+                        ProgressUpdated.Invoke(progress, new EventArgs());
+                    }
                 }
                 catch (Exception)
                 {

@@ -6,7 +6,6 @@ using Prism.Unity;
 using System;
 using System.Globalization;
 using System.Reflection;
-using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,16 +24,6 @@ namespace DnnSummit
         {
             InitializeComponent();
             Data.Startup.Initialize();
-
-            // TODO - determine most effecient way to do data pull
-            // new plan 1. Create a loading page this could be a re-used splash
-            //          2. Using INavigatingAware load everything
-            //          3. Once done loading we navigate to the main page
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                Data.Startup.SyndDataAsync(Container);
-            }
-
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
             NavigationService.NavigateAsync(EntryPoint);
         }

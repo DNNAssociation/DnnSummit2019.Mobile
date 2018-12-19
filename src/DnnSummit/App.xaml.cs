@@ -6,6 +6,7 @@ using Prism.Unity;
 using System;
 using System.Globalization;
 using System.Reflection;
+using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,7 +26,15 @@ namespace DnnSummit
             InitializeComponent();
             Data.Startup.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
-            NavigationService.NavigateAsync(EntryPoint);
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                NavigationService.NavigateAsync(EntryPoint);
+            }
+            else
+            {
+                NavigationService.NavigateAsync(Dashboard);
+            }
         }
 
 

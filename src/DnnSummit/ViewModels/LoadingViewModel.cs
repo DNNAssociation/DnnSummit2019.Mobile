@@ -2,6 +2,7 @@
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace DnnSummit.ViewModels
 {
@@ -32,6 +33,11 @@ namespace DnnSummit.ViewModels
             Data.Startup.ProgressUpdated -= OnProgressUpdated;
 
             await Task.Delay(1000); // makes sure the animation completes before navigating to the dashboard
+            await FinishAndNavigateAsync();
+        }
+
+        private async Task FinishAndNavigateAsync()
+        {            
             await NavigationService.NavigateAsync(App.Dashboard);
         }
 
@@ -42,8 +48,15 @@ namespace DnnSummit.ViewModels
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
-            PercentCompleted = 0.0d;
-            await DownloadAsync();
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                PercentCompleted = 0.0d;
+                await DownloadAsync();
+            }
+            else
+            {
+                await FinishAndNavigateAsync();
+            }
         }
     }
 }

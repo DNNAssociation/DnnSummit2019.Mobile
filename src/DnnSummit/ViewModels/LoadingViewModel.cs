@@ -28,12 +28,22 @@ namespace DnnSummit.ViewModels
 
         private async Task DownloadAsync()
         {
-            Data.Startup.ProgressUpdated += OnProgressUpdated;
-            await Data.Startup.SyndDataAsync(App.Current.Container);
-            Data.Startup.ProgressUpdated -= OnProgressUpdated;
+            try
+            {
+                Data.Startup.ProgressUpdated += OnProgressUpdated;
+                await Data.Startup.SyndDataAsync(App.Current.Container);
+                Data.Startup.ProgressUpdated -= OnProgressUpdated;
 
-            await Task.Delay(1000); // makes sure the animation completes before navigating to the dashboard
-            await FinishAndNavigateAsync();
+                await Task.Delay(1000); // makes sure the animation completes before navigating to the dashboard
+            }
+            catch (Exception)
+            {
+                // TODO - log some type of error or try again?
+            }
+            finally
+            {
+                await FinishAndNavigateAsync();
+            }
         }
 
         private async Task FinishAndNavigateAsync()

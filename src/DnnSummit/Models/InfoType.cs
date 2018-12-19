@@ -14,6 +14,9 @@ namespace DnnSummit.Models
         Feedback,
 
         [ImageResource(Name = "wrench")]
-        Notifications
+        Notifications,
+
+        [ImageResource(Name = "wrench")]
+        Update
     }
 }

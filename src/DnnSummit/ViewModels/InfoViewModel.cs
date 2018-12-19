@@ -27,6 +27,12 @@ namespace DnnSummit.ViewModels
             },
             new Tile
             {
+                Title = "Update Content",
+                InfoType = InfoType.Update,
+                NavigationPath = "/" + Constants.Navigation.LoadingPage
+            },
+            new Tile
+            {
                 Title = "Feedback",
                 InfoType = InfoType.Feedback
             },
@@ -34,7 +40,7 @@ namespace DnnSummit.ViewModels
             {
                 Title = "Credits",
                 InfoType = InfoType.Credits
-            }
+            }            
         };
 
         public ICommand InfoSelected { get; }

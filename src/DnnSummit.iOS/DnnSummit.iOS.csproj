@@ -397,10 +397,18 @@
     <ImageAsset Include="Assets.xcassets\wrench.imageset\wrench@3.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\splash_icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\splash_icon.imageset\splash_icon%401.png" />
-    <ImageAsset Include="Assets.xcassets\splash_icon.imageset\splash_icon%402.png" />
-    <ImageAsset Include="Assets.xcassets\splash_icon.imageset\splash_icon%403.png" />
+    <ImageAsset Include="Assets.xcassets\splash_icon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\splash_icon.imageset\splash_icon%401.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\splash_icon.imageset\splash_icon%402.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\splash_icon.imageset\splash_icon%403.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

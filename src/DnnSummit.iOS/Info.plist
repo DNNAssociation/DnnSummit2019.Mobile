@@ -28,8 +28,10 @@
 	<string>com.dnnassociation.dnnsummit2019</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+  <key>CFBundleShortVersionString</key>
+  <string>1.0</string>
 	<key>CFBundleName</key>
-	<string>DNN Summit</string>
+	<string>DNN Summit 2019</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UIStatusBarStyle</key>

@@ -8,6 +8,7 @@ variables:
   minor: 0
   revision: $[counter('versioncounter', 0)]
   configuration: 'Ad-Hoc'
+  binariesDirectory: 'bin'
   appCenter.organization: 'DNNAssociation'
   appCenter.iOS: 'DNN-Summit-2019-iOS'
   appCenter.android: 'DNN-Summit-2019-Android'
@@ -132,7 +133,7 @@ jobs:
     displayName: 'Build Xamarin.Android project **/*Droid*.csproj'
     inputs:
       projectFile: '**/*Droid*.csproj'
-      outputDirectory: '$(build.binariesdirectory)/$(configuration)'
+      outputDirectory: 'bin/$(configuration)'
       configuration: '$(configuration)'
   
   - task: MSBuild@1
@@ -140,13 +141,13 @@ jobs:
     inputs:
       solution: '**/*test*.csproj'
       configuration: '$(configuration)'
-      msbuildArguments: '/p:OutputPath="$(build.binariesdirectory)/$(configuration)/test-assembly"'
+      msbuildArguments: '/p:OutputPath="$(binariesDirectory)/$(configuration)/test-assembly"'
     enabled: false
   
   - task: AndroidSigning@3
-    displayName: 'Signing and aligning APK file(s) $(build.binariesdirectory)/$(configuration)/*.apk'
+    displayName: 'Signing and aligning APK file(s) $(binariesDirectory)/$(configuration)/*.apk'
     inputs:
-      apkFiles: '$(build.binariesdirectory)/$(configuration)/*.apk'
+      apkFiles: '$(binariesDirectory)/$(configuration)/*.apk'
       apksignerKeystoreFile: '93daa7a1-96a8-4e01-90fd-91779f015659'
       apksignerKeystorePassword: '$(KeyStorePassword)'
       apksignerKeystoreAlias: DnnSummit2019
@@ -156,13 +157,13 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
     inputs:
-      PathtoPublish: '$(build.binariesdirectory)/$(configuration)'
+      PathtoPublish: '$(binariesDirectory)/$(configuration)'
   
   - task: AppCenterDistribute@0
-    displayName: 'Deploy $(build.binariesdirectory)/$(configuration)/*.apk to Visual Studio App Center'
+    displayName: 'Deploy $(binariesDirectory)/$(configuration)/*.apk to Visual Studio App Center'
     inputs:
       serverEndpoint: AppCenter
       appSlug: '$(appCenter.organization/$(appCenter.android)'
-      appFile: '$(build.binariesdirectory)/$(configuration)/*.apk'
+      appFile: '$(binariesDirectory)/$(configuration)/*.apk'
       symbolsIncludeParentDirectory: false
       releaseNotesInput: 'Ad-Hoc Build'

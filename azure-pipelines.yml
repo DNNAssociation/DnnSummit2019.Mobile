@@ -133,7 +133,7 @@ jobs:
     displayName: 'Build Xamarin.Android project **/*Droid*.csproj'
     inputs:
       projectFile: '**/*Droid*.csproj'
-      outputDirectory: 'bin/$(configuration)'
+      outputDirectory: '$(binariesDirectory)/$(configuration)'
       configuration: '$(configuration)'
   
   - task: MSBuild@1

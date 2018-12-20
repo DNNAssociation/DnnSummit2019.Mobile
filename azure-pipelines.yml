@@ -1,10 +1,16 @@
-resources:
-- repo: self
-queue:
-  name: Hosted macOS
-  demands: 
-  - xcode
-  - Xamarin.iOS
+trigger:
+  branches:
+    include:
+      - master
+
+jobs:
+- job: iOS Ad-Hoc
+  displayName: iOS Ad-Hoc
+  pool: 
+    name: Hosted macOS
+    demands:
+    - xcode
+    - Xamarin.iOS
 
 #Your build pipeline references a secret variable named ‘P12password’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it secret. See https://go.microsoft.com/fwlink/?linkid=865972
 #Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972

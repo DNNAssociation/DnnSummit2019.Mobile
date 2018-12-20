@@ -8,8 +8,9 @@ variables:
   minor: 0
   revision: $[counter('versioncounter', 0)]
   configuration: 'Ad-Hoc'
-  appCenter.Organization: 'DNNAssociation'
-  appCenter.AppName: 'DNN-Summit-2019-iOS'
+  appCenter.organization: 'DNNAssociation'
+  appCenter.iOS: 'DNN-Summit-2019-iOS'
+  appCenter.android: 'DNN-Summit-2019-Android'
 
 jobs:
 - job: iOSAdHoc
@@ -84,7 +85,84 @@ jobs:
     displayName: 'Deploy **/*.ipa to Visual Studio App Center'
     inputs:
       serverEndpoint: AppCenter
-      appSlug: '$(appCenter.Organization)/$(appCenter.AppName)'
+      appSlug: '$(appCenter.organization)/$(appCenter.iOS)'
       appFile: '**/*.ipa'
       symbolsIncludeParentDirectory: false
       releaseNotesInput: 'Ad-Hoc Release'
+
+- job: AndroidAdHoc
+  displayName: Android Ad-Hoc
+  pool: 
+    name: Hosted VS2017
+    demands:
+    - MSBuild
+    - Xamarin.Android
+    - JDK
+    - AndroidSDK
+
+#Your build pipeline references an undefined variable named ‘Parameters.restorePkgSolution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+#Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references a secret variable named ‘KeyStorePassword’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it secret. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references a secret variable named ‘KeyStorePassword’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it secret. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+#Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+  steps:
+  - task: vs-publisher-473885.motz-mobile-buildtasks.android-manifest-version.android-manifest-version@0
+    displayName: 'Bump Android Versions in src/DnnSummit.Android/Properties/AndroidManifest.xml'
+    inputs:
+      sourcePath: src/DnnSummit.Android/Properties/AndroidManifest.xml
+      versionName: '$(major).$(minor).$(revision)'
+  
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.4.1'
+    inputs:
+      versionSpec: 4.4.1
+  
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: '**/*.sln'
+  
+  - task: XamarinAndroid@1
+    displayName: 'Build Xamarin.Android project **/*Droid*.csproj'
+    inputs:
+      projectFile: '**/*Droid*.csproj'
+      outputDirectory: '$(build.binariesdirectory)/$(configuration)'
+      configuration: '$(configuration)'
+  
+  - task: MSBuild@1
+    displayName: 'Build solution **/*test*.csproj'
+    inputs:
+      solution: '**/*test*.csproj'
+      configuration: '$(configuration)'
+      msbuildArguments: '/p:OutputPath="$(build.binariesdirectory)/$(configuration)/test-assembly"'
+    enabled: false
+  
+  - task: AndroidSigning@3
+    displayName: 'Signing and aligning APK file(s) $(build.binariesdirectory)/$(configuration)/*.apk'
+    inputs:
+      apkFiles: '$(build.binariesdirectory)/$(configuration)/*.apk'
+      apksignerKeystoreFile: '93daa7a1-96a8-4e01-90fd-91779f015659'
+      apksignerKeystorePassword: '$(KeyStorePassword)'
+      apksignerKeystoreAlias: DnnSummit2019
+      apksignerKeyPassword: '$(KeyStorePassword)'
+      apksignerArguments: '-verbose'
+  
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.binariesdirectory)/$(configuration)'
+  
+  - task: AppCenterDistribute@0
+    displayName: 'Deploy $(build.binariesdirectory)/$(configuration)/*.apk to Visual Studio App Center'
+    inputs:
+      serverEndpoint: AppCenter
+      appSlug: '$(appCenter.organization/$(appCenter.android)'
+      appFile: '$(build.binariesdirectory)/$(configuration)/*.apk'
+      symbolsIncludeParentDirectory: false
+      releaseNotesInput: 'Ad-Hoc Build'

@@ -2,6 +2,14 @@ trigger:
   branches:
     include:
       - master
+      
+variables:
+  major: 1
+  minor: 0
+  revision: $[counter('versioncounter', 0)]
+  configuration: 'Ad-Hoc'
+  appCenter.Organization: 'DNNAssociation'
+  appCenter.AppName: 'DNN-Summit-2019-iOS'
 
 jobs:
 - job: iOSAdHoc
@@ -35,7 +43,7 @@ jobs:
     displayName: 'Bump iOS Versions in src/DnnSummit.iOS/Info.plist'
     inputs:
       sourcePath: src/DnnSummit.iOS/Info.plist
-      versionName: '$(Build.BuildNumber)'
+      versionName: '$(major).$(minor).$(revision)'
   
   
   - task: NuGetToolInstaller@0
@@ -47,14 +55,14 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
     inputs:
-      restoreSolution: '$(Parameters.solution)'
+      restoreSolution: '**/*.sln'
   
   
   - task: XamariniOS@2
     displayName: 'Build Xamarin.iOS solution **/*.sln'
     inputs:
-      solutionFile: '$(Parameters.solution)'
-      configuration: '$(BuildConfiguration)'
+      solutionFile: '**/*.sln'
+      configuration: '$(configuration)'
   
   
   - task: CopyFiles@2
@@ -76,7 +84,7 @@ jobs:
     displayName: 'Deploy **/*.ipa to Visual Studio App Center'
     inputs:
       serverEndpoint: AppCenter
-      appSlug: 'DNNAssociation/DNN-Summit-2019-iOS'
-      appFile: '$(Parameters.appFiles)'
+      appSlug: '$(appCenter.Organization)/$(appCenter.AppName)'
+      appFile: '**/*.ipa'
       symbolsIncludeParentDirectory: false
       releaseNotesInput: 'Ad-Hoc Release'

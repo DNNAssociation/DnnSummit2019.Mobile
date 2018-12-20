@@ -156,7 +156,7 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
     inputs:
-      PathtoPublish: '$(Build.BinariesDirectory)/$(configuration)'
+      PathtoPublish: '$(Build.BinariesDirectory)/$(configuration)/*.apk'
   
   - task: AppCenterDistribute@0
     displayName: 'Deploy $(Build.BinariesDirectory)/$(configuration)/*.apk to Visual Studio App Center'

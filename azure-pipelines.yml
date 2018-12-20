@@ -1,76 +1,82 @@
-resources:
-- repo: self
-queue:
-  name: Hosted macOS
-  demands: 
-  - xcode
-  - Xamarin.iOS
+trigger:
+  branches:
+    include:
+      - master
 
-#Your build pipeline references a secret variable named ‘P12password’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it secret. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
-#Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-steps:
-- task: InstallAppleCertificate@2
-  displayName: 'Install an Apple certificate'
-  inputs:
-    certSecureFile: '591aa0a1-3cf2-490d-a297-7c48fc0f847d'
-    certPwd: '$(P12password)'
+jobs:
+- job: iOSAdHoc
+  displayName: iOS Ad-Hoc
+  pool: 
+    name: Hosted macOS
+    demands:
+    - xcode
+    - Xamarin.iOS
 
-
-- task: InstallAppleProvisioningProfile@1
-  displayName: 'Install an Apple provisioning profile'
-  inputs:
-    provProfileSecureFile: 'ca7e5895-4377-4ba2-a2f2-ea37618aa941'
-
-
-- task: vs-publisher-473885.motz-mobile-buildtasks.ios-bundle-version.ios-bundle-version@0
-  displayName: 'Bump iOS Versions in src/DnnSummit.iOS/Info.plist'
-  inputs:
-    sourcePath: src/DnnSummit.iOS/Info.plist
-    versionName: '$(Build.BuildNumber)'
-
-
-- task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 4.5'
-  inputs:
-    versionSpec: 4.5
-
-
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
-  inputs:
-    restoreSolution: '$(Parameters.solution)'
-
-
-- task: XamariniOS@2
-  displayName: 'Build Xamarin.iOS solution **/*.sln'
-  inputs:
-    solutionFile: '$(Parameters.solution)'
-    configuration: '$(BuildConfiguration)'
-
-
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '**/*.ipa'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-    flattenFolders: true
-
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-
-
-- task: AppCenterDistribute@0
-  displayName: 'Deploy **/*.ipa to Visual Studio App Center'
-  inputs:
-    serverEndpoint: AppCenter
-    appSlug: 'DNNAssociation/DNN-Summit-2019-iOS'
-    appFile: '$(Parameters.appFiles)'
-    symbolsIncludeParentDirectory: false
-    releaseNotesInput: 'Ad-Hoc Release'
+  #Your build pipeline references a secret variable named ‘P12password’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it secret. See https://go.microsoft.com/fwlink/?linkid=865972
+  #Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+  #Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+  #Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+  #Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+  steps:
+  - task: InstallAppleCertificate@2
+    displayName: 'Install an Apple certificate'
+    inputs:
+      certSecureFile: '591aa0a1-3cf2-490d-a297-7c48fc0f847d'
+      certPwd: '$(P12password)'
+  
+  
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install an Apple provisioning profile'
+    inputs:
+      provProfileSecureFile: 'ca7e5895-4377-4ba2-a2f2-ea37618aa941'
+  
+  
+  - task: vs-publisher-473885.motz-mobile-buildtasks.ios-bundle-version.ios-bundle-version@0
+    displayName: 'Bump iOS Versions in src/DnnSummit.iOS/Info.plist'
+    inputs:
+      sourcePath: src/DnnSummit.iOS/Info.plist
+      versionName: '$(Build.BuildNumber)'
+  
+  
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.5'
+    inputs:
+      versionSpec: 4.5
+  
+  
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: '$(Parameters.solution)'
+  
+  
+  - task: XamariniOS@2
+    displayName: 'Build Xamarin.iOS solution **/*.sln'
+    inputs:
+      solutionFile: '$(Parameters.solution)'
+      configuration: '$(BuildConfiguration)'
+  
+  
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      SourceFolder: '$(system.defaultworkingdirectory)'
+      Contents: '**/*.ipa'
+      TargetFolder: '$(build.artifactstagingdirectory)'
+      flattenFolders: true
+  
+  
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+  
+  
+  - task: AppCenterDistribute@0
+    displayName: 'Deploy **/*.ipa to Visual Studio App Center'
+    inputs:
+      serverEndpoint: AppCenter
+      appSlug: 'DNNAssociation/DNN-Summit-2019-iOS'
+      appFile: '$(Parameters.appFiles)'
+      symbolsIncludeParentDirectory: false
+      releaseNotesInput: 'Ad-Hoc Release'

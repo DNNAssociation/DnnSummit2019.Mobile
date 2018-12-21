@@ -72,7 +72,7 @@ jobs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
       appPackage: false
-    condition: and(succeeded(), eq('$(System.PullRequest.IsFork)', 'true'))
+    condition: and(succeeded(), eq($(System.PullRequest.IsFork), True))
 
   - task: XamariniOS@2
     displayName: 'Build Xamarin.iOS solution **/*.sln'

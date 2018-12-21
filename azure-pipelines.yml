@@ -7,11 +7,11 @@ variables:
   major: 1
   minor: 0
   revision: $[counter('versioncounter', 0)]
-  configuration: 'Ad-Hoc'
-  appCenter.organization: 'DNNAssociation'
-  appCenter.iOS: 'DNN-Summit-2019-iOS'
-  appCenter.android: 'DNN-Summit-2019-Android'
-  createAppPackage: <!$(System.PullRequest.IsFork)>
+  configuration: "Ad-Hoc"
+  appCenter.organization: "DNNAssociation"
+  appCenter.iOS: "DNN-Summit-2019-iOS"
+  appCenter.android: "DNN-Summit-2019-Android"
+  system.debug: "true"
 
 jobs:
 - job: iOSAdHoc
@@ -61,11 +61,21 @@ jobs:
   
   
   - task: XamariniOS@2
+    displayName: 'Build Xamarin.iOS solution **/*.sln - No App Package'
+    inputs:
+      solutionFile: '**/*.sln'
+      configuration: 'Debug'
+      packageApp: false
+      buildForSimulator: true
+    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
+
+  - task: XamariniOS@2
     displayName: 'Build Xamarin.iOS solution **/*.sln'
     inputs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
-      appPackage: $(createAppPackage)
+      appPackage: true
+    condition: and(succeeded(), not(variables['System.PullRequest.IsFork']))
   
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
@@ -154,7 +164,7 @@ jobs:
       apksignerKeystoreAlias: DnnSummit2019
       apksignerKeyPassword: '$(KeyStorePassword)'
       apksignerArguments: '-verbose'
-    condition: and(succeeded(), eq($(System.PullRequest.IsFork), true))
+    condition: and(succeeded(), not(variables['System.PullRequest.IsFork']))
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'

@@ -11,7 +11,7 @@ variables:
   appCenter.organization: "DNNAssociation"
   appCenter.iOS: "DNN-Summit-2019-iOS"
   appCenter.android: "DNN-Summit-2019-Android"
-  createAppPackage: $(System.PullRequest.IsFork)
+  createAppPackage: not($(System.PullRequest.IsFork))
   system.debug: "true"
 
 jobs:

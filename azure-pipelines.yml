@@ -75,7 +75,7 @@ jobs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
       appPackage: true
-    condition: and(succeeded(), not(variables['System.PullRequest.IsFork']))
+    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
   
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
@@ -164,7 +164,7 @@ jobs:
       apksignerKeystoreAlias: DnnSummit2019
       apksignerKeyPassword: '$(KeyStorePassword)'
       apksignerArguments: '-verbose'
-    condition: and(succeeded(), not(variables['System.PullRequest.IsFork']))
+    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'

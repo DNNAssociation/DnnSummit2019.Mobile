@@ -11,7 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnSummit.iOS", "src\DnnSum
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnSummit.Android", "src\DnnSummit.Android\DnnSummit.Android.csproj", "{8A148742-7E2B-47B0-82A4-5FED858C254B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnnSummit.Data", "src\DnnSummit.Data\DnnSummit.Data.csproj", "{9488E271-FF41-4039-96A7-4BC86E5B53B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnnSummit.Data", "src\DnnSummit.Data\DnnSummit.Data.csproj", "{9488E271-FF41-4039-96A7-4BC86E5B53B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A8BAAD7C-BF1B-4839-8CAB-460D4B3EC956}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

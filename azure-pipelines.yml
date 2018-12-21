@@ -11,6 +11,7 @@ variables:
   appCenter.organization: 'DNNAssociation'
   appCenter.iOS: 'DNN-Summit-2019-iOS'
   appCenter.android: 'DNN-Summit-2019-Android'
+  createAppPackage: <!$(System.PullRequest.IsFork)>
 
 jobs:
 - job: iOSAdHoc
@@ -64,7 +65,7 @@ jobs:
     inputs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
-  
+      appPackage: $(createAppPackage)
   
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
@@ -134,6 +135,7 @@ jobs:
       projectFile: '**/*Droid*.csproj'
       outputDirectory: '$(Build.BinariesDirectory)/$(configuration)'
       configuration: '$(configuration)'
+      createAppPackage: $(createAppPackage)
   
   - task: MSBuild@1
     displayName: 'Build solution **/*test*.csproj'

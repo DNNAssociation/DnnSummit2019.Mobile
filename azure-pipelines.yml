@@ -7,11 +7,12 @@ variables:
   major: 1
   minor: 0
   revision: $[counter('versioncounter', 0)]
-  configuration: 'Ad-Hoc'
-  appCenter.organization: 'DNNAssociation'
-  appCenter.iOS: 'DNN-Summit-2019-iOS'
-  appCenter.android: 'DNN-Summit-2019-Android'
-  createAppPackage: <!$(System.PullRequest.IsFork)>
+  configuration: "Ad-Hoc"
+  appCenter.organization: "DNNAssociation"
+  appCenter.iOS: "DNN-Summit-2019-iOS"
+  appCenter.android: "DNN-Summit-2019-Android"
+  createAppPackage: "<!$(System.PullRequest.IsFork)>"
+  system.debug: "true"
 
 jobs:
 - job: iOSAdHoc

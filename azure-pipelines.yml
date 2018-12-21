@@ -162,7 +162,7 @@ jobs:
     displayName: 'Deploy $(Build.BinariesDirectory)/$(configuration)/*.apk to Visual Studio App Center'
     inputs:
       serverEndpoint: AppCenter
-      appSlug: '$(appCenter.organization/$(appCenter.android)'
+      appSlug: '$(appCenter.organization)/$(appCenter.android)'
       appFile: '$(Build.BinariesDirectory)/$(configuration)/*.apk'
       symbolsIncludeParentDirectory: false
       releaseNotesInput: 'Ad-Hoc Build'

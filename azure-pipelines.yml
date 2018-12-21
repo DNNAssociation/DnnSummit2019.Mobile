@@ -71,7 +71,8 @@ jobs:
     inputs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
-      appPackage: false
+      packageApp: false
+      buildForSimulator: true
     condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
 
   - task: XamariniOS@2

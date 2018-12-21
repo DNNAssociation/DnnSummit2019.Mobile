@@ -145,7 +145,6 @@ jobs:
       projectFile: '**/*Droid*.csproj'
       outputDirectory: '$(Build.BinariesDirectory)/$(configuration)'
       configuration: '$(configuration)'
-      createAppPackage: $(createAppPackage)
   
   - task: MSBuild@1
     displayName: 'Build solution **/*test*.csproj'

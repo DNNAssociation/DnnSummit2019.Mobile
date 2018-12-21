@@ -30,7 +30,7 @@ jobs:
   #Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
   steps:
   - powershell: Write-Host "CreateAppPackage - $env.CREATEAPPPACKAGE"
-    display: "Echo vars"
+    displayName: "Echo vars"
     env:
       CREATEAPPPACKAGE: $(createAppPackage)
 

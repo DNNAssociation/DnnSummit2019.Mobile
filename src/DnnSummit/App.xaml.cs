@@ -1,4 +1,7 @@
 ﻿using DnnSummit.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -24,6 +27,12 @@ namespace DnnSummit
         protected override void OnInitialized()
         {
             InitializeComponent();
+
+            AppCenter.Start(
+                "android=95cfa83a-1936-4cec-be80-c45a2ea7438b;" +
+                "ios=bce54f1b-1bd6-4e60-b4d2-f831582f31f3;",
+                typeof(Analytics), typeof(Crashes));
+
             Data.Startup.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 

@@ -11,7 +11,6 @@ variables:
   appCenter.organization: "DNNAssociation"
   appCenter.iOS: "DNN-Summit-2019-iOS"
   appCenter.android: "DNN-Summit-2019-Android"
-  createAppPackage: not($(System.PullRequest.IsFork))
   system.debug: "true"
 
 jobs:
@@ -30,7 +29,6 @@ jobs:
   #Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
   steps:
   - powershell: |
-      Write-Host "CreateAppPackage - $(createAppPackage)"
       Write-Host "IsFork - $(System.PullRequest.IsFork)"
     displayName: "Echo vars"
     env:
@@ -69,11 +67,20 @@ jobs:
   
   
   - task: XamariniOS@2
+    displayName: 'Build Xamarin.iOS solution **/*.sln With No App Package'
+    inputs:
+      solutionFile: '**/*.sln'
+      configuration: '$(configuration)'
+      appPackage: false
+    condition: and(succeeded(), eq('$(System.PullRequest.IsFork)', 'true'))
+
+  - task: XamariniOS@2
     displayName: 'Build Xamarin.iOS solution **/*.sln'
     inputs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
-      appPackage: $(createAppPackage)
+      appPackage: false
+    condition: and(succeeded(), not($(System.PullRequest.IsFork)))
   
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
@@ -162,7 +169,7 @@ jobs:
       apksignerKeystoreAlias: DnnSummit2019
       apksignerKeyPassword: '$(KeyStorePassword)'
       apksignerArguments: '-verbose'
-    condition: and(succeeded(), eq($(System.PullRequest.IsFork), true))
+    condition: and(succeeded(), not($(System.PullRequest.IsFork)))
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'

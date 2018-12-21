@@ -29,6 +29,11 @@ jobs:
   #Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
   #Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
   steps:
+  - powershell: Write-Host "CreateAppPackage - $env.CREATEAPPPACKAGE"
+    display: "Echo vars"
+    env:
+      CREATEAPPPACKAGE: $(createAppPackage)
+
   - task: InstallAppleCertificate@2
     displayName: 'Install an Apple certificate'
     inputs:

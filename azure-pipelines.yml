@@ -67,12 +67,12 @@ jobs:
   
   
   - task: XamariniOS@2
-    displayName: 'Build Xamarin.iOS solution **/*.sln With No App Package'
+    displayName: 'Build Xamarin.iOS solution **/*.sln - No App Package'
     inputs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
       appPackage: false
-    condition: and(succeeded(), eq($(System.PullRequest.IsFork), True))
+    condition: and(succeeded(), eq(variable['System.PullRequest.IsFork', 'true'))
 
   - task: XamariniOS@2
     displayName: 'Build Xamarin.iOS solution **/*.sln'
@@ -80,7 +80,7 @@ jobs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
       appPackage: false
-    condition: and(succeeded(), not('$(System.PullRequest.IsFork)'))
+    condition: and(succeeded(), not(variables['System.PullRequest.IsFork']))
   
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
@@ -169,7 +169,7 @@ jobs:
       apksignerKeystoreAlias: DnnSummit2019
       apksignerKeyPassword: '$(KeyStorePassword)'
       apksignerArguments: '-verbose'
-    condition: and(succeeded(), not('$(System.PullRequest.IsFork)'))
+    condition: and(succeeded(), not(variables['System.PullRequest.IsFork']))
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'

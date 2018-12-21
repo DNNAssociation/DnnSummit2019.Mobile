@@ -70,8 +70,9 @@ jobs:
     displayName: 'Build Xamarin.iOS solution **/*.sln - No App Package'
     inputs:
       solutionFile: '**/*.sln'
-      configuration: '$(configuration)'
+      configuration: 'Debug'
       packageApp: false
+      buildForSimulator: true
     condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
 
   - task: XamariniOS@2
@@ -79,7 +80,7 @@ jobs:
     inputs:
       solutionFile: '**/*.sln'
       configuration: '$(configuration)'
-      appPackage: false
+      appPackage: true
     condition: and(succeeded(), not(variables['System.PullRequest.IsFork']))
   
   - task: CopyFiles@2

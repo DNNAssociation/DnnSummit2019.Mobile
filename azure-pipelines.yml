@@ -154,7 +154,8 @@ jobs:
       apksignerKeystoreAlias: DnnSummit2019
       apksignerKeyPassword: '$(KeyStorePassword)'
       apksignerArguments: '-verbose'
-  
+    condition: and(succeeded(), eq($(System.PullRequest.IsFork), true))
+
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
     inputs:

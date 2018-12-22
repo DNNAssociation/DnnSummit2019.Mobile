@@ -15,6 +15,14 @@
                    VerticalOptions="StartAndExpand" 
                    HorizontalTextAlignment="Center"
                    HorizontalOptions="CenterAndExpand" />
+            <Button Text="Download Content"
+                    TextColor="White"
+                    FontSize="20"
+                    IsVisible="{Binding IsNoData}"
+                    BackgroundColor="{StaticResource DarkBlue}"
+                    VerticalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="20,0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

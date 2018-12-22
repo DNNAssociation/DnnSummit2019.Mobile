@@ -1,4 +1,5 @@
-﻿using DnnSummit.Data.Services;
+﻿using DnnSummit.Data.Models;
+using DnnSummit.Data.Services;
 using DnnSummit.Data.Services.Interfaces;
 using MonkeyCache.SQLite;
 using Prism.Ioc;
@@ -19,6 +20,7 @@ namespace DnnSummit.Data
             container.Register<IScheduleService, ScheduleService>();
             container.Register<ISpeakerService, SpeakerService>();
             container.Register<ISponsorService, SponsorService>();
+            container.Register<ISettingsService, SettingsService>();
         }
 
         public static void Initialize()
@@ -57,6 +59,9 @@ namespace DnnSummit.Data
                     // TODO - log error
                 }
             }
+
+            var settings = new Settings { LastUpdated = DateTime.UtcNow };
+            Barrel.Current.Add(nameof(Settings), settings, TimeSpan.FromDays(5));
         }
     }
 }

@@ -4,6 +4,9 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
 using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Input;
 using Xamarin.Essentials;
 
@@ -75,7 +78,7 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        public void OnNavigatingTo(INavigationParameters parameters)
+        public async void OnNavigatingTo(INavigationParameters parameters)
         {
             var settings = SettingsService.Get();
 
@@ -84,6 +87,9 @@ namespace DnnSummit.ViewModels
                 IsNoData = false;
                 var date = settings.LastUpdated.ToLocalTime().ToString("MM/dd/yyyy");
                 Message = string.Format(OfflineMessage_Pattern, date);
+
+                await Task.Delay(5000);
+                OnContinue();
             }
             else
             {

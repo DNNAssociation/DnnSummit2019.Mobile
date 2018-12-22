@@ -73,4 +73,10 @@
   <ItemGroup>
     <Compile Remove="Controls\CarouselViewAdapter.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Secrets.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Secrets.json" />
+  </ItemGroup>
 </Project>

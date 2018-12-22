@@ -1,4 +1,5 @@
-﻿using DnnSummit.Views;
+﻿using DnnSummit.Manager;
+using DnnSummit.Views;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -29,9 +30,10 @@ namespace DnnSummit
         {
             InitializeComponent();
 
+            var secrets = new SecretsManager();
             AppCenter.Start(
-                "android=95cfa83a-1936-4cec-be80-c45a2ea7438b;" +
-                "ios=bce54f1b-1bd6-4e60-b4d2-f831582f31f3;",
+                $"android={secrets["AppCenter:iOS"]};" +
+                $"ios={secrets["AppCenter:Android"]};",
                 typeof(Analytics), typeof(Crashes));
 
             Data.Startup.Initialize();

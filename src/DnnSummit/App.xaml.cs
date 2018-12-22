@@ -14,8 +14,9 @@ namespace DnnSummit
 {
     public partial class App : PrismApplication
     {
-        public const string OfflineEntryPoint = "/" + Constants.Navigation.LoaddingOfflineModePage; ///Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+        public const string OfflineEntryPoint = "/" + Constants.Navigation.LoaddingOfflineModePage;
         public const string InternetEntryPoint = "/" + Constants.Navigation.LoadingPage;
+        public const string EntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {

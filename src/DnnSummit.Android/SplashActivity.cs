@@ -20,4 +20,4 @@ namespace DnnSummit.Droid
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
     }
-}
+}   

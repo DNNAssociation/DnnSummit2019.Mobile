@@ -66,11 +66,11 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<ScheduleDetailsPage>(Constants.Navigation.ScheduleDetailsPage);
             containerRegistry.RegisterForNavigation<SessionDetailsPage>(Constants.Navigation.SessionDetailsPage);
             containerRegistry.RegisterForNavigation<SponsorsPage>(Constants.Navigation.SponsorsPage);
-            Data.Startup.RegisterDependencies(containerRegistry);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)
         {
+            Data.Startup.RegisterDependencies(containerRegistry);
         }
 
         // Page/ViewModel Wireup Logic

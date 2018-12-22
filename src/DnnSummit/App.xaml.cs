@@ -14,8 +14,8 @@ namespace DnnSummit
 {
     public partial class App : PrismApplication
     {
-        public const string Dashboard = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
-        public const string EntryPoint = "/" + Constants.Navigation.LoadingPage;
+        public const string OfflineEntryPoint = "/" + Constants.Navigation.LoaddingOfflineModePage; ///Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+        public const string InternetEntryPoint = "/" + Constants.Navigation.LoadingPage;
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
@@ -29,11 +29,11 @@ namespace DnnSummit
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                NavigationService.NavigateAsync(EntryPoint);
+                NavigationService.NavigateAsync(InternetEntryPoint);
             }
             else
             {
-                NavigationService.NavigateAsync(Dashboard);
+                NavigationService.NavigateAsync(OfflineEntryPoint);
             }
         }
 
@@ -47,6 +47,7 @@ namespace DnnSummit
         private void RegisterNavigation(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<LoadingPage>(Constants.Navigation.LoadingPage);
+            containerRegistry.RegisterForNavigation<LoadingOfflineModePage>(Constants.Navigation.LoaddingOfflineModePage);
             containerRegistry.RegisterForNavigation<DnnSummitNavigationPage>(Constants.Navigation.NavigationPage);
             containerRegistry.RegisterForNavigation<DnnSummitTabbedPage>(Constants.Navigation.TabbedPage);
             containerRegistry.RegisterForNavigation<LocationPage>(Constants.Navigation.LocationPage);

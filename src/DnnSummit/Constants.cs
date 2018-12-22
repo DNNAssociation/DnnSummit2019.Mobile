@@ -5,6 +5,7 @@
         public static class Navigation
         {
             public const string LoadingPage = "LoadingPage";
+            public const string LoaddingOfflineModePage = "LoadingOfflineModePage";
             public const string NavigationPage = "NavigationPage";
             public const string TabbedPage = "TabbedPage";
             public const string LocationPage = "LocationPage";

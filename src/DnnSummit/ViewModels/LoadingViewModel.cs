@@ -48,7 +48,7 @@ namespace DnnSummit.ViewModels
 
         private async Task FinishAndNavigateAsync()
         {            
-            await NavigationService.NavigateAsync(App.Dashboard);
+            await NavigationService.NavigateAsync(App.OfflineEntryPoint);
         }
 
         private void OnProgressUpdated(object sender, EventArgs e)

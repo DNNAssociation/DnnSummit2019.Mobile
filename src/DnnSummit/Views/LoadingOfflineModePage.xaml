@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DnnSummit.Views.LoadingOfflineModePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="splash_icon"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="Unable to update content, information current as of xx/xx/xxxx, Contact event staff for any change or retry with internet."
+                   FontSize="20"
+                   TextColor="White"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

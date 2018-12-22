@@ -16,6 +16,7 @@
                    HorizontalTextAlignment="Center"
                    HorizontalOptions="CenterAndExpand" />
             <Button Text="Download Content"
+                    Command="{Binding DownloadContent}"
                     TextColor="White"
                     FontSize="20"
                     IsVisible="{Binding IsNoData}"

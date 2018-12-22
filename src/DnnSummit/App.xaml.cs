@@ -14,8 +14,8 @@ namespace DnnSummit
 {
     public partial class App : PrismApplication
     {
-        public const string OfflineEntryPoint = "/" + Constants.Navigation.LoaddingOfflineModePage;
-        public const string InternetEntryPoint = "/" + Constants.Navigation.LoadingPage;
+        public const string OfflineLoading = "/" + Constants.Navigation.LoaddingOfflineModePage;
+        public const string InternetLoading = "/" + Constants.Navigation.LoadingPage;
         public const string EntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
@@ -30,11 +30,11 @@ namespace DnnSummit
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                NavigationService.NavigateAsync(InternetEntryPoint);
+                NavigationService.NavigateAsync(InternetLoading);
             }
             else
             {
-                NavigationService.NavigateAsync(OfflineEntryPoint);
+                NavigationService.NavigateAsync(OfflineLoading);
             }
         }
 

@@ -1,6 +1,10 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
+using System.Windows.Input;
+using Xamarin.Essentials;
 
 namespace DnnSummit.ViewModels
 {
@@ -10,6 +14,8 @@ namespace DnnSummit.ViewModels
         private const string NoDataMessage = "Unable to download content, retry with internet or contact event staff.";
 
         protected ISettingsService SettingsService { get; }
+        protected IPageDialogService PageDialogService { get; }
+        protected INavigationService NavigationService { get; }
 
         private string _message;
         public string Message
@@ -33,9 +39,29 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        public LoadingOfflineModeViewModel(ISettingsService settingsService)
+        public ICommand DownloadContent { get; }
+
+        public LoadingOfflineModeViewModel(
+            ISettingsService settingsService,
+            IPageDialogService pageDialogService,
+            INavigationService navigationService)
         {
             SettingsService = settingsService;
+            PageDialogService = pageDialogService;
+            NavigationService = navigationService;
+            DownloadContent = new DelegateCommand(OnDownloadContent);
+        }
+
+        private async void OnDownloadContent()
+        {
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                await NavigationService.NavigateAsync(App.InternetLoading);
+            }
+            else
+            {
+                await PageDialogService.DisplayAlertAsync("No Internet", "Unable to download content, no internet detected.", "OK");
+            }
         }
 
         public void OnNavigatingTo(INavigationParameters parameters)

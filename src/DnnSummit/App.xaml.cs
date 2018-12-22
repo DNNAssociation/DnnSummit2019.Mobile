@@ -1,8 +1,6 @@
 ﻿using DnnSummit.Manager;
+using DnnSummit.Manager.Interfaces;
 using DnnSummit.Views;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -30,12 +28,8 @@ namespace DnnSummit
         {
             InitializeComponent();
 
-            var secrets = new SecretsManager();
-            AppCenter.Start(
-                $"android={secrets["AppCenter:iOS"]};" +
-                $"ios={secrets["AppCenter:Android"]};",
-                typeof(Analytics), typeof(Crashes));
-
+            var appCenter = Container.Resolve<IAppCenterManager>();
+            appCenter.Initialize();
             Data.Startup.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 
@@ -48,8 +42,7 @@ namespace DnnSummit
                 NavigationService.NavigateAsync(OfflineLoading);
             }
         }
-
-
+        
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             RegisterNavigation(containerRegistry);
@@ -71,6 +64,8 @@ namespace DnnSummit
         private void RegisterDependencies(IContainerRegistry containerRegistry)
         {
             Data.Startup.RegisterDependencies(containerRegistry);
+            containerRegistry.Register<ISecretsManager, SecretsManager>();
+            containerRegistry.Register<IAppCenterManager, AppCenterManager>();
         }
 
         // Page/ViewModel Wireup Logic

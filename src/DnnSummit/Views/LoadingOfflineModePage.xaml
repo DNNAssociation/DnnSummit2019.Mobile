@@ -8,7 +8,7 @@
             <Image Source="splash_icon"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
-            <Label Text="Unable to update content, information current as of xx/xx/xxxx, Contact event staff for any change or retry with internet."
+            <Label Text="{Binding Message}"
                    FontSize="24"
                    Margin="10,0"
                    TextColor="White"

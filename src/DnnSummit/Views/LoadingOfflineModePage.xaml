@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource SplashBackground}"
+             x:Class="DnnSummit.Views.LoadingOfflineModePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Continue}" />
+            </StackLayout.GestureRecognizers>
+            <Image Source="splash_icon"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Message}"
+                   FontSize="24"
+                   Margin="10,0"
+                   TextColor="White"
+                   VerticalOptions="StartAndExpand" 
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="CenterAndExpand" />
+            <Button Text="Download Content"
+                    Command="{Binding DownloadContent}"
+                    TextColor="White"
+                    FontSize="20"
+                    IsVisible="{Binding IsNoData}"
+                    BackgroundColor="{StaticResource DarkBlue}"
+                    VerticalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="20,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

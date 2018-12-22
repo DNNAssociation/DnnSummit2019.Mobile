@@ -5,6 +5,9 @@
              x:Class="DnnSummit.Views.LoadingOfflineModePage">
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Continue}" />
+            </StackLayout.GestureRecognizers>
             <Image Source="splash_icon"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />

@@ -3,6 +3,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
+using System;
 using System.Windows.Input;
 using Xamarin.Essentials;
 
@@ -40,6 +41,7 @@ namespace DnnSummit.ViewModels
         }
 
         public ICommand DownloadContent { get; }
+        public ICommand Continue { get; }
 
         public LoadingOfflineModeViewModel(
             ISettingsService settingsService,
@@ -50,6 +52,15 @@ namespace DnnSummit.ViewModels
             PageDialogService = pageDialogService;
             NavigationService = navigationService;
             DownloadContent = new DelegateCommand(OnDownloadContent);
+            Continue = new DelegateCommand(OnContinue);
+        }
+
+        private async void OnContinue()
+        {
+            if (!IsNoData)
+            {
+                await NavigationService.NavigateAsync(App.EntryPoint);
+            }
         }
 
         private async void OnDownloadContent()

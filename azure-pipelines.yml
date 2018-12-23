@@ -30,7 +30,7 @@ jobs:
   steps:
   - powershell: './build/GenerateSecrets.ps1 -iOS "$(AppCenter.Android)" -Android "$(AppCenter.iOS)" | Out-File -FilePath "src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
     displayName: 'Generate Proudction App Secrets'
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
+    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
 
   - powershell: '"{}" | Out-File -FilePath "src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
     displayName: 'Generate Empty App Secrets'

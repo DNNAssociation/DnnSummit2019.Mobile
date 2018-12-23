@@ -133,6 +133,13 @@ jobs:
 #Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 
   steps:
+  - powershell: '& $(Build.SourcesDirectory)/build/GenerateSecrets.ps1 -iOS "${env:IOS}" -Android "${env:ANDROID}" | Out-File -FilePath "$(Build.SourcesDirectory)/src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
+    env:
+      ANDROID: $(AppCenter.Android)
+      IOS: $(AppCenter.iOS)
+    displayName: 'Generate Proudction App Secrets'
+    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
+
   - task: vs-publisher-473885.motz-mobile-buildtasks.android-manifest-version.android-manifest-version@0
     displayName: 'Bump Android Versions in src/DnnSummit.Android/Properties/AndroidManifest.xml'
     inputs:

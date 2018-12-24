@@ -4,6 +4,7 @@ using DnnSummit.Data.Services.Interfaces;
 using MonkeyCache.SQLite;
 using Prism.Ioc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -39,20 +40,26 @@ namespace DnnSummit.Data
                        x != typeof(IService<>) && x != typeof(ISyncService))
                 .ToArray();
 
+            var serviceTasks = new List<Task>();
+            double counter = 0;
             for(int index = 0; index < interfaces.Length; index++)
             {
                 try
                 {
                     var service = (ISyncService)container.Resolve(interfaces[index]);
                     if (service == null) continue;
-                    
-                    await service.SyncAsync();
 
-                    if (ProgressUpdated != null)
+                    serviceTasks.Add(Task.Run(new Func<Task>(async () =>
                     {
-                        double progress = (index + 1) / (double)interfaces.Length;
-                        ProgressUpdated.Invoke(progress, new EventArgs());
-                    }
+                        await service.SyncAsync();
+
+                        if (ProgressUpdated != null)
+                        {
+                            counter += 1 / (double)interfaces.Length;
+                            double progress = counter;
+                            ProgressUpdated.Invoke(progress, new EventArgs());
+                        }
+                    })));
                 }
                 catch (Exception)
                 {
@@ -60,6 +67,7 @@ namespace DnnSummit.Data
                 }
             }
 
+            await Task.WhenAll(serviceTasks);
             var settings = new Settings { LastUpdated = DateTime.UtcNow };
             Barrel.Current.Add(nameof(Settings), settings, TimeSpan.FromDays(5));
         }

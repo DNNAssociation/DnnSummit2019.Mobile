@@ -32,7 +32,8 @@ namespace DnnSummit.Data.Services
                     .Select(m => new Speaker
                     {
                         Name = m.Title,
-                        PhotoLink = $"https://www.dnnsummit.org{m.Photo}"
+                        // TODO - update this to use new byte[]
+                        //PhotoLink = $"https://www.dnnsummit.org{m.Photo}"
                     })
                     .FirstOrDefault()).FirstOrDefault() // remove last firstOrDefault when we update to array
             });

@@ -6,9 +6,11 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -104,7 +106,7 @@ namespace DnnSummit.ViewModels
                             {
                                 Name = x.Speaker.Name,
                                 Bio = x.Speaker.Bio,
-                                HeadshotImage = x.Speaker.PhotoLink
+                                Headshot = ImageSource.FromStream(() => new MemoryStream(x.Speaker.Photo))
                             }
                         })));
 

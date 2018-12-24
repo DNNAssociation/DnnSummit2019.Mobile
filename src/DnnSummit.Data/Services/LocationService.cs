@@ -1,5 +1,6 @@
 ﻿using DnnSummit.Data.Models;
 using DnnSummit.Data.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,10 +18,10 @@ namespace DnnSummit.Data.Services
         {
             var locations = await QueryAsync();
 
-            var results = new List<Location>();
+            var results = new List<Task<Location>>();
             foreach (var item in locations)
             {
-                results.Add(new Location
+                results.Add(Task.Run(new Func<Task<Location>>(async () => new Location
                 {
                     Title = item.Title,
                     Description = item.Description,
@@ -56,10 +57,10 @@ namespace DnnSummit.Data.Services
                     WebsiteUrl = item.WebsiteUrl,
                     MapUrl = item.MapUrl,
                     WebsiteName = item.WebsiteName
-                });
+                })));
             }
 
-            return results;
+            return await Task.WhenAll(results);
         }
     }
 }

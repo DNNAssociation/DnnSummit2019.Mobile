@@ -21,7 +21,7 @@
                 <ViewCell>
                     <ViewCell.View>
                         <StackLayout>
-                            <Image Source="{Binding DataContext.ImageLink}"
+                            <Image Source="{Binding DataContext.Image}"
                                    Aspect="AspectFit"
                                    HeightRequest="200">
                                 <Image.GestureRecognizers>

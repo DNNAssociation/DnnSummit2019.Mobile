@@ -28,13 +28,16 @@ jobs:
   #Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
   #Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
   steps:
-  - powershell: '$(Build.SourcesDirectory)/build/GenerateAppSecrets.ps1 -iOS "$(AppCenter.iOS)" -Android "$(AppCenter.Android)" | Out-File -FilePath "$(Build.SourcesDirectory)/src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
+  - powershell: '$(Build.SourcesDirectory)/build/GenerateAppSecrets.ps1 -iOS "${env:IOS}" -Android "${env:ANDROID}" | Out-File -FilePath "$(Build.SourcesDirectory)/src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
+    env:
+      ANDROID: $(AppCenter.Android)
+      IOS: $(AppCenter.iOS)
     displayName: 'Generate Proudction App Secrets'
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
-
-  - powershell: '"{}" | Out-File -FilePath "src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
-    displayName: 'Generate Empty App Secrets'
     condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
+
+  - powershell: '"{}" | Out-File -FilePath "$(Build.SourcesDirectory)/src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
+    displayName: 'Generate Empty App Secrets'
+    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
 
   - task: InstallAppleCertificate@2
     displayName: 'Install an Apple certificate'
@@ -135,6 +138,10 @@ jobs:
       ANDROID: $(AppCenter.Android)
       IOS: $(AppCenter.iOS)
     displayName: 'Generate Proudction App Secrets'
+    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
+
+  - powershell: '"{}" | Out-File -FilePath "$(Build.SourcesDirectory)\src\DnnSummit\Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
+    displayName: 'Generate Empty App Secrets'
     condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
 
   - task: vs-publisher-473885.motz-mobile-buildtasks.android-manifest-version.android-manifest-version@0

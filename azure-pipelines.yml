@@ -28,10 +28,7 @@ jobs:
   #Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
   #Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
   steps:
-  - powershell: '$(Build.SourcesDirectory)/build/GenerateAppSecrets.ps1 -iOS "${env:IOS}" -Android "${env:ANDROID}" | Out-File -FilePath "$(Build.SourcesDirectory)/src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
-    env:
-      ANDROID: $(AppCenter.Android)
-      IOS: $(AppCenter.iOS)
+  - powershell: '$(Build.SourcesDirectory)/build/GenerateAppSecrets.ps1 -iOS "$(AppCenter.iOS)" -Android "$(AppCenter.Android)" | Out-File -FilePath "$(Build.SourcesDirectory)/src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
     displayName: 'Generate Proudction App Secrets'
     condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
 

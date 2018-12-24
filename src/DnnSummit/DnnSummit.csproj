@@ -9,6 +9,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;APPCENTER;</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Models\NewFolder\**" />
     <EmbeddedResource Remove="Models\NewFolder\**" />
@@ -73,6 +77,8 @@
   <ItemGroup>
     <Compile Remove="Controls\CarouselViewAdapter.cs" />
   </ItemGroup>
+  
+    
   <ItemGroup>
     <None Remove="Secrets.json" />
   </ItemGroup>

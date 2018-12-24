@@ -15,28 +15,35 @@ namespace DnnSummit.Data.Services
             var speakers = await QueryAsync();
             var sessions = (await QueryAsync<TwoSexyContent.Session>("GetSessions"))
                 .ToDictionary(x => x.Id, x => x);
-            return speakers.Select(x => new Speaker
+
+            var results = new List<Speaker>();
+            foreach (var item in speakers)
             {
-                Name = x.Title,
-                Bio = x.Bio,
-                PhotoLink = $"https://www.dnnsummit.org{x.Photo}",
-                Twitter = x.Twitter,
-                Sessions = x.Sessions
-                    .Select(s => sessions[s.Id])
-                    .Select(s => new Session
-                    {
-                        Title = s.Title,
-                        Abstract = s.Abstract,
-                        Description = s.Description,
-                        Day = s.Day,
-                        TimeSlot = s.TimeSlot,
-                        TimeSlotName = s.TimeSlot,
-                        Category = s.Category,
-                        VideoLink = s.VideoLink,
-                        Level = s.Level,
-                        Room = s.Room
-                    })
-            });
+                results.Add(new Speaker
+                {
+                    Name = item.Title,
+                    Bio = item.Bio,
+                    Photo = await GetImageFromUrlAsync($"https://www.dnnsummit.org{item.Photo}"),
+                    Twitter = item.Twitter,
+                    Sessions = item.Sessions
+                       .Select(s => sessions[s.Id])
+                       .Select(s => new Session
+                       {
+                           Title = s.Title,
+                           Abstract = s.Abstract,
+                           Description = s.Description,
+                           Day = s.Day,
+                           TimeSlot = s.TimeSlot,
+                           TimeSlotName = s.TimeSlot,
+                           Category = s.Category,
+                           VideoLink = s.VideoLink,
+                           Level = s.Level,
+                           Room = s.Room
+                       })
+                });
+            }
+
+            return results;
         }
     }
 }

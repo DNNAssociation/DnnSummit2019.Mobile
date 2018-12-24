@@ -5,8 +5,10 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -52,7 +54,7 @@ namespace DnnSummit.ViewModels
                 {
                     Name = item.Name,
                     Bio = item.Bio,
-                    HeadshotImage = item.PhotoLink,
+                    Headshot = ImageSource.FromStream(() => new MemoryStream(item.Photo)),
                     Sessions = item.Sessions.Select(x => new Session
                     {
                         Title = x.Title,
@@ -65,7 +67,7 @@ namespace DnnSummit.ViewModels
                         Speaker = new Speaker
                         {
                             Name = item.Name,
-                            HeadshotImage = item.PhotoLink
+                            Headshot = ImageSource.FromStream(() => new MemoryStream(item.Photo))
                         }
                     })
                 });

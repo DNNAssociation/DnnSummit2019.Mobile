@@ -79,5 +79,14 @@ namespace DnnSummit.Data.Services
 
             return null;
         }
+
+        protected async Task<byte[]> GetImageFromUrlAsync(string url)
+        {
+            using (var imageClient = new HttpClient())
+            {
+                var response = await imageClient.GetAsync(url);
+                return await response.Content.ReadAsByteArrayAsync();
+            }
+        }
     }
 }

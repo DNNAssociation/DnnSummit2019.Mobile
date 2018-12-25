@@ -9,6 +9,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;APPCENTER;</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Models\NewFolder\**" />
     <EmbeddedResource Remove="Models\NewFolder\**" />
@@ -16,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter" Version="1.12.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.12.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.12.0" />
     <PackageReference Include="MonkeyCache.SQLite" Version="1.0.1-beta" />
     <PackageReference Include="Prism.Forms" Version="7.1.0.431" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.1.0.431" />
@@ -69,5 +76,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controls\CarouselViewAdapter.cs" />
+  </ItemGroup>
+  
+    
+  <ItemGroup>
+    <None Remove="Secrets.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Secrets.json" />
   </ItemGroup>
 </Project>

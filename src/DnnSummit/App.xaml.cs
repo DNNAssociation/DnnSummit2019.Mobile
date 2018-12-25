@@ -1,4 +1,6 @@
-﻿using DnnSummit.Views;
+﻿using DnnSummit.Manager;
+using DnnSummit.Manager.Interfaces;
+using DnnSummit.Views;
 using Prism;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -25,6 +27,9 @@ namespace DnnSummit
         protected override void OnInitialized()
         {
             InitializeComponent();
+
+            var appCenter = Container.Resolve<IAppCenterManager>();
+            appCenter.Initialize();
             Data.Startup.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 
@@ -37,8 +42,7 @@ namespace DnnSummit
                 NavigationService.NavigateAsync(OfflineLoading);
             }
         }
-
-
+        
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             RegisterNavigation(containerRegistry);
@@ -55,11 +59,13 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<ScheduleDetailsPage>(Constants.Navigation.ScheduleDetailsPage);
             containerRegistry.RegisterForNavigation<SessionDetailsPage>(Constants.Navigation.SessionDetailsPage);
             containerRegistry.RegisterForNavigation<SponsorsPage>(Constants.Navigation.SponsorsPage);
-            Data.Startup.RegisterDependencies(containerRegistry);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)
         {
+            Data.Startup.RegisterDependencies(containerRegistry);
+            containerRegistry.Register<ISecretsManager, SecretsManager>();
+            containerRegistry.Register<IAppCenterManager, AppCenterManager>();
         }
 
         // Page/ViewModel Wireup Logic

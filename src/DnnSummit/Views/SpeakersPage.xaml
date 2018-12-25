@@ -41,7 +41,7 @@
                                    HeightRequest="100">
                                 <ic:CircleImage BorderColor="{StaticResource AvatarBorder}"
                                                 BorderThickness="2"
-                                                Source="{Binding HeadshotImage}"
+                                                Source="{Binding Headshot}"
                                                 Aspect="AspectFill"
                                                 VerticalOptions="FillAndExpand"
                                                 HorizontalOptions="FillAndExpand"

@@ -7,7 +7,7 @@ namespace DnnSummit.Data.Models
         public string Name { get; set; }
         public string Twitter { get; set; }
         public string Bio { get; set; }
-        public string PhotoLink { get; set; }
+        public byte[] Photo { get; set; }
         public IEnumerable<Session> Sessions { get; set; }
     }
 }

@@ -6,9 +6,11 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -104,7 +106,7 @@ namespace DnnSummit.ViewModels
                             {
                                 Name = x.Speaker.Name,
                                 Bio = x.Speaker.Bio,
-                                HeadshotImage = x.Speaker.PhotoLink
+                                Headshot = ImageSource.FromStream(() => new MemoryStream(x.Speaker.Photo))
                             }
                         })));
 
@@ -114,117 +116,6 @@ namespace DnnSummit.ViewModels
             {
                 Sessions.Add(item);
             }
-
-            // fake data
-            //Sessions = new ObservableCollection<SessionList>(new[]
-            //{
-            //    new SessionList("Session 1", "9:10 - 10:10")
-            //    {
-            //        new Session
-            //        {
-            //            Title = "Session Name 1",
-            //            Room = "Erie",
-            //            Description = "Description and IPSUM",
-            //            Track = SessionTrack.Design,
-            //            IsFavorite = true,
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 3",
-            //            Room = "Michigan",
-            //            Description = "Description",
-            //            Track = SessionTrack.Development
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 2",
-            //            Room = "Ontario",
-            //            Description = "Description",
-            //            Track = SessionTrack.Marketing
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 5",
-            //            Room = "Erie",
-            //            Description = "Description",
-            //            Track = SessionTrack.Development
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 4",
-            //            Room = "Superior",
-            //            Description = "Description",
-            //            Track = SessionTrack.Design,
-            //            IsFavorite = true
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 6",
-            //            Room = "Erie",
-            //            Description = "Description",
-            //            Track = SessionTrack.Marketing
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 7",
-            //            Room = "Ontario",
-            //            Description = "Description",
-            //            Track = SessionTrack.Development
-            //        }
-            //    },
-            //    new SessionList("Session 2", "10:20 - 11:20")
-            //    {
-            //        new Session
-            //        {
-            //            Title = "Session Name 1",
-            //            Room = "Erie",
-            //            Description = "Description",
-            //            Track = SessionTrack.Design
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 3",
-            //            Room = "Michigan",
-            //            Description = "Description",
-            //            Track = SessionTrack.Development
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 2",
-            //            Room = "Ontario",
-            //            Description = "Description",
-            //            Track = SessionTrack.Marketing
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 5",
-            //            Room = "Erie",
-            //            Description = "Description",
-            //            Track = SessionTrack.Development
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 4",
-            //            Room = "Superior",
-            //            Description = "Description",
-            //            Track = SessionTrack.Design
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 6",
-            //            Room = "Erie",
-            //            Description = "Description",
-            //            Track = SessionTrack.Marketing
-            //        },
-            //        new Session
-            //        {
-            //            Title = "Session Name 7",
-            //            Room = "Ontario",
-            //            Description = "Description",
-            //            Track = SessionTrack.Development
-            //        }
-            //    }
-            //});
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

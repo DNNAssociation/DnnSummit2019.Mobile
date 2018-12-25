@@ -6,6 +6,7 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -60,8 +61,8 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        private string _image;
-        public string Image
+        private ImageSource _image;
+        public ImageSource Image
         {
             get { return _image; }
             set
@@ -112,7 +113,7 @@ namespace DnnSummit.ViewModels
                     Description = details.Description;
                     Heading = details.Banner.Heading;
                     SubHeading = details.Banner.SubHeading;
-                    Image = details.Banner.Image;
+                    Image = ImageSource.FromStream(() => new MemoryStream(details.Banner.Image));
 
                     ContentSections.Clear();
                     foreach (var item in details.ContentSections)

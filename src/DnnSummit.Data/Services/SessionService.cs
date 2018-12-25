@@ -1,5 +1,6 @@
 ﻿using DnnSummit.Data.Models;
 using DnnSummit.Data.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,28 +15,45 @@ namespace DnnSummit.Data.Services
         {
             var sessions = await QueryAsync();
             var speakers = await QueryAsync<TwoSexyContent.Speaker>("GetSpeakers");
-            return sessions.Select(x => new Session
+
+            var results = new List<Task<Session>>();
+            foreach (var item in sessions)
             {
-                Title = x.Title,
-                Abstract = x.Abstract,
-                Description = x.Description,
-                Day = x.Day,
-                TimeSlot = x.TimeSlot,
-                TimeSlotName = x.TimeSlot,
-                VideoLink = x.VideoLink,
-                Category = x.Category,
-                Level = x.Level,
-                Room = x.Room,
-                Speaker = x.Speakers.Select(s => 
-                    speakers
-                    .Where(f => f.Id == s.Id)
-                    .Select(m => new Speaker
+                results.Add(Task.Run(new Func<Task<Session>>(async () =>
+                {
+                    var current = new Session
                     {
-                        Name = m.Title,
-                        PhotoLink = $"https://www.dnnsummit.org{m.Photo}"
-                    })
-                    .FirstOrDefault()).FirstOrDefault() // remove last firstOrDefault when we update to array
-            });
+                        Title = item.Title,
+                        Abstract = item.Abstract,
+                        Description = item.Description,
+                        Day = item.Day,
+                        TimeSlot = item.TimeSlot,
+                        TimeSlotName = item.TimeSlot,
+                        VideoLink = item.VideoLink,
+                        Category = item.Category,
+                        Level = item.Level,
+                        Room = item.Room
+                    };
+
+                    // TODO - Update the model to return many speakers instead of taking just 1
+                    var currentSpeakers = new List<Speaker>();
+                    foreach (var itemSpeaker in item.Speakers
+                        .Select(s => speakers.Where(f => f.Id == s.Id).FirstOrDefault()))
+                    {
+                        currentSpeakers.Add(new Speaker
+                        {
+                            Name = itemSpeaker.Title,
+                            Photo = await GetImageFromUrlAsync($"https://www.dnnsummit.org{itemSpeaker.Photo}")
+                        });
+                    }
+
+                    current.Speaker = currentSpeakers.FirstOrDefault();
+
+                    return current;
+                })));
+            }
+
+            return await Task.WhenAll(results);
         }
     }
 }

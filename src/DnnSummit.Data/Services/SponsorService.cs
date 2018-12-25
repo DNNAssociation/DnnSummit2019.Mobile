@@ -1,8 +1,8 @@
 ﻿using DnnSummit.Data.Extensions;
 using DnnSummit.Data.Models;
 using DnnSummit.Data.Services.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DnnSummit.Data.Services
@@ -17,13 +17,20 @@ namespace DnnSummit.Data.Services
         protected override async Task<IEnumerable<Sponsor>> QueryAndMapAsync()
         {
             var sponsors = await QueryAsync();
-            return sponsors.Select(x => new Sponsor
+
+            var results = new List<Task<Sponsor>>();
+            foreach (var item in sponsors)
             {
-                Name = x.Title,
-                Homepage = x.Homepage,
-                ImageLink = $"https://www.dnnsummit.org{x.Image}",
-                Level = x.Level.ToSponsorLevel()
-            });
+                results.Add(Task.Run(new Func<Task<Sponsor>>(async () => new Sponsor
+                {
+                    Name = item.Title,
+                    Homepage = item.Homepage,
+                    Image = await GetImageFromUrlAsync($"https://www.dnnsummit.org{item.Image}"),
+                    Level = item.Level.ToSponsorLevel()
+                })));
+            }
+
+            return await Task.WhenAll(results);
         }
     }
 }

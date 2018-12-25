@@ -32,8 +32,8 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        private string _image;
-        public string Image
+        private ImageSource _image;
+        public ImageSource Image
         {
             get { return _image; }
             set
@@ -141,7 +141,7 @@ namespace DnnSummit.ViewModels
                 {
                     Title = session.Title;
                     Description = session.Description;
-                    Image = session.Speaker.HeadshotImage;
+                    Image = session.Speaker.Headshot;
                     Room = session.Room;
                     FullName = session.Speaker.Name;
                     Session = session.TimeSlotName;

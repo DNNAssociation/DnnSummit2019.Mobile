@@ -1,5 +1,6 @@
 ﻿using DnnSummit.Data.Models;
 using DnnSummit.Data.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,43 +17,50 @@ namespace DnnSummit.Data.Services
         protected override async Task<IEnumerable<Location>> QueryAndMapAsync()
         {
             var locations = await QueryAsync();
-            return locations.Select(x => new Location
+
+            var results = new List<Task<Location>>();
+            foreach (var item in locations)
             {
-                Title = x.Title,
-                Description = x.Description,
-                HotelName = x.HotelName,
-                HotelStandardsTitle = x.HotelStandardsTitle,
-                HotelStandards = new[]
+                results.Add(Task.Run(new Func<Task<Location>>(async () => new Location
                 {
-                    x.HotelStandard1,
-                    x.HotelStandard2,
-                    x.HotelStandard3,
-                    x.HotelStandard4,
-                    x.HotelStandard5,
-                    x.HotelStandard6
-                },
-                Address = x.Address,
-                PhoneNumber = x.PhoneNumber,
-                DirectionsFromAirport = x.DirectionsFromAirport,
-                ParkingInformation = x.ParkingInformation,
-                LocalAttractionsTitle = x.LocalAttractionsTitle,
-                LocalAttractions = new[]
-                {
-                    x.LocalAttraction1,
-                    x.LocalAttraction2,
-                    x.LocalAttraction3,
-                    x.LocalAttraction4,
-                    x.LocalAttraction5,
-                    x.LocalAttraction6
-                },
-                Image = $"https://www.dnnsummit.org{x.Image}",
-                LearnMoreUrl = x.LearnMoreUrl,
-                BookNowUrl = x.BookNowUrl,
-                PhoneNumberUrl = x.PhoneNumberUrl,
-                WebsiteUrl = x.WebsiteUrl,
-                MapUrl = x.MapUrl,
-                WebsiteName = x.WebsiteName
-            });
+                    Title = item.Title,
+                    Description = item.Description,
+                    HotelName = item.HotelName,
+                    HotelStandardsTitle = item.HotelStandardsTitle,
+                    HotelStandards = new[]
+                    {
+                        item.HotelStandard1,
+                        item.HotelStandard2,
+                        item.HotelStandard3,
+                        item.HotelStandard4,
+                        item.HotelStandard5,
+                        item.HotelStandard6
+                    },
+                    Address = item.Address,
+                    PhoneNumber = item.PhoneNumber,
+                    DirectionsFromAirport = item.DirectionsFromAirport,
+                    ParkingInformation = item.ParkingInformation,
+                    LocalAttractionsTitle = item.LocalAttractionsTitle,
+                    LocalAttractions = new[]
+                    {
+                        item.LocalAttraction1,
+                        item.LocalAttraction2,
+                        item.LocalAttraction3,
+                        item.LocalAttraction4,
+                        item.LocalAttraction5,
+                        item.LocalAttraction6
+                    },
+                    Image = await GetImageFromUrlAsync($"https://www.dnnsummit.org{item.Image}"),
+                    LearnMoreUrl = item.LearnMoreUrl,
+                    BookNowUrl = item.BookNowUrl,
+                    PhoneNumberUrl = item.PhoneNumberUrl,
+                    WebsiteUrl = item.WebsiteUrl,
+                    MapUrl = item.MapUrl,
+                    WebsiteName = item.WebsiteName
+                })));
+            }
+
+            return await Task.WhenAll(results);
         }
     }
 }

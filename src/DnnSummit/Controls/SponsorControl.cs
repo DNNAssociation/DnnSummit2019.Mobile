@@ -47,7 +47,7 @@ namespace DnnSummit.Controls
             {
                 var image = new Image
                 {
-                    Source = item.ImageLink,
+                    Source = item.Image,
                     Aspect = Aspect.AspectFit,
                     HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true),
                     VerticalOptions = new LayoutOptions(LayoutAlignment.Fill, false),

@@ -6,6 +6,7 @@ using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -56,7 +57,7 @@ namespace DnnSummit.ViewModels
                 {
                     Name = item.Name,
                     Homepage = item.Homepage,
-                    ImageLink = item.ImageLink,
+                    Image = ImageSource.FromStream(() => new MemoryStream(item.Image)),
                     Level = (SponsorType)item.Level
                 };
 
@@ -87,7 +88,7 @@ namespace DnnSummit.ViewModels
                     {
                         Name = x.Name,
                         Homepage = x.Homepage,
-                        ImageLink = x.ImageLink,
+                        Image = ImageSource.FromStream(() => new MemoryStream(x.Image)),
                         Level = SponsorType.Gold
                     }),
                 Level = SponsorType.Gold
@@ -101,7 +102,7 @@ namespace DnnSummit.ViewModels
                     {
                         Name = x.Name,
                         Homepage = x.Homepage,
-                        ImageLink = x.ImageLink,
+                        Image = ImageSource.FromStream(() => new MemoryStream(x.Image)),
                         Level = SponsorType.Silver
                     }),
                 Level = SponsorType.Silver
@@ -115,7 +116,7 @@ namespace DnnSummit.ViewModels
                     {
                         Name = x.Name,
                         Homepage = x.Homepage,
-                        ImageLink = x.ImageLink,
+                        Image = ImageSource.FromStream(() => new MemoryStream(x.Image)),
                         Level = SponsorType.Bronze
                     }),
                 Level = SponsorType.Bronze

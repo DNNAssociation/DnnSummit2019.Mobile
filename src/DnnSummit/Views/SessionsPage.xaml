@@ -27,7 +27,7 @@
                                     <StackLayout Orientation="Vertical"
                                                  HorizontalOptions="Center"
                                                  WidthRequest="100">
-                                        <ic:CircleImage Source="{Binding Speaker.HeadshotImage}"
+                                        <ic:CircleImage Source="{Binding Speaker.Headshot}"
                                                         BorderColor="{StaticResource AvatarBorder}"
                                                         BorderThickness="2"
                                                         Aspect="AspectFill"

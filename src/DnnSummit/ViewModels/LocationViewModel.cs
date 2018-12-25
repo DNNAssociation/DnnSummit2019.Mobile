@@ -4,6 +4,8 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -52,7 +54,7 @@ namespace DnnSummit.ViewModels
                     ParkingInformation = item.ParkingInformation,
                     LocalAttractionsTitle = item.LocalAttractionsTitle,
                     LocalAttractions = item.LocalAttractions,
-                    Image = item.Image,
+                    Image = ImageSource.FromStream(() => new MemoryStream(item.Image)),
                     LearnMoreUrl = item.LearnMoreUrl,
                     BookNowUrl = item.BookNowUrl,
                     PhoneNumberUrl = item.PhoneNumberUrl,

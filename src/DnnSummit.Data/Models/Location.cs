@@ -15,7 +15,7 @@ namespace DnnSummit.Data.Models
         public string ParkingInformation { get; set; }
         public string LocalAttractionsTitle { get; set; }
         public IEnumerable<string> LocalAttractions { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
         public string LearnMoreUrl { get; set; }
         public string BookNowUrl { get; set; }
         public string PhoneNumberUrl { get; set; }

@@ -1,9 +1,11 @@
-﻿namespace DnnSummit.Models
+﻿using Xamarin.Forms;
+
+namespace DnnSummit.Models
 {
     public class Sponsor
     {
         public string Name { get; set; }
-        public string ImageLink { get; set; }
+        public ImageSource Image { get; set; }
         public string Homepage { get; set; }
         public SponsorType Level { get; set; }
     }

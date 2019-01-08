@@ -3,6 +3,7 @@ using DnnSummit.Manager.Interfaces;
 using DnnSummit.Views;
 using Prism;
 using Prism.Ioc;
+using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Unity;
 using System;
@@ -30,7 +31,6 @@ namespace DnnSummit
 
             var appCenter = Container.Resolve<IAppCenterManager>();
             appCenter.Initialize();
-            Data.Startup.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -42,7 +42,12 @@ namespace DnnSummit
                 NavigationService.NavigateAsync(OfflineLoading);
             }
         }
-        
+
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule<Data.DataModule>(InitializationMode.WhenAvailable);
+        }
+
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             RegisterNavigation(containerRegistry);
@@ -63,7 +68,6 @@ namespace DnnSummit
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)
         {
-            Data.Startup.RegisterDependencies(containerRegistry);
             containerRegistry.Register<ISecretsManager, SecretsManager>();
             containerRegistry.Register<IAppCenterManager, AppCenterManager>();
         }

@@ -2,6 +2,7 @@
 using DnnSummit.Manager.Interfaces;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -14,12 +15,19 @@ namespace DnnSummit.Manager
         private JObject _secrets;
         public SecretsManager()
         {
-            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
-            var stream = assembly.GetManifestResourceStream($"{Namespace}.{FileName}.json");
-            using (var reader = new StreamReader(stream))
+            try
             {
-                var json = reader.ReadToEnd();
-                _secrets = JObject.Parse(json);
+                var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
+                var stream = assembly.GetManifestResourceStream($"{Namespace}.{FileName}.json");
+                using (var reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    _secrets = JObject.Parse(json);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Unable to load secrets file");
             }
         }
 

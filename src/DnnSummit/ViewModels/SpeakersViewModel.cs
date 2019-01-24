@@ -47,6 +47,8 @@ namespace DnnSummit.ViewModels
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
             var data = await SpeakerService.GetAsync();
+            if (data == null) return;
+
             Speakers.Clear();
             foreach (var item in data)
             {

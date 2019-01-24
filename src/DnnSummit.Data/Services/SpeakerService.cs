@@ -26,30 +26,38 @@ namespace DnnSummit.Data.Services
                     {
                         Name = item.Title,
                         Bio = item.Bio,
-                        Twitter = item.Twitter,
-                        Sessions = item.Sessions
-                           .Select(s => sessions[s.Id])
-                           .Select(s => new Session
-                           {
-                               Title = s.Title,
-                               Abstract = s.Abstract,
-                               Description = s.Description,
-                               Day = s.Day,
-                               TimeSlot = s.TimeSlot,
-                               TimeSlotName = s.TimeSlot,
-                               Category = s.Category,
-                               VideoLink = s.VideoLink,
-                               Level = s.Level,
-                               Room = s.Room
-                           })
+                        Twitter = item.Twitter
                     };
 
+                    var speakerSessions = new List<Session>();
+                    foreach (var currentSession in item.Sessions)
+                    {
+                        if (sessions.ContainsKey(currentSession.Id))
+                        {
+                            var s = sessions[currentSession.Id];
+                            speakerSessions.Add(new Session
+                            {
+                                Title = s.Title,
+                                Abstract = s.Abstract,
+                                Description = s.Description,
+                                Day = s.Day,
+                                TimeSlot = s.TimeSlot,
+                                TimeSlotName = s.TimeSlot,
+                                Category = s.Category,
+                                VideoLink = s.VideoLink,
+                                Level = s.Level,
+                                Room = s.Room
+                            });
+                        }
+                    }
+
+                    current.Sessions = speakerSessions;
                     current.Photo = await GetImageFromUrlAsync($"https://www.dnnsummit.org{item.Photo}");
                     return current;
                 })));
             }
 
-            return await Task.WhenAll(results);
+            return Task.WhenAll(results).GetAwaiter().GetResult();
         }
     }
 }

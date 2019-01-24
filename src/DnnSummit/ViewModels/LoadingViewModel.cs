@@ -1,4 +1,7 @@
-﻿using Prism.Mvvm;
+﻿using DnnSummit.Data;
+using DnnSummit.Events;
+using Prism.Events;
+using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
@@ -9,6 +12,8 @@ namespace DnnSummit.ViewModels
     public class LoadingViewModel : BindableBase, INavigatingAware
     {
         protected INavigationService NavigationService { get; }
+        protected IStartupManager StartupManager { get; }
+        protected IEventAggregator EventAggregator { get; }
 
         private double _percentCompleted;
         public double PercentCompleted
@@ -21,24 +26,28 @@ namespace DnnSummit.ViewModels
             }
         }
         
-        public LoadingViewModel(INavigationService navigationService)
+        public LoadingViewModel(
+            INavigationService navigationService,
+            IStartupManager startupManager,
+            IEventAggregator eventAggregator)
         {
             NavigationService = navigationService;
+            StartupManager = startupManager;
+
+            eventAggregator
+                .GetEvent<ContentDownloadProgressUpdated>()
+                .Subscribe(OnProgressUpdated);
         }
 
         private async Task DownloadAsync()
         {
             try
             {
-                Data.Startup.ProgressUpdated += OnProgressUpdated;
-                await Data.Startup.SyndDataAsync(App.Current.Container);
-                Data.Startup.ProgressUpdated -= OnProgressUpdated;
-
+                await StartupManager.SyndDataAsync();
                 await Task.Delay(1000); // makes sure the animation completes before navigating to the dashboard
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO - log some type of error or try again?
             }
             finally
             {
@@ -51,9 +60,9 @@ namespace DnnSummit.ViewModels
             await NavigationService.NavigateAsync(App.EntryPoint);
         }
 
-        private void OnProgressUpdated(object sender, EventArgs e)
+        private void OnProgressUpdated(double progress)
         {
-            PercentCompleted = (double)sender;
+            PercentCompleted = progress;
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

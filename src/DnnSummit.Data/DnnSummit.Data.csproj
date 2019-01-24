@@ -24,5 +24,8 @@
     <PackageReference Include="Prism.Unity.Forms" Version="7.1.0.431" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DnnSummit.Events\DnnSummit.Events.csproj" />
+  </ItemGroup>
 
 </Project>

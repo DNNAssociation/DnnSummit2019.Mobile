@@ -18,7 +18,8 @@ variables:
 jobs: 
 - template: Xamarin/azure-pipelines.yml@Templates
   parameters:
-    configuration: "Ad-Hoc"
+    adhocConfiguration: 'Ad-Hoc'
+    releaseConfiguration: 'Release'
     infoPListSource: 'src/DnnSummit.iOS/Info.plist'
     androidManifestSource: 'src\DnnSummit.Android\Properties\AndroidManifest.xml' 
     appcenterOrganization: 'DNNAssociation'

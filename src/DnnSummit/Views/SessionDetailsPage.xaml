@@ -109,14 +109,9 @@
                     </StackLayout>
                     <ScrollView Orientation="Vertical"
                                 Padding="10, 0, 10, 65">
-                        <StackLayout Spacing="20">
-                            <Label Text="{Binding Description}"
-                                   TextColor="Black"
-                                   FontSize="24"/>
-                            <Label Text="{Binding ContentRetrieved, Converter={StaticResource DataTimestampConverter}}"
-                                   TextColor="Black"
-                                   FontSize="18" />
-                        </StackLayout>
+                        <Label Text="{Binding Description}"
+                               TextColor="Black"
+                               FontSize="24"/>
                     </ScrollView>
                 </StackLayout>
             </StackLayout>
@@ -124,7 +119,7 @@
                    IsEnabled="{Binding HasVideoIntro}"
                    VerticalOptions="End"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0, 0, 0, 15"
+                   Margin="{Binding VideoIntroMargin}"
                    Padding="10"
                    BackgroundColor="{Binding SessionTrack, Converter={StaticResource SessionTrackToColorConverter}}">
                 <Frame.GestureRecognizers>
@@ -140,6 +135,27 @@
                            VerticalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
+            <StackLayout HorizontalOptions="Fill"
+                         VerticalOptions="End"
+                         Padding="5,10"
+                         Margin="0, 0, 0, -2"
+                         Spacing="0"
+                         BackgroundColor="{StaticResource Orange}"
+                         Orientation="Horizontal"
+                         IsVisible="{Binding DisplayOfflineNotice}">
+                <Label Text="{Binding ContentRetrieved, Converter={StaticResource DataTimestampConverter}}"
+                       TextColor="White"
+                       HorizontalOptions="Start"/>
+                <Label HorizontalOptions="EndAndExpand"
+                       Text="Hide"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       Margin="0,0,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleOfflineNotice}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

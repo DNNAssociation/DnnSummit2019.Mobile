@@ -168,7 +168,7 @@
                         Text="Day 2" />
                 </StackLayout>
             </Frame>
-            <Frame Margin="0, 0, 10, 10"
+            <Frame Margin="0, 0, 10, 45"
                    VerticalOptions="End"
                    HorizontalOptions="End"
                    HeightRequest="50"
@@ -199,6 +199,16 @@
                            IsVisible="{Binding IsViewingFavoriteSessions}" />
                 </StackLayout>                
             </Frame>
+            <StackLayout HorizontalOptions="Fill"
+                         VerticalOptions="End"
+                         Padding="5,10"
+                         Margin="0, 0, 0, -2"
+                         Spacing="0"
+                         BackgroundColor="{StaticResource Orange}">
+                <Label Text="{Binding ContentRetrieved, Converter={StaticResource DataTimestampConverter}}"
+                       TextColor="White"
+                       HorizontalOptions="Start"/>    
+            </StackLayout>            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

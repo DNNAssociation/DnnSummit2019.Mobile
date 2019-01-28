@@ -49,6 +49,17 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private DateTime _contentRetrieved;
+        public DateTime ContentRetrieved
+        {
+            get { return _contentRetrieved; }
+            set
+            {
+                SetProperty(ref _contentRetrieved, value);
+                RaisePropertyChanged(nameof(ContentRetrieved));
+            }
+        }
+
         public SessionsViewModel(
             INavigationService navigationService,
             ISessionService sessionService)
@@ -117,6 +128,8 @@ namespace DnnSummit.ViewModels
             {
                 Sessions.Add(item);
             }
+
+            ContentRetrieved = rawSessions.FirstOrDefault().Retrieved;
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

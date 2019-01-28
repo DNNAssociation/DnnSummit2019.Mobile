@@ -154,7 +154,9 @@ namespace DnnSummit.ViewModels
         public SessionDetailsViewModel()
         {
             DisplayOfflineNotice = true;
-            VideoIntroMargin = new Thickness(0, 0, 0, 55);
+            VideoIntroMargin = Device.RuntimePlatform == Device.iOS ?
+                new Thickness(0, 0, 0, 75) :
+                new Thickness(0, 0, 0, 55);
             VideoIntro = new DelegateCommand(OnVideoIntro);
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
         }
@@ -165,11 +167,15 @@ namespace DnnSummit.ViewModels
 
             if (DisplayOfflineNotice)
             {
-                VideoIntroMargin = new Thickness(0, 0, 0, 55);
+                VideoIntroMargin = Device.RuntimePlatform == Device.iOS ?
+                    new Thickness(0, 0, 0, 75) :
+                    new Thickness(0, 0, 0, 55);
             }
             else
             {
-                VideoIntroMargin = new Thickness(0, 0, 0, 10);
+                VideoIntroMargin = Device.RuntimePlatform == Device.iOS ?
+                    new Thickness(0, 0, 0, 30) :
+                    new Thickness(0, 0, 0, 10);
             }
         }
 

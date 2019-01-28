@@ -32,7 +32,8 @@ namespace DnnSummit.Data.Services
                         VideoLink = item.VideoLink,
                         Category = item.Category,
                         Level = item.Level,
-                        Room = item.Room
+                        Room = item.Room,
+                        Retrieved = DateTime.Now
                     };
 
                     // TODO - Update the model to return many speakers instead of taking just 1

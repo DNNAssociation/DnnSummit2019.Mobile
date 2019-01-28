@@ -13,5 +13,10 @@
             public const string SessionDetailsPage = "SessionDetailsPage";
             public const string SponsorsPage = "SponsorsPage";
         }
+
+        public static class Messages
+        {
+            public const string LastRetrieved = "Last Retrieved: {0}";
+        }
     }
 }

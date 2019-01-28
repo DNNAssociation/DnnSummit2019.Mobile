@@ -102,6 +102,7 @@ namespace DnnSummit.ViewModels
                             TimeSlotName = x.TimeSlotName,
                             TimeSlot = x.TimeSlot,
                             VideoLink = x.VideoLink,
+                            Retrieved = x.Retrieved,
                             Speaker = new Speaker
                             {
                                 Name = x.Speaker.Name,

@@ -53,6 +53,7 @@
             <converters:NotTrueConverter x:Key="NotTrueConverter" />
             <converters:IsNotStringNullOrEmptyConverter x:Key="IsNotStringNullOrEmptyConverter" />
             <converters:PercentToStringConverter x:Key="PercentToStringConverter" />
+            <converters:DataTimestampConverter x:Key="DataTimestampConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

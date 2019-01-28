@@ -108,10 +108,15 @@
                              Color="{StaticResource ListDivider}" />
                     </StackLayout>
                     <ScrollView Orientation="Vertical"
-                            Padding="10, 0, 10, 65">
-                        <Label Text="{Binding Description}"
-                           TextColor="Black"
-                           FontSize="24"/>
+                                Padding="10, 0, 10, 65">
+                        <StackLayout Spacing="20">
+                            <Label Text="{Binding Description}"
+                                   TextColor="Black"
+                                   FontSize="24"/>
+                            <Label Text="{Binding ContentRetrieved, Converter={StaticResource DataTimestampConverter}}"
+                                   TextColor="Black"
+                                   FontSize="18" />
+                        </StackLayout>
                     </ScrollView>
                 </StackLayout>
             </StackLayout>

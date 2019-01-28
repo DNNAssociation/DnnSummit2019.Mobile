@@ -110,6 +110,17 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private DateTime _contentRetrieved;
+        public DateTime ContentRetrieved
+        {
+            get { return _contentRetrieved; }
+            set
+            {
+                SetProperty(ref _contentRetrieved, value);
+                RaisePropertyChanged(nameof(ContentRetrieved));
+            }
+        }
+
         public bool HasVideoIntro
         {
             get { return !string.IsNullOrWhiteSpace(VideoIntroLink); }
@@ -148,6 +159,7 @@ namespace DnnSummit.ViewModels
                     TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;
                     VideoIntroLink = session.VideoLink;
+                    ContentRetrieved = session.Retrieved;
 
                     isSuccessful = true;
                 }

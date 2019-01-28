@@ -97,7 +97,7 @@
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="GroupHeaderTemplate">
-                <ViewCell Height="{OnPlatform iOS=40, Android=40}">
+                <ViewCell Height="{OnPlatform iOS=40}">
                     <ViewCell.View>
                         <StackLayout Orientation="Vertical"
                                      Spacing="0"
@@ -148,7 +148,7 @@
                                 ItemTapped="ListView_ItemTapped">
                 <c:NoStickyListView.Header>
                     <!-- create additional whitespace so the tabs don't overlap the first section -->
-                    <StackLayout HeightRequest="{OnPlatform Android=40 iOS=100}"
+                    <StackLayout HeightRequest="{OnPlatform Android=40, iOS=100}"
                                  BackgroundColor="White"/>
                 </c:NoStickyListView.Header>
                 <c:NoStickyListView.Behaviors>

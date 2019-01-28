@@ -25,6 +25,7 @@ namespace DnnSummit.ViewModels
         public ICommand SwapState { get; }
         public ICommand ToggleAsFavorite { get; }
         public ICommand ToggleOfflineNotice { get; }
+        public ICommand ChangeDay { get; }
 
         public ObservableCollection<SessionList> Sessions { get; }
 
@@ -72,6 +73,20 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private SessionDay _selectedDay;
+        public SessionDay SelectedDay
+        {
+            get { return _selectedDay; }
+            set
+            {
+                SetProperty(ref _selectedDay, value);
+                RaisePropertyChanged(nameof(SelectedDay));
+            }
+        }
+
+        public SessionDay Day1 => SessionDay.Day1;
+        public SessionDay Day2 => SessionDay.Day2;
+
         private Thickness _floatingButtonMargin;
         public Thickness FloatingButtonMargin
         {
@@ -91,14 +106,25 @@ namespace DnnSummit.ViewModels
             IsBusy = false;
             DisplayOfflineNotice = true;
             FloatingButtonMargin = new Thickness(0, 0, 10, 45);
+            SelectedDay = SessionDay.Day1;
             NavigationService = navigationService;
             SessionService = sessionService;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
             SwapState = new DelegateCommand(OnSwapState);
             ToggleAsFavorite = new DelegateCommand<Session>(OnToggleAsFavorite);
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
+            ChangeDay = new DelegateCommand<object>(OnChangeDay);
             Sessions = new ObservableCollection<SessionList>();
             
+        }
+
+        private void OnChangeDay(object input)
+        {
+            var newDay = (SessionDay?)input;
+            if (newDay.HasValue)
+            {
+                SelectedDay = newDay.Value;
+            }
         }
 
         private void OnToggleOfflineNotice()

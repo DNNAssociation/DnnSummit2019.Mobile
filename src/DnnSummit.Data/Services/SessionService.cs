@@ -21,12 +21,13 @@ namespace DnnSummit.Data.Services
             {
                 results.Add(Task.Run(new Func<Task<Session>>(async () =>
                 {
+                    int.TryParse(item.Day, out int day);
                     var current = new Session
                     {
                         Title = item.Title,
                         Abstract = item.Abstract,
                         Description = item.Description,
-                        Day = item.Day,
+                        Day = day,
                         TimeSlot = item.TimeSlot,
                         TimeSlotName = item.TimeSlot,
                         VideoLink = item.VideoLink,

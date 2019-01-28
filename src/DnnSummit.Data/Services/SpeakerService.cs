@@ -40,7 +40,7 @@ namespace DnnSummit.Data.Services
                                 Title = s.Title,
                                 Abstract = s.Abstract,
                                 Description = s.Description,
-                                Day = s.Day,
+                                //Day = s.Day,
                                 TimeSlot = s.TimeSlot,
                                 TimeSlotName = s.TimeSlot,
                                 Category = s.Category,

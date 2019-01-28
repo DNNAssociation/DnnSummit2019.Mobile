@@ -4,6 +4,7 @@
              xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:DnnSummit.Converters"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}"
              Icon="sessions"
@@ -11,6 +12,8 @@
              x:Class="DnnSummit.Views.SessionsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <c:SelectedDayToColorConverter Day="Day1" x:Key="Day1ToColorConverter" />
+            <c:SelectedDayToColorConverter Day="Day2" x:Key="Day2ToColorConverter" />
             <DataTemplate x:Key="SessionTeamplate">
                 <ViewCell>
                     <ViewCell.View>
@@ -141,6 +144,10 @@
                       HasUnevenRows="True"
                       Grid.Row="0"     
                       ItemTapped="ListView_ItemTapped">
+                <ListView.Header>
+                    <!-- create additional whitespace so the tabs don't overlap the first section -->
+                    <StackLayout HeightRequest="40" />
+                </ListView.Header>
                 <ListView.Behaviors>
                     <b:EventToCommandBehavior EventName="ItemTapped"
                                               Command="{Binding SessionSelected}"
@@ -149,23 +156,41 @@
             </ListView>
             <Frame HeightRequest="60"
                    VerticalOptions="StartAndExpand"
-                   BackgroundColor="{StaticResource Orange}"
+                   BackgroundColor="Transparent"
                    Margin="100, -10, 100, 0"
                    Padding="0"
                    CornerRadius="10">
                 <StackLayout Orientation="Horizontal"
-                            VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="CenterAndExpand">
-                    <Button BackgroundColor="Red"
-                        TextColor="White"
-                        Text="Day 1"
-                        Command="{Binding DaySelected}"
-                        CommandParameter="1"/>
-                    <Button BackgroundColor="Transparent"
-                        Command="{Binding DaySelected}"
-                        CommandParameter="2"
-                        TextColor="White"
-                        Text="Day 2" />
+                             VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand">
+                    <Frame BackgroundColor="{Binding SelectedDay, Converter={StaticResource Day1ToColorConverter}}"
+                           CornerRadius="10"
+                           HorizontalOptions="FillAndExpand">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeDay}"
+                                                  CommandParameter="{Binding Day1}" />
+                        </Frame.GestureRecognizers>
+                        <Label TextColor="White"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               FontAttributes="Bold"
+                               Text="{Binding Day1, Converter={StaticResource SessionDayToStringConverter}}" />
+                    </Frame>
+                    <Frame BackgroundColor="{Binding SelectedDay, Converter={StaticResource Day2ToColorConverter}}"
+                           CornerRadius="10"
+                           HorizontalOptions="FillAndExpand">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeDay}"
+                                                  CommandParameter="{Binding Day2}" />
+                        </Frame.GestureRecognizers>
+                        <Label TextColor="White"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               FontAttributes="Bold"
+                               VerticalTextAlignment="Center"
+                               Text="{Binding Day2, Converter={StaticResource SessionDayToStringConverter}}" />
+                    </Frame>
                 </StackLayout>
             </Frame>
             <Frame Margin="{Binding FloatingButtonMargin}"

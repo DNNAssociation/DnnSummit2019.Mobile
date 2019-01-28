@@ -10,7 +10,7 @@ namespace DnnSummit.Converters
         {
             var timestamp = (DateTime)value;
 
-            return string.Format(Constants.Messages.LastRetrieved, timestamp.ToString("MM/dd/yyyy @ h:mm tt")); 
+            return string.Format(Constants.Messages.LastRetrieved, timestamp.ToString("MM/dd/yy @ h:mm tt")); 
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

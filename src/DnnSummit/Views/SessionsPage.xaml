@@ -165,10 +165,13 @@
                    CornerRadius="10">
                 <StackLayout Orientation="Horizontal"
                              VerticalOptions="FillAndExpand"
-                             HorizontalOptions="FillAndExpand">
+                             HorizontalOptions="FillAndExpand"
+                             Padding="3"
+                             BackgroundColor="{StaticResource Orange}">
                     <Frame BackgroundColor="{Binding SelectedDay, Converter={StaticResource Day1ToColorConverter}}"
                            CornerRadius="10"
-                           HorizontalOptions="FillAndExpand">
+                           HorizontalOptions="FillAndExpand"
+                           HasShadow="False">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ChangeDay}"
                                                   CommandParameter="{Binding Day1}" />
@@ -182,7 +185,8 @@
                     </Frame>
                     <Frame BackgroundColor="{Binding SelectedDay, Converter={StaticResource Day2ToColorConverter}}"
                            CornerRadius="10"
-                           HorizontalOptions="FillAndExpand">
+                           HorizontalOptions="FillAndExpand"
+                           HasShadow="False">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ChangeDay}"
                                                   CommandParameter="{Binding Day2}" />

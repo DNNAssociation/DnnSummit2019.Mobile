@@ -10,7 +10,7 @@ namespace DnnSummit.Views
 		{
 			InitializeComponent ();
         }
-
+        
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var listView = (ListView)sender;

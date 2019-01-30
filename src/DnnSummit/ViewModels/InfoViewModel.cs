@@ -18,7 +18,7 @@ namespace DnnSummit.ViewModels
             {
                 Title = "Venue",
                 InfoType = InfoType.Venue,
-                NavigationPath = Constants.Navigation.LocationPage
+                NavigationPath = Constants.Navigation.VenuePage
             },
             new Tile
             {

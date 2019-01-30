@@ -4,6 +4,7 @@ namespace DnnSummit.Models
 {
     public enum InfoType
     {
+        // todo - update this to "power" from material icons
         [ImageResource(Name = "business")]
         Sponsors,
 

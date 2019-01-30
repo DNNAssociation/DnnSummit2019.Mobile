@@ -30,7 +30,7 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateToSchedule}" />
                     </StackLayout.GestureRecognizers>
-                    <Image Source="event" />
+                    <Image Source="event_note" />
                     <Label TextColor="White"                       
                            FontSize="16"
                            Text="Schedule" />

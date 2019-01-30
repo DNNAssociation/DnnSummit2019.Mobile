@@ -413,6 +413,14 @@
     <ImageAsset Include="Assets.xcassets\splash_icon.imageset\splash_icon%403.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\event_note.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\event_note.imageset\event_note%401.png" />
+    <ImageAsset Include="Assets.xcassets\event_note.imageset\event_note%402.png" />
+    <ImageAsset Include="Assets.xcassets\event_note.imageset\event_note%403.png" />
+    <ImageAsset Include="Assets.xcassets\power.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\power.imageset\power%401.png" />
+    <ImageAsset Include="Assets.xcassets\power.imageset\power%402.png" />
+    <ImageAsset Include="Assets.xcassets\power.imageset\power%403.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -460,5 +468,7 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\splash_icon.imageset\" />
     <Folder Include="Resources\" />
+    <Folder Include="Assets.xcassets\event_note.imageset\" />
+    <Folder Include="Assets.xcassets\power.imageset\" />
   </ItemGroup>
 </Project>

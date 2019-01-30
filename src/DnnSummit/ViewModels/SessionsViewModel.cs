@@ -1,6 +1,7 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Extensions;
 using DnnSummit.Models;
+using DnnSummit.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -98,6 +99,7 @@ namespace DnnSummit.ViewModels
             if (newDay.HasValue)
             {
                 SelectedDay = newDay.Value;
+                SessionsPage.DayChanged(this, null);
                 await LoadSessions(SelectedDay);
             }
         }
@@ -129,8 +131,8 @@ namespace DnnSummit.ViewModels
             var rawSessions = await SessionService.GetAsync();
             var data = rawSessions
                 .Where(x => x.Day == (int)currentDay)
-                .GroupBy(x => x.TimeSlotName, (key, group) => 
-                    new SessionList(key, "9:10 - 10:10", 
+                .GroupBy(x => x.TimeSlotName, (key, group) =>
+                    new SessionList(key, "9:10 - 10:10",
                         group.Select(x => new Session
                         {
                             Title = x.Title,
@@ -147,7 +149,8 @@ namespace DnnSummit.ViewModels
                                 Bio = s.Bio,
                                 Headshot = ImageSource.FromStream(() => new MemoryStream(s.Photo))
                             })
-                        })));
+                        })))
+                .OrderBy(x => x.Heading);
 
             Sessions.Clear();
 

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Timers;
-using DnnSummit.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,11 +13,25 @@ namespace DnnSummit.Views
         private int _showTabsElapse;
         private Point _tabPosition;
         private bool _isFirstLoad = true;
+        private bool _isItemAppearing = true;
 
-		public SessionsPage ()
+        public static EventHandler DayChanged;
+
+        public SessionsPage()
 		{
 			InitializeComponent ();
             _tabPosition = new Point(Tabs.TranslationX, Tabs.TranslationY);
+            DayChanged += OnDayChanged;
+        }
+
+        ~SessionsPage()
+        {
+            DayChanged -= OnDayChanged;
+        }
+
+        private void OnDayChanged(object sender, EventArgs e)
+        {
+            _isFirstLoad = true;
         }
 
         private async void TimerTick(object sender, ElapsedEventArgs e)
@@ -41,18 +52,21 @@ namespace DnnSummit.Views
 
         private async void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
         {
+            if (!_isItemAppearing) return;
+
             if (_isFirstLoad)
             {
-                var items = (IEnumerable<SessionList>)ListView.ItemsSource;
-                if (e.Item is SessionList sessionList)
+                var firstLoadTimer = new Timer(2000);
+                firstLoadTimer.Elapsed += (s, ev) =>
                 {
-                    if (items != null && sessionList != null && items.First() == sessionList)
-                    {
-                        _isFirstLoad = false;
-                    }
-                }
+                    var timer = (Timer)s;
+                    timer.Stop();
+                    _isItemAppearing = true;
+                };
 
-
+                _isItemAppearing = false;
+                _isFirstLoad = false;
+                firstLoadTimer.Start();
                 return;
             }
 
@@ -74,7 +88,6 @@ namespace DnnSummit.Views
                     _startTime = DateTime.Now;
 
                     await Tabs.TranslateTo(Tabs.TranslationX, Tabs.TranslationY - 50);
-                    
                 }
             }
         }

@@ -50,19 +50,21 @@ namespace DnnSummit.Views
             }
         }
 
+        private void FirstLoadTimerTick(object sender, ElapsedEventArgs e)
+        {
+            var timer = (Timer)sender;
+            timer.Stop();
+            _isItemAppearing = true;
+        }
+
         private async void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
         {
             if (!_isItemAppearing) return;
 
             if (_isFirstLoad)
             {
-                var firstLoadTimer = new Timer(2000);
-                firstLoadTimer.Elapsed += (s, ev) =>
-                {
-                    var timer = (Timer)s;
-                    timer.Stop();
-                    _isItemAppearing = true;
-                };
+                var firstLoadTimer = new Timer(250);
+                firstLoadTimer.Elapsed += FirstLoadTimerTick;
 
                 _isItemAppearing = false;
                 _isFirstLoad = false;

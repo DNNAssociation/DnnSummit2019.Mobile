@@ -19,12 +19,23 @@
                    HorizontalOptions="Start"/>
             <Label Text="DNN Summit"
                    Style="{StaticResource NavTitle}" />
-            <Image Source="location"
-                   HorizontalOptions="EndAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Location}" />
-                </Image.GestureRecognizers>
-            </Image>
+            <Frame HorizontalOptions="EndAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0"
+                   Padding="10, 5"
+                   HasShadow="False"
+                   BackgroundColor="Transparent"
+                   BorderColor="{StaticResource Orange}">
+                <StackLayout Orientation="Horizontal" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToSchedule}" />
+                    </StackLayout.GestureRecognizers>
+                    <Image Source="event" />
+                    <Label TextColor="White"                       
+                           FontSize="16"
+                           Text="Schedule" />
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </NavigationPage.TitleView>
     <c:CustomTabbedPage.Children>

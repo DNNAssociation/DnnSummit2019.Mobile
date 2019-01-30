@@ -9,6 +9,7 @@
             public const string NavigationPage = "NavigationPage";
             public const string TabbedPage = "TabbedPage";
             public const string LocationPage = "LocationPage";
+            public const string SchedulePage = "SchedulePage";
             public const string ScheduleDetailsPage = "ScheduleDetailsPage";
             public const string SessionDetailsPage = "SessionDetailsPage";
             public const string SponsorsPage = "SponsorsPage";

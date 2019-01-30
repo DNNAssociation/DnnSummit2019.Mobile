@@ -12,15 +12,15 @@ namespace DnnSummit.ViewModels
         {
             NavigationService = navigationService;
 
-            Location = new DelegateCommand(OnLocation);
+            NavigateToSchedule = new DelegateCommand(OnNavigateToSchedule);
         }
 
         
-        public ICommand Location { get; }
+        public ICommand NavigateToSchedule { get; }
 
-        private async void OnLocation()
+        private async void OnNavigateToSchedule()
         {
-            await NavigationService.NavigateAsync(Constants.Navigation.LocationPage);
+            await NavigationService.NavigateAsync(Constants.Navigation.SchedulePage);
         }
     }
 }

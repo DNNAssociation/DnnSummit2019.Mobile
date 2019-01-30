@@ -6,6 +6,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace DnnSummit.ViewModels
         public ObservableCollection<SessionList> Sessions { get; }
         
         private bool _isBusy;
+        private IEnumerable<Data.Models.Session> _allSessions;
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -128,8 +130,10 @@ namespace DnnSummit.ViewModels
         
         private async Task LoadSessions(SessionDay currentDay)
         {
-            var rawSessions = await SessionService.GetAsync();
-            var data = rawSessions
+            if (_allSessions == null)
+                _allSessions = await SessionService.GetAsync();
+
+            var todaysSessions = _allSessions
                 .Where(x => x.Day == (int)currentDay)
                 .GroupBy(x => x.TimeSlotName, (key, group) =>
                     new SessionList(key, "9:10 - 10:10",
@@ -151,15 +155,15 @@ namespace DnnSummit.ViewModels
                             })
                         })))
                 .OrderBy(x => x.Heading);
-
+            
             Sessions.Clear();
 
-            foreach (var item in data)
+            foreach (var item in todaysSessions)
             {
                 Sessions.Add(item);
             }
 
-            ContentRetrieved = rawSessions.FirstOrDefault().Retrieved;
+            ContentRetrieved = _allSessions.FirstOrDefault().Retrieved;
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

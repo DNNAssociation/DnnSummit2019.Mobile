@@ -5,9 +5,9 @@ using Xamarin.Forms.Xaml;
 namespace DnnSummit.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SchedulePage : ContentPage
+	public partial class DayByDayPage : ContentPage
 	{
-		public SchedulePage ()
+		public DayByDayPage ()
 		{
 			InitializeComponent ();
 		}

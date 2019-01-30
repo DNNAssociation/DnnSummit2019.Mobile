@@ -28,7 +28,7 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <c:CustomTabbedPage.Children>
-        <local:SchedulePage />
+        <local:DayByDayPage />
         <local:SessionsPage />
         <local:SpeakersPage />
         <local:InfoPage />

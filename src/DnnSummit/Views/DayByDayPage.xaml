@@ -6,7 +6,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              Icon="event"
              Title="{Binding Title}"
-             x:Class="DnnSummit.Views.SchedulePage">
+             x:Class="DnnSummit.Views.DayByDayPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="ListView">

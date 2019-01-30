@@ -32,5 +32,8 @@ namespace DnnSummit.Data.TwoSexyContent
 
         [JsonProperty("Speaker")]
         public IEnumerable<Speaker> Speakers { get; set; }
+
+        [JsonProperty("NewTimeSlot")]
+        public IEnumerable<TimeSlot> Timeslots { get; set; }
     }
 }

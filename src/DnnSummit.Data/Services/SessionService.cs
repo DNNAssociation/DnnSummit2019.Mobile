@@ -15,6 +15,7 @@ namespace DnnSummit.Data.Services
         {
             var sessions = await QueryAsync();
             var speakers = await QueryAsync<TwoSexyContent.Speaker>("GetSpeakers");
+            var timeslots = await QueryAsync<TwoSexyContent.TimeSlot>("GetTimeSlots");
 
             var results = new List<Task<Session>>();
             foreach (var item in sessions)
@@ -22,14 +23,15 @@ namespace DnnSummit.Data.Services
                 results.Add(Task.Run(new Func<Task<Session>>(async () =>
                 {
                     int.TryParse(item.Day, out int day);
+                    var currentTimeSlot = timeslots.FirstOrDefault(x => x.Id == item.Timeslots.FirstOrDefault().Id);
                     var current = new Session
                     {
                         Title = item.Title,
                         Abstract = item.Abstract,
                         Description = item.Description,
                         Day = day,
-                        TimeSlot = item.TimeSlot,
-                        TimeSlotName = item.TimeSlot,
+                        TimeSlot = currentTimeSlot?.Time,
+                        TimeSlotName = currentTimeSlot?.Name,
                         VideoLink = item.VideoLink,
                         Category = item.Category,
                         Level = item.Level,

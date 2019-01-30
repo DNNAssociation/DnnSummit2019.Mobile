@@ -162,7 +162,7 @@
                    HeightRequest="60"
                    VerticalOptions="StartAndExpand"
                    BackgroundColor="{StaticResource Orange}"
-                   Margin="100, -10, 100, 0"
+                   Margin="75, -10, 75, 0"
                    Padding="0"
                    CornerRadius="10">
                 <StackLayout Orientation="Horizontal"
@@ -172,6 +172,8 @@
                              BackgroundColor="Transparent">
                     <Frame BackgroundColor="{Binding SelectedDay, Converter={StaticResource Day1ToColorConverter}}"
                            CornerRadius="10"
+                           Margin="0"
+                           Padding="0"
                            HorizontalOptions="FillAndExpand"
                            HasShadow="False">
                         <Frame.GestureRecognizers>
@@ -187,6 +189,8 @@
                     </Frame>
                     <Frame BackgroundColor="{Binding SelectedDay, Converter={StaticResource Day2ToColorConverter}}"
                            CornerRadius="10"
+                           Margin="0"
+                           Padding="0"
                            HorizontalOptions="FillAndExpand"
                            HasShadow="False">
                         <Frame.GestureRecognizers>

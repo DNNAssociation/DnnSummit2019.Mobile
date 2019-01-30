@@ -3,6 +3,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -32,14 +33,14 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        private ImageSource _image;
-        public ImageSource Image
+        private IEnumerable<Speaker> _speakers;
+        public IEnumerable<Speaker> Speakers
         {
-            get { return _image; }
+            get { return _speakers; }
             set
             {
-                SetProperty(ref _image, value);
-                RaisePropertyChanged(nameof(Image));
+                SetProperty(ref _speakers, value);
+                RaisePropertyChanged(nameof(Speakers));
             }
         }
 
@@ -51,17 +52,6 @@ namespace DnnSummit.ViewModels
             {
                 SetProperty(ref _room, value);
                 RaisePropertyChanged(nameof(Room));
-            }
-        }
-
-        private string _fullName;
-        public string FullName
-        {
-            get { return _fullName; }
-            set
-            {
-                SetProperty(ref _fullName, value);
-                RaisePropertyChanged(nameof(FullName));
             }
         }
 
@@ -198,9 +188,8 @@ namespace DnnSummit.ViewModels
                 {
                     Title = session.Title;
                     Description = session.Description;
-                    //Image = session.Speakers.Headshot;
+                    Speakers = session.Speakers;
                     Room = session.Room;
-                    //FullName = session.Speakers.Name;
                     Session = session.TimeSlotName;
                     TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;

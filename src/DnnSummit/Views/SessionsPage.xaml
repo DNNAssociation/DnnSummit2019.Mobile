@@ -136,8 +136,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <c:NoStickyListView x:Name="SessionListView"
-                                ItemsSource="{Binding Sessions}"
+            <c:NoStickyListView ItemsSource="{Binding Sessions}"
                                 ItemTemplate="{StaticResource SessionTeamplate}"
                                 GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
                                 IsGroupingEnabled="true"
@@ -145,7 +144,8 @@
                                 SeparatorVisibility="None"
                                 HasUnevenRows="True"
                                 Grid.Row="0"     
-                                ItemTapped="ListView_ItemTapped">
+                                ItemTapped="ListView_ItemTapped"
+                                ItemAppearing="ListView_ItemAppearing">
                 <c:NoStickyListView.Header>
                     <!-- create additional whitespace so the tabs don't overlap the first section -->
                     <StackLayout HeightRequest="{OnPlatform Android=40, iOS=100}"
@@ -157,7 +157,8 @@
                                               EventArgsParameterPath="Item" />
                 </c:NoStickyListView.Behaviors>
             </c:NoStickyListView>
-            <Frame HeightRequest="60"
+            <Frame x:Name="Tabs" 
+                   HeightRequest="60"
                    VerticalOptions="StartAndExpand"
                    BackgroundColor="Transparent"
                    Margin="100, -10, 100, 0"

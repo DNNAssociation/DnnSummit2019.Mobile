@@ -1,201 +1,50 @@
+resources:
+  repositories:
+    - repository: Templates
+      type: git
+      ref: 'refs/heads/master'
+      name: "DevOps.Templates"
+
 trigger:
   branches:
     include:
       - master
-      
+
 variables:
-  major: 1
-  minor: 0
-  revision: $[counter('versioncounter', 0)]
-  configuration: "Ad-Hoc"
-  appCenter.organization: "DNNAssociation"
-  appCenter.iOS: "DNN-Summit-2019-iOS"
-  appCenter.android: "DNN-Summit-2019-Android"
-  system.debug: "true"
+  Version.MajorMinor: 1.0
+  Version.Revision: $[counter(variables['Version.MajorMinor'], 0)]
 
-jobs:
-- job: iOSAdHoc
-  displayName: iOS Ad-Hoc
-  pool: 
-    name: Hosted macOS
-    demands:
-    - xcode
-    - Xamarin.iOS
-
-  #Your build pipeline references a secret variable named ‘P12password’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it secret. See https://go.microsoft.com/fwlink/?linkid=865972
-  #Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-  #Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-  #Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
-  #Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-  steps:
-  - powershell: '$(Build.SourcesDirectory)/build/GenerateAppSecrets.ps1 -iOS "${env:IOS}" -Android "${env:ANDROID}" | Out-File -FilePath "$(Build.SourcesDirectory)/src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
-    env:
-      ANDROID: $(AppCenter.Android)
-      IOS: $(AppCenter.iOS)
-    displayName: 'Generate Proudction App Secrets'
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
-
-  - powershell: '"{}" | Out-File -FilePath "$(Build.SourcesDirectory)/src/DnnSummit/Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
-    displayName: 'Generate Empty App Secrets'
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
-
-  - task: InstallAppleCertificate@2
-    displayName: 'Install an Apple certificate'
-    inputs:
-      certSecureFile: '591aa0a1-3cf2-490d-a297-7c48fc0f847d'
-      certPwd: '$(P12password)'
-  
-  
-  - task: InstallAppleProvisioningProfile@1
-    displayName: 'Install an Apple provisioning profile'
-    inputs:
-      provProfileSecureFile: 'ca7e5895-4377-4ba2-a2f2-ea37618aa941'
-
-  - task: vs-publisher-473885.motz-mobile-buildtasks.ios-bundle-version.ios-bundle-version@0
-    displayName: 'Bump iOS Versions in src/DnnSummit.iOS/Info.plist'
-    inputs:
-      sourcePath: src/DnnSummit.iOS/Info.plist
-      versionName: '$(major).$(minor).$(revision)'
-  
-  
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.5'
-    inputs:
-      versionSpec: 4.5
-  
-  
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-    inputs:
-      restoreSolution: '**/*.sln'
-  
-  
-  - task: XamariniOS@2
-    displayName: 'Build Xamarin.iOS solution **/*.sln - No App Package'
-    inputs:
-      solutionFile: '**/*.sln'
-      configuration: 'Debug'
-      packageApp: false
-      buildForSimulator: true
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
-
-  - task: XamariniOS@2
-    displayName: 'Build Xamarin.iOS solution **/*.sln'
-    inputs:
-      solutionFile: '**/*.sln'
-      configuration: '$(configuration)'
-      appPackage: true
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
-  
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-    inputs:
-      SourceFolder: '$(system.defaultworkingdirectory)'
-      Contents: '**/*.ipa'
-      TargetFolder: '$(build.artifactstagingdirectory)'
-      flattenFolders: true
-  
-  
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-    inputs:
-      PathtoPublish: '$(build.artifactstagingdirectory)'
-  
-  
-  - task: AppCenterDistribute@0
-    displayName: 'Deploy **/*.ipa to Visual Studio App Center'
-    inputs:
-      serverEndpoint: AppCenter
-      appSlug: '$(appCenter.organization)/$(appCenter.iOS)'
-      appFile: '**/*.ipa'
-      symbolsIncludeParentDirectory: false
-      releaseNotesInput: 'Ad-Hoc Release'
-
-- job: AndroidAdHoc
-  displayName: Android Ad-Hoc
-  pool: 
-    name: Hosted VS2017
-    demands:
-    - MSBuild
-    - Xamarin.Android
-    - JDK
-    - AndroidSDK
-
-#Your build pipeline references an undefined variable named ‘Parameters.restorePkgSolution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
-#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
-#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
-#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
-#Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references a secret variable named ‘KeyStorePassword’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it secret. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references a secret variable named ‘KeyStorePassword’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it secret. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
-#Your build pipeline references an undefined variable named ‘Parameters.appFiles’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-
-  steps:
-  - powershell: '$(Build.SourcesDirectory)\build\GenerateAppSecrets.ps1 -iOS "${env:IOS}" -Android "${env:ANDROID}" | Out-File -FilePath "$(Build.SourcesDirectory)\src\DnnSummit\Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
-    env:
-      ANDROID: $(AppCenter.Android)
-      IOS: $(AppCenter.iOS)
-    displayName: 'Generate Proudction App Secrets'
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
-
-  - powershell: '"{}" | Out-File -FilePath "$(Build.SourcesDirectory)\src\DnnSummit\Secrets.json" -Encoding ASCII; exit $LASTEXITCODE'
-    displayName: 'Generate Empty App Secrets'
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'true'))
-
-  - task: vs-publisher-473885.motz-mobile-buildtasks.android-manifest-version.android-manifest-version@0
-    displayName: 'Bump Android Versions in src/DnnSummit.Android/Properties/AndroidManifest.xml'
-    inputs:
-      sourcePath: src/DnnSummit.Android/Properties/AndroidManifest.xml
-      versionName: '$(major).$(minor).$(revision)'
-  
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.4.1'
-    inputs:
-      versionSpec: 4.4.1
-  
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-    inputs:
-      restoreSolution: '**/*.sln'
-  
-  - task: XamarinAndroid@1
-    displayName: 'Build Xamarin.Android project **/*Droid*.csproj'
-    inputs:
-      projectFile: '**/*Droid*.csproj'
-      outputDirectory: '$(Build.BinariesDirectory)/$(configuration)'
-      configuration: '$(configuration)'
-  
-  - task: MSBuild@1
-    displayName: 'Build solution **/*test*.csproj'
-    inputs:
-      solution: '**/*test*.csproj'
-      configuration: '$(configuration)'
-      msbuildArguments: '/p:OutputPath="$(Build.BinariesDirectory)/$(configuration)/test-assembly"'
-    enabled: false
-  
-  - task: AndroidSigning@3
-    displayName: 'Signing and aligning APK file(s) $(Build.BinariesDirectory)/$(configuration)/*.apk'
-    inputs:
-      apkFiles: '$(Build.BinariesDirectory)/$(configuration)/*.apk'
-      apksignerKeystoreFile: '93daa7a1-96a8-4e01-90fd-91779f015659'
-      apksignerKeystorePassword: '$(KeyStorePassword)'
-      apksignerKeystoreAlias: DnnSummit2019
-      apksignerKeyPassword: '$(KeyStorePassword)'
-      apksignerArguments: '-verbose'
-    condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], 'false'))
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-    inputs:
-      PathtoPublish: '$(Build.BinariesDirectory)/$(configuration)'
-  
-  - task: AppCenterDistribute@0
-    displayName: 'Deploy $(Build.BinariesDirectory)/$(configuration)/*.apk to Visual Studio App Center'
-    inputs:
-      serverEndpoint: AppCenter
-      appSlug: '$(appCenter.organization)/$(appCenter.android)'
-      appFile: '$(Build.BinariesDirectory)/$(configuration)/*.apk'
-      symbolsIncludeParentDirectory: false
-      releaseNotesInput: 'Ad-Hoc Build'
+jobs: 
+- template: Xamarin/azure-pipelines.yml@Templates
+  parameters:
+    adhocConfiguration: 'Ad-Hoc'
+    releaseConfiguration: 'Release'
+    infoPListSource: 'src/DnnSummit.iOS/Info.plist'
+    androidManifestSource: 'src\DnnSummit.Android\Properties\AndroidManifest.xml' 
+    appcenterOrganization: 'DNNAssociation'
+    appcenterIOS: 'DNN-Summit-2019-iOS'
+    appcenterAndroid: 'DNN-Summit-2019-Android'
+    secretsFilePath: 'src\DnnSummit\Secrets.json'
+    createStorePackageOnBranch: 'refs/heads/master'
+    # Ad-Hoc Android
+    adhocKeyStoreSecureFile: '$(Secrets.Android.KeyStore)'
+    adhocKeyStoreAlias: '$(Secrets.Android.KeyStoreAlias)'
+    adhocKeyStorePassword: '$(Secrets.Android.KeyStorePassword)'
+    adhocKeyPassword: '$(Secrets.Android.KeyStorePassword)'
+    adhocAndroidReleaseNotes: 'Ad-Hoc Release'
+    # Ad-Hoc iOS
+    adhocSecureFileProvisioningProfile: '$(Secrets.IOS.AdHoc.MobileProvProfile)'
+    adhocSecureFileP12: '$(Secrets.IOS.CertificateP12)'
+    adhocP12Password: '$(Secrets.IOS.P12Password)'
+    adhocIOSReleaseNotes: 'Ad-Hoc Release'
+    # App Store Android
+    releaseKeyStoreSecureFile: '$(Secrets.Android.KeyStore)'
+    releaseKeyStoreAlias: '$(Secrets.Android.KeyStoreAlias)'
+    releaseKeyStorePassword: '$(Secrets.Android.KeyStorePassword)'
+    releaseKeyPassword: '$(Secrets.Android.KeyStorePassword)'
+    releaseAndroidReleaseNotes: 'Google Play Release'
+    # App Store iOS
+    releaseSecureFileProvisioningProfile: '$(Secrets.IOS.Store.MobileProvProfile)'
+    releaseSecureFileP12: '$(Secrets.IOS.CertificateP12)'
+    releaseP12Password: '$(Secrets.IOS.P12Password)'
+    releaseIOSReleaseNotes: 'App Store Release'

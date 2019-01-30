@@ -7,6 +7,9 @@ namespace DnnSummit.Models
         [ImageResource(Name = "business")]
         Sponsors,
 
+        [ImageResource(Name = "business")]
+        Venue,
+
         [ImageResource(Name = "wrench")]
         Credits,
 

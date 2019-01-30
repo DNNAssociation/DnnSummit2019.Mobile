@@ -4,6 +4,7 @@ resources:
       type: github
       ref: 'refs/heads/master'
       name: "HoeflingSoftware/DevOps.Templates"
+      endpoint: DNNAssociation
 
 trigger:
   branches:

@@ -1,9 +1,9 @@
 resources:
   repositories:
     - repository: Templates
-      type: git
+      type: github
       ref: 'refs/heads/master'
-      name: "DevOps.Templates"
+      name: "HoeflingSoftware/DevOps.Templates"
 
 trigger:
   branches:
@@ -24,8 +24,10 @@ jobs:
     appcenterOrganization: 'DNNAssociation'
     appcenterIOS: 'DNN-Summit-2019-iOS'
     appcenterAndroid: 'DNN-Summit-2019-Android'
+    appcenterIOSSecret: '$(Secrets.iOS.AppCenterId)'
+    appcenterAndroidSecret: '$(Secrets.Android.AppCenterId)'
     secretsFilePath: 'src\DnnSummit\Secrets.json'
-    createStorePackageOnBranch: 'refs/heads/master'
+    createStorePackageOnBranch: 'refs/heads/build-updates'
     # Ad-Hoc Android
     adhocKeyStoreSecureFile: '$(Secrets.Android.KeyStore)'
     adhocKeyStoreAlias: '$(Secrets.Android.KeyStoreAlias)'

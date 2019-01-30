@@ -92,12 +92,13 @@ namespace DnnSummit.ViewModels
             
         }
 
-        private void OnChangeDay(object input)
+        private async void OnChangeDay(object input)
         {
             var newDay = (SessionDay?)input;
             if (newDay.HasValue)
             {
                 SelectedDay = newDay.Value;
+                await LoadSessions(SelectedDay);
             }
         }
 
@@ -123,11 +124,11 @@ namespace DnnSummit.ViewModels
             }
         }
         
-        private async Task LoadSessions()
+        private async Task LoadSessions(SessionDay currentDay)
         {
             var rawSessions = await SessionService.GetAsync();
             var data = rawSessions
-                //.Where(x => x.Day == "Day 1")
+                .Where(x => x.Day == (int)currentDay)
                 .GroupBy(x => x.TimeSlotName, (key, group) => 
                     new SessionList(key, "9:10 - 10:10", 
                         group.Select(x => new Session
@@ -161,7 +162,7 @@ namespace DnnSummit.ViewModels
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
             IsBusy = true;
-            await LoadSessions();
+            await LoadSessions(SessionDay.Day1);
             IsBusy = false;
         }
     }

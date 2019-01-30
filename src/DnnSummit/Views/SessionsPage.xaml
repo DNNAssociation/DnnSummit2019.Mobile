@@ -32,7 +32,7 @@
                                         <ColumnDefinition Width="8*" />
                                     </Grid.ColumnDefinitions>
                                     <c:HeadshotListControl Grid.Column="0"
-                                                           HeightRequest="{OnPlatform iOS=125}"
+                                                           HeightRequest="{OnPlatform Android=110, iOS=125}"
                                                            Speakers="{Binding Speakers}" />
                                     <StackLayout Grid.Column="1" 
                                                  Orientation="Horizontal"

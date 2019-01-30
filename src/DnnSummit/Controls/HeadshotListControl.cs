@@ -16,7 +16,7 @@ namespace DnnSummit.Controls
             {
                 Orientation = StackOrientation.Vertical,
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                WidthRequest = 100
+                WidthRequest = 100,
             };
 
             Content = Control;

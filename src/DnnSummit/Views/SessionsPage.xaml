@@ -61,24 +61,7 @@
                                                        Margin="10, 0, 0, 0"/>
                                             </StackLayout>
                                         </StackLayout>
-                                       <!-- <StackLayout Margin="0,0,25,0"
-                                                     HorizontalOptions="End"
-                                                     VerticalOptions="Center">
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding BindingContext.ToggleAsFavorite, Source={x:Reference SessionPage}}"
-                                                                      CommandParameter="{Binding .}" />
-                                            </StackLayout.GestureRecognizers>
-                                            <Image IsEnabled="{Binding IsFavorite}"
-                                                   IsVisible="{Binding IsFavorite}"
-                                                   Source="heart_empty" />
-                                            <BoxView IsEnabled="{Binding IsFavorite, Converter={StaticResource NotTrueConverter}}"
-                                                     IsVisible="{Binding IsFavorite, Converter={StaticResource NotTrueConverter}}"
-                                                     HeightRequest="60"
-                                                     WidthRequest="40"
-                                                     BackgroundColor="Transparent" />
-                                        </StackLayout>-->
-                                    </StackLayout>
-                                   
+                                    </StackLayout>                                   
                                 </Grid>
                                 <BoxView HeightRequest="1"
                                          Color="{StaticResource ListDivider}" />
@@ -196,37 +179,6 @@
                                Text="{Binding Day2, Converter={StaticResource SessionDayToStringConverter}}" />
                     </Frame>
                 </StackLayout>
-            </Frame>
-            <Frame Margin="{Binding FloatingButtonMargin}"
-                   VerticalOptions="End"
-                   HorizontalOptions="End"
-                   HeightRequest="50"
-                   WidthRequest="50"
-                   CornerRadius="50"
-                   BorderColor="Transparent"                   
-                   BackgroundColor="{StaticResource Orange}">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding SwapState}" />
-                </Frame.GestureRecognizers>
-                <StackLayout VerticalOptions="Center"
-                             HorizontalOptions="Center">
-                    <Label Text="Favs"
-                           TextColor="White"
-                           VerticalTextAlignment="Center"
-                           HorizontalTextAlignment="Center"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           IsEnabled="{Binding IsViewingFavoriteSessions, Converter={StaticResource NotTrueConverter}}"
-                           IsVisible="{Binding IsViewingFavoriteSessions, Converter={StaticResource NotTrueConverter}}"/>
-                    <Label Text="All"
-                           TextColor="White"
-                           VerticalTextAlignment="Center"
-                           HorizontalTextAlignment="Center"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           IsEnabled="{Binding IsViewingFavoriteSessions}"
-                           IsVisible="{Binding IsViewingFavoriteSessions}" />
-                </StackLayout>                
             </Frame>
             <StackLayout HorizontalOptions="Fill"
                          VerticalOptions="End"

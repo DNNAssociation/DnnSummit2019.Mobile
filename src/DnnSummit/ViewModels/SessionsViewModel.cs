@@ -22,24 +22,12 @@ namespace DnnSummit.ViewModels
         
         
         public ICommand SessionSelected { get; }
-        public ICommand SwapState { get; }
         public ICommand ToggleAsFavorite { get; }
         public ICommand ToggleOfflineNotice { get; }
         public ICommand ChangeDay { get; }
 
         public ObservableCollection<SessionList> Sessions { get; }
-
-        private bool _isViewingFavoriteSessions;
-        public bool IsViewingFavoriteSessions
-        {
-            get { return _isViewingFavoriteSessions; }
-            set
-            {
-                SetProperty(ref _isViewingFavoriteSessions, value);
-                RaisePropertyChanged(nameof(IsViewingFavoriteSessions));
-            }
-        }
-
+        
         private bool _isBusy;
         public bool IsBusy
         {
@@ -87,30 +75,16 @@ namespace DnnSummit.ViewModels
         public SessionDay Day1 => SessionDay.Day1;
         public SessionDay Day2 => SessionDay.Day2;
 
-        private Thickness _floatingButtonMargin;
-        public Thickness FloatingButtonMargin
-        {
-            get { return _floatingButtonMargin; }
-            set
-            {
-                SetProperty(ref _floatingButtonMargin, value);
-                RaisePropertyChanged(nameof(FloatingButtonMargin));
-            }
-        }
-
         public SessionsViewModel(
             INavigationService navigationService,
             ISessionService sessionService)
         {
-            IsViewingFavoriteSessions = false;
             IsBusy = false;
             DisplayOfflineNotice = true;
-            FloatingButtonMargin = new Thickness(0, 0, 10, 45);
             SelectedDay = SessionDay.Day1;
             NavigationService = navigationService;
             SessionService = sessionService;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
-            SwapState = new DelegateCommand(OnSwapState);
             ToggleAsFavorite = new DelegateCommand<Session>(OnToggleAsFavorite);
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
             ChangeDay = new DelegateCommand<object>(OnChangeDay);
@@ -130,15 +104,6 @@ namespace DnnSummit.ViewModels
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
-
-            if (DisplayOfflineNotice)
-            {
-                FloatingButtonMargin = new Thickness(0, 0, 10, 45);
-            }
-            else
-            {
-                FloatingButtonMargin = new Thickness(0, 0, 10, 10);
-            }
         }
 
         private void OnToggleAsFavorite(Session session)
@@ -157,12 +122,7 @@ namespace DnnSummit.ViewModels
                 await NavigationService.NavigateAsync(Constants.Navigation.SessionDetailsPage, navigationParameter);
             }
         }
-
-        private void OnSwapState()
-        {
-            IsViewingFavoriteSessions = !IsViewingFavoriteSessions;
-        }
-
+        
         private async Task LoadSessions()
         {
             var rawSessions = await SessionService.GetAsync();

@@ -32,6 +32,7 @@
                                         <ColumnDefinition Width="8*" />
                                     </Grid.ColumnDefinitions>
                                     <c:HeadshotListControl Grid.Column="0"
+                                                           HeightRequest="{OnPlatform iOS=125}"
                                                            Speakers="{Binding Speakers}" />
                                     <StackLayout Grid.Column="1" 
                                                  Orientation="Horizontal"
@@ -60,7 +61,7 @@
                                                        Margin="10, 0, 0, 0"/>
                                             </StackLayout>
                                         </StackLayout>
-                                        <StackLayout Margin="0,0,25,0"
+                                       <!-- <StackLayout Margin="0,0,25,0"
                                                      HorizontalOptions="End"
                                                      VerticalOptions="Center">
                                             <StackLayout.GestureRecognizers>
@@ -75,8 +76,9 @@
                                                      HeightRequest="60"
                                                      WidthRequest="40"
                                                      BackgroundColor="Transparent" />
-                                        </StackLayout>
+                                        </StackLayout>-->
                                     </StackLayout>
+                                   
                                 </Grid>
                                 <BoxView HeightRequest="1"
                                          Color="{StaticResource ListDivider}" />

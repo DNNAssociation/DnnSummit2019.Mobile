@@ -136,7 +136,7 @@ namespace DnnSummit.ViewModels
             var todaysSessions = _allSessions
                 .Where(x => x.Day == (int)currentDay)
                 .GroupBy(x => x.TimeSlotName, (key, group) =>
-                    new SessionList(key, "9:10 - 10:10",
+                    new SessionList($"Session {key}", "9:10 - 10:10",
                         group.Select(x => new Session
                         {
                             Title = x.Title,

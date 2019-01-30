@@ -198,9 +198,9 @@ namespace DnnSummit.ViewModels
                 {
                     Title = session.Title;
                     Description = session.Description;
-                    Image = session.Speaker.Headshot;
+                    //Image = session.Speakers.Headshot;
                     Room = session.Room;
-                    FullName = session.Speaker.Name;
+                    //FullName = session.Speakers.Name;
                     Session = session.TimeSlotName;
                     TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;

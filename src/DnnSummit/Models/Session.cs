@@ -1,5 +1,6 @@
 ﻿using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
 
 namespace DnnSummit.Models
 {
@@ -71,14 +72,14 @@ namespace DnnSummit.Models
             }
         }
 
-        private Speaker _speaker;
-        public Speaker Speaker
+        private IEnumerable<Speaker> _speakers;
+        public IEnumerable<Speaker> Speakers
         {
-            get { return _speaker; }
+            get { return _speakers; }
             set
             {
-                SetProperty(ref _speaker, value);
-                RaisePropertyChanged(nameof(Speaker));
+                SetProperty(ref _speakers, value);
+                RaisePropertyChanged(nameof(Speakers));
             }
         }
 

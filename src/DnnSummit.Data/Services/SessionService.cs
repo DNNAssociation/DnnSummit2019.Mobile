@@ -37,7 +37,6 @@ namespace DnnSummit.Data.Services
                         Retrieved = DateTime.Now
                     };
 
-                    // TODO - Update the model to return many speakers instead of taking just 1
                     var currentSpeakers = new List<Speaker>();
                     foreach (var itemSpeaker in item.Speakers
                         .Select(s => speakers.Where(f => f.Id == s.Id).FirstOrDefault()))
@@ -49,7 +48,7 @@ namespace DnnSummit.Data.Services
                         });
                     }
 
-                    current.Speaker = currentSpeakers.FirstOrDefault();
+                    current.Speakers = currentSpeakers;
 
                     return current;
                 })));

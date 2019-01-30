@@ -25,27 +25,16 @@
                             <StackLayout Orientation="Vertical"
                                          HorizontalOptions="FillAndExpand"
                                          Spacing="0">
-                                <StackLayout Margin="0, 10" 
-                                             Orientation="Horizontal"
-                                             HorizontalOptions="FillAndExpand">
-                                    <StackLayout Orientation="Vertical"
-                                                 HorizontalOptions="Center"
-                                                 WidthRequest="100">
-                                        <ic:CircleImage Source="{Binding Speaker.Headshot}"
-                                                        BorderColor="{StaticResource AvatarBorder}"
-                                                        BorderThickness="2"
-                                                        Aspect="AspectFill"
-                                                        WidthRequest="70"
-                                                        HeightRequest="70"
-                                                        VerticalOptions="StartAndExpand"
-                                                        HorizontalOptions="Center" />
-                                        <Label Text="{Binding Speaker.Name}"
-                                               HorizontalOptions="CenterAndExpand"
-                                               VerticalOptions="CenterAndExpand"
-                                               HorizontalTextAlignment="Center"
-                                               VerticalTextAlignment="Center" />
-                                    </StackLayout>                                    
-                                    <StackLayout Orientation="Horizontal"
+                                <Grid Margin="0, 10"
+                                      HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="8*" />
+                                    </Grid.ColumnDefinitions>
+                                    <c:HeadshotListControl Grid.Column="0"
+                                                           Speakers="{Binding Speakers}" />
+                                    <StackLayout Grid.Column="1" 
+                                                 Orientation="Horizontal"
                                                  VerticalOptions="FillAndExpand"
                                                  HorizontalOptions="FillAndExpand"
                                                  Spacing="0">
@@ -87,8 +76,8 @@
                                                      WidthRequest="40"
                                                      BackgroundColor="Transparent" />
                                         </StackLayout>
-                                    </StackLayout>                                    
-                                </StackLayout>
+                                    </StackLayout>
+                                </Grid>
                                 <BoxView HeightRequest="1"
                                          Color="{StaticResource ListDivider}" />
                             </StackLayout>

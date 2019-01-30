@@ -180,12 +180,12 @@ namespace DnnSummit.ViewModels
                             TimeSlot = x.TimeSlot,
                             VideoLink = x.VideoLink,
                             Retrieved = x.Retrieved,
-                            Speaker = new Speaker
+                            Speakers = x.Speakers.Select(s => new Speaker
                             {
-                                Name = x.Speaker.Name,
-                                Bio = x.Speaker.Bio,
-                                Headshot = ImageSource.FromStream(() => new MemoryStream(x.Speaker.Photo))
-                            }
+                                Name = s.Name,
+                                Bio = s.Bio,
+                                Headshot = ImageSource.FromStream(() => new MemoryStream(s.Photo))
+                            })
                         })));
 
             Sessions.Clear();

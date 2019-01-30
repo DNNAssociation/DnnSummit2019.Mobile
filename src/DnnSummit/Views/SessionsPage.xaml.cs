@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
+using DnnSummit.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,6 +15,7 @@ namespace DnnSummit.Views
         private DateTime _startTime;
         private int _showTabsElapse;
         private Point _tabPosition;
+        private bool _isFirstLoad = true;
 
 		public SessionsPage ()
 		{
@@ -37,6 +41,21 @@ namespace DnnSummit.Views
 
         private async void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
         {
+            if (_isFirstLoad)
+            {
+                var items = (IEnumerable<SessionList>)ListView.ItemsSource;
+                if (e.Item is SessionList sessionList)
+                {
+                    if (items != null && sessionList != null && items.First() == sessionList)
+                    {
+                        _isFirstLoad = false;
+                    }
+                }
+
+
+                return;
+            }
+
             if (_isHidingTabs)
             {
                 _showTabsElapse += 75;

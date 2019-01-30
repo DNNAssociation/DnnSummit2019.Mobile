@@ -136,7 +136,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <c:NoStickyListView ItemsSource="{Binding Sessions}"
+            <c:NoStickyListView x:Name="ListView" 
+                                ItemsSource="{Binding Sessions}"
                                 ItemTemplate="{StaticResource SessionTeamplate}"
                                 GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
                                 IsGroupingEnabled="true"
@@ -160,7 +161,7 @@
             <Frame x:Name="Tabs" 
                    HeightRequest="60"
                    VerticalOptions="StartAndExpand"
-                   BackgroundColor="Transparent"
+                   BackgroundColor="{StaticResource Orange}"
                    Margin="100, -10, 100, 0"
                    Padding="0"
                    CornerRadius="10">
@@ -168,7 +169,7 @@
                              VerticalOptions="FillAndExpand"
                              HorizontalOptions="FillAndExpand"
                              Padding="3"
-                             BackgroundColor="{StaticResource Orange}">
+                             BackgroundColor="Transparent">
                     <Frame BackgroundColor="{Binding SelectedDay, Converter={StaticResource Day1ToColorConverter}}"
                            CornerRadius="10"
                            HorizontalOptions="FillAndExpand"

@@ -2,7 +2,7 @@ resources:
   repositories:
     - repository: Templates
       type: github
-      ref: 'refs/heads/mastr'
+      ref: 'refs/heads/master'
       name: "HoeflingSoftware/DevOps.Templates"
       endpoint: DNNAssociation
 

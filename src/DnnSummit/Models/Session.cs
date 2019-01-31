@@ -1,4 +1,5 @@
 ﻿using Prism.Mvvm;
+using System;
 
 namespace DnnSummit.Models
 {
@@ -100,6 +101,17 @@ namespace DnnSummit.Models
             {
                 SetProperty(ref _videoLink, value);
                 RaisePropertyChanged(nameof(VideoLink));
+            }
+        }
+
+        private DateTime _retrieved;
+        public DateTime Retrieved
+        {
+            get { return _retrieved; }
+            set
+            {
+                SetProperty(ref _retrieved, value);
+                RaisePropertyChanged(nameof(Retrieved));
             }
         }
     }

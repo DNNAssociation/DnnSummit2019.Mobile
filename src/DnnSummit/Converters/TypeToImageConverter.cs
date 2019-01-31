@@ -1,5 +1,4 @@
 ﻿using DnnSummit.Attributes;
-using DnnSummit.Models;
 using System;
 using System.Globalization;
 using Xamarin.Forms;

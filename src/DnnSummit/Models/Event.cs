@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DnnSummit.Models
 {
@@ -10,5 +11,6 @@ namespace DnnSummit.Models
         public ScheduleType Avatar { get; set; }
         public (string Heading, string SubHeading, byte[] Image) Banner { get; set; }
         public IEnumerable<ScheduleContent> ContentSections { get; set; }
+        public DateTime Retrieved { get; set; }
     }
 }

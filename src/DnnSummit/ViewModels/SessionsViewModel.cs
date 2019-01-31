@@ -24,6 +24,7 @@ namespace DnnSummit.ViewModels
         public ICommand SessionSelected { get; }
         public ICommand SwapState { get; }
         public ICommand ToggleAsFavorite { get; }
+        public ICommand ToggleOfflineNotice { get; }
 
         public ObservableCollection<SessionList> Sessions { get; }
 
@@ -49,19 +50,69 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private DateTime _contentRetrieved;
+        public DateTime ContentRetrieved
+        {
+            get { return _contentRetrieved; }
+            set
+            {
+                SetProperty(ref _contentRetrieved, value);
+                RaisePropertyChanged(nameof(ContentRetrieved));
+            }
+        }
+
+        private bool _displayOfflineNotice;
+        public bool DisplayOfflineNotice
+        {
+            get { return _displayOfflineNotice; }
+            set
+            {
+                SetProperty(ref _displayOfflineNotice, value);
+                RaisePropertyChanged(nameof(DisplayOfflineNotice));
+            }
+        }
+
+        private Thickness _floatingButtonMargin;
+        public Thickness FloatingButtonMargin
+        {
+            get { return _floatingButtonMargin; }
+            set
+            {
+                SetProperty(ref _floatingButtonMargin, value);
+                RaisePropertyChanged(nameof(FloatingButtonMargin));
+            }
+        }
+
         public SessionsViewModel(
             INavigationService navigationService,
             ISessionService sessionService)
         {
             IsViewingFavoriteSessions = false;
             IsBusy = false;
+            DisplayOfflineNotice = true;
+            FloatingButtonMargin = new Thickness(0, 0, 10, 45);
             NavigationService = navigationService;
             SessionService = sessionService;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
             SwapState = new DelegateCommand(OnSwapState);
             ToggleAsFavorite = new DelegateCommand<Session>(OnToggleAsFavorite);
+            ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
             Sessions = new ObservableCollection<SessionList>();
             
+        }
+
+        private void OnToggleOfflineNotice()
+        {
+            DisplayOfflineNotice = !DisplayOfflineNotice;
+
+            if (DisplayOfflineNotice)
+            {
+                FloatingButtonMargin = new Thickness(0, 0, 10, 45);
+            }
+            else
+            {
+                FloatingButtonMargin = new Thickness(0, 0, 10, 10);
+            }
         }
 
         private void OnToggleAsFavorite(Session session)
@@ -102,6 +153,7 @@ namespace DnnSummit.ViewModels
                             TimeSlotName = x.TimeSlotName,
                             TimeSlot = x.TimeSlot,
                             VideoLink = x.VideoLink,
+                            Retrieved = x.Retrieved,
                             Speaker = new Speaker
                             {
                                 Name = x.Speaker.Name,
@@ -116,6 +168,8 @@ namespace DnnSummit.ViewModels
             {
                 Sessions.Add(item);
             }
+
+            ContentRetrieved = rawSessions.FirstOrDefault().Retrieved;
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

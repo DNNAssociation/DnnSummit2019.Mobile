@@ -110,16 +110,73 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private DateTime _contentRetrieved;
+        public DateTime ContentRetrieved
+        {
+            get { return _contentRetrieved; }
+            set
+            {
+                SetProperty(ref _contentRetrieved, value);
+                RaisePropertyChanged(nameof(ContentRetrieved));
+            }
+        }
+
+        private bool _displayOfflineNotice;
+        public bool DisplayOfflineNotice
+        {
+            get { return _displayOfflineNotice; }
+            set
+            {
+                SetProperty(ref _displayOfflineNotice, value);
+                RaisePropertyChanged(nameof(DisplayOfflineNotice));
+            }
+        }
+
+        private Thickness _videoIntroMargin;
+        public Thickness VideoIntroMargin
+        {
+            get { return _videoIntroMargin; }
+            set
+            {
+                SetProperty(ref _videoIntroMargin, value);
+                RaisePropertyChanged(nameof(VideoIntroMargin));
+            }
+        }
+
         public bool HasVideoIntro
         {
             get { return !string.IsNullOrWhiteSpace(VideoIntroLink); }
         }
 
         public ICommand VideoIntro { get; }
+        public ICommand ToggleOfflineNotice { get; }
 
         public SessionDetailsViewModel()
         {
+            DisplayOfflineNotice = true;
+            VideoIntroMargin = Device.RuntimePlatform == Device.iOS ?
+                new Thickness(0, 0, 0, 75) :
+                new Thickness(0, 0, 0, 55);
             VideoIntro = new DelegateCommand(OnVideoIntro);
+            ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
+        }
+
+        private void OnToggleOfflineNotice()
+        {
+            DisplayOfflineNotice = !DisplayOfflineNotice;
+
+            if (DisplayOfflineNotice)
+            {
+                VideoIntroMargin = Device.RuntimePlatform == Device.iOS ?
+                    new Thickness(0, 0, 0, 75) :
+                    new Thickness(0, 0, 0, 55);
+            }
+            else
+            {
+                VideoIntroMargin = Device.RuntimePlatform == Device.iOS ?
+                    new Thickness(0, 0, 0, 30) :
+                    new Thickness(0, 0, 0, 10);
+            }
         }
 
         private void OnVideoIntro()
@@ -148,6 +205,7 @@ namespace DnnSummit.ViewModels
                     TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;
                     VideoIntroLink = session.VideoLink;
+                    ContentRetrieved = session.Retrieved;
 
                     isSuccessful = true;
                 }

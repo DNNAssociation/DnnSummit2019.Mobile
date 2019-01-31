@@ -72,8 +72,30 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private bool _displayOfflineNotice;
+        public bool DisplayOfflineNotice
+        {
+            get { return _displayOfflineNotice; }
+            set
+            {
+                SetProperty(ref _displayOfflineNotice, value);
+                RaisePropertyChanged(nameof(DisplayOfflineNotice));
+            }
+        }
+
+        private DateTime _contentRetrieved;
+        public DateTime ContentRetrieved
+        {
+            get { return _contentRetrieved; }
+            set
+            {
+                SetProperty(ref _contentRetrieved, value);
+                RaisePropertyChanged(nameof(ContentRetrieved));
+            }
+        }
 
         public ICommand VideoSelected { get; }
+        public ICommand ToggleOfflineNotice { get; }
 
         public ObservableCollection<ScheduleContent> ContentSections { get; set; }
 
@@ -83,8 +105,15 @@ namespace DnnSummit.ViewModels
         {
             PageDialogService = pageDialogService;
             ScheduleService = scheduleService;
+            DisplayOfflineNotice = true;
             ContentSections = new ObservableCollection<ScheduleContent>();
             VideoSelected = new DelegateCommand<string>(OnVideoSelected);
+            ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
+        }
+
+        private void OnToggleOfflineNotice()
+        {
+            DisplayOfflineNotice = !DisplayOfflineNotice;
         }
 
         private async void OnVideoSelected(string link)
@@ -101,7 +130,7 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        public async void OnNavigatingTo(INavigationParameters parameters)
+        public void OnNavigatingTo(INavigationParameters parameters)
         {
             bool isSuccessful = false;
             if (parameters.ContainsKey(nameof(Event)))
@@ -114,6 +143,7 @@ namespace DnnSummit.ViewModels
                     Heading = details.Banner.Heading;
                     SubHeading = details.Banner.SubHeading;
                     Image = ImageSource.FromStream(() => new MemoryStream(details.Banner.Image));
+                    ContentRetrieved = details.Retrieved;
 
                     ContentSections.Clear();
                     foreach (var item in details.ContentSections)

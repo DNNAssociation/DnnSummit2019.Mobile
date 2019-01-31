@@ -1,5 +1,4 @@
-﻿using DnnSummit.Data.Services.Interfaces;
-using DnnSummit.Models;
+﻿using DnnSummit.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -14,7 +13,6 @@ namespace DnnSummit.ViewModels
 {
     public class ScheduleDetailsViewModel : BindableBase, INavigatingAware
     {
-        protected IScheduleService ScheduleService { get; }
         protected IPageDialogService PageDialogService { get; }
 
         private string _title;
@@ -99,12 +97,9 @@ namespace DnnSummit.ViewModels
 
         public ObservableCollection<ScheduleContent> ContentSections { get; set; }
 
-        public ScheduleDetailsViewModel(
-            IPageDialogService pageDialogService,
-            IScheduleService scheduleService)
+        public ScheduleDetailsViewModel(IPageDialogService pageDialogService)
         {
             PageDialogService = pageDialogService;
-            ScheduleService = scheduleService;
             DisplayOfflineNotice = true;
             ContentSections = new ObservableCollection<ScheduleContent>();
             VideoSelected = new DelegateCommand<string>(OnVideoSelected);

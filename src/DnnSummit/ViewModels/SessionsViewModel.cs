@@ -1,6 +1,8 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Extensions;
+using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
+using DnnSummit.ViewModels.Interfaces;
 using DnnSummit.Views;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -16,10 +18,11 @@ using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
-    public class SessionsViewModel : BindableBase, INavigatingAware
+    public class SessionsViewModel : BindableBase, INavigatingAware, IHasDataRetrieval
     {
         protected INavigationService NavigationService { get; }
         protected ISessionService SessionService { get; }
+        protected IErrorRetryManager ErrorRetryManager { get; }
         public string Title => "Sessions";
         
         
@@ -80,13 +83,15 @@ namespace DnnSummit.ViewModels
 
         public SessionsViewModel(
             INavigationService navigationService,
-            ISessionService sessionService)
+            ISessionService sessionService,
+            IErrorRetryManager errorRetryManager)
         {
             IsBusy = false;
             DisplayOfflineNotice = true;
             SelectedDay = SessionDay.Day1;
             NavigationService = navigationService;
             SessionService = sessionService;
+            ErrorRetryManager = errorRetryManager;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
             ToggleAsFavorite = new DelegateCommand<Session>(OnToggleAsFavorite);
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
@@ -168,9 +173,21 @@ namespace DnnSummit.ViewModels
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
-            IsBusy = true;
-            await LoadSessions(SessionDay.Day1);
-            IsBusy = false;
+            await OnLoadAsync(parameters);
+        }
+
+        public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)
+        {
+            try
+            {
+                IsBusy = true;
+                await LoadSessions(SessionDay.Day1);
+                IsBusy = false;
+            }
+            catch (Exception)
+            {
+                await ErrorRetryManager.HandleRetryAsync(this, parameters, attempt);
+            }
         }
     }
 }

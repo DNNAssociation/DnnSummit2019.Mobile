@@ -15,6 +15,12 @@
             public const string SponsorsPage = "SponsorsPage";
         }
 
+        public static class ErrorHandling
+        {
+            public const int RetryAttempts = 5;
+            public const int RetryWait = 500;
+        }
+
         public static class Messages
         {
             public const string LastRetrieved = "Last Retrieved: {0}";

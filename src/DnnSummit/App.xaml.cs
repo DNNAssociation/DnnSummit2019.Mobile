@@ -71,6 +71,7 @@ namespace DnnSummit
         {
             containerRegistry.Register<ISecretsManager, SecretsManager>();
             containerRegistry.Register<IAppCenterManager, AppCenterManager>();
+            containerRegistry.Register<IErrorRetryManager, ErrorRetryManager>();
         }
 
         // Page/ViewModel Wireup Logic

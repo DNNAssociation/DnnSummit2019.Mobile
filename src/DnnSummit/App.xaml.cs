@@ -60,10 +60,11 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<LoadingOfflineModePage>(Constants.Navigation.LoaddingOfflineModePage);
             containerRegistry.RegisterForNavigation<DnnSummitNavigationPage>(Constants.Navigation.NavigationPage);
             containerRegistry.RegisterForNavigation<DnnSummitTabbedPage>(Constants.Navigation.TabbedPage);
-            containerRegistry.RegisterForNavigation<LocationPage>(Constants.Navigation.LocationPage);
+            containerRegistry.RegisterForNavigation<VenuePage>(Constants.Navigation.VenuePage);
             containerRegistry.RegisterForNavigation<ScheduleDetailsPage>(Constants.Navigation.ScheduleDetailsPage);
             containerRegistry.RegisterForNavigation<SessionDetailsPage>(Constants.Navigation.SessionDetailsPage);
             containerRegistry.RegisterForNavigation<SponsorsPage>(Constants.Navigation.SponsorsPage);
+            containerRegistry.RegisterForNavigation<SchedulePage>(Constants.Navigation.SchedulePage);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)

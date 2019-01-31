@@ -1,10 +1,12 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Extensions;
 using DnnSummit.Models;
+using DnnSummit.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -22,24 +24,14 @@ namespace DnnSummit.ViewModels
         
         
         public ICommand SessionSelected { get; }
-        public ICommand SwapState { get; }
         public ICommand ToggleAsFavorite { get; }
         public ICommand ToggleOfflineNotice { get; }
+        public ICommand ChangeDay { get; }
 
         public ObservableCollection<SessionList> Sessions { get; }
-
-        private bool _isViewingFavoriteSessions;
-        public bool IsViewingFavoriteSessions
-        {
-            get { return _isViewingFavoriteSessions; }
-            set
-            {
-                SetProperty(ref _isViewingFavoriteSessions, value);
-                RaisePropertyChanged(nameof(IsViewingFavoriteSessions));
-            }
-        }
-
+        
         private bool _isBusy;
+        private IEnumerable<Data.Models.Session> _allSessions;
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -72,47 +64,51 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        private Thickness _floatingButtonMargin;
-        public Thickness FloatingButtonMargin
+        private SessionDay _selectedDay;
+        public SessionDay SelectedDay
         {
-            get { return _floatingButtonMargin; }
+            get { return _selectedDay; }
             set
             {
-                SetProperty(ref _floatingButtonMargin, value);
-                RaisePropertyChanged(nameof(FloatingButtonMargin));
+                SetProperty(ref _selectedDay, value);
+                RaisePropertyChanged(nameof(SelectedDay));
             }
         }
+
+        public SessionDay Day1 => SessionDay.Day1;
+        public SessionDay Day2 => SessionDay.Day2;
 
         public SessionsViewModel(
             INavigationService navigationService,
             ISessionService sessionService)
         {
-            IsViewingFavoriteSessions = false;
             IsBusy = false;
             DisplayOfflineNotice = true;
-            FloatingButtonMargin = new Thickness(0, 0, 10, 45);
+            SelectedDay = SessionDay.Day1;
             NavigationService = navigationService;
             SessionService = sessionService;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
-            SwapState = new DelegateCommand(OnSwapState);
             ToggleAsFavorite = new DelegateCommand<Session>(OnToggleAsFavorite);
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
+            ChangeDay = new DelegateCommand<object>(OnChangeDay);
             Sessions = new ObservableCollection<SessionList>();
             
+        }
+
+        private async void OnChangeDay(object input)
+        {
+            var newDay = (SessionDay?)input;
+            if (newDay.HasValue)
+            {
+                SelectedDay = newDay.Value;
+                SessionsPage.DayChanged(this, null);
+                await LoadSessions(SelectedDay);
+            }
         }
 
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
-
-            if (DisplayOfflineNotice)
-            {
-                FloatingButtonMargin = new Thickness(0, 0, 10, 45);
-            }
-            else
-            {
-                FloatingButtonMargin = new Thickness(0, 0, 10, 10);
-            }
         }
 
         private void OnToggleAsFavorite(Session session)
@@ -131,19 +127,16 @@ namespace DnnSummit.ViewModels
                 await NavigationService.NavigateAsync(Constants.Navigation.SessionDetailsPage, navigationParameter);
             }
         }
-
-        private void OnSwapState()
+        
+        private async Task LoadSessions(SessionDay currentDay)
         {
-            IsViewingFavoriteSessions = !IsViewingFavoriteSessions;
-        }
+            if (_allSessions == null)
+                _allSessions = await SessionService.GetAsync();
 
-        private async Task LoadSessions()
-        {
-            var rawSessions = await SessionService.GetAsync();
-            var data = rawSessions
-                //.Where(x => x.Day == "Day 1")
-                .GroupBy(x => x.TimeSlotName, (key, group) => 
-                    new SessionList(key, "9:10 - 10:10", 
+            var todaysSessions = _allSessions
+                .Where(x => x.Day == (int)currentDay)
+                .GroupBy(x => new { x.TimeSlotName, x.TimeSlot }, (key, group) =>
+                    new SessionList(key.TimeSlotName, key.TimeSlot,
                         group.Select(x => new Session
                         {
                             Title = x.Title,
@@ -154,28 +147,29 @@ namespace DnnSummit.ViewModels
                             TimeSlot = x.TimeSlot,
                             VideoLink = x.VideoLink,
                             Retrieved = x.Retrieved,
-                            Speaker = new Speaker
+                            Speakers = x.Speakers.Select(s => new Speaker
                             {
-                                Name = x.Speaker.Name,
-                                Bio = x.Speaker.Bio,
-                                Headshot = ImageSource.FromStream(() => new MemoryStream(x.Speaker.Photo))
-                            }
-                        })));
-
+                                Name = s.Name,
+                                Bio = s.Bio,
+                                Headshot = ImageSource.FromStream(() => new MemoryStream(s.Photo))
+                            })
+                        })))
+                .OrderBy(x => x.Heading);
+            
             Sessions.Clear();
 
-            foreach (var item in data)
+            foreach (var item in todaysSessions)
             {
                 Sessions.Add(item);
             }
 
-            ContentRetrieved = rawSessions.FirstOrDefault().Retrieved;
+            ContentRetrieved = _allSessions.FirstOrDefault().Retrieved;
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
             IsBusy = true;
-            await LoadSessions();
+            await LoadSessions(SessionDay.Day1);
             IsBusy = false;
         }
     }

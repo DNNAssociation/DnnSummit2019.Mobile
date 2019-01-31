@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
-    public class LocationViewModel : BindableBase, INavigatingAware
+    public class VenueViewModel : BindableBase, INavigatingAware
     {
         protected ILocationService LocationService { get; }
 
@@ -28,7 +28,7 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        public LocationViewModel(ILocationService locationService)
+        public VenueViewModel(ILocationService locationService)
         {
             LocationService = locationService;
             Locations = new ObservableCollection<Location>();

@@ -104,6 +104,7 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
+    <Compile Include="Renderers\NoStickyListViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\arrow_right.imageset\arrow_right@1.png">
@@ -412,6 +413,30 @@
     <ImageAsset Include="Assets.xcassets\splash_icon.imageset\splash_icon%403.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\event_note.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\event_note.imageset\event_note%401.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\event_note.imageset\event_note%402.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\event_note.imageset\event_note%403.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\power.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\power.imageset\power%401.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\power.imageset\power%402.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\power.imageset\power%403.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -459,5 +484,7 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\splash_icon.imageset\" />
     <Folder Include="Resources\" />
+    <Folder Include="Assets.xcassets\event_note.imageset\" />
+    <Folder Include="Assets.xcassets\power.imageset\" />
   </ItemGroup>
 </Project>

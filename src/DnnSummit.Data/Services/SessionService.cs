@@ -15,20 +15,23 @@ namespace DnnSummit.Data.Services
         {
             var sessions = await QueryAsync();
             var speakers = await QueryAsync<TwoSexyContent.Speaker>("GetSpeakers");
+            var timeslots = await QueryAsync<TwoSexyContent.TimeSlot>("GetTimeSlots");
 
             var results = new List<Task<Session>>();
             foreach (var item in sessions)
             {
                 results.Add(Task.Run(new Func<Task<Session>>(async () =>
                 {
+                    int.TryParse(item.Day, out int day);
+                    var currentTimeSlot = timeslots.FirstOrDefault(x => x.Id == item.Timeslots.FirstOrDefault().Id);
                     var current = new Session
                     {
                         Title = item.Title,
                         Abstract = item.Abstract,
                         Description = item.Description,
-                        Day = item.Day,
-                        TimeSlot = item.TimeSlot,
-                        TimeSlotName = item.TimeSlot,
+                        Day = day,
+                        TimeSlot = currentTimeSlot?.Time,
+                        TimeSlotName = currentTimeSlot?.Name,
                         VideoLink = item.VideoLink,
                         Category = item.Category,
                         Level = item.Level,
@@ -36,7 +39,6 @@ namespace DnnSummit.Data.Services
                         Retrieved = DateTime.Now
                     };
 
-                    // TODO - Update the model to return many speakers instead of taking just 1
                     var currentSpeakers = new List<Speaker>();
                     foreach (var itemSpeaker in item.Speakers
                         .Select(s => speakers.Where(f => f.Id == s.Id).FirstOrDefault()))
@@ -48,7 +50,7 @@ namespace DnnSummit.Data.Services
                         });
                     }
 
-                    current.Speaker = currentSpeakers.FirstOrDefault();
+                    current.Speakers = currentSpeakers;
 
                     return current;
                 })));

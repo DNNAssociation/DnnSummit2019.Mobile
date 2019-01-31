@@ -1,25 +1,24 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
+using DnnSummit.Extensions;
 using DnnSummit.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
-using DnnSummit.Extensions;
 using System.Linq;
-using Xamarin.Forms;
+using System.Windows.Input;
 
 namespace DnnSummit.ViewModels
 {
-    public class ScheduleViewModel : BindableBase, INavigatingAware
+    public class DayByDayViewModel : BindableBase, INavigatingAware
     {
         protected INavigationService NavigationService { get; }
         protected IScheduleService ScheduleService { get; }
-        public string Title => "Schedule";
+        public string Title => "Day-By-Day";
         public ObservableCollection<Event> Days { get; set; }
         public ICommand DaySelected { get; }        
 
-        public ScheduleViewModel(
+        public DayByDayViewModel(
             INavigationService navigationService,
             IScheduleService scheduleService)
         {

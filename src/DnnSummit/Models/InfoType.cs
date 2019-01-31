@@ -4,8 +4,11 @@ namespace DnnSummit.Models
 {
     public enum InfoType
     {
-        [ImageResource(Name = "business")]
+        [ImageResource(Name = "power")]
         Sponsors,
+
+        [ImageResource(Name = "business")]
+        Venue,
 
         [ImageResource(Name = "wrench")]
         Credits,

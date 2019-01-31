@@ -6,7 +6,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="Location"
-             x:Class="DnnSummit.Views.LocationPage">
+             x:Class="DnnSummit.Views.VenuePage">
     <NavigationPage.TitleView>
         <c:LogoTitleView Title="Location"
                          Icon="navbar_icon" />

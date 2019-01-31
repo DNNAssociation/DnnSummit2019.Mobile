@@ -28,7 +28,7 @@ jobs:
     appcenterIOSSecret: '$(Secrets.iOS.AppCenterId)'
     appcenterAndroidSecret: '$(Secrets.Android.AppCenterId)'
     secretsFilePath: 'src\DnnSummit\Secrets.json'
-    createStorePackageOnBranch: 'refs/heads/build-updates'
+    createStorePackageOnBranch: 'refs/heads/master'
     # Ad-Hoc Android
     adhocKeyStoreSecureFile: '$(Secrets.Android.KeyStore)'
     adhocKeyStoreAlias: '$(Secrets.Android.KeyStoreAlias)'

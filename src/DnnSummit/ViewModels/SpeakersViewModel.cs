@@ -64,7 +64,7 @@ namespace DnnSummit.ViewModels
                 if (data == null) return;
 
                 Speakers.Clear();
-                foreach (var item in data)
+                foreach (var item in data.OrderBy(x => x.Name))
                 {
                     Speakers.Add(new Speaker
                     {

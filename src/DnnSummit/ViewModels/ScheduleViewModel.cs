@@ -5,6 +5,7 @@ using DnnSummit.ViewModels.Interfaces;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;

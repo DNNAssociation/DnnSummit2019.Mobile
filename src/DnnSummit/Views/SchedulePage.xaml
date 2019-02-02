@@ -9,11 +9,30 @@
         <c:LogoTitleView Title="Schedule"
                          Icon="navbar_icon" />
     </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="DayTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding="15,0">
+                            <Label Text="{Binding Title}"
+                                   TextColor="{StaticResource DarkBlue}"
+                                   FontSize="20" />
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <ListView ItemsSource="{Binding Days}"
+                      ItemTemplate="{StaticResource DayTemplate}"
+                      SeparatorColor="Transparent"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      Grid.Row="0"
+                      ItemTapped="ListView_ItemTapped" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

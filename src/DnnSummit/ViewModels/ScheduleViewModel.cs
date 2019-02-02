@@ -2,6 +2,7 @@
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
 using DnnSummit.ViewModels.Interfaces;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DnnSummit.ViewModels
 {
@@ -18,6 +20,7 @@ namespace DnnSummit.ViewModels
         protected IErrorRetryManager ErrorRetryManager { get; }
         public string Title => "Schedule";
         public ObservableCollection<Day> Days { get; }
+        public ICommand ToggleOfflineNotice { get; }
         public ScheduleViewModel(
             IItineraryService itineraryService,
             IErrorRetryManager errorRetryManager)
@@ -25,6 +28,35 @@ namespace DnnSummit.ViewModels
             ItineraryService = itineraryService;
             ErrorRetryManager = errorRetryManager;
             Days = new ObservableCollection<Day>();
+            DisplayOfflineNotice = true;
+            ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
+        }
+
+        private bool _displayOfflineNotice;
+        public bool DisplayOfflineNotice
+        {
+            get { return _displayOfflineNotice; }
+            set
+            {
+                SetProperty(ref _displayOfflineNotice, value);
+                RaisePropertyChanged(nameof(DisplayOfflineNotice));
+            }
+        }
+
+        private DateTime _contentRetrieved;
+        public DateTime ContentRetrieved
+        {
+            get { return _contentRetrieved; }
+            set
+            {
+                SetProperty(ref _contentRetrieved, value);
+                RaisePropertyChanged(nameof(ContentRetrieved));
+            }
+        }
+
+        private void OnToggleOfflineNotice()
+        {
+            DisplayOfflineNotice = !DisplayOfflineNotice;
         }
 
         public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)
@@ -54,6 +86,8 @@ namespace DnnSummit.ViewModels
                         })
                     });
                 }
+
+                ContentRetrieved = data.FirstOrDefault().Retrieved;
             }
             catch (Exception)
             {

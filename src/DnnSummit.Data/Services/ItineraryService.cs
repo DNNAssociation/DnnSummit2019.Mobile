@@ -1,5 +1,6 @@
 ﻿using DnnSummit.Data.Models;
 using DnnSummit.Data.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace DnnSummit.Data.Services
                 items.Add(new Itinerary
                 {
                     Title = itinerary.Title,
+                    Retrieved = DateTime.Now,
                     Messages = messages
                         .Where(x => itinerary.Messages.Any(m => x.Id == m.Id))
                         .Select(x => new ItineraryMessage

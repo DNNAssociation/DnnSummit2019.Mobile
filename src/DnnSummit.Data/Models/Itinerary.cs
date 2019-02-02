@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DnnSummit.Data.Models
 {
@@ -6,5 +7,6 @@ namespace DnnSummit.Data.Models
     {
         public string Title { get; set; }
         public IEnumerable<ItineraryMessage> Messages { get; set; }
+        public DateTime Retrieved { get; set; }
     }
 }

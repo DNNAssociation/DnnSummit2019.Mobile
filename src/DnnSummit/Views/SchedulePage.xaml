@@ -27,6 +27,9 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <ListView ItemsSource="{Binding Days}"
                       ItemTemplate="{StaticResource DayTemplate}"
                       SeparatorColor="Transparent"
@@ -34,6 +37,27 @@
                       HasUnevenRows="True"
                       Grid.Row="0"
                       ItemTapped="ListView_ItemTapped" />
+            <StackLayout HorizontalOptions="Fill"
+                         VerticalOptions="End"
+                         Padding="5,10"
+                         Margin="0, 0, 0, -2"
+                         Spacing="0"
+                         BackgroundColor="{StaticResource Orange}"
+                         Orientation="Horizontal"
+                         IsVisible="{Binding DisplayOfflineNotice}">
+                <Label Text="{Binding ContentRetrieved, Converter={StaticResource DataTimestampConverter}}"
+                       TextColor="White"
+                       HorizontalOptions="Start"/>
+                <Label HorizontalOptions="EndAndExpand"
+                       Text="Hide"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       Margin="0,0,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleOfflineNotice}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

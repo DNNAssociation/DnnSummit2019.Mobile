@@ -46,7 +46,18 @@ namespace DnnSummit.Data.Services
                                 Category = s.Category,
                                 VideoLink = s.VideoLink,
                                 Level = s.Level,
-                                Room = s.Room
+                                Room = s.Room,
+                                Speakers = Task.WhenAll(speakers
+                                        .Where(x => x.Sessions.Any(j => j.Id == s.Id))
+                                        .Select(async x => new Speaker
+                                        {
+                                            Name = x.Title,
+                                            Bio = x.Bio,
+                                            Twitter = x.Twitter,
+                                            Photo = await GetImageFromUrlAsync($"https://www.dnnsummit.org{x.Photo}"),
+                                        }))
+                                    .GetAwaiter()
+                                    .GetResult()
                             });
                         }
                     }

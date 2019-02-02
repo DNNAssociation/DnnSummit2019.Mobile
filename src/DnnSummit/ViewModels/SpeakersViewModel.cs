@@ -80,11 +80,11 @@ namespace DnnSummit.ViewModels
                             TimeSlot = x.TimeSlot,
                             TimeSlotName = x.TimeSlotName,
                             Track = x.Category.ToSessionTrack(),
-                            //Speakers = new Speaker
-                            //{
-                            //    Name = item.Name,
-                            //    Headshot = ImageSource.FromStream(() => new MemoryStream(item.Photo))
-                            //}
+                            Speakers = x.Speakers.Select(s => new Speaker
+                            {
+                                Name = s.Name,
+                                Headshot = ImageSource.FromStream(() => new MemoryStream(s.Photo))
+                            })
                         })
                     });
                 }

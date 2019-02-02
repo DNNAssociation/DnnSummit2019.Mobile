@@ -1,4 +1,5 @@
 ﻿using DnnSummit.Controls;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace DnnSummit.Views
@@ -10,5 +11,5 @@ namespace DnnSummit.Views
 		{
 			InitializeComponent ();
 		}
-	}
+    }
 }

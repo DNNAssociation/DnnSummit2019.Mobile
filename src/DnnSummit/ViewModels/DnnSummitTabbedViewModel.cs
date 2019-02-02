@@ -11,7 +11,6 @@ namespace DnnSummit.ViewModels
         public DnnSummitTabbedViewModel(INavigationService navigationService)
         {
             NavigationService = navigationService;
-
             NavigateToSchedule = new DelegateCommand(OnNavigateToSchedule);
         }
 

@@ -9,11 +9,55 @@
         <c:LogoTitleView Title="Schedule"
                          Icon="navbar_icon" />
     </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="DayTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding="15,20">
+                            <Label Text="{Binding Title}"
+                                   TextColor="{StaticResource DarkBlue}"
+                                   FontSize="22" />
+                            <c:ScheduleItemControl Messages="{Binding Messages}" />
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ListView ItemsSource="{Binding Days}"
+                      ItemTemplate="{StaticResource DayTemplate}"
+                      SeparatorColor="Transparent"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      Grid.Row="0"
+                      ItemTapped="ListView_ItemTapped" />
+            <StackLayout HorizontalOptions="Fill"
+                         VerticalOptions="End"
+                         Padding="5,10"
+                         Margin="0, 0, 0, -2"
+                         Spacing="0"
+                         BackgroundColor="{StaticResource Orange}"
+                         Orientation="Horizontal"
+                         IsVisible="{Binding DisplayOfflineNotice}">
+                <Label Text="{Binding ContentRetrieved, Converter={StaticResource DataTimestampConverter}}"
+                       TextColor="White"
+                       HorizontalOptions="Start"/>
+                <Label HorizontalOptions="EndAndExpand"
+                       Text="Hide"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       Margin="0,0,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleOfflineNotice}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

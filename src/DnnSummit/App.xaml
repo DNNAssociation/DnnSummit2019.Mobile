@@ -12,6 +12,7 @@
             <Color x:Key="SplashBackground">#ff4b1f</Color>
             <Color x:Key="Orange">#ea7e3b</Color>
             <Color x:Key="DarkBlue">#1e345d</Color>
+            <Color x:Key="Gray">#999999</Color>
             <Color x:Key="ListDivider">#c3c3c3</Color>
             <Color x:Key="AvatarBorder">#000</Color>
             <Color x:Key="White">#FFF</Color>

@@ -23,6 +23,7 @@ namespace DnnSummit.Data.Services
                     x.Sessions
                 }));
 
+            var timeslots = await QueryAsync<TwoSexyContent.TimeSlot>("GetTimeSlots");
             var sessions = (await QueryAsync<TwoSexyContent.Session>("GetSessions"))
                 .ToDictionary(x => x.Id, x => x);
 
@@ -43,6 +44,7 @@ namespace DnnSummit.Data.Services
                     {
                         if (sessions.ContainsKey(currentSession.Id))
                         {
+                            var currentTimeSlot = timeslots.FirstOrDefault(x => x.Id == sessions[currentSession.Id].Timeslots.FirstOrDefault().Id);
                             var s = sessions[currentSession.Id];
                             speakerSessions.Add(new Session
                             {
@@ -50,8 +52,8 @@ namespace DnnSummit.Data.Services
                                 Abstract = s.Abstract,
                                 Description = s.Description,
                                 //Day = s.Day,
-                                TimeSlot = s.TimeSlot,
-                                TimeSlotName = s.TimeSlot,
+                                TimeSlot = currentTimeSlot?.Time,
+                                TimeSlotName = currentTimeSlot?.Name,
                                 Category = s.Category,
                                 VideoLink = s.VideoLink,
                                 Level = s.Level,

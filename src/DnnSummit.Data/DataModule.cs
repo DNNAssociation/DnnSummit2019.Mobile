@@ -41,6 +41,7 @@ namespace DnnSummit.Data
             containerRegistry.Register<ISpeakerService, SpeakerService>();
             containerRegistry.Register<ISponsorService, SponsorService>();
             containerRegistry.Register<ISettingsService, SettingsService>();
+            containerRegistry.Register<IItineraryService, ItineraryService>();
             containerRegistry.RegisterSingleton<IStartupManager, StartupManager>();
         }
     }

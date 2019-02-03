@@ -13,6 +13,7 @@
             public const string ScheduleDetailsPage = "ScheduleDetailsPage";
             public const string SessionDetailsPage = "SessionDetailsPage";
             public const string SponsorsPage = "SponsorsPage";
+            public const string CreditsPage = "CreditsPage";
 
             public static class Parameters
             {

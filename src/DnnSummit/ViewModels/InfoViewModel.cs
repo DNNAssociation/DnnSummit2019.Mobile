@@ -37,7 +37,8 @@ namespace DnnSummit.ViewModels
             new Tile
             {
                 Title = "Credits",
-                InfoType = InfoType.Credits
+                InfoType = InfoType.Credits,
+                NavigationPath = Constants.Navigation.CreditsPage
             },
             new Tile
             {

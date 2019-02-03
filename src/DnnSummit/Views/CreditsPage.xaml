@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:DnnSummit.Controls"
+             xmlns:s="clr-namespace:DnnSummit.Selectors"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="DnnSummit.Views.CreditsPage">
@@ -9,11 +10,33 @@
         <c:LogoTitleView Title="{Binding Title}"
                          Icon="navbar_icon" />
     </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="PlatformTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Label Text="{Binding Title}" />
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="CompanyTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Label Text="{Binding Title}" />
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <s:CreditDataTemplateSelector x:Key="CreditTemplate"
+                                          CompanyTemplate="{StaticResource CompanyTemplate}"
+                                          PlatformTemplate="{StaticResource PlatformTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This app is built using"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView ItemsSource="{Binding Credits}"
+                  ItemTemplate="{StaticResource CreditTemplate}"
+                  SeparatorColor="Transparent"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True"
+                  ItemTapped="ListView_ItemTapped" />
     </ContentPage.Content>
 </ContentPage>

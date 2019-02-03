@@ -7,6 +7,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -40,7 +41,7 @@ namespace DnnSummit.ViewModels
 
                 Credits.Clear();
 
-                foreach (var item in data)
+                foreach (var item in data.OrderBy(x => x.CreditType))
                 {
                     Credits.Add(new Credit
                     {

@@ -64,7 +64,7 @@ namespace DnnSummit.ViewModels
                 if (data == null) return;
 
                 Speakers.Clear();
-                foreach (var item in data)
+                foreach (var item in data.OrderBy(x => x.Name))
                 {
                     Speakers.Add(new Speaker
                     {
@@ -80,11 +80,11 @@ namespace DnnSummit.ViewModels
                             TimeSlot = x.TimeSlot,
                             TimeSlotName = x.TimeSlotName,
                             Track = x.Category.ToSessionTrack(),
-                            //Speakers = new Speaker
-                            //{
-                            //    Name = item.Name,
-                            //    Headshot = ImageSource.FromStream(() => new MemoryStream(item.Photo))
-                            //}
+                            Speakers = x.Speakers.Select(s => new Speaker
+                            {
+                                Name = s.Name,
+                                Headshot = ImageSource.FromStream(() => new MemoryStream(s.Photo))
+                            })
                         })
                     });
                 }

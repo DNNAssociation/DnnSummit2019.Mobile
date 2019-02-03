@@ -13,7 +13,16 @@ namespace DnnSummit.Data.Services
             : base("https://www.dnnsummit.org/desktopmodules/2sxc/api/app/DnnSummit2019/Query/", "GetSpeakers") { }
         protected override async Task<IEnumerable<Speaker>> QueryAndMapAsync()
         {
-            var speakers = await QueryAsync();
+            var speakers = await Task.WhenAll((await QueryAsync())
+                .Select(async x => new
+                {
+                    x.Title,
+                    x.Bio,
+                    x.Twitter,
+                    Photo = await GetImageFromUrlAsync($"https://www.dnnsummit.org{x.Photo}"),
+                    x.Sessions
+                }));
+
             var sessions = (await QueryAsync<TwoSexyContent.Session>("GetSessions"))
                 .ToDictionary(x => x.Id, x => x);
 
@@ -46,13 +55,22 @@ namespace DnnSummit.Data.Services
                                 Category = s.Category,
                                 VideoLink = s.VideoLink,
                                 Level = s.Level,
-                                Room = s.Room
+                                Room = s.Room,
+                                Speakers = speakers
+                                        .Where(x => x.Sessions.Any(j => j.Id == s.Id))
+                                        .Select(x => new Speaker
+                                        {
+                                            Name = x.Title,
+                                            Bio = x.Bio,
+                                            Twitter = x.Twitter,
+                                            Photo = x.Photo,
+                                        })
                             });
                         }
                     }
 
                     current.Sessions = speakerSessions;
-                    current.Photo = await GetImageFromUrlAsync($"https://www.dnnsummit.org{item.Photo}");
+                    current.Photo = item.Photo;
                     return current;
                 })));
             }

@@ -60,38 +60,27 @@
                                        FontSize="16"
                                        TextColor="Black"
                                        VerticalOptions="StartAndExpand" />
-                                    <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="Fill">
-                                        <Label Text="{Binding FullName}"
-                                           FontAttributes="None"
-                                           FontSize="14"
-                                           TextColor="Black"
-                                           HorizontalOptions="StartAndExpand"/>
-                                        <Label Text="{Binding Session}"
-                                           HorizontalOptions="End"
-                                           HorizontalTextAlignment="End" />
-                                    </StackLayout>
 
+                                    <StackLayout Orientation="Vertical"
+                                                 VerticalOptions="End">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Session}" />
+                                            <Label Text=" - " />
+                                            <Label Text="{Binding TimeSlot}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Room: "/>
+                                            <Label Text="{Binding Room}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                    
                                     <StackLayout Orientation="Horizontal"
-                                             VerticalOptions="End"
-                                             HorizontalOptions="Fill">
-                                        <StackLayout Orientation="Horizontal"
-                                                 HorizontalOptions="StartAndExpand"
-                                                 Spacing="0">
-                                            <Label Text="Room:"
-                                               FontAttributes="Bold"
-                                               FontSize="16"
-                                               TextColor="Black" />
-                                            <Label Text="{Binding Room}"
+                                                 HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding FullName}"
+                                               FontAttributes="None"
                                                FontSize="16"
                                                TextColor="Black"
-                                               Margin="10, 0, 0, 0"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Vertical"
-                                                 HorizontalOptions="End">
-                                            <Label Text="{Binding TimeSlot}"
-                                               HorizontalTextAlignment="End"/>
-                                        </StackLayout>
+                                               HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>

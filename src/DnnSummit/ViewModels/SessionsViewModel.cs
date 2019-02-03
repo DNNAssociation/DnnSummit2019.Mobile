@@ -22,6 +22,7 @@ namespace DnnSummit.ViewModels
     {
         protected INavigationService NavigationService { get; }
         protected ISessionService SessionService { get; }
+        protected ISettingsService SettingsService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
         public string Title => "Sessions";
         
@@ -84,6 +85,7 @@ namespace DnnSummit.ViewModels
         public SessionsViewModel(
             INavigationService navigationService,
             ISessionService sessionService,
+            ISettingsService settingsService,
             IErrorRetryManager errorRetryManager)
         {
             IsBusy = false;
@@ -91,6 +93,7 @@ namespace DnnSummit.ViewModels
             SelectedDay = SessionDay.Day1;
             NavigationService = navigationService;
             SessionService = sessionService;
+            SettingsService = settingsService;
             ErrorRetryManager = errorRetryManager;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
             ToggleAsFavorite = new DelegateCommand<Session>(OnToggleAsFavorite);
@@ -127,7 +130,8 @@ namespace DnnSummit.ViewModels
             {
                 var navigationParameter = new NavigationParameters()
                 {
-                    { nameof(Session), session }
+                    { nameof(Session), session },
+                    { Constants.Navigation.Parameters.LastUpdated, ContentRetrieved }
                 };
                 await NavigationService.NavigateAsync(Constants.Navigation.SessionDetailsPage, navigationParameter);
             }
@@ -151,7 +155,6 @@ namespace DnnSummit.ViewModels
                             TimeSlotName = x.TimeSlotName,
                             TimeSlot = x.TimeSlot,
                             VideoLink = x.VideoLink,
-                            Retrieved = x.Retrieved,
                             Speakers = x.Speakers.Select(s => new Speaker
                             {
                                 Name = s.Name,
@@ -168,7 +171,7 @@ namespace DnnSummit.ViewModels
                 Sessions.Add(item);
             }
 
-            ContentRetrieved = _allSessions.FirstOrDefault().Retrieved;
+            ContentRetrieved = SettingsService.Get().LastUpdated;
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

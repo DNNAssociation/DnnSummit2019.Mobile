@@ -68,7 +68,6 @@ namespace DnnSummit.ViewModels
                         Description = item.CardDescription,
                         Avatar = item.Title.ToScheduleType(),
                         Banner = (item.BannerTitle, item.BannerHeading, item.BannerImage),
-                        Retrieved = item.Retrieved,
                         ContentSections = item.Sections.Select(x => new ScheduleContent
                         {
                             Title = x.Title,

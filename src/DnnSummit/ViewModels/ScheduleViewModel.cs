@@ -17,15 +17,18 @@ namespace DnnSummit.ViewModels
     public class ScheduleViewModel : BindableBase, INavigatingAware, IHasDataRetrieval
     {
         protected IItineraryService ItineraryService { get; }
+        protected ISettingsService SettingsService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
         public string Title => "Schedule";
         public ObservableCollection<Day> Days { get; }
         public ICommand ToggleOfflineNotice { get; }
         public ScheduleViewModel(
             IItineraryService itineraryService,
+            ISettingsService settingsService,
             IErrorRetryManager errorRetryManager)
         {
             ItineraryService = itineraryService;
+            SettingsService = settingsService;
             ErrorRetryManager = errorRetryManager;
             Days = new ObservableCollection<Day>();
             DisplayOfflineNotice = true;
@@ -87,7 +90,7 @@ namespace DnnSummit.ViewModels
                     });
                 }
 
-                ContentRetrieved = data.FirstOrDefault().Retrieved;
+                ContentRetrieved = SettingsService.Get().LastUpdated;
             }
             catch (Exception)
             {

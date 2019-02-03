@@ -20,6 +20,7 @@ namespace DnnSummit.ViewModels
     {
         protected INavigationService NavigationService { get; }
         protected ISpeakerService SpeakerService { get; }
+        protected ISettingsService SettingsService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
 
         public string Title => "Speakers";
@@ -30,10 +31,12 @@ namespace DnnSummit.ViewModels
         public SpeakersViewModel(
             INavigationService navigationService,
             ISpeakerService speakerService,
+            ISettingsService settingsService,
             IErrorRetryManager errorRetryManager)
         {
             NavigationService = navigationService;
             SpeakerService = speakerService;
+            SettingsService = settingsService;
             ErrorRetryManager = errorRetryManager;
             Speakers = new ObservableCollection<Speaker>();
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
@@ -46,6 +49,7 @@ namespace DnnSummit.ViewModels
                 var navigationParameter = new NavigationParameters()
                 {
                     { nameof(Session), session },
+                    { Constants.Navigation.Parameters.LastUpdated, SettingsService.Get().LastUpdated }
                 };
                 await NavigationService.NavigateAsync(Constants.Navigation.SessionDetailsPage, navigationParameter);
             }

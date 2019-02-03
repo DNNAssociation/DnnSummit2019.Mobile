@@ -26,7 +26,6 @@ namespace DnnSummit.Data.Services
                 items.Add(new Itinerary
                 {
                     Title = itinerary.Title,
-                    Retrieved = DateTime.Now,
                     Messages = messages
                         .Where(x => itinerary.Messages.Any(m => x.Id == m.Id))
                         .Select(x => new ItineraryMessage

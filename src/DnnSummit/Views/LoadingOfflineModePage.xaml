@@ -27,6 +27,17 @@
                     VerticalOptions="StartAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     Margin="20,0"/>
+            <Frame BackgroundColor="{StaticResource DarkBlue}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Continue}" />
+                </Frame.GestureRecognizers>
+                <Label Text="Open App"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" />
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

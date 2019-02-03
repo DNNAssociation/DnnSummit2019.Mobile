@@ -22,6 +22,19 @@
             <ProgressBar local:AttachedProperties.AnimatedProgress="{Binding PercentCompleted}"
                          ProgressColor="{StaticResource DarkBlue}" />
             <Label Text="{Binding PercentCompleted, Converter={StaticResource PercentToStringConverter}}" />
+            <Frame BackgroundColor="{StaticResource DarkBlue}"
+                   IsVisible="{Binding IsSkipEnabled}"
+                   IsEnabled="{Binding IsSkipEnabled}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CancelDownload}" />
+                </Frame.GestureRecognizers>
+                <Label Text="Skip Download"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" />
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,10 +1,12 @@
 ﻿using DnnSummit.Data;
 using DnnSummit.Events;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 
 namespace DnnSummit.ViewModels
@@ -14,6 +16,8 @@ namespace DnnSummit.ViewModels
         protected INavigationService NavigationService { get; }
         protected IStartupManager StartupManager { get; }
         protected IEventAggregator EventAggregator { get; }
+
+        public ICommand CancelDownload { get; }
 
         private double _percentCompleted;
         public double PercentCompleted
@@ -25,6 +29,28 @@ namespace DnnSummit.ViewModels
                 RaisePropertyChanged(nameof(PercentCompleted));
             }
         }
+
+        private bool _isSkipEnabled;
+        public bool IsSkipEnabled
+        {
+            get { return _isSkipEnabled; }
+            set
+            {
+                SetProperty(ref _isSkipEnabled, value);
+                RaisePropertyChanged(nameof(IsSkipEnabled));
+            }
+        }
+
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                SetProperty(ref _isBusy, value);
+                RaisePropertyChanged(nameof(IsBusy));
+            }
+        }
         
         public LoadingViewModel(
             INavigationService navigationService,
@@ -34,9 +60,23 @@ namespace DnnSummit.ViewModels
             NavigationService = navigationService;
             StartupManager = startupManager;
 
+            CancelDownload = new DelegateCommand(OnCancelDownload);
+
             eventAggregator
                 .GetEvent<ContentDownloadProgressUpdated>()
                 .Subscribe(OnProgressUpdated);
+        }
+
+        private async void OnCancelDownload()
+        {
+            if (IsBusy) return;
+
+            IsBusy = true;
+
+            StartupManager.CancelDataUpdate();
+            await FinishAndNavigateAsync();
+
+            IsBusy = false;
         }
 
         private async Task DownloadAsync()
@@ -70,6 +110,7 @@ namespace DnnSummit.ViewModels
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 PercentCompleted = 0.0d;
+                IsSkipEnabled = StartupManager.ContainsData;
                 await DownloadAsync();
             }
             else

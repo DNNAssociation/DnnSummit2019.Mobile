@@ -39,9 +39,9 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <c:CustomTabbedPage.Children>
-        <local:DayByDayPage />
         <local:SessionsPage />
         <local:SpeakersPage />
+        <local:DayByDayPage />
         <local:InfoPage />
     </c:CustomTabbedPage.Children>
 </c:CustomTabbedPage>

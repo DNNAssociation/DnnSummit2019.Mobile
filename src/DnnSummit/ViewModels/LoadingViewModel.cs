@@ -42,14 +42,14 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        private bool _isBusy;
-        public bool IsBusy
+        private bool _isSkipping;
+        public bool IsSkipping
         {
-            get { return _isBusy; }
+            get { return _isSkipping; }
             set
             {
-                SetProperty(ref _isBusy, value);
-                RaisePropertyChanged(nameof(IsBusy));
+                SetProperty(ref _isSkipping, value);
+                RaisePropertyChanged(nameof(IsSkipping));
             }
         }
         
@@ -70,14 +70,14 @@ namespace DnnSummit.ViewModels
 
         private async void OnCancelDownload()
         {
-            if (IsBusy) return;
+            if (IsSkipping) return;
 
-            IsBusy = true;
+            IsSkipping = true;
 
             StartupManager.CancelDataUpdate();
             await FinishAndNavigateAsync();
 
-            IsBusy = false;
+            IsSkipping = false;
         }
 
         private async Task DownloadAsync()
@@ -92,7 +92,10 @@ namespace DnnSummit.ViewModels
             }
             finally
             {
-                await FinishAndNavigateAsync();
+                if (!IsSkipping)
+                {
+                    await FinishAndNavigateAsync();
+                }
             }
         }
 

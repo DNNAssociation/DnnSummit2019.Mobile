@@ -194,10 +194,14 @@ namespace DnnSummit.ViewModels
                     TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;
                     VideoIntroLink = session.VideoLink;
-                    ContentRetrieved = session.Retrieved;
 
                     isSuccessful = true;
                 }
+            }
+
+            if (parameters.ContainsKey(Constants.Navigation.Parameters.LastUpdated))
+            {
+                ContentRetrieved = (DateTime)parameters[Constants.Navigation.Parameters.LastUpdated];
             }
 
             if (!isSuccessful)

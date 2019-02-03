@@ -11,6 +11,7 @@ using Xamarin.Essentials;
 namespace DnnSummit.Data.Services
 {
     internal abstract class BaseService<TEntity, TModel>
+        where TEntity : Entity
     {
         protected HttpClient Client { get; }
         public string Method { get; }
@@ -23,7 +24,7 @@ namespace DnnSummit.Data.Services
 
         public virtual async Task SyncAsync()
         {
-            await GetAsync(true);
+            await GetAsync(false);
         }
 
         public virtual async Task<IEnumerable<TModel>> GetAsync(bool forceRefresh = false)
@@ -67,6 +68,7 @@ namespace DnnSummit.Data.Services
         }
 
         protected async Task<IEnumerable<TCustom>> QueryAsync<TCustom>(string method)
+            where TCustom : Entity
         {
             var response = await Client.GetAsync(method);
             if (response.IsSuccessStatusCode)

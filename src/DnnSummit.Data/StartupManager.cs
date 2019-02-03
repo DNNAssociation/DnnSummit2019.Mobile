@@ -15,6 +15,8 @@ namespace DnnSummit.Data
     {
         private CancellationTokenSource _cancellationTokenSource;
         private IDictionary<string, object> _cachedData;
+        private DateTime? _cachedExpiration;
+        private bool _isCancelled = false;
         protected IEventAggregator EventAggregator { get; }
 
         public IList<ISyncService> Services { get; private set; }
@@ -39,23 +41,25 @@ namespace DnnSummit.Data
             if (_cancellationTokenSource == null) return;
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource = null;
+            _isCancelled = true;
 
             if (_cachedData == null) return;
 
             foreach (var item in _cachedData)
             {
-                Barrel.Current.Add(item.Key, item.Value, TimeSpan.FromDays(5));
+                Barrel.Current.Add(item.Key, item.Value, _cachedExpiration.Value.Subtract(DateTime.Now));
             }
         }
 
         public async Task SyndDataAsync()
         {
             _cachedData = GetCachedData();
+            _cachedExpiration = Barrel.Current.GetExpiration(nameof(Settings));
             _cancellationTokenSource = new CancellationTokenSource();
 
             Barrel.Current.EmptyAll();
             var serviceTasks = new List<Task>();
-            
+
             double counter = 0;
             foreach (var syncService in Services)
             {
@@ -78,8 +82,12 @@ namespace DnnSummit.Data
             }
 
             await Task.WhenAll(serviceTasks);
-            var settings = new Settings { LastUpdated = DateTime.UtcNow };
-            Barrel.Current.Add(nameof(Settings), settings, TimeSpan.FromDays(5));
+
+            if (!_isCancelled)
+            {
+                var settings = new Settings { LastUpdated = DateTime.Now };
+                Barrel.Current.Add(nameof(Settings), settings, TimeSpan.FromDays(5));
+            }
         }
 
         private IDictionary<string, object> GetCachedData()
@@ -90,6 +98,8 @@ namespace DnnSummit.Data
                 var data = Barrel.Current.Get<object>(syncservice.Method);
                 result.Add(syncservice.Method, data);
             }
+
+            result.Add(nameof(Settings), Barrel.Current.Get<object>(nameof(Settings)));
 
             return result;
         }

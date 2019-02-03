@@ -48,7 +48,6 @@ namespace DnnSummit.Data.Services
                         BannerTitle = day.BannerTitle,
                         BannerHeading = day.BannerHeading,
                         BannerImage = await GetImageFromUrlAsync($"https://www.dnnsummit.org{day.BannerImage}"),
-                        Retrieved = DateTime.Now,
                         Sections = publishedSections
                     };
                 })));

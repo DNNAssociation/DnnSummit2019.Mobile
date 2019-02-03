@@ -2,7 +2,7 @@
 
 namespace DnnSummit.Data.Models
 {
-    public class Session : Entity
+    public class Session
     { 
         public string Title { get; set; }
         public string Abstract { get; set; }

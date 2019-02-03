@@ -2,7 +2,7 @@
 
 namespace DnnSummit.Data.Models
 {
-    public class ScheduleDetails : Entity
+    public class ScheduleDetails
     {
         public string Title { get; set; }
         public string CardDescription { get; set; }

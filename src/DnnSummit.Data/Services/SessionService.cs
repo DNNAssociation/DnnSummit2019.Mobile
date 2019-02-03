@@ -36,7 +36,6 @@ namespace DnnSummit.Data.Services
                         Category = item.Category,
                         Level = item.Level,
                         Room = item.Room,
-                        Retrieved = DateTime.Now
                     };
 
                     var currentSpeakers = new List<Speaker>();

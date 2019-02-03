@@ -2,14 +2,17 @@
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Xamarin.Essentials;
 
 namespace DnnSummit.ViewModels
 {
     public class InfoViewModel : BindableBase
     {
         protected INavigationService NavigationService { get; }
+        protected IPageDialogService PageDialogService { get; }
 
         public string Title => "Info";
         public IEnumerable<Tile> Pages => new[]
@@ -46,9 +49,12 @@ namespace DnnSummit.ViewModels
 
         public ICommand InfoSelected { get; }
 
-        public InfoViewModel(INavigationService navigationService)
+        public InfoViewModel(
+            INavigationService navigationService,
+            IPageDialogService pageDialogService)
         {
             NavigationService = navigationService;
+            PageDialogService = pageDialogService;
             InfoSelected = new DelegateCommand<Tile>(OnInfoSelected);
         }
 
@@ -56,7 +62,14 @@ namespace DnnSummit.ViewModels
         {
             if (tile != null && !string.IsNullOrEmpty(tile.NavigationPath))
             {
-                await NavigationService.NavigateAsync(tile.NavigationPath);
+                if (tile.NavigationPath.Contains(Constants.Navigation.LoadingPage) && Connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await PageDialogService.DisplayAlertAsync("No Internet", "Unable to download content, reconnect and try again.", "OK");
+                }
+                else
+                {
+                    await NavigationService.NavigateAsync(tile.NavigationPath);
+                }
             }
         }
     }

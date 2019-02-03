@@ -13,7 +13,7 @@ namespace DnnSummit.Data.Services
     internal abstract class BaseService<TEntity, TModel>
     {
         protected HttpClient Client { get; }
-        protected string Method { get; }
+        public string Method { get; }
         protected BaseService(string endpoint, string method)
         {
             Client = new HttpClient();

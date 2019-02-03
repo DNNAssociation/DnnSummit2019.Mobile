@@ -8,5 +8,7 @@ namespace DnnSummit.Data
     {
         Task SyndDataAsync();
         IList<ISyncService> Services { get; }
+        bool ContainsData { get; }
+        void CancelDataUpdate();
     }
 }

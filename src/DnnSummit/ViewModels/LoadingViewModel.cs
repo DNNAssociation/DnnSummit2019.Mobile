@@ -76,8 +76,6 @@ namespace DnnSummit.ViewModels
 
             StartupManager.CancelDataUpdate();
             await FinishAndNavigateAsync();
-
-            IsSkipping = false;
         }
 
         private async Task DownloadAsync()
@@ -106,7 +104,8 @@ namespace DnnSummit.ViewModels
 
         private void OnProgressUpdated(double progress)
         {
-            PercentCompleted = progress;
+            var percentage = Math.Round(progress * 100d);
+            PercentCompleted = percentage / 100d;
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

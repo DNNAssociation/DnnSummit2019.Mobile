@@ -42,6 +42,7 @@ namespace DnnSummit.Data
             containerRegistry.Register<ISponsorService, SponsorService>();
             containerRegistry.Register<ISettingsService, SettingsService>();
             containerRegistry.Register<IItineraryService, ItineraryService>();
+            containerRegistry.Register<ICreditService, CreditService>();
             containerRegistry.RegisterSingleton<IStartupManager, StartupManager>();
         }
     }

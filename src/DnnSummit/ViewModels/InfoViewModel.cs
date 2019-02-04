@@ -1,11 +1,12 @@
-﻿using DnnSummit.Models;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
+using DnnSummit.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
-using System.Collections.Generic;
-using System.Windows.Input;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -44,7 +45,9 @@ namespace DnnSummit.ViewModels
             {
                 Title = "Update Content",
                 InfoType = InfoType.Update,
-                NavigationPath = "/" + Constants.Navigation.LoadingPage
+                NavigationPath = Device.RuntimePlatform == Device.Android ?
+                    $"/{Constants.Navigation.LoadingPage}" :
+                    Constants.Navigation.LoadingPage
             },
         };
 

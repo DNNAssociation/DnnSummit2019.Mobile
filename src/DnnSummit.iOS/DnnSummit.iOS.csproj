@@ -437,6 +437,14 @@
     <ImageAsset Include="Assets.xcassets\power.imageset\power%403.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\assignment.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\assignment.imageset\assignment%401.png" />
+    <ImageAsset Include="Assets.xcassets\assignment.imageset\assignment%402.png" />
+    <ImageAsset Include="Assets.xcassets\assignment.imageset\assignment%403.png" />
+    <ImageAsset Include="Assets.xcassets\flag.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\flag.imageset\flag%401.png" />
+    <ImageAsset Include="Assets.xcassets\flag.imageset\flag%402.png" />
+    <ImageAsset Include="Assets.xcassets\flag.imageset\flag%403.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -486,5 +494,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Assets.xcassets\event_note.imageset\" />
     <Folder Include="Assets.xcassets\power.imageset\" />
+    <Folder Include="Assets.xcassets\assignment.imageset\" />
+    <Folder Include="Assets.xcassets\flag.imageset\" />
   </ItemGroup>
 </Project>

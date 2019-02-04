@@ -105,14 +105,14 @@ namespace DnnSummit.Models
             }
         }
 
-        private DateTime _retrieved;
-        public DateTime Retrieved
+        private int _day;
+        public int Day
         {
-            get { return _retrieved; }
+            get { return _day; }
             set
             {
-                SetProperty(ref _retrieved, value);
-                RaisePropertyChanged(nameof(Retrieved));
+                SetProperty(ref _day, value);
+                RaisePropertyChanged(nameof(Day));
             }
         }
     }

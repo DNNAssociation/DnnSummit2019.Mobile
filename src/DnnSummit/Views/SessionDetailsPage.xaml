@@ -63,6 +63,7 @@
 
                                     <StackLayout Orientation="Vertical"
                                                  VerticalOptions="End">
+                                        <Label Text="{Binding Day}" />
                                         <StackLayout Orientation="Horizontal">
                                             <Label Text="{Binding Session}" />
                                             <Label Text=" - " />

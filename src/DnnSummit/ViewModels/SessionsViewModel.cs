@@ -153,6 +153,7 @@ namespace DnnSummit.ViewModels
                             Room = x.Room,
                             Track = x.Category.ToSessionTrack(),
                             TimeSlotName = x.TimeSlotName,
+                            Day = x.Day,
                             TimeSlot = x.TimeSlot,
                             VideoLink = x.VideoLink,
                             Speakers = x.Speakers.Select(s => new Speaker

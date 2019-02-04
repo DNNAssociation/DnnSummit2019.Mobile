@@ -133,6 +133,17 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private string _day;
+        public string Day
+        {
+            get { return _day; }
+            set
+            {
+                SetProperty(ref _day, value);
+                RaisePropertyChanged(nameof(Day));
+            }
+        }
+
         public bool HasVideoIntro
         {
             get { return !string.IsNullOrWhiteSpace(VideoIntroLink); }
@@ -194,6 +205,7 @@ namespace DnnSummit.ViewModels
                     TimeSlot = session.TimeSlot;
                     SessionTrack = session.Track;
                     VideoIntroLink = session.VideoLink;
+                    Day = $"Day {session.Day}";
 
                     isSuccessful = true;
                 }

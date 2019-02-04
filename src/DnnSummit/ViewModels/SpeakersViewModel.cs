@@ -82,6 +82,7 @@ namespace DnnSummit.ViewModels
                             IsFavorite = false,
                             Room = x.Room,
                             TimeSlot = x.TimeSlot,
+                            Day = x.Day,
                             TimeSlotName = x.TimeSlotName,
                             Track = x.Category.ToSessionTrack(),
                             Speakers = x.Speakers.Select(s => new Speaker

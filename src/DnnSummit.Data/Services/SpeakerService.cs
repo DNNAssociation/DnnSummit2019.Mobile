@@ -46,12 +46,13 @@ namespace DnnSummit.Data.Services
                         {
                             var currentTimeSlot = timeslots.FirstOrDefault(x => x.Id == sessions[currentSession.Id].Timeslots.FirstOrDefault().Id);
                             var s = sessions[currentSession.Id];
+                            int.TryParse(s.Day, out int day);
                             speakerSessions.Add(new Session
                             {
                                 Title = s.Title,
                                 Abstract = s.Abstract,
                                 Description = s.Description,
-                                //Day = s.Day,
+                                Day = day,
                                 TimeSlot = currentTimeSlot?.Time,
                                 TimeSlotName = currentTimeSlot?.Name,
                                 Category = s.Category,

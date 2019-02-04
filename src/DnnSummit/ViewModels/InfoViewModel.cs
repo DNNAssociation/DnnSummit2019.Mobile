@@ -33,7 +33,8 @@ namespace DnnSummit.ViewModels
             new Tile
             {
                 Title = "Feedback",
-                InfoType = InfoType.Feedback
+                InfoType = InfoType.Feedback,
+                NavigationPath = Constants.Navigation.FeedbackPage
             },
             new Tile
             {

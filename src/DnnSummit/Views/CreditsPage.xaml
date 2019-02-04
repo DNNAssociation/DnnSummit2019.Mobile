@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:DnnSummit.Controls"
+             xmlns:s="clr-namespace:DnnSummit.Selectors"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="DnnSummit.Views.CreditsPage">
+    <NavigationPage.TitleView>
+        <c:LogoTitleView Title="{Binding Title}"
+                         Icon="navbar_icon" />
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="PlatformTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding="20">
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="CenterAndExpand">
+                                <Image Source="{Binding Logo}"
+                                       HeightRequest="60"/>
+                                <Label Text="{Binding Title}"
+                                       IsVisible="{Binding IncludeTitle}"
+                                       IsEnabled="{Binding IncludeTitle}"
+                                       FontSize="16"
+                                       TextColor="{StaticResource DarkBlue}"/>
+                            </StackLayout>
+                            <Label Text="{Binding Description}"
+                                   FontSize="12"
+                                   Margin="10,0"/>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="CompanyTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding="20">
+                            <StackLayout Orientation="Horizontal"
+                                         Padding="20">
+                                <Image Source="{Binding Logo}"
+                                       HeightRequest="40"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       Aspect="AspectFit"/>
+                            </StackLayout>
+                            <Label Text="{Binding Description}"
+                                   FontSize="12"
+                                   Margin="10,0"/>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <s:CreditDataTemplateSelector x:Key="CreditTemplate"
+                                          CompanyTemplate="{StaticResource CompanyTemplate}"
+                                          PlatformTemplate="{StaticResource PlatformTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Credits}"
+                  ItemTemplate="{StaticResource CreditTemplate}"
+                  SeparatorColor="Transparent"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True"
+                  ItemTapped="ListView_ItemTapped" />
+    </ContentPage.Content>
+</ContentPage>

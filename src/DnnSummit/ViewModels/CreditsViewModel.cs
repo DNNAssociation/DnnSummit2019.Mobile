@@ -49,6 +49,7 @@ namespace DnnSummit.ViewModels
                         CreditType = (CreditType)item.CreditType,
                         Description = item.Description,
                         Website = item.Website,
+                        IncludeTitle = item.IncludeTitle,
                         Logo = ImageSource.FromStream(() => new MemoryStream(item.Logo))
                     });
                 }

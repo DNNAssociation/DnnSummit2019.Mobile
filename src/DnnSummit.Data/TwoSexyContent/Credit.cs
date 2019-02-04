@@ -16,5 +16,8 @@ namespace DnnSummit.Data.TwoSexyContent
 
         [JsonProperty]
         public string Logo { get; set; }
+
+        [JsonProperty]
+        public bool IncludeTitle { get; set; }
     }
 }

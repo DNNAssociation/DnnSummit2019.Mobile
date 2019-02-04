@@ -15,14 +15,40 @@
             <DataTemplate x:Key="PlatformTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="{Binding Title}" />
+                        <StackLayout Padding="20">
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="CenterAndExpand">
+                                <Image Source="{Binding Logo}"
+                                       HeightRequest="60"/>
+                                <Label Text="{Binding Title}"
+                                       IsVisible="{Binding IncludeTitle}"
+                                       IsEnabled="{Binding IncludeTitle}"
+                                       FontSize="16"
+                                       TextColor="{StaticResource DarkBlue}"/>
+                            </StackLayout>
+                            <Label Text="{Binding Description}"
+                                   FontSize="12"
+                                   Margin="10,0"/>
+                        </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="CompanyTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <Label Text="{Binding Title}" />
+                        <StackLayout Padding="20">
+                            <StackLayout Orientation="Horizontal"
+                                         Padding="20">
+                                <Image Source="{Binding Logo}"
+                                       HeightRequest="40"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       Aspect="AspectFit"/>
+                            </StackLayout>
+                            <Label Text="{Binding Description}"
+                                   FontSize="12"
+                                   Margin="10,0"/>
+                        </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>

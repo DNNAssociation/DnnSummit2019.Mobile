@@ -23,7 +23,8 @@ namespace DnnSummit.Data.Services
                     : x.CreditType.ToLower() == "platform" ? 2 : 0,
                 Description = x.Description,
                 Website = x.Link,
-                Logo = await GetImageFromUrlAsync(x.Logo)
+                IncludeTitle = x.IncludeTitle,
+                Logo = await GetImageFromUrlAsync($"https://www.dnnsummit.org{x.Logo}")
             }));
         }
     }

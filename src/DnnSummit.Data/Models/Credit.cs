@@ -7,5 +7,6 @@
         public string Description { get; set; }
         public string Website { get; set; }
         public byte[] Logo { get; set; }
+        public bool IncludeTitle { get; set; }
     }
 }

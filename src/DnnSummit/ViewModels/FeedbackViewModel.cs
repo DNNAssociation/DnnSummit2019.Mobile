@@ -2,13 +2,16 @@
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
 using DnnSummit.ViewModels.Interfaces;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DnnSummit.ViewModels
 {
@@ -16,20 +19,34 @@ namespace DnnSummit.ViewModels
     {
         private IEnumerable<string> _endpoints;
         public string Title => "Feedback";
+        protected IPageDialogService PageDialogService { get; }
+        protected INavigationService NavigationService { get; }
         protected IFeedbackService FeedbackService { get; }
         protected IFeedbackEndpointService FeedbackEndpointService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
+        public ICommand Submit { get; }
         public ObservableCollection<SurveyQuestion> Questions { get; }
 
         public FeedbackViewModel(
+            IPageDialogService pageDialogService,
+            INavigationService navigationService,
             IFeedbackService feedbackService,
             IFeedbackEndpointService feedbackEndpointService,
             IErrorRetryManager errorRetryManager)
         {
+            PageDialogService = pageDialogService;
+            NavigationService = navigationService;
             FeedbackService = feedbackService;
             FeedbackEndpointService = feedbackEndpointService;
             ErrorRetryManager = errorRetryManager;
+            Submit = new DelegateCommand(OnSubmit);
             Questions = new ObservableCollection<SurveyQuestion>();
+        }
+
+        private async void OnSubmit()
+        {
+            
+
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

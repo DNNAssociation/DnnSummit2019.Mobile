@@ -20,7 +20,7 @@
                                    FontSize="20"/>
                             <Label Text="{Binding HelpMessage}"
                                    FontSize="14" />
-                            <Entry />
+                            <Entry Text="{Binding Answer}"/>
                         </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
@@ -33,7 +33,8 @@
                                    FontSize="20"/>
                             <Label Text="{Binding HelpMessage}"
                                    FontSize="14" />
-                            <Picker Title="Scale 1-5">
+                            <Picker Title="Scale 1-5"
+                                    SelectedItem="{Binding Answer}">
                                 <Picker.Items>
                                     <x:String>1</x:String>
                                     <x:String>2</x:String>
@@ -57,7 +58,8 @@
                                 <Label Text="{Binding HelpMessage}"
                                        FontSize="14" />
                             </StackLayout>
-                            <Switch HorizontalOptions="EndAndExpand"/>
+                            <Switch HorizontalOptions="EndAndExpand"
+                                    IsToggled="{Binding Answer, Converter={StaticResource BoolToStringConverter}}"/>
                         </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
@@ -83,6 +85,9 @@
                    CornerRadius="0"
                    BackgroundColor="{StaticResource Orange}"
                    HeightRequest="60">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Submit}" />
+                </Frame.GestureRecognizers>
                 <Label Text="Submit"
                        TextColor="White"
                        VerticalOptions="CenterAndExpand"

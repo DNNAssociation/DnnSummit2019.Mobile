@@ -56,6 +56,7 @@
             <converters:PercentToStringConverter x:Key="PercentToStringConverter" />
             <converters:DataTimestampConverter x:Key="DataTimestampConverter" />
             <converters:SessionDayToStringConverter x:Key="SessionDayToStringConverter" />
+            <converters:BoolToStringConverter x:Key="BoolToStringConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

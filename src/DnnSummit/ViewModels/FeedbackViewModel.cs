@@ -56,7 +56,7 @@ namespace DnnSummit.ViewModels
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await ErrorRetryManager.HandleRetryAsync(this, parameters, attempt);
             }

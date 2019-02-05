@@ -1,4 +1,7 @@
-﻿using DnnSummit.Manager;
+﻿using System;
+using System.Globalization;
+using System.Reflection;
+using DnnSummit.Manager;
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Views;
 using Prism;
@@ -6,9 +9,6 @@ using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Unity;
-using System;
-using System.Globalization;
-using System.Reflection;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 

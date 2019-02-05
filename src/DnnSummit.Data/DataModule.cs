@@ -48,5 +48,4 @@ namespace DnnSummit.Data
             containerRegistry.RegisterSingleton<IStartupManager, StartupManager>();
         }
     }
-
 }

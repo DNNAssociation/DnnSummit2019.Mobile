@@ -10,6 +10,6 @@ namespace DnnSummit.Views
 		public DnnSummitTabbedPage ()
 		{
 			InitializeComponent ();
-		}
+        }
     }
 }

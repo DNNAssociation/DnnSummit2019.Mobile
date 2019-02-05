@@ -16,10 +16,12 @@ namespace DnnSummit.Data.Services
         protected override async Task<IEnumerable<FeedbackEndpoint>> QueryAndMapAsync()
         {
             var endpoints = await QueryAsync();
-            return endpoints.Select(x => new FeedbackEndpoint
-            {
-                Route = x.Endpoint
-            });
+            return endpoints
+                .Where(x => x.IsEnabled)
+                .Select(x => new FeedbackEndpoint
+                {
+                    Route = x.Endpoint
+                });
         }
     }
 }

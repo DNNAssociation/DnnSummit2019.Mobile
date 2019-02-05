@@ -15,7 +15,7 @@ namespace DnnSummit.iOS.Renderers
         {
             base.OnElementChanged(e);
 
-            if (Control != null)
+            if (Control != null && Control.TableHeaderView != null)
             {
                 Control.TableHeaderView = new UIView(new CGRect(0, 0, Control.TableHeaderView.Bounds.Width, 140));
                 Control.ContentInset = new UIEdgeInsets(-50, 0, 0, 0);

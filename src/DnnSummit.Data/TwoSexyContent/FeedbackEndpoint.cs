@@ -7,5 +7,8 @@ namespace DnnSummit.Data.TwoSexyContent
     {
         [JsonProperty]
         public string Endpoint { get; set; }
+
+        [JsonProperty]
+        public bool IsEnabled { get; set; }
     }
 }

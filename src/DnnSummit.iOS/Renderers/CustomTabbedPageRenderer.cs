@@ -53,6 +53,12 @@ namespace DnnSummit.iOS.Renderers
             base.ViewWillAppear(animated);
         }
 
+        public override void ItemSelected(UITabBar tabbar, UITabBarItem item)
+        {
+            var page = ((TabbedPage)Element).CurrentPage;
+
+        }
+
         private void UpdateItem(UITabBarItem item, UIColor selected, UIColor unselected)
         {
             if (item == null) return;

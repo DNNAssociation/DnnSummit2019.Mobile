@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="{StaticResource SplashBackground}"
@@ -27,7 +27,8 @@
                     VerticalOptions="StartAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     Margin="20,0"/>
-            <Frame BackgroundColor="{StaticResource DarkBlue}">
+            <Frame BackgroundColor="{StaticResource DarkBlue}"
+                   HeightRequest="60">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Continue}" />
                 </Frame.GestureRecognizers>

@@ -46,12 +46,7 @@ namespace DnnSummit.ViewModels
             {
                 Title = "Update Content",
                 InfoType = InfoType.Update,
-                // this is a quick fix. On iOS we had issues with a white screen appearing
-                // when the user did a content update. Navigating back to the root caused issues.
-                // We should try and fix this in the future but for now this okay.
-                NavigationPath = Device.RuntimePlatform == Device.Android ?
-                    $"/{Constants.Navigation.LoadingPage}" :
-                    Constants.Navigation.LoadingPage
+                NavigationPath = $"/{Constants.Navigation.LoadingPage}"
             },
         };
 

@@ -15,6 +15,6 @@ namespace DnnSummit.Data.TwoSexyContent
         public string Type { get; set; }
 
         [JsonProperty]
-        public int Order { get; set; }
+        public double Order { get; set; }
     }
 }

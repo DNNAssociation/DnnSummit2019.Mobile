@@ -24,6 +24,7 @@
                                        IsVisible="{Binding IncludeTitle}"
                                        IsEnabled="{Binding IncludeTitle}"
                                        FontSize="16"
+                                       VerticalTextAlignment="Center"
                                        TextColor="{StaticResource DarkBlue}"/>
                             </StackLayout>
                             <Label Text="{Binding Description}"

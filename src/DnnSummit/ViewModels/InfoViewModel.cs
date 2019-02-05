@@ -20,7 +20,6 @@ namespace DnnSummit.ViewModels
         protected IFeedbackEndpointService FeedbackEndpointService { get; }
 
         public string Title => "Info";
-
         public ObservableCollection<Tile> Pages { get; }
 
         public ICommand InfoSelected { get; }

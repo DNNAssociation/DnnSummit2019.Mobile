@@ -26,7 +26,10 @@
             <Label Text="{Binding PercentCompleted, Converter={StaticResource PercentToStringConverter}}" />
             <Frame BackgroundColor="{StaticResource DarkBlue}"
                    IsVisible="{Binding IsSkipEnabled}"
-                   IsEnabled="{Binding IsSkipEnabled}">
+                   IsEnabled="{Binding IsSkipEnabled}"
+                   HasShadow="false"
+                   CornerRadius="0"
+                   HeightRequest="60">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding CancelDownload}" />
                 </Frame.GestureRecognizers>

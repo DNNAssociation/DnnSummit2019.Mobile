@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace DnnSummit.Views
@@ -15,6 +9,15 @@ namespace DnnSummit.Views
         public FeedbackPage()
         {
             InitializeComponent();
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var listview = (ListView)sender;
+            if (listview != null)
+            {
+                listview.SelectedItem = null;
+            }
         }
     }
 }

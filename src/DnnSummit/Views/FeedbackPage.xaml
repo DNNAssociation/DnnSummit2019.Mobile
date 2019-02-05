@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:DnnSummit.Controls"
+             xmlns:s="clr-namespace:DnnSummit.Selectors"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="DnnSummit.Views.FeedbackPage">
@@ -9,11 +10,86 @@
         <c:LogoTitleView Title="{Binding Title}"
                          Icon="navbar_icon" />
     </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SingleLineTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding="10, 20">
+                            <Label Text="{Binding Question}"
+                                   FontSize="20"/>
+                            <Label Text="{Binding HelpMessage}"
+                                   FontSize="14" />
+                            <Entry />
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="Scale1To5Template">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding="10, 20">
+                            <Label Text="{Binding Question}"
+                                   FontSize="20"/>
+                            <Label Text="{Binding HelpMessage}"
+                                   FontSize="14" />
+                            <Picker Title="Scale 1-5">
+                                <Picker.Items>
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="BooleanTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Horizontal" 
+                                     Padding="10, 20">
+                            <StackLayout>
+                                <Label Text="{Binding Question}"
+                                       FontSize="20"/>
+                                <Label Text="{Binding HelpMessage}"
+                                       FontSize="14" />
+                            </StackLayout>
+                            <Switch HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <s:QuestionDataTemplateSelector x:Key="QuestionTemplate"
+                                            SingleLineTemplate="{StaticResource SingleLineTemplate}"
+                                            MultiLineTemplate="{StaticResource SingleLineTemplate}"
+                                            Scale1To5Template="{StaticResource Scale1To5Template}"
+                                            BooleanTemplate="{StaticResource BooleanTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+            <ListView ItemsSource="{Binding Questions}"
+                      ItemTemplate="{StaticResource QuestionTemplate}"
+                      SeparatorColor="Transparent"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      ItemTapped="ListView_ItemTapped" />
+            <Frame Margin="0"
+                   Padding="{OnPlatform Android='0', iOS='0,0,0,15'}"
+                   HasShadow="False"
+                   CornerRadius="0"
+                   BackgroundColor="{StaticResource Orange}"
+                   HeightRequest="60">
+                <Label Text="Submit"
+                       TextColor="White"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" />
+            </Frame>
+        </StackLayout>        
     </ContentPage.Content>
 </ContentPage>

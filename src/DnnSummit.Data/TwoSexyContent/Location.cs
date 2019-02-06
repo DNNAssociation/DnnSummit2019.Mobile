@@ -69,6 +69,9 @@ namespace DnnSummit.Data.TwoSexyContent
         [JsonProperty("Image")]
         public string Image { get; set; }
 
+        [JsonProperty("IsImageDark")]
+        public bool IsImageDark { get; set; }
+
         [JsonProperty("LearnMoreUrl")]
         public string LearnMoreUrl { get; set; }
 

@@ -22,17 +22,6 @@ namespace DnnSummit.ViewModels
 
         public ObservableCollection<Location> Locations { get; }
 
-        private IEnumerable<Location> _pages;
-        public IEnumerable<Location> Pages
-        {
-            get { return _pages; }
-            set
-            {
-                SetProperty(ref _pages, value);
-                RaisePropertyChanged(nameof(Pages));
-            }
-        }
-
         public VenueViewModel(
             ILocationService locationService,
             IErrorRetryManager errorRetryManager)
@@ -40,7 +29,6 @@ namespace DnnSummit.ViewModels
             LocationService = locationService;
             ErrorRetryManager = errorRetryManager;
             Locations = new ObservableCollection<Location>();
-            Pages = new ObservableCollection<Location>();
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)
@@ -70,6 +58,7 @@ namespace DnnSummit.ViewModels
                         LocalAttractionsTitle = item.LocalAttractionsTitle,
                         LocalAttractions = item.LocalAttractions,
                         Image = ImageSource.FromStream(() => new MemoryStream(item.Image)),
+                        IsImageDark = item.IsImageDark,
                         LearnMoreUrl = item.LearnMoreUrl,
                         BookNowUrl = item.BookNowUrl,
                         PhoneNumberUrl = item.PhoneNumberUrl,
@@ -78,7 +67,6 @@ namespace DnnSummit.ViewModels
                         WebsiteName = item.WebsiteName
                     });
                 }
-                Pages = Locations;
             }
             catch (Exception)
             {

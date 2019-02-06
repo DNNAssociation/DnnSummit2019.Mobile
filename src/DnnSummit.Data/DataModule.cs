@@ -46,6 +46,7 @@ namespace DnnSummit.Data
             containerRegistry.Register<IFeedbackService, FeedbackService>();
             containerRegistry.Register<IFeedbackEndpointService, FeedbackEndpointService>();
             containerRegistry.RegisterSingleton<IStartupManager, StartupManager>();
+            containerRegistry.Register<IEndpointService, EndpointService>();
         }
     }
 }

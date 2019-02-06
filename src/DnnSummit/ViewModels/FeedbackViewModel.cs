@@ -1,7 +1,9 @@
-﻿using DnnSummit.Data.Services.Interfaces;
+﻿using DnnSummit.Data.Models;
+using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
 using DnnSummit.ViewModels.Interfaces;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -10,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -25,6 +28,7 @@ namespace DnnSummit.ViewModels
         protected IFeedbackService FeedbackService { get; }
         protected IFeedbackEndpointService FeedbackEndpointService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
+        protected IEndpointService EndpointService { get; }
         public ICommand Submit { get; }
         public ObservableCollection<SurveyQuestion> Questions { get; }
 
@@ -33,13 +37,15 @@ namespace DnnSummit.ViewModels
             INavigationService navigationService,
             IFeedbackService feedbackService,
             IFeedbackEndpointService feedbackEndpointService,
-            IErrorRetryManager errorRetryManager)
+            IErrorRetryManager errorRetryManager,
+            IEndpointService endpointService)
         {
             PageDialogService = pageDialogService;
             NavigationService = navigationService;
             FeedbackService = feedbackService;
             FeedbackEndpointService = feedbackEndpointService;
             ErrorRetryManager = errorRetryManager;
+            EndpointService = endpointService;
             Submit = new DelegateCommand(OnSubmit);
             Questions = new ObservableCollection<SurveyQuestion>();
         }
@@ -60,7 +66,39 @@ namespace DnnSummit.ViewModels
                 return;
             }
 
-            // TODO - POST Data
+            bool anyErrors = false;
+            foreach (var endpoint in _endpoints)
+            {
+                try
+                {
+                    var model = new FeedbackPayload
+                    {
+                        Year = 2019,
+                        SurveyAnswers = JsonConvert.SerializeObject(Questions.Select(x => new { x.Question, x.Answer }))
+                    };
+
+                    var isSuccessful = await EndpointService.PostAsync(endpoint, model);
+                    if (!isSuccessful)
+                    {
+                        anyErrors = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    anyErrors = true;
+                }
+            }
+
+            if (anyErrors)
+            {
+                await PageDialogService.DisplayAlertAsync("Unable to Submit", "Find event staff for paper survey", "OK");
+            }
+            else
+            {
+                await PageDialogService.DisplayAlertAsync("Thanks!", "Your feedback is used to help plan future events", "OK");
+            }
+
+            await NavigationService.GoBackAsync();
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

@@ -123,7 +123,9 @@ namespace DnnSummit.ViewModels
 
             if (anyErrors)
             {
+                Busy = false;
                 await PageDialogService.DisplayAlertAsync("Unable to Submit", "Find event staff for paper survey", "OK");
+                return;
             }
 
             await NavigationService.GoBackAsync();

@@ -46,18 +46,21 @@ namespace DnnSummit.ViewModels
 
         private async void OnSubmit()
         {
-            if (Questions.Any(x => x.IsRequired && string.IsNullOrWhiteSpace(x.Answer)))
+            var requiredQuestions = Questions.Where(x => x.IsRequired);
+            if (requiredQuestions.Any(x => string.IsNullOrWhiteSpace(x.Answer)))
             {
                 await PageDialogService.DisplayAlertAsync("Missing Fields", "Survey is incomplete, complete highlighted questions", "OK");
 
-                foreach (var item in Questions.Where(x => x.IsRequired && string.IsNullOrWhiteSpace(x.Answer)))
+                foreach (var item in Questions.Where(x => x.IsRequired))
                 {
-                    item.TextColor = Color.Red;
+                    item.TextColor = string.IsNullOrWhiteSpace(item.Answer) ?
+                        Color.Red : (Color)App.Current.Resources["DarkBlue"];
                 }
 
                 return;
             }
 
+            // TODO - POST Data
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

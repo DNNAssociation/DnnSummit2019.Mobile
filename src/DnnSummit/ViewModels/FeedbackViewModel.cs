@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
@@ -65,6 +66,12 @@ namespace DnnSummit.ViewModels
 
         private async void OnSubmit()
         {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await PageDialogService.DisplayAlertAsync("No Internet", "Unable to submit feedback without internet, try finding a paper copy", "OK");
+                return;
+            }
+
             if (Busy) return;
 
             

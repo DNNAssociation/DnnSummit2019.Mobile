@@ -17,6 +17,7 @@
                     <ViewCell.View>
                         <StackLayout Padding="10, 20">
                             <Label Text="{Binding Question}"
+                                   TextColor="{Binding TextColor}"
                                    FontSize="20"/>
                             <Label Text="{Binding HelpMessage}"
                                    FontSize="14" />
@@ -30,6 +31,7 @@
                     <ViewCell.View>
                         <StackLayout Padding="10, 20">
                             <Label Text="{Binding Question}"
+                                   TextColor="{Binding TextColor}"
                                    FontSize="20"/>
                             <Label Text="{Binding HelpMessage}"
                                    FontSize="14" />
@@ -54,6 +56,7 @@
                                      Padding="10, 20">
                             <StackLayout>
                                 <Label Text="{Binding Question}"
+                                       TextColor="{Binding TextColor}"
                                        FontSize="20"/>
                                 <Label Text="{Binding HelpMessage}"
                                        FontSize="14" />

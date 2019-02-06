@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -45,7 +46,17 @@ namespace DnnSummit.ViewModels
 
         private async void OnSubmit()
         {
-            
+            if (Questions.Any(x => x.IsRequired && string.IsNullOrWhiteSpace(x.Answer)))
+            {
+                await PageDialogService.DisplayAlertAsync("Missing Fields", "Survey is incomplete, complete highlighted questions", "OK");
+
+                foreach (var item in Questions.Where(x => x.IsRequired && string.IsNullOrWhiteSpace(x.Answer)))
+                {
+                    item.TextColor = Color.Red;
+                }
+
+                return;
+            }
 
         }
 
@@ -69,7 +80,8 @@ namespace DnnSummit.ViewModels
                     {
                         Question = item.Question,
                         HelpMessage = item.Help,
-                        Type = (Question)item.Type
+                        Type = (Question)item.Type,
+                        IsRequired = item.IsRequired
                     });
                 }
             }

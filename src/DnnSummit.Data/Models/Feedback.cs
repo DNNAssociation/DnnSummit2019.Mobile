@@ -5,5 +5,6 @@
         public string Question { get; set; }
         public string Help { get; set; }
         public int Type { get; set; }
+        public bool IsRequired { get; set; }
     }
 }

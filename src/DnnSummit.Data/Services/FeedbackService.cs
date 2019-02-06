@@ -25,7 +25,8 @@ namespace DnnSummit.Data.Services
                     {
                         Question = x.Question,
                         Help = x.Help,
-                        Type = type
+                        Type = type,
+                        IsRequired = x.IsRequired
                     };
                 });
         }

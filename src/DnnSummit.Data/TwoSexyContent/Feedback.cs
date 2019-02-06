@@ -16,5 +16,8 @@ namespace DnnSummit.Data.TwoSexyContent
 
         [JsonProperty]
         public double Order { get; set; }
+
+        [JsonProperty]
+        public bool IsRequired { get; set; }
     }
 }

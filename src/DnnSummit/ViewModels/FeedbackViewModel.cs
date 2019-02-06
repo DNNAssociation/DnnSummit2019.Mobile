@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -114,7 +115,7 @@ namespace DnnSummit.ViewModels
                         anyErrors = true;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     anyErrors = true;
                 }
@@ -123,10 +124,6 @@ namespace DnnSummit.ViewModels
             if (anyErrors)
             {
                 await PageDialogService.DisplayAlertAsync("Unable to Submit", "Find event staff for paper survey", "OK");
-            }
-            else
-            {
-                await PageDialogService.DisplayAlertAsync("Thanks!", "Your feedback is used to help plan future events", "OK");
             }
 
             await NavigationService.GoBackAsync();

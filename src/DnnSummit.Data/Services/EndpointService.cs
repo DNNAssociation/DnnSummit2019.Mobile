@@ -13,6 +13,7 @@ namespace DnnSummit.Data.Services
         {
             var client = new HttpClient();
             client.BaseAddress = new Uri(route);
+            client.Timeout = TimeSpan.FromSeconds(30);
 
             var content = new StringContent(JsonConvert.SerializeObject(input), Encoding.UTF8, "application/json");
             var result = await client.PostAsync(string.Empty, content);

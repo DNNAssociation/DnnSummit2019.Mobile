@@ -1,4 +1,5 @@
 ﻿using Prism.Mvvm;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
 namespace DnnSummit.Models
@@ -8,6 +9,7 @@ namespace DnnSummit.Models
         public SurveyQuestion()
         {
             TextColor = (Color)App.Current.Resources["DarkBlue"];
+            Options = new ObservableCollection<string>();
         }
 
         private string _question;
@@ -80,5 +82,7 @@ namespace DnnSummit.Models
                 RaisePropertyChanged(nameof(Answer));
             }
         }
+
+        public ObservableCollection<string> Options { get; }
     }
 }

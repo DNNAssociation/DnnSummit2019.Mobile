@@ -147,13 +147,23 @@ namespace DnnSummit.ViewModels
                 Questions.Clear();
                 foreach (var item in rawQuestions)
                 {
-                    Questions.Add(new SurveyQuestion
+                    var question = new SurveyQuestion
                     {
                         Question = item.Question,
                         HelpMessage = item.Help,
                         Type = (Question)item.Type,
                         IsRequired = item.IsRequired
-                    });
+                    };
+
+                    if (question.Type == Question.CustomOptions)
+                    {
+                        foreach (var option in item.Options)
+                        {
+                            question.Options.Add(option);
+                        }
+                    }
+
+                    Questions.Add(question);
                 }
             }
             catch (Exception)

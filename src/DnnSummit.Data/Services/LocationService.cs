@@ -51,6 +51,7 @@ namespace DnnSummit.Data.Services
                         item.LocalAttraction6
                     },
                     Image = await GetImageFromUrlAsync($"https://www.dnnsummit.org{item.Image}"),
+                    IsImageDark = item.IsImageDark,
                     LearnMoreUrl = item.LearnMoreUrl,
                     BookNowUrl = item.BookNowUrl,
                     PhoneNumberUrl = item.PhoneNumberUrl,

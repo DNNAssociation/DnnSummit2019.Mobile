@@ -26,6 +26,16 @@
                                      HorizontalOptions="CenterAndExpand">
                             <Label Text="{Binding Title}"
                                    TextColor="White"
+                                   IsEnabled="{Binding IsImageDark}"
+                                   IsVisible="{Binding IsImageDark}"
+                                   FontSize="30"
+                                   FontAttributes="Bold"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center" />
+                            <Label Text="{Binding Title}"
+                                   TextColor="{StaticResource DarkBlue}"
+                                   IsEnabled="{Binding IsImageDark, Converter={StaticResource NotTrueConverter}}"
+                                   IsVisible="{Binding IsImageDark, Converter={StaticResource NotTrueConverter}}"
                                    FontSize="30"
                                    FontAttributes="Bold"
                                    VerticalTextAlignment="Center"
@@ -50,7 +60,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <cv:CarouselViewControl ItemsSource="{Binding Pages}" 
+            <cv:CarouselViewControl ItemsSource="{Binding Locations}" 
                                     VerticalOptions="FillAndExpand"
                                     HorizontalOptions="FillAndExpand"
                                     ItemTemplate="{StaticResource PageTemplate}" />

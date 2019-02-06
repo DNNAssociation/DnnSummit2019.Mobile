@@ -2,6 +2,7 @@
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
 using DnnSummit.ViewModels.Interfaces;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -9,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
@@ -19,6 +21,7 @@ namespace DnnSummit.ViewModels
         protected ICreditService CreditService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
         public ObservableCollection<Credit> Credits { get; }
+        public ICommand OpenCredit { get; }
         public CreditsViewModel(
             ICreditService creditService,
             IErrorRetryManager errorRetryManager)
@@ -26,6 +29,15 @@ namespace DnnSummit.ViewModels
             CreditService = creditService;
             ErrorRetryManager = errorRetryManager;
             Credits = new ObservableCollection<Credit>();
+            OpenCredit = new DelegateCommand<Credit>(OnOpenCredit);
+        }
+
+        private void OnOpenCredit(Credit credit)
+        {
+            if (credit != null && !string.IsNullOrWhiteSpace(credit.Website))
+            {
+                Device.OpenUri(new Uri(credit.Website));
+            }
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

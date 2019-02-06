@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:DnnSummit.Controls"
              xmlns:s="clr-namespace:DnnSummit.Selectors"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="DnnSummit.Views.CreditsPage">
@@ -64,6 +65,12 @@
                   SeparatorColor="Transparent"
                   SeparatorVisibility="None"
                   HasUnevenRows="True"
-                  ItemTapped="ListView_ItemTapped" />
+                  ItemTapped="ListView_ItemTapped">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped"
+                                          Command="{Binding OpenCredit}"
+                                          EventArgsParameterPath="Item" />
+            </ListView.Behaviors>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

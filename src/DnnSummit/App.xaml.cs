@@ -1,4 +1,7 @@
-﻿using DnnSummit.Manager;
+﻿using System;
+using System.Globalization;
+using System.Reflection;
+using DnnSummit.Manager;
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Views;
 using Prism;
@@ -6,9 +9,6 @@ using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Unity;
-using System;
-using System.Globalization;
-using System.Reflection;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 
@@ -66,6 +66,7 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<SponsorsPage>(Constants.Navigation.SponsorsPage);
             containerRegistry.RegisterForNavigation<SchedulePage>(Constants.Navigation.SchedulePage);
             containerRegistry.RegisterForNavigation<CreditsPage>(Constants.Navigation.CreditsPage);
+            containerRegistry.RegisterForNavigation<FeedbackPage>(Constants.Navigation.FeedbackPage);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)

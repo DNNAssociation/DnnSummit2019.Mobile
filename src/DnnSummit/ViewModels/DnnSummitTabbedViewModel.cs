@@ -19,7 +19,7 @@ namespace DnnSummit.ViewModels
 
         private async void OnNavigateToSchedule()
         {
-            await NavigationService.NavigateAsync(Constants.Navigation.SchedulePage);
+            await NavigationService.NavigateAsync($"{Constants.Navigation.SchedulePage}");
         }
     }
 }

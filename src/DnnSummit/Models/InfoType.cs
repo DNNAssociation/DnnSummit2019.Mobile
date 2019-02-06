@@ -10,10 +10,10 @@ namespace DnnSummit.Models
         [ImageResource(Name = "business")]
         Venue,
 
-        [ImageResource(Name = "wrench")]
+        [ImageResource(Name = "flag")]
         Credits,
 
-        [ImageResource(Name = "wrench")]
+        [ImageResource(Name = "assignment")]
         Feedback,
 
         [ImageResource(Name = "wrench")]

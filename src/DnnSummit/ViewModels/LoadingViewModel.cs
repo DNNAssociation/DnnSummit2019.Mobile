@@ -85,7 +85,7 @@ namespace DnnSummit.ViewModels
                 await StartupManager.SyndDataAsync();
                 await Task.Delay(1000); // makes sure the animation completes before navigating to the dashboard
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally

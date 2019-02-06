@@ -9,6 +9,9 @@ namespace DnnSummit.Data.Models
         public int Year { get; set; }
 
         [JsonProperty]
+        public string DeviceId { get; set; }
+
+        [JsonProperty]
         public string SurveyAnswers { get; set; }
     }
 }

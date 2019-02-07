@@ -59,7 +59,7 @@
                             <Label Text="{Binding HelpMessage}"
                                     FontSize="14" />
                             <Picker Title="Yes/No"
-                                    SelectedIndex="{Binding Answer}">
+                                    SelectedItem="{Binding Answer}">
                                 <Picker.Items>
                                     <x:String>Yes</x:String>
                                     <x:String>No</x:String>
@@ -69,11 +69,27 @@
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
+            <DataTemplate x:Key="CustomOptionsTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Padding="10, 20">
+                            <Label Text="{Binding Question}"
+                                   TextColor="{Binding TextColor}"
+                                   FontSize="20" />
+                            <Label Text="{Binding HelpMessage}"
+                                    FontSize="14" />
+                            <Picker ItemsSource="{Binding Options}" 
+                                    SelectedItem="{Binding Answer}" />
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
             <s:QuestionDataTemplateSelector x:Key="QuestionTemplate"
                                             SingleLineTemplate="{StaticResource SingleLineTemplate}"
                                             MultiLineTemplate="{StaticResource SingleLineTemplate}"
                                             Scale1To5Template="{StaticResource Scale1To5Template}"
-                                            BooleanTemplate="{StaticResource BooleanTemplate}" />
+                                            BooleanTemplate="{StaticResource BooleanTemplate}"
+                                            CustomOptionsTemplate="{StaticResource CustomOptionsTemplate}"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>

@@ -10,6 +10,7 @@ namespace DnnSummit.Selectors
         public DataTemplate MultiLineTemplate { get; set; }
         public DataTemplate Scale1To5Template { get; set; }
         public DataTemplate BooleanTemplate { get; set; }
+        public DataTemplate CustomOptionsTemplate { get; set; }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
@@ -26,6 +27,8 @@ namespace DnnSummit.Selectors
                         return Scale1To5Template;
                     case Question.Boolean:
                         return BooleanTemplate;
+                    case Question.CustomOptions:
+                        return CustomOptionsTemplate;
                 }
             }
 

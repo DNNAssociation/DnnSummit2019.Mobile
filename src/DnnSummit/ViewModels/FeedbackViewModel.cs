@@ -32,6 +32,7 @@ namespace DnnSummit.ViewModels
         protected IFeedbackEndpointService FeedbackEndpointService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
         protected IEndpointService EndpointService { get; }
+        protected ICompleteMessageService CompleteMessageService { get; }
         public ICommand Submit { get; }
         public ObservableCollection<SurveyQuestion> Questions { get; }
 
@@ -52,7 +53,8 @@ namespace DnnSummit.ViewModels
             IFeedbackService feedbackService,
             IFeedbackEndpointService feedbackEndpointService,
             IErrorRetryManager errorRetryManager,
-            IEndpointService endpointService)
+            IEndpointService endpointService,
+            ICompleteMessageService completeMessageService)
         {
             PageDialogService = pageDialogService;
             NavigationService = navigationService;
@@ -60,6 +62,7 @@ namespace DnnSummit.ViewModels
             FeedbackEndpointService = feedbackEndpointService;
             ErrorRetryManager = errorRetryManager;
             EndpointService = endpointService;
+            CompleteMessageService = completeMessageService;
             Submit = new DelegateCommand(OnSubmit);
             Questions = new ObservableCollection<SurveyQuestion>();
         }
@@ -127,11 +130,14 @@ namespace DnnSummit.ViewModels
                 return;
             }
 
-            var complete = new Complete
-            {
-                Message = "ipsum",
-                Summary = "lorem"
-            };
+            var messages = await CompleteMessageService.GetAsync();
+            var complete = messages
+                .Select(x => new Complete
+                {
+                    Message = x.Title,
+                    Summary = x.Message
+                })
+                .FirstOrDefault();
 
             var parameters = new NavigationParameters
             {

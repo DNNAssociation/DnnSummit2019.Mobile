@@ -97,6 +97,9 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;APPCENTER;</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -518,12 +521,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets.xcassets\assignment.imageset\" />
+    <Folder Include="Assets.xcassets\check_orange.imageset\" />
+    <Folder Include="Assets.xcassets\event_note.imageset\" />
+    <Folder Include="Assets.xcassets\flag.imageset\" />
+    <Folder Include="Assets.xcassets\power.imageset\" />
     <Folder Include="Assets.xcassets\splash_icon.imageset\" />
     <Folder Include="Resources\" />
-    <Folder Include="Assets.xcassets\event_note.imageset\" />
-    <Folder Include="Assets.xcassets\power.imageset\" />
-    <Folder Include="Assets.xcassets\assignment.imageset\" />
-    <Folder Include="Assets.xcassets\flag.imageset\" />
-    <Folder Include="Assets.xcassets\check_orange.imageset\" />
   </ItemGroup>
 </Project>

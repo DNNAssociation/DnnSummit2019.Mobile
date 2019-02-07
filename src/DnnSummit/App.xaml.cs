@@ -10,6 +10,7 @@ using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Unity;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -20,6 +21,7 @@ namespace DnnSummit
         public const string OfflineLoading = "/" + Constants.Navigation.LoaddingOfflineModePage;
         public const string InternetLoading = "/" + Constants.Navigation.LoadingPage;
         public const string EntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+        public const string PermissionEntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.PermissionPage;
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
@@ -33,13 +35,20 @@ namespace DnnSummit
             appCenter.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (Device.RuntimePlatform == Device.Android) // change this to iOS
             {
-                NavigationService.NavigateAsync(InternetLoading);
+                NavigationService.NavigateAsync(PermissionEntryPoint);
             }
             else
             {
-                NavigationService.NavigateAsync(OfflineLoading);
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    NavigationService.NavigateAsync(InternetLoading);
+                }
+                else
+                {
+                    NavigationService.NavigateAsync(OfflineLoading);
+                }
             }
         }
 
@@ -68,6 +77,7 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<CreditsPage>(Constants.Navigation.CreditsPage);
             containerRegistry.RegisterForNavigation<FeedbackPage>(Constants.Navigation.FeedbackPage);
             containerRegistry.RegisterForNavigation<CompletePage>(Constants.Navigation.CompletePage);
+            containerRegistry.RegisterForNavigation<PermissionPage>(Constants.Navigation.PermissionPage);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)

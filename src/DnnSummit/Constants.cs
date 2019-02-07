@@ -16,6 +16,7 @@
             public const string CreditsPage = "CreditsPage";
             public const string FeedbackPage = "FeedbackPage";
             public const string CompletePage = "CompletePage";
+            public const string PermissionPage = "PermissionPage";
 
             public static class Parameters
             {

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:DnnSummit.Controls"
@@ -7,7 +7,7 @@
              BackgroundColor="{StaticResource SplashBackground}"
              x:Class="DnnSummit.Views.PermissionPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand">
             <Image Source="splash_icon"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
@@ -22,6 +22,8 @@
             <Grid ColumnSpacing="2"
                   HorizontalOptions="FillAndExpand"
                   VerticalOptions="EndAndExpand"
+                  Margin="{OnPlatform iOS='0,0,0,20', Android='0'}"
+                  HeightRequest="{OnPlatform iOS='80' Android='50'}"
                   IsVisible="{Binding IsDeny, Converter={StaticResource NotTrueConverter}}"
                   IsEnabled="{Binding IsDeny, Converter={StaticResource NotTrueConverter}}">
                 <Grid.ColumnDefinitions>
@@ -32,6 +34,7 @@
                        HasShadow="False"
                        CornerRadius="0"
                        HorizontalOptions="FillAndExpand"
+                       VerticalOptions="EndAndExpand"
                        BackgroundColor="{StaticResource DarkBlue}">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding DontApprove}" />
@@ -48,6 +51,7 @@
                        HasShadow="False"
                        CornerRadius="0"
                        HorizontalOptions="FillAndExpand"
+                       VerticalOptions="EndAndExpand"
                        BackgroundColor="{StaticResource DarkBlue}">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Approve}" />

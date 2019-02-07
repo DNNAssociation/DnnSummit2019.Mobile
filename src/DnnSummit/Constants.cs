@@ -27,6 +27,11 @@
             }
         }
 
+        public static class Settings
+        {
+            public const string DownloadPermission = "DownloadPermission";
+        }
+
         public static class ErrorHandling
         {
             public const int RetryAttempts = 5;

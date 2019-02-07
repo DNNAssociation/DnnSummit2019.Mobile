@@ -58,6 +58,7 @@ namespace DnnSummit.Data
             _cancellationTokenSource = new CancellationTokenSource();
 
             Barrel.Current.EmptyAll();
+
             var serviceTasks = new List<Task>();
 
             double counter = 0;
@@ -87,6 +88,7 @@ namespace DnnSummit.Data
             {
                 var settings = new Settings { LastUpdated = DateTime.Now };
                 Barrel.Current.Add(nameof(Settings), settings, TimeSpan.FromDays(5));
+                Barrel.Current.Add("DownloadPermission", _cachedData["DownloadPermission"], TimeSpan.FromDays(100));
             }
         }
 
@@ -100,6 +102,9 @@ namespace DnnSummit.Data
             }
 
             result.Add(nameof(Settings), Barrel.Current.Get<object>(nameof(Settings)));
+
+            if (Barrel.Current.Exists("DownloadPermission"))
+                result.Add("DownloadPermission", Barrel.Current.Get<object>("DownloadPermission"));
 
             return result;
         }

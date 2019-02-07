@@ -21,7 +21,9 @@
                    HorizontalOptions="CenterAndExpand" />
             <Grid ColumnSpacing="2"
                   HorizontalOptions="FillAndExpand"
-                  VerticalOptions="EndAndExpand">
+                  VerticalOptions="EndAndExpand"
+                  IsVisible="{Binding IsDeny, Converter={StaticResource NotTrueConverter}}"
+                  IsEnabled="{Binding IsDeny, Converter={StaticResource NotTrueConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />

@@ -4,6 +4,7 @@ using System.Reflection;
 using DnnSummit.Manager;
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Views;
+using MonkeyCache.SQLite;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -34,11 +35,15 @@ namespace DnnSummit
             appCenter.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 
-            if (Device.RuntimePlatform == Device.Android) // change this to iOS
+            bool hasDownloadPermission = Device.RuntimePlatform == Device.iOS ? false : true; // need to updaqte this to iOS
+
+            var isExpired = Barrel.Current.IsExpired(Constants.Settings.DownloadPermission);
+            if (!hasDownloadPermission && Barrel.Current.Exists(Constants.Settings.DownloadPermission))
             {
-                NavigationService.NavigateAsync(Constants.Navigation.PermissionPage);
+                hasDownloadPermission = Barrel.Current.Get<bool>(Constants.Settings.DownloadPermission);
             }
-            else
+
+            if (hasDownloadPermission)
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
@@ -48,6 +53,10 @@ namespace DnnSummit
                 {
                     NavigationService.NavigateAsync(OfflineLoading);
                 }
+            }
+            else
+            {
+                NavigationService.NavigateAsync(Constants.Navigation.PermissionPage);
             }
         }
 

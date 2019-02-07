@@ -32,7 +32,7 @@
             </StackLayout>
             <StackLayout Grid.Row="1" 
                          VerticalOptions="FillAndExpand"
-                         HorizontalOptions="CenterAndExpand"
+                         HorizontalOptions="FillAndExpand"
                          Margin="0"
                          Padding="0">
                 <Label Text="{Binding Summary}"
@@ -49,6 +49,9 @@
                        HasShadow="False"
                        VerticalOptions="EndAndExpand"
                        HorizontalOptions="FillAndExpand">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Submit}" />
+                    </Frame.GestureRecognizers>
                     <Label Text="OK"
                            FontSize="18"
                            TextColor="White"

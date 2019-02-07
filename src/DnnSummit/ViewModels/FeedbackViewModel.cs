@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -67,7 +66,6 @@ namespace DnnSummit.ViewModels
 
         private async void OnSubmit()
         {
-            /*
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 await PageDialogService.DisplayAlertAsync("No Internet", "Unable to submit feedback without internet, try finding a paper copy", "OK");
@@ -127,9 +125,21 @@ namespace DnnSummit.ViewModels
                 Busy = false;
                 await PageDialogService.DisplayAlertAsync("Unable to Submit", "Find event staff for paper survey", "OK");
                 return;
-            }*/
+            }
 
-            await NavigationService.NavigateAsync(Constants.Navigation.CompletePage);
+            var complete = new Complete
+            {
+                Message = "ipsum",
+                Summary = "lorem"
+            };
+
+            var parameters = new NavigationParameters
+            {
+                { Constants.Navigation.Parameters.GoBackToRoot, true },
+                { Constants.Navigation.Parameters.Title, "Survey" },
+                { Constants.Navigation.Parameters.Complete, complete }
+            };
+            await NavigationService.NavigateAsync(Constants.Navigation.CompletePage, parameters);
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

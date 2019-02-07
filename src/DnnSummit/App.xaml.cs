@@ -33,16 +33,14 @@ namespace DnnSummit
             appCenter.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 
-
-            NavigationService.NavigateAsync($"/{Constants.Navigation.NavigationPage}/{Constants.Navigation.CompletePage}");
-            //if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            //{
-            //    NavigationService.NavigateAsync(InternetLoading);
-            //}
-            //else
-            //{
-            //    NavigationService.NavigateAsync(OfflineLoading);
-            //}
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                NavigationService.NavigateAsync(InternetLoading);
+            }
+            else
+            {
+                NavigationService.NavigateAsync(OfflineLoading);
+            }
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

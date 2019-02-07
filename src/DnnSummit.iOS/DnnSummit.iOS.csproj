@@ -461,10 +461,18 @@
     <ImageAsset Include="Assets.xcassets\flag.imageset\flag%403.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\check_orange.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%401.png" />
-    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%402.png" />
-    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%403.png" />
+    <ImageAsset Include="Assets.xcassets\check_orange.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%401.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%402.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%403.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

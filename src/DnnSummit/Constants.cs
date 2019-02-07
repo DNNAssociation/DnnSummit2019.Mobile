@@ -16,6 +16,7 @@
             public const string CreditsPage = "CreditsPage";
             public const string FeedbackPage = "FeedbackPage";
             public const string CompletePage = "CompletePage";
+            public const string PermissionPage = "PermissionPage";
 
             public static class Parameters
             {
@@ -24,6 +25,11 @@
                 public const string Title = "Title";
                 public const string Complete = "Complete"; 
             }
+        }
+
+        public static class Settings
+        {
+            public const string DownloadPermission = "DownloadPermission";
         }
 
         public static class ErrorHandling

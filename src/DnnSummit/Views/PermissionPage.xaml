@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:DnnSummit.Controls"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             BackgroundColor="{StaticResource SplashBackground}"
+             x:Class="DnnSummit.Views.PermissionPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Image Source="splash_icon"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Message}"
+                   TextColor="White"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+            <Grid ColumnSpacing="2"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="EndAndExpand"
+                  Margin="{OnPlatform iOS='0,0,0,20', Android='0'}"
+                  HeightRequest="{OnPlatform iOS='80' Android='50'}"
+                  IsVisible="{Binding IsDeny, Converter={StaticResource NotTrueConverter}}"
+                  IsEnabled="{Binding IsDeny, Converter={StaticResource NotTrueConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0" 
+                       HasShadow="False"
+                       CornerRadius="0"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="EndAndExpand"
+                       BackgroundColor="{StaticResource DarkBlue}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DontApprove}" />
+                    </Frame.GestureRecognizers>
+                    <Label Text="Don't Approve"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           TextColor="White"/>
+                </Frame>
+                <Frame Grid.Column="1" 
+                       HasShadow="False"
+                       CornerRadius="0"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="EndAndExpand"
+                       BackgroundColor="{StaticResource DarkBlue}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Approve}" />
+                    </Frame.GestureRecognizers>
+                    <Label Text="Approve"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           TextColor="White"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -31,6 +31,9 @@ namespace DnnSummit.Data.Services
         {
             try
             {
+                if (Barrel.ApplicationId != DataModule.BarrelName)
+                    Barrel.ApplicationId = DataModule.BarrelName;
+
                 if (Connectivity.NetworkAccess != NetworkAccess.Internet ||
                     (!forceRefresh && !Barrel.Current.IsExpired(Method)))
                 {

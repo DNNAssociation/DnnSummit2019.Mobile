@@ -4,12 +4,14 @@ using System.Reflection;
 using DnnSummit.Manager;
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Views;
+using MonkeyCache.SQLite;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Unity;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -33,13 +35,28 @@ namespace DnnSummit
             appCenter.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            bool hasDownloadPermission = Device.RuntimePlatform == Device.iOS ? false : true; // need to updaqte this to iOS
+
+            var isExpired = Barrel.Current.IsExpired(Constants.Settings.DownloadPermission);
+            if (!hasDownloadPermission && Barrel.Current.Exists(Constants.Settings.DownloadPermission))
             {
-                NavigationService.NavigateAsync(InternetLoading);
+                hasDownloadPermission = Barrel.Current.Get<bool>(Constants.Settings.DownloadPermission);
+            }
+
+            if (hasDownloadPermission)
+            {
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    NavigationService.NavigateAsync(InternetLoading);
+                }
+                else
+                {
+                    NavigationService.NavigateAsync(OfflineLoading);
+                }
             }
             else
             {
-                NavigationService.NavigateAsync(OfflineLoading);
+                NavigationService.NavigateAsync(Constants.Navigation.PermissionPage);
             }
         }
 
@@ -68,6 +85,7 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<CreditsPage>(Constants.Navigation.CreditsPage);
             containerRegistry.RegisterForNavigation<FeedbackPage>(Constants.Navigation.FeedbackPage);
             containerRegistry.RegisterForNavigation<CompletePage>(Constants.Navigation.CompletePage);
+            containerRegistry.RegisterForNavigation<PermissionPage>(Constants.Navigation.PermissionPage);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)

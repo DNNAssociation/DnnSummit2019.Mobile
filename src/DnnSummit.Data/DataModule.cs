@@ -45,6 +45,7 @@ namespace DnnSummit.Data
             containerRegistry.Register<ICreditService, CreditService>();
             containerRegistry.Register<IFeedbackService, FeedbackService>();
             containerRegistry.Register<IFeedbackEndpointService, FeedbackEndpointService>();
+            containerRegistry.Register<ICompleteMessageService, CompleteMessageService>();
             containerRegistry.RegisterSingleton<IStartupManager, StartupManager>();
             containerRegistry.Register<IEndpointService, EndpointService>();
         }

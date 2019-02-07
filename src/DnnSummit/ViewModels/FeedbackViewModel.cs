@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -33,6 +32,7 @@ namespace DnnSummit.ViewModels
         protected IFeedbackEndpointService FeedbackEndpointService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
         protected IEndpointService EndpointService { get; }
+        protected ICompleteMessageService CompleteMessageService { get; }
         public ICommand Submit { get; }
         public ObservableCollection<SurveyQuestion> Questions { get; }
 
@@ -53,7 +53,8 @@ namespace DnnSummit.ViewModels
             IFeedbackService feedbackService,
             IFeedbackEndpointService feedbackEndpointService,
             IErrorRetryManager errorRetryManager,
-            IEndpointService endpointService)
+            IEndpointService endpointService,
+            ICompleteMessageService completeMessageService)
         {
             PageDialogService = pageDialogService;
             NavigationService = navigationService;
@@ -61,6 +62,7 @@ namespace DnnSummit.ViewModels
             FeedbackEndpointService = feedbackEndpointService;
             ErrorRetryManager = errorRetryManager;
             EndpointService = endpointService;
+            CompleteMessageService = completeMessageService;
             Submit = new DelegateCommand(OnSubmit);
             Questions = new ObservableCollection<SurveyQuestion>();
         }
@@ -128,7 +130,22 @@ namespace DnnSummit.ViewModels
                 return;
             }
 
-            await NavigationService.GoBackAsync();
+            var messages = await CompleteMessageService.GetAsync();
+            var complete = messages
+                .Select(x => new Complete
+                {
+                    Message = x.Title,
+                    Summary = x.Message
+                })
+                .FirstOrDefault();
+
+            var parameters = new NavigationParameters
+            {
+                { Constants.Navigation.Parameters.GoBackToRoot, true },
+                { Constants.Navigation.Parameters.Title, "Survey" },
+                { Constants.Navigation.Parameters.Complete, complete }
+            };
+            await NavigationService.NavigateAsync(Constants.Navigation.CompletePage, parameters);
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

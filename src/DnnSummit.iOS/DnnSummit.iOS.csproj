@@ -461,6 +461,10 @@
     <ImageAsset Include="Assets.xcassets\flag.imageset\flag%403.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_orange.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%401.png" />
+    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%402.png" />
+    <ImageAsset Include="Assets.xcassets\check_orange.imageset\check_orange%403.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -512,5 +516,6 @@
     <Folder Include="Assets.xcassets\power.imageset\" />
     <Folder Include="Assets.xcassets\assignment.imageset\" />
     <Folder Include="Assets.xcassets\flag.imageset\" />
+    <Folder Include="Assets.xcassets\check_orange.imageset\" />
   </ItemGroup>
 </Project>

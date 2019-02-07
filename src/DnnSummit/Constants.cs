@@ -15,10 +15,14 @@
             public const string SponsorsPage = "SponsorsPage";
             public const string CreditsPage = "CreditsPage";
             public const string FeedbackPage = "FeedbackPage";
+            public const string CompletePage = "CompletePage";
 
             public static class Parameters
             {
                 public const string LastUpdated = "LastUpdated";
+                public const string GoBackToRoot = "GoBackToRoot";
+                public const string Title = "Title";
+                public const string Complete = "Complete"; 
             }
         }
 

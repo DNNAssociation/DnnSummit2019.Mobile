@@ -67,6 +67,7 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<SchedulePage>(Constants.Navigation.SchedulePage);
             containerRegistry.RegisterForNavigation<CreditsPage>(Constants.Navigation.CreditsPage);
             containerRegistry.RegisterForNavigation<FeedbackPage>(Constants.Navigation.FeedbackPage);
+            containerRegistry.RegisterForNavigation<CompletePage>(Constants.Navigation.CompletePage);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)

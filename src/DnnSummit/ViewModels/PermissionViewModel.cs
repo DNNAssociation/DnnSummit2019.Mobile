@@ -44,7 +44,7 @@ namespace DnnSummit.ViewModels
             Approve = new DelegateCommand(OnApprove);
             DontApprove = new DelegateCommand(OnDontApprove);
             IsDeny = false;
-            Message = "DNN Summit 2019 requires permission to download additional content for the app to function correctly.";
+            Message = "The App requires permission to download additional content for the app to function correctly. By clicking Approve you will download about 400 KB of additional content and it is recommended to do this over wi-fi";
         }
 
         private void OnDontApprove()

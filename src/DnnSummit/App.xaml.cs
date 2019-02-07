@@ -33,14 +33,16 @@ namespace DnnSummit
             appCenter.Initialize();
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(FindViewModel);
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                NavigationService.NavigateAsync(InternetLoading);
-            }
-            else
-            {
-                NavigationService.NavigateAsync(OfflineLoading);
-            }
+
+            NavigationService.NavigateAsync($"/{Constants.Navigation.NavigationPage}/{Constants.Navigation.CompletePage}");
+            //if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            //{
+            //    NavigationService.NavigateAsync(InternetLoading);
+            //}
+            //else
+            //{
+            //    NavigationService.NavigateAsync(OfflineLoading);
+            //}
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -67,6 +69,7 @@ namespace DnnSummit
             containerRegistry.RegisterForNavigation<SchedulePage>(Constants.Navigation.SchedulePage);
             containerRegistry.RegisterForNavigation<CreditsPage>(Constants.Navigation.CreditsPage);
             containerRegistry.RegisterForNavigation<FeedbackPage>(Constants.Navigation.FeedbackPage);
+            containerRegistry.RegisterForNavigation<CompletePage>(Constants.Navigation.CompletePage);
         }
 
         private void RegisterDependencies(IContainerRegistry containerRegistry)

@@ -67,6 +67,7 @@ namespace DnnSummit.ViewModels
 
         private async void OnSubmit()
         {
+            /*
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 await PageDialogService.DisplayAlertAsync("No Internet", "Unable to submit feedback without internet, try finding a paper copy", "OK");
@@ -126,9 +127,9 @@ namespace DnnSummit.ViewModels
                 Busy = false;
                 await PageDialogService.DisplayAlertAsync("Unable to Submit", "Find event staff for paper survey", "OK");
                 return;
-            }
+            }*/
 
-            await NavigationService.GoBackAsync();
+            await NavigationService.NavigateAsync(Constants.Navigation.CompletePage);
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

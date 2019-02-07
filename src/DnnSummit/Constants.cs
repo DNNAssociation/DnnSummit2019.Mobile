@@ -15,6 +15,7 @@
             public const string SponsorsPage = "SponsorsPage";
             public const string CreditsPage = "CreditsPage";
             public const string FeedbackPage = "FeedbackPage";
+            public const string CompletePage = "CompletePage";
 
             public static class Parameters
             {

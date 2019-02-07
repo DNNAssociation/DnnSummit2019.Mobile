@@ -21,7 +21,6 @@ namespace DnnSummit
         public const string OfflineLoading = "/" + Constants.Navigation.LoaddingOfflineModePage;
         public const string InternetLoading = "/" + Constants.Navigation.LoadingPage;
         public const string EntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
-        public const string PermissionEntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.PermissionPage;
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
@@ -37,7 +36,7 @@ namespace DnnSummit
 
             if (Device.RuntimePlatform == Device.Android) // change this to iOS
             {
-                NavigationService.NavigateAsync(PermissionEntryPoint);
+                NavigationService.NavigateAsync(Constants.Navigation.PermissionPage);
             }
             else
             {

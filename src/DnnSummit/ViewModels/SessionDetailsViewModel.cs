@@ -1,5 +1,7 @@
-﻿using DnnSummit.Models;
+﻿using DnnSummit.Events;
+using DnnSummit.Models;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -11,6 +13,8 @@ namespace DnnSummit.ViewModels
 {
     public class SessionDetailsViewModel : BindableBase, INavigatingAware
     {
+        protected IEventAggregator EventAggregator { get; }
+
         private string _title;
         public string Title
         {
@@ -152,8 +156,9 @@ namespace DnnSummit.ViewModels
         public ICommand VideoIntro { get; }
         public ICommand ToggleOfflineNotice { get; }
 
-        public SessionDetailsViewModel()
+        public SessionDetailsViewModel(IEventAggregator eventAggregator)
         {
+            EventAggregator = eventAggregator;
             DisplayOfflineNotice = true;
             VideoIntroMargin = Device.RuntimePlatform == Device.iOS ?
                 new Thickness(0, 0, 0, 75) :
@@ -165,6 +170,8 @@ namespace DnnSummit.ViewModels
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
+            EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
 
             if (DisplayOfflineNotice)
             {
@@ -191,6 +198,7 @@ namespace DnnSummit.ViewModels
         public void OnNavigatingTo(INavigationParameters parameters)
         {
             var isSuccessful = false;
+            DisplayOfflineNotice = App.DisplayOfflineNotice;
 
             if (parameters.ContainsKey(nameof(Session)))
             {

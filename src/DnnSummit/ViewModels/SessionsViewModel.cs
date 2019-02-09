@@ -1,10 +1,12 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
+using DnnSummit.Events;
 using DnnSummit.Extensions;
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
 using DnnSummit.ViewModels.Interfaces;
 using DnnSummit.Views;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -24,6 +26,7 @@ namespace DnnSummit.ViewModels
         protected ISessionService SessionService { get; }
         protected ISettingsService SettingsService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
+        protected IEventAggregator EventAggregator { get; }
         public string Title => "Sessions";
         
         
@@ -86,7 +89,8 @@ namespace DnnSummit.ViewModels
             INavigationService navigationService,
             ISessionService sessionService,
             ISettingsService settingsService,
-            IErrorRetryManager errorRetryManager)
+            IErrorRetryManager errorRetryManager,
+            IEventAggregator eventAggregator)
         {
             IsBusy = false;
             DisplayOfflineNotice = true;
@@ -95,12 +99,19 @@ namespace DnnSummit.ViewModels
             SessionService = sessionService;
             SettingsService = settingsService;
             ErrorRetryManager = errorRetryManager;
+            EventAggregator = eventAggregator;
             SessionSelected = new DelegateCommand<Session>(OnSessionSelected);
             ToggleAsFavorite = new DelegateCommand<Session>(OnToggleAsFavorite);
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
             ChangeDay = new DelegateCommand<object>(OnChangeDay);
             Sessions = new ObservableCollection<SessionList>();
+            EventAggregator.GetEvent<DisplayNoticeChanged>().Subscribe(OnDisplayChanged);
             
+        }
+
+        private void OnDisplayChanged(bool displayOfflineNotice)
+        {
+            DisplayOfflineNotice = displayOfflineNotice;
         }
 
         private async void OnChangeDay(object input)
@@ -117,6 +128,7 @@ namespace DnnSummit.ViewModels
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
         }
 
         private void OnToggleAsFavorite(Session session)
@@ -177,6 +189,7 @@ namespace DnnSummit.ViewModels
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
+            DisplayOfflineNotice = App.DisplayOfflineNotice;
             await OnLoadAsync(parameters);
         }
 

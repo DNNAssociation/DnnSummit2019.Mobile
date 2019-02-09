@@ -1,8 +1,10 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
+using DnnSummit.Events;
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
 using DnnSummit.ViewModels.Interfaces;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -19,17 +21,20 @@ namespace DnnSummit.ViewModels
         protected IItineraryService ItineraryService { get; }
         protected ISettingsService SettingsService { get; }
         protected IErrorRetryManager ErrorRetryManager { get; }
+        protected IEventAggregator EventAggregator { get; }
         public string Title => "Schedule";
         public ObservableCollection<Day> Days { get; }
         public ICommand ToggleOfflineNotice { get; }
         public ScheduleViewModel(
             IItineraryService itineraryService,
             ISettingsService settingsService,
-            IErrorRetryManager errorRetryManager)
+            IErrorRetryManager errorRetryManager,
+            IEventAggregator eventAggregator)
         {
             ItineraryService = itineraryService;
             SettingsService = settingsService;
             ErrorRetryManager = errorRetryManager;
+            EventAggregator = eventAggregator;
             Days = new ObservableCollection<Day>();
             DisplayOfflineNotice = true;
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
@@ -60,6 +65,8 @@ namespace DnnSummit.ViewModels
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
+            EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
         }
 
         public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)
@@ -100,6 +107,7 @@ namespace DnnSummit.ViewModels
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
+            DisplayOfflineNotice = App.DisplayOfflineNotice;
             await OnLoadAsync(parameters);
         }
     }

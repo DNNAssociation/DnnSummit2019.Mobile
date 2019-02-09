@@ -22,6 +22,7 @@ namespace DnnSummit
         public const string OfflineLoading = "/" + Constants.Navigation.LoaddingOfflineModePage;
         public const string InternetLoading = "/" + Constants.Navigation.LoadingPage;
         public const string EntryPoint = "/" + Constants.Navigation.NavigationPage + "/" + Constants.Navigation.TabbedPage;
+        public static bool DisplayOfflineNotice = true;
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {

@@ -8,4 +8,7 @@
     <PackageReference Include="Prism.Core" Version="7.1.0.431" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="DisplayNoticeChanged.config" />
+  </ItemGroup>
 </Project>

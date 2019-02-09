@@ -14,7 +14,6 @@ namespace DnnSummit.ViewModels
             NavigateToSchedule = new DelegateCommand(OnNavigateToSchedule);
         }
 
-        
         public ICommand NavigateToSchedule { get; }
 
         private async void OnNavigateToSchedule()

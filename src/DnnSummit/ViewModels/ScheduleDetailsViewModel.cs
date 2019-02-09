@@ -125,17 +125,10 @@ namespace DnnSummit.ViewModels
             ContentSections = new ObservableCollection<ScheduleContent>();
             VideoSelected = new DelegateCommand<string>(OnVideoSelected);
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
-            NoticeMargin = Device.iOS == Device.RuntimePlatform ?
-                new Thickness(0, 0, 0, 60) :
-                new Thickness(0, 0, 0, 25);
         }
 
-        private void OnToggleOfflineNotice()
+        private void UpdateNoticeMargin()
         {
-            DisplayOfflineNotice = !DisplayOfflineNotice;
-            App.DisplayOfflineNotice = DisplayOfflineNotice;
-            EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
-
             if (DisplayOfflineNotice)
             {
                 NoticeMargin = Device.iOS == Device.RuntimePlatform ?
@@ -145,9 +138,17 @@ namespace DnnSummit.ViewModels
             else
             {
                 NoticeMargin = Device.iOS == Device.RuntimePlatform ?
-                    new Thickness(0,0,0,10) :
+                    new Thickness(0, 0, 0, 10) :
                     new Thickness(0);
             }
+        }
+
+        private void OnToggleOfflineNotice()
+        {
+            DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
+            EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
+            UpdateNoticeMargin();            
         }
 
         private async void OnVideoSelected(string link)
@@ -168,6 +169,7 @@ namespace DnnSummit.ViewModels
         {
             bool isSuccessful = false;
             DisplayOfflineNotice = App.DisplayOfflineNotice;
+            UpdateNoticeMargin();
             if (parameters.ContainsKey(nameof(Event)))
             {
                 var details = (Event)parameters[nameof(Event)];

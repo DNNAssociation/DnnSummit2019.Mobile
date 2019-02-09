@@ -77,12 +77,8 @@ namespace DnnSummit.ViewModels
             }
         }
 
-        private void OnToggleOfflineNotice()
+        private void UpdateNoticeMargin()
         {
-            DisplayOfflineNotice = !DisplayOfflineNotice;
-            App.DisplayOfflineNotice = DisplayOfflineNotice;
-            EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
-
             if (DisplayOfflineNotice)
             {
                 NoticeMargin = Device.iOS == Device.RuntimePlatform ?
@@ -91,8 +87,18 @@ namespace DnnSummit.ViewModels
             }
             else
             {
-                NoticeMargin = new Thickness(0);
+                NoticeMargin = Device.iOS == Device.RuntimePlatform ?
+                    new Thickness(0, 0, 0, 10) :
+                    new Thickness(0);
             }
+        }
+
+        private void OnToggleOfflineNotice()
+        {
+            DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
+            EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
+            UpdateNoticeMargin();
         }
 
         public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)
@@ -134,6 +140,7 @@ namespace DnnSummit.ViewModels
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
             DisplayOfflineNotice = App.DisplayOfflineNotice;
+            UpdateNoticeMargin();
             await OnLoadAsync(parameters);
         }
     }

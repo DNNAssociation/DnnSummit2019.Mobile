@@ -36,20 +36,8 @@ namespace DnnSummit.ViewModels
             ItemSelected = new DelegateCommand<object>(OnItemSelected);
         }
 
-        private async void OnItemSelected(object item)
+        private void OnItemSelected(object item)
         {
-            var sponsor = (Sponsor)item;
-            if (sponsor != null && !string.IsNullOrWhiteSpace(sponsor.Homepage))
-            {
-                try
-                {
-                    Device.OpenUri(new Uri(sponsor.Homepage));
-                }
-                catch (Exception)
-                {
-                    await PageDialogService.DisplayAlertAsync("Something went wrong", "Unable to navigate to sponsor homepage", "OK");
-                }
-            }
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)

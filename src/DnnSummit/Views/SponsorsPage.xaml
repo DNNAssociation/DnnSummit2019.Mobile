@@ -17,13 +17,44 @@
                 <Setter Property="SeparatorVisibility" Value="None" />
                 <Setter Property="Margin" Value="0" />
             </Style>
-            <DataTemplate x:Key="TitlePlatinumTemplate">
-                <ViewCell>
+            <Style x:Key="SponsorTitle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource DarkBlue}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="38" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="End" />
+            </Style>
+            <DataTemplate x:Key="TitleTemplate">
+                <ViewCell Height="200">
                     <ViewCell.View>
-                        <StackLayout Padding="15,0">
+                        <StackLayout>
+                           <Label Text="Title Sponsor"
+                                  Style="{StaticResource SponsorTitle}" />
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="{StaticResource DarkBlue}" />
                             <Image Source="{Binding DataContext.Image}"
-                                   Aspect="AspectFit"
-                                   HeightRequest="200">
+                                   Margin="20,0"
+                                   HeightRequest="150">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
+                                                          CommandParameter="{Binding DataContext}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>                        
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="PlatinumTemplate">
+                <ViewCell Height="200">
+                    <ViewCell.View>
+                        <StackLayout>
+                           <Label Text="Platinum Sponsor"
+                                  Style="{StaticResource SponsorTitle}" />
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="{StaticResource DarkBlue}" />
+                            <Image Source="{Binding DataContext.Image}"
+                                   Margin="20,0"
+                                   HeightRequest="150">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
                                                           CommandParameter="{Binding DataContext}" />
@@ -36,42 +67,62 @@
             <DataTemplate x:Key="GoldTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <c:SponsorControl ItemsSource="{Binding DataContext}"
-                                          SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
-                                          SponsorsPerRow="2"
-                                          RowHeight="100"
-                                          Padding="15,0"
-                                          Margin="0,0,0,5"/>
+                        <StackLayout>
+                            <Label Text="Gold Sponsors"
+                                   Style="{StaticResource SponsorTitle}" />
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="{StaticResource DarkBlue}" />
+                            <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                              SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
+                                              SponsorsPerRow="2"
+                                              RowHeight="100"
+                                              Padding="15,0"
+                                              Margin="0,0,0,5"/>
+                        </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="SilverTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <c:SponsorControl ItemsSource="{Binding DataContext}"
-                                          SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
-                                          SponsorsPerRow="2"
-                                          RowHeight="75"
-                                          Padding="15,0"
-                                          Margin="0,0,0,5"/>
+                        <StackLayout>
+                            <Label Text="Silver Sponsors"
+                                   FontSize="20"
+                                   Style="{StaticResource SponsorTitle}" />
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="{StaticResource DarkBlue}" />
+                            <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                              SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
+                                              SponsorsPerRow="2"
+                                              RowHeight="75"
+                                              Padding="15,0"
+                                              Margin="0,0,0,5"/>
+                        </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="BronzeTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <c:SponsorControl ItemsSource="{Binding DataContext}"
-                                          SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
-                                          SponsorsPerRow="3"
-                                          RowHeight="40"
-                                          Padding="15,0"
-                                          Margin="0,0,0,5"/>
+                        <StackLayout>
+                            <Label Text="Bronze Sponsors"
+                                   FontSize="18"
+                                   Style="{StaticResource SponsorTitle}" />
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="{StaticResource DarkBlue}" />
+                            <c:SponsorControl ItemsSource="{Binding DataContext}"
+                                              SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
+                                              SponsorsPerRow="3"
+                                              RowHeight="40"
+                                              Padding="15,0"
+                                              Margin="0,0,0,5"/>
+                        </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
             <s:SponsorDataTemplateSelector x:Key="SponsorTemplate" 
-                                           TitleTemplate="{StaticResource TitlePlatinumTemplate}"
-                                           PlatinumTemplate="{StaticResource TitlePlatinumTemplate}"
+                                           TitleTemplate="{StaticResource TitleTemplate}"
+                                           PlatinumTemplate="{StaticResource PlatinumTemplate}"
                                            GoldTemplate="{StaticResource GoldTemplate}"
                                            SilverTemplate="{StaticResource SilverTemplate}"
                                            BronzeTemplate="{StaticResource BronzeTemplate}" />

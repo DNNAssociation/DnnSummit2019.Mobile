@@ -1,4 +1,11 @@
-﻿using DnnSummit.Data.Services.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Events;
 using DnnSummit.Extensions;
 using DnnSummit.Manager.Interfaces;
@@ -9,13 +16,6 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels

@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DnnSummit.ViewModels
 {
@@ -38,6 +39,9 @@ namespace DnnSummit.ViewModels
             Days = new ObservableCollection<Day>();
             DisplayOfflineNotice = true;
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
+            NoticeMargin = Device.iOS == Device.RuntimePlatform ?
+                new Thickness(0, 0, 0, 60) :
+                new Thickness(0, 0, 0, 25);
         }
 
         private bool _displayOfflineNotice;
@@ -48,6 +52,17 @@ namespace DnnSummit.ViewModels
             {
                 SetProperty(ref _displayOfflineNotice, value);
                 RaisePropertyChanged(nameof(DisplayOfflineNotice));
+            }
+        }
+
+        private Thickness _noticeMargin;
+        public Thickness NoticeMargin
+        {
+            get { return _noticeMargin; }
+            set
+            {
+                SetProperty(ref _noticeMargin, value);
+                RaisePropertyChanged(nameof(NoticeMargin));
             }
         }
 
@@ -67,6 +82,17 @@ namespace DnnSummit.ViewModels
             DisplayOfflineNotice = !DisplayOfflineNotice;
             App.DisplayOfflineNotice = DisplayOfflineNotice;
             EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
+
+            if (DisplayOfflineNotice)
+            {
+                NoticeMargin = Device.iOS == Device.RuntimePlatform ?
+                    new Thickness(0, 0, 0, 60) :
+                    new Thickness(0, 0, 0, 25);
+            }
+            else
+            {
+                NoticeMargin = new Thickness(0);
+            }
         }
 
         public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)

@@ -14,6 +14,7 @@ namespace DnnSummit.Controls
         {
             Control = new StackLayout
             {
+                HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, true),
                 Spacing = 0,
                 Padding = new Thickness(0, 10),
                 Margin = 0
@@ -26,7 +27,7 @@ namespace DnnSummit.Controls
             var row = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true),
+                HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, true),
                 Spacing = 20,
                 Margin = new Thickness(10, 0, 10, 0),
                 HeightRequest = RowHeight
@@ -49,8 +50,8 @@ namespace DnnSummit.Controls
                 {
                     Source = item.Image,
                     Aspect = Aspect.AspectFit,
-                    HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true),
-                    VerticalOptions = new LayoutOptions(LayoutAlignment.Fill, false),
+                    HorizontalOptions = new LayoutOptions(LayoutAlignment.Start, false),
+                    VerticalOptions = new LayoutOptions(LayoutAlignment.Start, false),
                     Margin = 0
                 };
 

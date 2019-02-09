@@ -98,7 +98,8 @@ namespace DnnSummit.ViewModels
         }
 
         private async Task FinishAndNavigateAsync()
-        {            
+        {
+            App.DisplayOfflineNotice = true;
             await NavigationService.NavigateAsync(App.EntryPoint);
         }
 

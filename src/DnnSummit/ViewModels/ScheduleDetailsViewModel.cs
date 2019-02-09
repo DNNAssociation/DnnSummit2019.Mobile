@@ -114,6 +114,7 @@ namespace DnnSummit.ViewModels
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
         }
 
         private async void OnVideoSelected(string link)
@@ -133,6 +134,7 @@ namespace DnnSummit.ViewModels
         public void OnNavigatingTo(INavigationParameters parameters)
         {
             bool isSuccessful = false;
+            DisplayOfflineNotice = App.DisplayOfflineNotice;
             if (parameters.ContainsKey(nameof(Event)))
             {
                 var details = (Event)parameters[nameof(Event)];

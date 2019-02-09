@@ -60,6 +60,7 @@ namespace DnnSummit.ViewModels
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
         }
 
         public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)
@@ -100,6 +101,7 @@ namespace DnnSummit.ViewModels
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
+            DisplayOfflineNotice = App.DisplayOfflineNotice;
             await OnLoadAsync(parameters);
         }
     }

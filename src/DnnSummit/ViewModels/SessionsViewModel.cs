@@ -117,6 +117,7 @@ namespace DnnSummit.ViewModels
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
         }
 
         private void OnToggleAsFavorite(Session session)
@@ -177,6 +178,7 @@ namespace DnnSummit.ViewModels
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
+            DisplayOfflineNotice = App.DisplayOfflineNotice;
             await OnLoadAsync(parameters);
         }
 

@@ -165,6 +165,7 @@ namespace DnnSummit.ViewModels
         private void OnToggleOfflineNotice()
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
+            App.DisplayOfflineNotice = DisplayOfflineNotice;
 
             if (DisplayOfflineNotice)
             {
@@ -191,6 +192,7 @@ namespace DnnSummit.ViewModels
         public void OnNavigatingTo(INavigationParameters parameters)
         {
             var isSuccessful = false;
+            DisplayOfflineNotice = App.DisplayOfflineNotice;
 
             if (parameters.ContainsKey(nameof(Session)))
             {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:s="clr-namespace:DnnSummit.Selectors"
              xmlns:c="clr-namespace:DnnSummit.Controls"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Name="Root"
              x:Class="DnnSummit.Views.SponsorsPage">
     <NavigationPage.TitleView>
@@ -25,9 +25,9 @@
                 <Setter Property="VerticalOptions" Value="End" />
             </Style>
             <DataTemplate x:Key="TitleTemplate">
-                <ViewCell Height="200">
+                <ViewCell Height="250">
                     <ViewCell.View>
-                        <StackLayout>
+                        <StackLayout Margin="0,20,0,0">
                            <Label Text="Title Sponsor"
                                   Style="{StaticResource SponsorTitle}" />
                             <BoxView HeightRequest="1"
@@ -45,9 +45,9 @@
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="PlatinumTemplate">
-                <ViewCell Height="200">
+                <ViewCell Height="250">
                     <ViewCell.View>
-                        <StackLayout>
+                        <StackLayout Margin="0,20,0,0">
                            <Label Text="Platinum Sponsor"
                                   Style="{StaticResource SponsorTitle}" />
                             <BoxView HeightRequest="1"
@@ -67,7 +67,7 @@
             <DataTemplate x:Key="GoldTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <StackLayout>
+                        <StackLayout Margin="0,20,0,0">
                             <Label Text="Gold Sponsors"
                                    Style="{StaticResource SponsorTitle}" />
                             <BoxView HeightRequest="1"
@@ -85,7 +85,7 @@
             <DataTemplate x:Key="SilverTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <StackLayout>
+                        <StackLayout Margin="0,20,0,0">
                             <Label Text="Silver Sponsors"
                                    FontSize="20"
                                    Style="{StaticResource SponsorTitle}" />
@@ -104,7 +104,7 @@
             <DataTemplate x:Key="BronzeTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <StackLayout>
+                        <StackLayout Margin="0,20,0,0">
                             <Label Text="Bronze Sponsors"
                                    FontSize="18"
                                    Style="{StaticResource SponsorTitle}" />

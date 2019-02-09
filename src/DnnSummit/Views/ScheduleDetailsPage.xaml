@@ -91,6 +91,7 @@
                           SeparatorColor="Transparent"
                           SeparatorVisibility="None"
                           HasUnevenRows="True"
+                          Margin="{Binding NoticeMargin}"
                           ItemTapped="ListView_ItemTapped" />    
             </StackLayout>
             <StackLayout HorizontalOptions="Fill"

@@ -97,6 +97,17 @@ namespace DnnSummit.ViewModels
             }
         }
 
+        private Thickness _noticeMargin;
+        public Thickness NoticeMargin
+        {
+            get { return _noticeMargin; }
+            set
+            {
+                SetProperty(ref _noticeMargin, value);
+                RaisePropertyChanged(nameof(NoticeMargin));
+            }
+        }
+
         public ICommand VideoSelected { get; }
         public ICommand ToggleOfflineNotice { get; }
 
@@ -114,6 +125,9 @@ namespace DnnSummit.ViewModels
             ContentSections = new ObservableCollection<ScheduleContent>();
             VideoSelected = new DelegateCommand<string>(OnVideoSelected);
             ToggleOfflineNotice = new DelegateCommand(OnToggleOfflineNotice);
+            NoticeMargin = Device.iOS == Device.RuntimePlatform ?
+                new Thickness(0, 0, 0, 60) :
+                new Thickness(0, 0, 0, 25);
         }
 
         private void OnToggleOfflineNotice()
@@ -121,6 +135,19 @@ namespace DnnSummit.ViewModels
             DisplayOfflineNotice = !DisplayOfflineNotice;
             App.DisplayOfflineNotice = DisplayOfflineNotice;
             EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
+
+            if (DisplayOfflineNotice)
+            {
+                NoticeMargin = Device.iOS == Device.RuntimePlatform ?
+                    new Thickness(0, 0, 0, 60) :
+                    new Thickness(0, 0, 0, 25);
+            }
+            else
+            {
+                NoticeMargin = Device.iOS == Device.RuntimePlatform ?
+                    new Thickness(0,0,0,10) :
+                    new Thickness(0);
+            }
         }
 
         private async void OnVideoSelected(string link)

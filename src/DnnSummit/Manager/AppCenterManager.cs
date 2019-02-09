@@ -17,8 +17,8 @@ namespace DnnSummit.Manager
         {
 #if APPCENTER
             AppCenter.Start(
-                $"android={SecretsManager["AppCenter:iOS"]};" +
-                $"ios={SecretsManager["AppCenter:Android"]};",
+                $"android={SecretsManager["AppCenter:Android"]};" +
+                $"ios={SecretsManager["AppCenter:iOS"]};",
                 typeof(Analytics), typeof(Crashes));
 #endif
         }

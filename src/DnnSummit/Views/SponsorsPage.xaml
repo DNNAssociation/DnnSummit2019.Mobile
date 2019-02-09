@@ -20,7 +20,7 @@
             <DataTemplate x:Key="TitlePlatinumTemplate">
                 <ViewCell>
                     <ViewCell.View>
-                        <StackLayout>
+                        <StackLayout Padding="15,0">
                             <Image Source="{Binding DataContext.Image}"
                                    Aspect="AspectFit"
                                    HeightRequest="200">
@@ -40,6 +40,7 @@
                                           SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
                                           SponsorsPerRow="2"
                                           RowHeight="100"
+                                          Padding="15,0"
                                           Margin="0,0,0,5"/>
                     </ViewCell.View>
                 </ViewCell>
@@ -51,6 +52,7 @@
                                           SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
                                           SponsorsPerRow="2"
                                           RowHeight="75"
+                                          Padding="15,0"
                                           Margin="0,0,0,5"/>
                     </ViewCell.View>
                 </ViewCell>
@@ -62,6 +64,7 @@
                                           SponsorTapped="{Binding BindingContext.ItemSelected, Source={x:Reference Root}}"
                                           SponsorsPerRow="3"
                                           RowHeight="40"
+                                          Padding="15,0"
                                           Margin="0,0,0,5"/>
                     </ViewCell.View>
                 </ViewCell>
@@ -76,8 +79,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
-                     HorizontalOptions="CenterAndExpand"
-                     Padding="15, 0">
+                     HorizontalOptions="CenterAndExpand">
             <ListView ItemsSource="{Binding Sponsors}"
                       ItemTemplate="{StaticResource SponsorTemplate}"
                       ItemTapped="ListView_ItemTapped"

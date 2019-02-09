@@ -64,7 +64,7 @@ namespace DnnSummit.ViewModels
                 var data = await SponsorService.GetAsync();
                 Sponsors.Clear();
 
-                foreach (var item in data)
+                foreach (var item in data.OrderBy(x => x.Level))
                 {
                     var sponsor = new Sponsor
                     {

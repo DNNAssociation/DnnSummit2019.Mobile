@@ -91,7 +91,7 @@
                           SeparatorColor="Transparent"
                           SeparatorVisibility="None"
                           HasUnevenRows="True"
-                          Margin="{OnPlatform iOS='0,0,0,10', Android='0'}"
+                          Margin="{Binding NoticeMargin}"
                           ItemTapped="ListView_ItemTapped" />    
             </StackLayout>
             <StackLayout HorizontalOptions="Fill"

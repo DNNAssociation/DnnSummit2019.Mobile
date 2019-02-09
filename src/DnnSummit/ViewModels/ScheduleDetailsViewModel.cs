@@ -1,6 +1,8 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
+using DnnSummit.Events;
 using DnnSummit.Models;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
@@ -16,6 +18,7 @@ namespace DnnSummit.ViewModels
     {
         protected IPageDialogService PageDialogService { get; }
         protected ISettingsService SettingsService { get; }
+        protected IEventAggregator EventAggregator { get; }
 
         private string _title;
         public string Title
@@ -101,10 +104,12 @@ namespace DnnSummit.ViewModels
 
         public ScheduleDetailsViewModel(
             IPageDialogService pageDialogService,
-            ISettingsService settingsService)
+            ISettingsService settingsService,
+            IEventAggregator eventAggregator)
         {
             PageDialogService = pageDialogService;
             SettingsService = settingsService;
+            EventAggregator = eventAggregator;
             DisplayOfflineNotice = true;
             ContentSections = new ObservableCollection<ScheduleContent>();
             VideoSelected = new DelegateCommand<string>(OnVideoSelected);
@@ -115,6 +120,7 @@ namespace DnnSummit.ViewModels
         {
             DisplayOfflineNotice = !DisplayOfflineNotice;
             App.DisplayOfflineNotice = DisplayOfflineNotice;
+            EventAggregator.GetEvent<DisplayNoticeChanged>().Publish(App.DisplayOfflineNotice);
         }
 
         private async void OnVideoSelected(string link)

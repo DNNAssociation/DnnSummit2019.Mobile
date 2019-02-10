@@ -142,6 +142,10 @@ namespace DnnSummit.ViewModels
             DisplayOfflineNotice = App.DisplayOfflineNotice;
             UpdateNoticeMargin();
             await OnLoadAsync(parameters);
+
+#if APPCENTER
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(Constants.AppCenter.Events.Schedule);
+#endif
         }
     }
 }

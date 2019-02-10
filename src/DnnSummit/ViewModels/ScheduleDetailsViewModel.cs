@@ -196,6 +196,14 @@ namespace DnnSummit.ViewModels
             {
                 // display error page
             }
+
+#if APPCENTER
+            var eventParams = new System.Collections.Generic.Dictionary<string, string>
+            {
+                { "Title", Title }
+            };
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(Constants.AppCenter.Events.DayByDay, eventParams);
+#endif
         }
     }
 }

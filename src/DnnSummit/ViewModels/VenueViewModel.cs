@@ -34,6 +34,10 @@ namespace DnnSummit.ViewModels
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
             await OnLoadAsync(parameters);
+
+#if APPCENTER
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(Constants.AppCenter.Events.Venue);
+#endif
         }
 
         public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)

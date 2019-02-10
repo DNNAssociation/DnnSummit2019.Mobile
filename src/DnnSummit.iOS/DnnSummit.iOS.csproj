@@ -82,6 +82,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;APPCENTER;</DefineConstants>
+    <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>

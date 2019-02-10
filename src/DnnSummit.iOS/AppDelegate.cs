@@ -1,9 +1,12 @@
-﻿using System.Diagnostics;
-using CarouselView.FormsPlugin.iOS;
+﻿using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+
+#if DEBUG
+using System.Diagnostics;
 using Xamarin.Forms.Internals;
+#endif
 
 namespace DnnSummit.iOS
 {

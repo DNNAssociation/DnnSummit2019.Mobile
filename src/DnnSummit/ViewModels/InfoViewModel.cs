@@ -45,7 +45,7 @@ namespace DnnSummit.ViewModels
                     await PageDialogService.DisplayAlertAsync("No Internet", "Unable to download content, reconnect and try again.", "OK");
                 }
                 else
-                {
+                { 
                     await NavigationService.NavigateAsync(tile.NavigationPath);     
                 }
             }

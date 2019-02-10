@@ -38,6 +38,21 @@
             public const int RetryWait = 500;
         }
 
+#if APPCENTER
+        public static class AppCenter
+        {
+            public static class Events
+            {
+                public const string Schedule = "Schedule";
+                public const string Feedback = "Feedback";
+                public const string Venue = "Venue";
+                public const string Credits = "Credits";
+                public const string DayByDay = "Day By Day";
+                public const string SessionDetails = "Session Details";
+            }
+        }
+#endif
+
         public static class Messages
         {
             public const string LastRetrieved = "Last Retrieved: {0}";

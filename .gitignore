@@ -261,6 +261,6 @@ __pycache__/
 *.pyc
 
 # Secrets file
-#[sS]ecrets.json
+[sS]ecrets.json
 
 .DS_Store

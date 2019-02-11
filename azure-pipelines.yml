@@ -27,6 +27,7 @@ jobs:
     appcenterAndroid: 'DNN-Summit-2019-Android'
     appcenterIOSSecret: '$(Secrets.iOS.AppCenterId)'
     appcenterAndroidSecret: '$(Secrets.Android.AppCenterId)'
+    useAppCenter: true
     secretsFilePathShared: 'src\DnnSummit\secrets.json'
     secretsFilePathAndroid: 'src\DnnSummit.Android\Assets\secrets.json'
     createStorePackageOnBranch: 'refs/heads/master'

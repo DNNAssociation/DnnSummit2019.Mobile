@@ -116,4 +116,12 @@
   </ItemGroup>
   
     
+  <ItemGroup>
+    <None Remove="Secrets.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Secrets.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

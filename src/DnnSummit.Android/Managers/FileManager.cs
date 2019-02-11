@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using System.Reflection;
+using Android.App;
 using DnnSummit.Manager.Interfaces;
 
 namespace DnnSummit.Droid.Managers
@@ -8,10 +8,7 @@ namespace DnnSummit.Droid.Managers
     {
         public Stream GetFileStream(string file)
         {
-            var path = $"DnnSummit.Droid.{file}";
-            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(FileManager)).Assembly;
-
-            return assembly.GetManifestResourceStream(path);
+            return Application.Context.Assets.Open(file);
         }
     }
 }

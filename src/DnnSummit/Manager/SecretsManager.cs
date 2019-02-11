@@ -14,15 +14,14 @@ namespace DnnSummit.Manager
         {
             try
             {
-                var stream = fileManager.GetFileStream(FileName);
-
+                using (var stream = fileManager.GetFileStream(FileName))
                 using (var reader = new StreamReader(stream))
                 {
                     var json = reader.ReadToEnd();
                     _secrets = JObject.Parse(json);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Debug.WriteLine("Unable to load secrets file");
             }

@@ -390,9 +390,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\check_orange.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Secrets.json" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="..\DnnSummit\Secrets.json">
       <Link>Assets\Secrets.json</Link>
     </AndroidAsset>

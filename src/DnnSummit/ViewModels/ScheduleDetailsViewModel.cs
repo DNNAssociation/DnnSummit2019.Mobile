@@ -1,6 +1,7 @@
 ﻿using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Events;
 using DnnSummit.Models;
+using Microsoft.AppCenter.Analytics;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -197,13 +198,11 @@ namespace DnnSummit.ViewModels
                 // display error page
             }
 
-#if APPCENTER
             var eventParams = new System.Collections.Generic.Dictionary<string, string>
             {
                 { "Title", Title }
             };
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(Constants.AppCenter.Events.DayByDay, eventParams);
-#endif
+            Analytics.TrackEvent(Constants.AppCenter.Events.DayByDay, eventParams);
         }
     }
 }

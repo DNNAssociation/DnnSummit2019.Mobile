@@ -2,6 +2,7 @@
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
 using DnnSummit.ViewModels.Interfaces;
+using Microsoft.AppCenter.Analytics;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -34,10 +35,7 @@ namespace DnnSummit.ViewModels
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
             await OnLoadAsync(parameters);
-
-#if APPCENTER
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(Constants.AppCenter.Events.Venue);
-#endif
+            Analytics.TrackEvent(Constants.AppCenter.Events.Venue);
         }
 
         public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)

@@ -1,10 +1,9 @@
-﻿using DnnSummit.Exceptions;
-using DnnSummit.Manager.Interfaces;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using DnnSummit.Manager.Interfaces;
+using Newtonsoft.Json.Linq;
 
 namespace DnnSummit.Manager
 {
@@ -25,7 +24,7 @@ namespace DnnSummit.Manager
                     _secrets = JObject.Parse(json);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Debug.WriteLine("Unable to load secrets file");
             }
@@ -47,9 +46,10 @@ namespace DnnSummit.Manager
 
                     return node.ToString();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    throw new InvalidSecretException(name, e);
+                    Debug.WriteLine($"Unable to retrieve secret '{name}'");
+                    return string.Empty;
                 }
             }
         }

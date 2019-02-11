@@ -8,11 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
-
-#if APPCENTER
 using System.Linq;
 using Microsoft.AppCenter.Analytics;
-#endif
 
 namespace DnnSummit.ViewModels
 {
@@ -234,7 +231,6 @@ namespace DnnSummit.ViewModels
                 // TODO - Add some error page loading sequence
             }
 
-#if APPCENTER
             var eventParams = new Dictionary<string, string>
             {
                 { "Title", Title }
@@ -247,7 +243,6 @@ namespace DnnSummit.ViewModels
             }
 
             Analytics.TrackEvent(Constants.AppCenter.Events.SessionDetails, eventParams);
-#endif
         }
     }
 }

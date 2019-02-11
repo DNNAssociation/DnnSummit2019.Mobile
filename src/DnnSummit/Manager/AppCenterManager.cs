@@ -15,12 +15,10 @@ namespace DnnSummit.Manager
 
         public void Initialize()
         {
-#if APPCENTER
             AppCenter.Start(
                 $"android={SecretsManager["AppCenter:Android"]};" +
                 $"ios={SecretsManager["AppCenter:iOS"]};",
                 typeof(Analytics), typeof(Crashes));
-#endif
         }
     }
 }

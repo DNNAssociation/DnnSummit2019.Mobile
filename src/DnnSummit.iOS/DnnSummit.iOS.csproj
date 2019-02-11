@@ -102,44 +102,6 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppCenter|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <OutputPath>bin\AppCenter</OutputPath>
-    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;APPCENTER;</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-    <MtouchVerbosity></MtouchVerbosity>
-    <MtouchLink>SdkOnly</MtouchLink>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppCenter|iPhoneSimulator' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\AppCenter</OutputPath>
-    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;APPCENTER;</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchVerbosity></MtouchVerbosity>
-    <MtouchLink>None</MtouchLink>
-<DeviceSpecificBuild>true</DeviceSpecificBuild>
-<MtouchDebug>true</MtouchDebug>
-<MtouchArch>x86_64</MtouchArch>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppCenter|iPhone' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\AppCenter</OutputPath>
-    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;APPCENTER;</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchVerbosity></MtouchVerbosity>
-    <MtouchLink>SdkOnly</MtouchLink>
-    <MtouchArch>ARM64</MtouchArch>
-    <DeviceSpecificBuild>true</DeviceSpecificBuild>
-    <MtouchDebug>true</MtouchDebug>
-  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

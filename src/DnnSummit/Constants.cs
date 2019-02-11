@@ -38,7 +38,6 @@
             public const int RetryWait = 500;
         }
 
-#if APPCENTER
         public static class AppCenter
         {
             public static class Events
@@ -51,7 +50,6 @@
                 public const string SessionDetails = "Session Details";
             }
         }
-#endif
 
         public static class Messages
         {

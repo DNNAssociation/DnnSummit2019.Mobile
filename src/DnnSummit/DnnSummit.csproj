@@ -10,11 +10,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='AppCenter|AnyCPU'">
-    <DebugType>pdbonly</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType></DebugType>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0;APPCENTER</DefineConstants>
@@ -37,39 +32,12 @@
     <DefineConstants>TRACE;APPCENTER;AD_HOC;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
     <IntermediateOutputPath>obj\Release\netstandard2.0</IntermediateOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppCenter|AnyCPU' ">
-    <IntermediateOutputPath>obj\AppCenter</IntermediateOutputPath>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\AppCenter</OutputPath>
-    <DefineConstants>TRACE;DEBUG;APPCENTER;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
-    <NoWarn>1701;1702</NoWarn>
-    <NoStdLib>false</NoStdLib>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppCenter|iPhoneSimulator' ">
-    <IntermediateOutputPath>obj\iPhoneSimulator\AppCenter</IntermediateOutputPath>
-    <DebugType></DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\AppCenter</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;APPCENTER;</DefineConstants>
-    <NoWarn></NoWarn>
-    <NoStdLib>false</NoStdLib>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppCenter|iPhone' ">
-    <IntermediateOutputPath>obj\iPhone\AppCenter</IntermediateOutputPath>
-    <DebugType></DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\AppCenter</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;APPCENTER;</DefineConstants>
-    <NoWarn></NoWarn>
-    <NoStdLib>false</NoStdLib>
-  </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Models\NewFolder\**" />
     <EmbeddedResource Remove="Models\NewFolder\**" />
     <None Remove="Models\NewFolder\**" />
     <None Remove="Secrets.json" />
+    <Compile Remove="Exceptions\InvalidSecretException.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,9 +58,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Secrets.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Secrets.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Controls\LogoTitleView.xaml">
@@ -160,9 +126,4 @@
   </ItemGroup>
   
     
-  <ItemGroup>
-    <None Update="Secrets.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>

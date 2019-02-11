@@ -3,9 +3,8 @@ using DnnSummit.Data.Services.Interfaces;
 using DnnSummit.Manager.Interfaces;
 using DnnSummit.Models;
 using DnnSummit.ViewModels.Interfaces;
-#if APPCENTER
 using Microsoft.AppCenter;
-#endif
+using Microsoft.AppCenter.Analytics;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -99,15 +98,11 @@ namespace DnnSummit.ViewModels
             {
                 try
                 {
-#if APPCENTER
                     var deviceId = await AppCenter.GetInstallIdAsync();
-#endif
                     var model = new FeedbackPayload
                     {
                         Year = 2019,
-#if APPCENTER
                         DeviceId = deviceId.ToString(),
-#endif
                         SurveyAnswers = JsonConvert.SerializeObject(Questions.Select(x => new { x.Question, x.Answer }))
                     };
 
@@ -151,10 +146,7 @@ namespace DnnSummit.ViewModels
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
             await OnLoadAsync(parameters);
-
-#if APPCENTER
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(Constants.AppCenter.Events.Feedback);
-#endif
+            Analytics.TrackEvent(Constants.AppCenter.Events.Feedback);
         }
 
         public async Task OnLoadAsync(INavigationParameters parameters, int attempt = 0)

@@ -534,8 +534,8 @@
     <Folder Include="Managers\" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="..\DnnSummit\Secrets.json">
-      <Link>Secrets.json</Link>
+    <BundleResource Include="..\DnnSummit\secrets.json">
+      <Link>secrets.json</Link>
     </BundleResource>
   </ItemGroup>
 </Project>

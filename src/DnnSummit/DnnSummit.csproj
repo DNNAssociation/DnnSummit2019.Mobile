@@ -120,7 +120,7 @@
     <None Remove="Secrets.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Secrets.json">
+    <Content Include="secrets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

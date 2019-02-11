@@ -8,7 +8,7 @@ namespace DnnSummit.Manager
 {
     public class SecretsManager : ISecretsManager
     {
-        private const string FileName = "Secrets.json";
+        private const string FileName = "secrets.json";
         private JObject _secrets;
         public SecretsManager(IFileManager fileManager)
         {

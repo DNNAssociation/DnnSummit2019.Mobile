@@ -390,8 +390,8 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\check_orange.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="..\DnnSummit\Secrets.json">
-      <Link>Assets\Secrets.json</Link>
+    <AndroidAsset Include="..\DnnSummit\secrets.json">
+      <Link>Assets\secrets.json</Link>
     </AndroidAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

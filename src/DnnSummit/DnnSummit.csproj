@@ -32,13 +32,6 @@
     <DefineConstants>TRACE;APPCENTER;AD_HOC;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
     <IntermediateOutputPath>obj\Release\netstandard2.0</IntermediateOutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Models\NewFolder\**" />
-    <EmbeddedResource Remove="Models\NewFolder\**" />
-    <None Remove="Models\NewFolder\**" />
-    <None Remove="Secrets.json" />
-    <Compile Remove="Exceptions\InvalidSecretException.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter" Version="1.12.0" />
@@ -126,4 +119,7 @@
   </ItemGroup>
   
     
+  <ItemGroup>
+    <None Remove="Secrets.json" />
+  </ItemGroup>
 </Project>

@@ -1,4 +1,8 @@
-﻿using System;
+﻿#if (RELEASE || AD_HOC)
+#define APPCENTER
+#endif
+
+using System;
 using System.Globalization;
 using System.Reflection;
 using DnnSummit.Manager;

@@ -1,8 +1,4 @@
-﻿#if (RELEASE || AD_HOC)
-#define APPCENTER
-#endif
-
-namespace DnnSummit
+﻿namespace DnnSummit
 {
     public static class Constants
     {

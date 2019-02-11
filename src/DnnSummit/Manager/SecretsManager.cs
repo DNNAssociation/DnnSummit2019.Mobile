@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using DnnSummit.Manager.Interfaces;
 using Newtonsoft.Json.Linq;
 
@@ -9,15 +8,14 @@ namespace DnnSummit.Manager
 {
     public class SecretsManager : ISecretsManager
     {
-        private const string FileName = "Secrets";
-        private const string Namespace = "DnnSummit";
+        private const string FileName = "Secrets.json";
         private JObject _secrets;
-        public SecretsManager()
+        public SecretsManager(IFileManager fileManager)
         {
             try
             {
-                var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
-                var stream = assembly.GetManifestResourceStream($"{Namespace}.{FileName}.json");
+                var stream = fileManager.GetFileStream(FileName);
+
                 using (var reader = new StreamReader(stream))
                 {
                     var json = reader.ReadToEnd();

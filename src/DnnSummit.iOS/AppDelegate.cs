@@ -2,6 +2,10 @@
 using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+using Prism;
+using Prism.Ioc;
+using DnnSummit.iOS.Managers;
+using DnnSummit.Manager.Interfaces;
 
 #if DEBUG
 using System.Diagnostics;
@@ -35,9 +39,17 @@ namespace DnnSummit.iOS
 #if DEBUG
             Log.Listeners.Add(new DelegateLogListener((c, e) => Debug.WriteLine(e)));
 #endif
-            LoadApplication(new App());
+            LoadApplication(new App(new AppInitializer()));
 
             return base.FinishedLaunching(app, options);
+        }
+
+        private class AppInitializer : IPlatformInitializer
+        {
+            public void RegisterTypes(IContainerRegistry containerRegistry)
+            {
+                containerRegistry.Register<IFileManager, FileManager>();
+            }
         }
     }
 }

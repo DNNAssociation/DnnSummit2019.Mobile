@@ -2,7 +2,11 @@
 using Android.Content.PM;
 using Android.OS;
 using CarouselView.FormsPlugin.Android;
+using DnnSummit.Droid.Managers;
+using DnnSummit.Manager.Interfaces;
 using ImageCircle.Forms.Plugin.Droid;
+using Prism;
+using Prism.Ioc;
 
 namespace DnnSummit.Droid
 {
@@ -26,7 +30,15 @@ namespace DnnSummit.Droid
             ImageCircleRenderer.Init();
             CarouselViewRenderer.Init();
 
-            LoadApplication(new App());
+            LoadApplication(new App(new AppInitializer()));
+        }
+
+        private class AppInitializer : IPlatformInitializer
+        {
+            public void RegisterTypes(IContainerRegistry containerRegistry)
+            {
+                containerRegistry.Register<IFileManager, FileManager>();
+            }
         }
     }
 }

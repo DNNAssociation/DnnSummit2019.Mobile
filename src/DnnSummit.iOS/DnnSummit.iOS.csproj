@@ -110,6 +110,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
     <Compile Include="Renderers\NoStickyListViewRenderer.cs" />
+    <Compile Include="Managers\FileManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\arrow_right.imageset\arrow_right@1.png">
@@ -530,5 +531,9 @@
     <Folder Include="Assets.xcassets\power.imageset\" />
     <Folder Include="Assets.xcassets\splash_icon.imageset\" />
     <Folder Include="Resources\" />
+    <Folder Include="Managers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Secrets.json" />
   </ItemGroup>
 </Project>

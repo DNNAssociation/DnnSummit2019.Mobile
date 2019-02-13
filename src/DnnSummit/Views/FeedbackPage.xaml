@@ -78,7 +78,7 @@
                                    FontSize="20" />
                             <Label Text="{Binding HelpMessage}"
                                     FontSize="14" />
-                            <Picker ItemsSource="{Binding Options}" 
+                            <Picker ItemsSource="{Binding Options}"
                                     SelectedItem="{Binding Answer}" />
                         </StackLayout>
                     </ViewCell.View>
